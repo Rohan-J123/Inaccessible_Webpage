@@ -9,36 +9,24 @@
     <link rel="stylesheet" href="./src/bootstrap/main.css">
     <script src="./scripts/bootstrap.bundle.min.js"></script>
 
-	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/1	1.9.0/styles/ir-black.css"> -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/1	1.9.0/styles/sunburst.css">
-	<script src= "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js"></script> 
+	<script src= "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script> 
 
 	<link rel="stylesheet" href="./src/googlefont/main.css">
+
+	<link rel="stylesheet" href="./src/indexCSS/main.css">
+	<script src="./scripts/indexJS/toggle.js"></script>
 
     <title>Inaccessible WebPage Game</title>
 </head>
 <body>
 	<div class="days-one-regular" style="width: 100vw; font-size: calc(12px + 1vw); text-align: center; padding-top: 2vh; padding-bottom: 2vh; padding-left: 1vw; padding-right: 1vw; transform: scaleY(1.5);"><b>&lt;h1&gt;INACCESSIBLE WEBPAGE GAME&lt;/h1&gt;</b></div>
-	<!-- <div class="header" style="display: flex; padding-top: 20px; padding-bottom: 0%; padding-left: 1vw; padding-right: 1vw; height: 10vh;">
-		<div style="font-size: 3.5vw; width: 15vw; height: 10vh; font-family: 'Times New Roman', Times, serif; text-align: left; padding-left: 0vw;">
-			<div style="box-sizing: border-box; white-space: nowrap;">00:00</div>
-		</div>
-		<div style="width: 70vw; font-family: 'Times New Roman', Times, serif;"></div>
-		<div style="font-size: 3.5vw; width: 15vw; height: 10vh; font-family: 'Times New Roman', Times, serif; text-align: right; padding-left: 3vw;">
-			<div style="transform: scaleX(0.65); box-sizing: border-box; white-space: nowrap;">Score: 000</div>
-		</div>
-	</div> -->
-	<!-- <div class="header" style="display: flex; padding-top: 1vh; padding-bottom: 0%; padding-left: 1vw; padding-right: 1vw; height: 8vh;">
-		<div style="font-size: 3.5vw; width: 15vw; height: 10vh; font-family: 'Times New Roman', Times, serif; text-align: left; padding-left: 0vw;">
-			<div style="box-sizing: border-box; white-space: nowrap;">00:00</div>
-		</div>
-		<div style="width: 70vw; font-family: 'Times New Roman', Times, serif;"></div>
-		<div style="font-size: 3.5vw; width: 15vw; height: 10vh; font-family: 'Times New Roman', Times, serif; text-align: right; padding-left: 3vw;">
-			<div style="transform: scaleX(0.65); box-sizing: border-box; white-space: nowrap;">Score: 000</div>
-		</div>
-	</div> -->
-	<div style="width: 60vw; position: relative; margin-left: 1vw;">
-		<pre><p style="text-align: center; margin: 0%; padding: 0%; background-color: black; color: white; font-family: 'Times New Roman', Times, serif; font-size: large;"><b><u>CODE:</u></b></p><code class="html" style=" overflow-y: scroll; height: 50vh;">&lt;!DOCTYPE html&gt;
+
+	<div class="content" style="display: flex; height: 90vh;">
+		<div style="width: 5vw;"></div>
+		<div style="flex: 1; transition: margin-right 0.5s; position: relative; margin-right: 2vw;">
+			<pre><p style="text-align: center; margin: 0%; padding: 0%; padding-top: 1vh; background-color: black; color: white; font-family: 'Times New Roman', Times, serif; font-size: large;"><b><u>CODE:</u></b></p><code class="html" style=" overflow-y: scroll; height: 50vh;">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
 	&lt;meta charset=&quot;UTF-8&quot;&gt;
@@ -59,11 +47,12 @@
 		&lt;/body&gt;
 	&lt;/body&gt;
 &lt;/html&gt;
-			</code> 
-		</pre>
+				</code> 
+			</pre>
+		</div>
+		<div id="sidebar" style="width: 35vw; overflow: hidden; transition: 0.5s;">3</div>
 	</div>
 
-
-	<script>hljs.highlightAll();</script>
+	<button id="toggle-button" onclick="toggleSidebar()">&gt;</button>
 </body>
 </html>

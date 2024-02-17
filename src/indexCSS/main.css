@@ -1,0 +1,16 @@
+#toggle-button {
+    position: absolute; 
+    top: 50%; 
+    left: 99%; 
+    transform: translateX(-100%); 
+    border-color: black; 
+    border-width: 5px; 
+    width: 25px; 
+    height: 80px; 
+    cursor: pointer;
+    text-align: left; 
+    transition: 0.5s;
+    background-color: white;
+    padding-left: 3px;
+    font-size: large;
+}
