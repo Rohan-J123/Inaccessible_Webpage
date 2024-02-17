@@ -6,3 +6,7 @@
     z-index: 1000;
     color: blueviolet;
 }
+
+::placeholder {
+    font-size: calc(2.5vh + 3px);
+}
