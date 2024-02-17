@@ -43,3 +43,9 @@ function toggleSidebarOff() {
     toggleButtonHideInfo.style.pointerEvents = 'none';
     toggleButtonHideInfo.innerText = '';
 }
+
+function toggleToPourQuestion() {
+    var buttonNext = document.getElementById("button-next-question");
+    buttonNext.click();
+}
+

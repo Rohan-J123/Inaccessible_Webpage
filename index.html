@@ -33,7 +33,7 @@
 	
 	<div class="content" style="display: flex; height: 90vh; flex-wrap: wrap;">
         <div id="mainbar" style="flex: 1; transition: margin-right 1s; margin-left: 15px; margin-right: 15px; overflow: hidden;">
-            <pre style="border-radius: 10px;"><div style="display: flex; flex-wrap: nowrap;">
+            <pre style="border-radius: 10px; margin-bottom: 10px;"><div style="display: flex; flex-wrap: nowrap;">
                     <span style="width: 10%; background-color: black;"></span>
                     <p style="text-align: center; margin: 0%; padding-bottom: 0%; padding-top: 1vh; background-color: black; color: white; font-family: 'Times New Roman', Times, serif; font-size: large; text-align: center; flex: 1;"><b><i>CODE:</i></b></p>
                     <span id ="toggle-button-to-show-info" class="material-symbols-outlined" onclick="toggleSidebarOn()" style="width: 10%; cursor: pointer; font-size: 30px; text-align: right; color: darkgray; background-color: black; padding-right: 5px; pointer-events: none; padding-top: 5px; z-index: 999;"></span>
@@ -59,16 +59,18 @@
 	&lt;/body&gt;
 &lt;/html&gt;
             </code></pre>
-            <p style="color: black; text-align: center; cursor: pointer; font-size: x-large;"><u>HINT</u></p>
-            <div id="carouselExampleIndicators" class="carousel slide" style="padding-bottom: 20px;">
+            <p style="color: black; text-align: center; cursor: pointer; font-size: x-large; margin-bottom: 10px;"><u>HINT</u></p>
+            <div id="carouselExampleIndicators" class="carousel slide">
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
+                    <div class="carousel-item active" style="border-style: solid; border-radius: 10px; border-color: rgb(223, 223, 223); padding: 10px;">
                         <div id="line-container">
                             <h3 style="font-family: 'Times New Roman', Times, serif; text-align: center; padding: 0vw 1vw 1vw">In Correspondence To WCAG Level A, Which Line In This Program Defies An Accessibility Criteria?</h3>
                             <div style="display: flex; font-size: x-large;">
-                                <input type="number" id="lineInput" placeholder="Line Number" style="text-align: center; width: calc(85px + 20vw); margin-left: 1vw;">
-                                <div style="width: 70%;"></div>
-                                <button type="button" class="btn btn-outline-primary" style="flex: 1; margin-right: 1vw; font-size: x-large;" onclick="toggleToPour()">SUBMIT</button>
+                                <div role="Line Number" style="padding-left: 1vw; display: flex; flex-wrap: wrap; width: 80%; flex-direction: column;">
+                                    <label for="lineInput" style="white-space: nowrap; width: calc(85px + 20vw);">Line Number:</label>
+                                    <input type="number" id="lineInput" style="text-align: center; width: calc(85px + 20vw);">
+                                </div>
+                                <button id="submit-line-number" type="button" class="btn btn-outline-primary" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 25px;" onclick="toggleToPourQuestion()">SUBMIT</button>
                             </div> 
                         </div>
                     </div>
@@ -83,14 +85,14 @@
                         </div>
                     </div>
                 </div>
-                <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <button id="button-previous-question" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev" style="display: none;">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <button id="button-next-question" class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next" style="display: none;">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
-                </button> -->
+                </button>
             </div>
 
         </div>
