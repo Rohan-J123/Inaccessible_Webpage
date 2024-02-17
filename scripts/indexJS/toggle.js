@@ -1,5 +1,15 @@
 function toggleSidebar() {
+    var mainbar = document.getElementById('mainbar');
     var sidebar = document.getElementById('sidebar');
+
+    if(window.innerWidth < 600){
+        sidebar.style.transition = '0s';
+        mainbar.style.transition = '0s';
+    }else{
+        sidebar.style.transition = '1s';
+        mainbar.style.transition = 'margin-right 1s';
+    }
+
     sidebar.style.width = sidebar.style.width === '600px' ? '0px' : '600px';
 
     var toggleButtonShowInfo = document.getElementById('toggle-button-to-show-info');
