@@ -13,11 +13,11 @@ function toggleSidebarOn() {
     sidebar.style.width = sidebar.style.width === '600px' ? '0px' : '600px';
 
     var toggleButtonShowInfo = document.getElementById('toggle-button-to-show-info');
-    toggleButtonShowInfo.style.pointerEvents = toggleButtonShowInfo.style.pointerEvents === 'none' ? 'auto' : 'none';
+    toggleButtonShowInfo.style.pointerEvents = 'none';
     toggleButtonShowInfo.innerText ='';
 
     var toggleButtonHideInfo = document.getElementById('toggle-button-to-hide-info');
-    toggleButtonHideInfo.style.pointerEvents = toggleButtonHideInfo.style.pointerEvents === 'none' ? 'auto' : 'none';
+    toggleButtonHideInfo.style.pointerEvents = 'auto';
     toggleButtonHideInfo.innerText = 'cancel';
 }
 
@@ -36,10 +36,10 @@ function toggleSidebarOff() {
     sidebar.style.width = sidebar.style.width === '600px' ? '0px' : '600px';
 
     var toggleButtonShowInfo = document.getElementById('toggle-button-to-show-info');
-    toggleButtonShowInfo.style.pointerEvents = toggleButtonShowInfo.style.pointerEvents === 'none' ? 'auto' : 'none';
+    toggleButtonShowInfo.style.pointerEvents = 'auto';
     toggleButtonShowInfo.innerText = 'info';
 
     var toggleButtonHideInfo = document.getElementById('toggle-button-to-hide-info');
-    toggleButtonHideInfo.style.pointerEvents = toggleButtonHideInfo.style.pointerEvents === 'none' ? 'auto' : 'none';
+    toggleButtonHideInfo.style.pointerEvents = 'none';
     toggleButtonHideInfo.innerText = '';
 }
