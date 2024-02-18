@@ -18,10 +18,12 @@ function toggleSidebarOn() {
     var toggleButtonShowInfo = document.getElementById('toggle-button-to-show-info');
     toggleButtonShowInfo.style.pointerEvents = 'none';
     toggleButtonShowInfo.innerText ='';
+    toggleButtonShowInfo.tabIndex = -1;
 
     var toggleButtonHideInfo = document.getElementById('toggle-button-to-hide-info');
     toggleButtonHideInfo.style.pointerEvents = 'auto';
     toggleButtonHideInfo.innerText = 'cancel';
+    toggleButtonHideInfo.tabIndex = 0;
 
     questions.style.width = '0px';
     sidebar.scrollIntoView({ behavior: 'smooth' });
@@ -47,10 +49,12 @@ function toggleSidebarOff() {
     var toggleButtonShowInfo = document.getElementById('toggle-button-to-show-info');
     toggleButtonShowInfo.style.pointerEvents = 'auto';
     toggleButtonShowInfo.innerText = 'info';
+    toggleButtonShowInfo.tabIndex = 0;
 
     var toggleButtonHideInfo = document.getElementById('toggle-button-to-hide-info');
     toggleButtonHideInfo.style.pointerEvents = 'none';
     toggleButtonHideInfo.innerText = '';
+    toggleButtonHideInfo.tabIndex = -1;
 
     questions.style.width = '550px';
     mainbar.scrollIntoView({ behavior: 'smooth' });
