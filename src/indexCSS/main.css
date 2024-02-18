@@ -1,12 +1,52 @@
-.floating-button-container {
+/* .floating-button-container {
     transition: 0.5s;
     position: fixed;
     top: 20px;
     right: 20px;
     z-index: 1000;
     color: blueviolet;
-}
+} */
 
 ::placeholder {
     font-size: calc(2.5vh + 3px);
+}
+
+.button-pour {
+    color: black;
+    margin: 10px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 50px;
+    width: 125px;
+    height: 40px;
+    z-index: 999;
+}
+
+
+.tooltipCustom {
+    position: relative;
+    display: inline-block;
+    z-index: 999;
+}
+
+.tooltipCustom .tooltiptextCustom {
+    visibility: hidden;
+    width: 200px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -105px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltipCustom:hover .tooltiptextCustom {
+    visibility: visible;
+    opacity: 1;
 }
