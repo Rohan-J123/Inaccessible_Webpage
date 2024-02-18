@@ -1,13 +1,16 @@
 function toggleSidebarOn() {
     var mainbar = document.getElementById('mainbar');
     var sidebar = document.getElementById('sidebar');
+    var questions = document.getElementById('mainbar-images');
 
     if(window.innerWidth < 600){
         sidebar.style.transition = '0s';
         mainbar.style.transition = '0s';
+        questions.style.transition = '0s';
     }else{
         sidebar.style.transition = '1s';
         mainbar.style.transition = 'margin-right 1s';
+        questions.style.transition = '1s';
     }
 
     sidebar.style.width = sidebar.style.width === '600px' ? '0px' : '600px';
@@ -19,18 +22,23 @@ function toggleSidebarOn() {
     var toggleButtonHideInfo = document.getElementById('toggle-button-to-hide-info');
     toggleButtonHideInfo.style.pointerEvents = 'auto';
     toggleButtonHideInfo.innerText = 'cancel';
+
+    questions.style.width = '0px';
 }
 
 function toggleSidebarOff() {
     var mainbar = document.getElementById('mainbar');
     var sidebar = document.getElementById('sidebar');
+    var questions = document.getElementById('mainbar-images');
 
     if(window.innerWidth < 600){
         sidebar.style.transition = '0s';
         mainbar.style.transition = '0s';
+        questions.style.transition = '0s';
     }else{
         sidebar.style.transition = '1s';
         mainbar.style.transition = 'margin-right 1s';
+        questions.style.transition = '1s';
     }
 
     sidebar.style.width = sidebar.style.width === '600px' ? '0px' : '600px';
@@ -42,6 +50,8 @@ function toggleSidebarOff() {
     var toggleButtonHideInfo = document.getElementById('toggle-button-to-hide-info');
     toggleButtonHideInfo.style.pointerEvents = 'none';
     toggleButtonHideInfo.innerText = '';
+
+    questions.style.width = '550px';
 }
 
 function toggleToPourQuestion() {
