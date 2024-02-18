@@ -24,6 +24,7 @@ function toggleSidebarOn() {
     toggleButtonHideInfo.innerText = 'cancel';
 
     questions.style.width = '0px';
+    sidebar.scrollIntoView({ behavior: 'smooth' });
 }
 
 function toggleSidebarOff() {
@@ -52,6 +53,7 @@ function toggleSidebarOff() {
     toggleButtonHideInfo.innerText = '';
 
     questions.style.width = '550px';
+    mainbar.scrollIntoView({ behavior: 'smooth' });
 }
 
 function toggleToPourQuestion() {
