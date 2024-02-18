@@ -68,39 +68,42 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active" style="border-style: solid; border-radius: 10px; border-color: rgb(223, 223, 223); padding: 10px;">
                             <div id="line-container">
-                                <h3 style="font-family: 'Times New Roman', Times, serif; text-align: center; padding: 0vw 1vw 1vw">In Correspondence To WCAG Level A, Which Line In This Program Defies An Accessibility Criteria?</h3>
+                                <h3 style="font-family: 'Times New Roman', Times, serif; text-align: center;">In Correspondence To WCAG Level A, Which Line In This Program Defies An Accessibility Criteria?</h3>
                                 <div style="display: flex; font-size: x-large;">
                                     <div role="Line Number" style="padding-left: 1vw; display: flex; flex-wrap: wrap; width: 80%; flex-direction: column;">
                                         <label for="lineInput" style="white-space: nowrap; width: calc(85px + 20vw);">Line Number:</label>
                                         <input type="number" id="lineInput" style="text-align: center; width: calc(85px + 20vw);">
                                     </div>
-                                    <button id="submit-line-number" type="button" class="btn btn-outline-primary" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 25px;" onclick="toggleToPourQuestion()">SUBMIT</button>
+                                    <button id="submit-line-number" type="button" class="btn btn-outline-primary" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px;" onclick="toggleToPourQuestion()">SUBMIT</button>
                                 </div> 
                             </div>
                         </div>
                         <div class="carousel-item" style="border-style: solid; border-radius: 10px; border-color: rgb(223, 223, 223); padding: 10px;">
                             <div id="button-container-pour" style="text-align: center;">
                                 <h3 style="font-family: 'Times New Roman', Times, serif; text-align: center; padding: 0vw 1vw 1vw">In Correspondence To WCAG, Which Principle Does This Line Defy?</h3>
-    
-                                <div class="tooltipCustom">
+                                <button type="button" class="btn btn-outline-success" id="button-perceivable" onclick="toggleToCriterionQuestion()">Perceivable</button>
+                                <button type="button" class="btn btn-outline-success" id="button-operable" onclick="toggleToCriterionQuestion()">Operable</button>
+                                <button type="button" class="btn btn-outline-success" id="button-understandable" onclick="toggleToCriterionQuestion()">Understandable</button>
+                                <button type="button" class="btn btn-outline-success" id="button-robost" onclick="toggleToCriterionQuestion()">Robost</button>
+                                <!-- <div class="tooltipCustom">
                                     <button class="button-pour" id="button1-pour" onclick="toggleToButtons()">Perceivable</button>
-                                    <!-- <span class="tooltiptextCustom" id="tip1-pour">Information and user interface components must be presented in ways that users can perceive. This includes providing alternatives for non-text content, ensuring content is distinguishable, and making sure it can be presented in different ways without losing meaning.</span> -->
+                                    <span class="tooltiptextCustom" id="tip1-pour">Information and user interface components must be presented in ways that users can perceive. This includes providing alternatives for non-text content, ensuring content is distinguishable, and making sure it can be presented in different ways without losing meaning.</span>
                                 </div>
 
                                 <div class="tooltipCustom">
                                     <button class="button-pour" id="button2-pour" onclick="toggleToButtons()">Operable</button>
-                                    <!-- <span class="tooltiptextCustom" id="tip2-pour">User interface components and navigation must be operable. This means users should be able to interact with all controls and interactive elements using different input methods, such as a keyboard, mouse, or touchscreen. Additionally, users should have enough time to read and use content, and content should not cause seizures or physical reactions.</span> -->
+                                    <span class="tooltiptextCustom" id="tip2-pour">User interface components and navigation must be operable. This means users should be able to interact with all controls and interactive elements using different input methods, such as a keyboard, mouse, or touchscreen. Additionally, users should have enough time to read and use content, and content should not cause seizures or physical reactions.</span>
                                 </div>
         
                                 <div class="tooltipCustom">
                                     <button class="button-pour" id="button3-pour" onclick="toggleToButtons()">Understandable</button>
-                                    <!-- <span class="tooltiptextCustom" id="tip3-pour">Information and the operation of the user interface must be understandable. This involves making text content readable and understandable, ensuring forms and controls are clearly labeled and provide helpful instructions, and preventing errors by providing clear error messages and suggestions for correction.</span> -->
+                                    <span class="tooltiptextCustom" id="tip3-pour">Information and the operation of the user interface must be understandable. This involves making text content readable and understandable, ensuring forms and controls are clearly labeled and provide helpful instructions, and preventing errors by providing clear error messages and suggestions for correction.</span>
                                 </div>
         
                                 <div class="tooltipCustom">
                                     <button class="button-pour" id="button4-pour" onclick="toggleToButtons()">Robost</button>
-                                    <!-- <span class="tooltiptextCustom" id="tip4-pour">Content must be robust enough to be interpreted reliably by a wide variety of user agents, including assistive technologies. This means using valid code, following established standards and conventions, and ensuring compatibility with different browsers and devices.</span> -->
-                                </div>
+                                    <span class="tooltiptextCustom" id="tip4-pour">Content must be robust enough to be interpreted reliably by a wide variety of user agents, including assistive technologies. This means using valid code, following established standards and conventions, and ensuring compatibility with different browsers and devices.</span>
+                                </div> -->
 
                             </div>
                         </div>
