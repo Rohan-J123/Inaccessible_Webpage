@@ -5,7 +5,13 @@ let numberOfLinesPerCriterion = [[1, 1, 0], [3, 4, 0], [4, 4, 0], [4, 4, 0], [1,
 function removeEmptyLines(text) {
     let lines = text.split('\n');
     let nonEmptyLines = lines.filter(line => line.trim() !== '');
-    return nonEmptyLines.join('\n ');
+    nonEmptyLines = nonEmptyLines.join('\n');
+    lines = nonEmptyLines.split('\n');
+    nonEmptyLines = lines.filter(line => line.trim() !== ' ');
+    nonEmptyLines = nonEmptyLines.join('\n');
+    lines = nonEmptyLines.split('\n');
+    nonEmptyLines = lines.filter(line => line.trim() !== '\t');
+    return nonEmptyLines.join('\n');
 }
 
 function replaceTags(textContent) {
