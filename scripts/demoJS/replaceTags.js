@@ -26,7 +26,7 @@ function replaceTags(textContent) {
         var tag = parseInt(newText.slice(startIndex+5,startIndex+7));
 
         if(chosenCriterion.includes(tag)){
-            newText = newText.substring(0, startIndex) + data[tag][0] + newText.substring(endIndex + endMarker.length + 1);
+            newText = newText.substring(0, startIndex) + data[tag][0] + "\n" + newText.substring(endIndex + endMarker.length + 1);
             numberOfLines += numberOfLinesPerCriterion[tag][0];
             put[tag] = 1;
         }
@@ -34,15 +34,15 @@ function replaceTags(textContent) {
             if(tag != 20 && tag != 13) {
                 var r = Math.floor(Math.random() * 3);
                 if(r == 0){
-                    newText = newText.substring(0, startIndex) + data[tag][1] + newText.substring(endIndex + endMarker.length + 1);
+                    newText = newText.substring(0, startIndex) + data[tag][1] + "\n" + newText.substring(endIndex + endMarker.length + 1);
                     numberOfLines += numberOfLinesPerCriterion[tag][1];
                     put[tag] = 0;
                 } else{
-                    newText = newText.substring(0, startIndex) + data[tag][2] + newText.substring(endIndex + endMarker.length);
+                    newText = newText.substring(0, startIndex) + data[tag][2] + "\n" + newText.substring(endIndex + endMarker.length);
                     numberOfLines += numberOfLinesPerCriterion[tag][2];
                 }
             } else{
-                newText = newText.substring(0, startIndex) + data[tag][1] + newText.substring(endIndex + endMarker.length + 1);
+                newText = newText.substring(0, startIndex) + data[tag][1] + "\n" + newText.substring(endIndex + endMarker.length + 1);
                 numberOfLines += numberOfLinesPerCriterion[tag][1];
                 put[tag] = 0;
             }
