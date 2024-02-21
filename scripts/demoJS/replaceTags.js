@@ -5,7 +5,7 @@ let numberOfLinesPerCriterion = [[1, 1, 0], [3, 4, 0], [4, 4, 0], [4, 4, 0], [1,
 function removeEmptyLines(text) {
     let lines = text.split('\n');
     let nonEmptyLines = lines.filter(line => line.trim() !== '');
-    return nonEmptyLines.join('\n');
+    return nonEmptyLines.join('\n ');
 }
 
 function replaceTags(textContent) {
@@ -55,6 +55,5 @@ function replaceTags(textContent) {
     }
     document.getElementById('line-numbers').textContent = numberOfLinesStr;
 
-    // return removeEmptyLines(newText);
-    return newText;
+    return removeEmptyLines(newText);
 }
