@@ -55,5 +55,6 @@ function replaceTags(textContent) {
     }
     document.getElementById('line-numbers').textContent = numberOfLinesStr;
 
-    return removeEmptyLines(newText);
+    // return removeEmptyLines(newText);
+    return newText;
 }
