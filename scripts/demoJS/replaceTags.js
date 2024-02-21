@@ -2,6 +2,12 @@ var chosenCriterion = JSON.parse(sessionStorage.getItem('chosenCriterion'));
 
 let numberOfLinesPerCriterion = [[1, 1, 0], [3, 4, 0], [4, 4, 0], [4, 4, 0], [1, 1, 0], [2, 2, 0], [3, 3, 0], [1, 1, 0], [1, 1, 0], [1, 1, 0], [1, 2, 0], [1, 1, 0], [1, 2, 0], [1, 1, 0], [7, 7, 0], [1, 1, 0], [1, 1, 0], [4, 4, 0], [2, 2, 0], [1, 1, 0], [1, 1, 0], [7, 7, 0], [5, 5, 0], [1, 2, 0], [5, 5, 0], [1, 1, 0]];
 
+function removeEmptyLines(text) {
+    let lines = text.split('\n');
+    let nonEmptyLines = lines.filter(line => line.trim() !== '');
+    return nonEmptyLines.join('\n');
+}
+
 function replaceTags(textContent) {
     newText = textContent;
     var startMarker = "<h$";
@@ -30,39 +36,7 @@ function replaceTags(textContent) {
                     numberOfLines += numberOfLinesPerCriterion[tag][1];
                     put[tag] = 0;
                 } else{
-                    switch(tag){
-                        case 0:     newText = newText.substring(0, startIndex - 6) + data[tag][2] + newText.substring(endIndex + endMarker.length);
-                                    break;
-
-                        case 11:    if(put[8] !== -1){
-                                        newText = newText.substring(0, startIndex - 5) + data[tag][2] + newText.substring(endIndex + endMarker.length);
-                                    }
-                                    else{
-                                        newText = newText.substring(0, startIndex - 6) + data[tag][2] + newText.substring(endIndex + endMarker.length);
-                                    }
-                                    break;
-                        case 14:    if(put[12] !== -1){
-                                        newText = newText.substring(0, startIndex - 5) + data[tag][2] + newText.substring(endIndex + endMarker.length);
-                                    }
-                                    else{
-                                        newText = newText.substring(0, startIndex - 6) + data[tag][2] + newText.substring(endIndex + endMarker.length);
-                                    }
-                                    break;
-                        case 21:    if(put[19] !== -1){
-                                        newText = newText.substring(0, startIndex - 5) + data[tag][2] + newText.substring(endIndex + endMarker.length);
-                                    }
-                                    else{
-                                        newText = newText.substring(0, startIndex - 6) + data[tag][2] + newText.substring(endIndex + endMarker.length);
-                                    }
-                                    break;
-                        default:    if(put[tag-1] !== -1){
-                                        newText = newText.substring(0, startIndex - 5) + data[tag][2] + newText.substring(endIndex + endMarker.length);
-                                    }
-                                    else{
-                                        newText = newText.substring(0, startIndex - 6) + data[tag][2] + newText.substring(endIndex + endMarker.length);
-                                    }
-                                    break;
-                    }
+                    newText = newText.substring(0, startIndex) + data[tag][2] + newText.substring(endIndex + endMarker.length);
                     numberOfLines += numberOfLinesPerCriterion[tag][2];
                 }
             } else{
@@ -75,14 +49,11 @@ function replaceTags(textContent) {
         endIndex = newText.indexOf(endMarker);
     }
 
-    // localStorage.setItem('put', JSON.stringify(put));
-    // newText = newText.replace("/src/demoJSFiles/modifyFile.js", "buttonBehaviour.js");
-
     let numberOfLinesStr = '';
     for(let i = 1; i < numberOfLines + 10; i++){
         numberOfLinesStr += (i.toString() + '. ');
     }
     document.getElementById('line-numbers').textContent = numberOfLinesStr;
 
-    return newText;
+    return removeEmptyLines(newText);
 }
