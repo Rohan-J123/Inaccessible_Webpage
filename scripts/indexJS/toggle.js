@@ -66,7 +66,7 @@ function toggleToPourQuestion() {
 }
 
 function toggleToCriterionQuestion() {
-    var buttonNext = document.getElementById("button-previous-question");
+    var buttonNext = document.getElementById("button-next-question");
     buttonNext.click();
 }
 
