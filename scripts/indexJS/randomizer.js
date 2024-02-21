@@ -9,7 +9,7 @@ for(let i = 0; i < 4; i++){
     }
 }
 
-localStorage.setItem('chosenCriterion', JSON.stringify(chosenCriterion));
+sessionStorage.setItem('chosenCriterion', JSON.stringify(chosenCriterion));
 
 var chosenButtonValues = [];
 for(let i = 0; i < 6; i++){
@@ -30,4 +30,4 @@ function shuffleArray(array) {
     }
 }
 shuffleArray(chosenButtonValues);
-localStorage.setItem('chosenButtonValues', JSON.stringify(chosenButtonValues));
+sessionStorage.setItem('chosenButtonValues', JSON.stringify(chosenButtonValues));

@@ -27,7 +27,7 @@ var successCriterionTips = [
     'Criteria 4.1.2'
 ];
 
-var chosenButtonValues = JSON.parse(localStorage.getItem('chosenButtonValues'));
+var chosenButtonValues = JSON.parse(sessionStorage.getItem('chosenButtonValues'));
 
 var button1 = document.getElementById('button1');
 button1.innerText = successCriterionLabels[chosenButtonValues[0]];
