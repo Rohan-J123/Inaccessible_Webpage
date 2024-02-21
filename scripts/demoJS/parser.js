@@ -1,4 +1,4 @@
-fetch('../../demo.html')
+fetch('../../demoCode.html')
     .then(response => response.text())
     .then(data => {
         var eofMarker = "</html>";
