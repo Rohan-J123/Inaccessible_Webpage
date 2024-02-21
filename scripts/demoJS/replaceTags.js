@@ -4,10 +4,11 @@ let numberOfLinesPerCriterion = [[1, 1, 0], [3, 4, 0], [4, 4, 0], [4, 4, 0], [1,
 
 function removeEmptyLines(text) {
     let lines = text.split('\n');
-    let nonEmptyLines = lines.filter(line => line.trim() !== 'rem');
+    let nonEmptyLines = lines.filter(line => line.trim() !== '');
     console.log(nonEmptyLines);
     console.log(lines);
-    return nonEmptyLines.join('\n');
+
+    return text.replace(/^\s*[\r\n]/gm, '');
 }
 
 function replaceTags(textContent) {
@@ -57,5 +58,5 @@ function replaceTags(textContent) {
     }
     document.getElementById('line-numbers').textContent = numberOfLinesStr;
 
-    return newText;
+    return removeEmptyLines(newText);
 }
