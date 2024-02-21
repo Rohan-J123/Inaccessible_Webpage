@@ -4,13 +4,14 @@ let numberOfLinesPerCriterion = [[1, 1, 0], [3, 4, 0], [4, 4, 0], [4, 4, 0], [1,
 
 function removeEmptyLines(text) {
     let withinCodeBlock = false;
-    return text.split('\n').filter(line => {
+    code = text.split('\n').filter(line => {
         if (line.trim().startsWith('```')) {
             withinCodeBlock = !withinCodeBlock;
             return true;
         }
         return withinCodeBlock || line.trim() !== '';
-    }).join('\n');
+    }).join('\n')
+    return code.replace(/\t/g, "\n");
 }
 
 function replaceTags(textContent) {
