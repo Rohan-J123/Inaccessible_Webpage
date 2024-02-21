@@ -79,7 +79,7 @@ function replaceTags(textContent) {
     // newText = newText.replace("/src/demoJSFiles/modifyFile.js", "buttonBehaviour.js");
 
     let numberOfLinesStr = '';
-    for(let i = 1; i < numberOfLines + 12; i++){
+    for(let i = 1; i < numberOfLines + 10; i++){
         numberOfLinesStr += (i.toString() + '. ');
     }
     document.getElementById('line-numbers').textContent = numberOfLinesStr;
