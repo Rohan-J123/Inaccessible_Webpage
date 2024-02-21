@@ -1,7 +1,7 @@
 let data = [];
 
 for (let i = 0; i < 32; i++) {
-  data.push(['', '', ' ']);
+  data.push(['', '', 'rem']);
 }
 
 // Success Criteria 1.1.1 Text-Alternatives

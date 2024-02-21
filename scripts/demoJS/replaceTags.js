@@ -4,8 +4,10 @@ let numberOfLinesPerCriterion = [[1, 1, 0], [3, 4, 0], [4, 4, 0], [4, 4, 0], [1,
 
 function removeEmptyLines(text) {
     let lines = text.split('\n');
-    console.log(lines);
-    return text
+    let nonEmptyLines = lines.filter(line => line.trim() !== '');
+    nonEmptyLines = nonEmptyLines.filter(line => line.trim() !== 'rem');
+    console.log(nonEmptyLines);
+    return nonEmptyLines.join('\n');
 }
 
 function replaceTags(textContent) {
