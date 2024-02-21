@@ -2,14 +2,15 @@ var chosenCriterion = JSON.parse(sessionStorage.getItem('chosenCriterion'));
 
 let numberOfLinesPerCriterion = [[1, 1, 0], [3, 4, 0], [4, 4, 0], [4, 4, 0], [1, 1, 0], [2, 2, 0], [3, 3, 0], [1, 1, 0], [1, 1, 0], [1, 1, 0], [1, 2, 0], [1, 1, 0], [1, 2, 0], [1, 1, 0], [7, 7, 0], [1, 1, 0], [1, 1, 0], [4, 4, 0], [2, 2, 0], [1, 1, 0], [1, 1, 0], [7, 7, 0], [5, 5, 0], [1, 2, 0], [5, 5, 0], [1, 1, 0]];
 
-// function removeEmptyLines(text) {
-//     let lines = text.split('\n');
-//     let nonEmptyLines = lines.filter(line => line.trim() !== '');
-//     return nonEmptyLines.join('\n');
-// }
-
 function removeEmptyLines(text) {
-    return text.replace(/^\s*[\r\n]/gm, '');
+    let withinCodeBlock = false;
+    return text.split('\n').filter(line => {
+        if (line.trim().startsWith('```')) {
+            withinCodeBlock = !withinCodeBlock;
+            return true;
+        }
+        return withinCodeBlock || line.trim() !== '';
+    }).join('\n');
 }
 
 function replaceTags(textContent) {
