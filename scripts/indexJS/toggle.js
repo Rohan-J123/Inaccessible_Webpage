@@ -1,15 +1,18 @@
 function toggleSidebarOn() {
     var mainbar = document.getElementById('mainbar');
     var sidebar = document.getElementById('sidebar');
-    var questions = document.getElementById('mainbar-images');
+    var mainbarImages = document.getElementById('mainbar-images');
+    var questions = document.getElementById('carouselExampleIndicators');
 
     if(window.innerWidth < 600){
         sidebar.style.transition = '0s';
         mainbar.style.transition = '0s';
+        mainbarImages.style.transition = '0s';
         questions.style.transition = '0s';
     }else{
         sidebar.style.transition = '1s';
         mainbar.style.transition = 'margin-right 1s';
+        mainbarImages.style.transition = '1s';
         questions.style.transition = '1s';
     }
 
@@ -25,22 +28,26 @@ function toggleSidebarOn() {
     toggleButtonHideInfo.innerText = 'cancel';
     toggleButtonHideInfo.tabIndex = 0;
 
-    questions.style.width = '0px';
+    questions.style.width = '100%';
+    mainbarImages.style.flex = 0;
     sidebar.scrollIntoView({ behavior: 'smooth' });
 }
 
 function toggleSidebarOff() {
     var mainbar = document.getElementById('mainbar');
     var sidebar = document.getElementById('sidebar');
-    var questions = document.getElementById('mainbar-images');
+    var mainbarImages = document.getElementById('mainbar-images');
+    var questions = document.getElementById('carouselExampleIndicators');
 
     if(window.innerWidth < 600){
         sidebar.style.transition = '0s';
         mainbar.style.transition = '0s';
+        mainbarImages.style.transition = '0s';
         questions.style.transition = '0s';
     }else{
         sidebar.style.transition = '1s';
         mainbar.style.transition = 'margin-right 1s';
+        mainbarImages.style.transition = '1s';
         questions.style.transition = '1s';
     }
 
@@ -56,7 +63,8 @@ function toggleSidebarOff() {
     toggleButtonHideInfo.innerText = '';
     toggleButtonHideInfo.tabIndex = -1;
 
-    questions.style.width = '550px';
+    questions.style.width = '900px';
+    mainbarImages.style.flex = 1;
     mainbar.scrollIntoView({ behavior: 'smooth' });
 }
 
