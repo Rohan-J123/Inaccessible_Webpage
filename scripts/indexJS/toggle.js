@@ -68,6 +68,11 @@ function toggleSidebarOff() {
     mainbar.scrollIntoView({ behavior: 'smooth' });
 }
 
+function toggleBack(){
+    var buttonNext = document.getElementById("button-previous-question");
+    buttonNext.click();
+}
+
 function toggleToPourQuestion() {
     var buttonNext = document.getElementById("button-next-question");
     buttonNext.click();

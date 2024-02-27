@@ -49,6 +49,14 @@
             <p style="color: black; text-align: center; cursor: pointer; font-size: x-large; margin-bottom: 10px;"><u>HINT</u></p>
             <div style="display: flex; flex-wrap: wrap;">
                 <div id="carouselExampleIndicators" class="carousel slide" style="transition: 1s; width: 100%">
+                    <div class="carousel-indicators" style="display: none;">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" id="goToPart1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" id="goToPart1Result"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3" id="goToPart2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4" id="goToPart2Result"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5" id="goToPart3"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6" id="goToPart3Result"></button>
+                    </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active" style="border-style: solid; border-radius: 10px; border-color: rgb(223, 223, 223); padding: 10px;">
                             <div id="line-container">
@@ -58,26 +66,21 @@
                                         <label for="lineInput" style="white-space: nowrap; width: calc(85px + 20vw); font-size: 22.5px; color: rgba(0, 0, 0, 0.7);">Line Number:</label>
                                         <input type="number" id="lineInput" style="text-align: center; width: calc(85px + 20vw);">
                                     </div>
-                                    <button id="submit-line-number" type="button" class="btn btn-outline-primary" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px;" onclick="toggleToPourQuestion()">SUBMIT</button>
+                                    <button id="submit-line-number" type="button" class="btn btn-outline-primary" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px;" onclick="onSubmitLineNumber()">SUBMIT</button>
                                 </div> 
                             </div>
                         </div>
                         <div class="carousel-item" style="border-style: solid; border-radius: 10px; border-color: rgb(223, 223, 223); padding: 10px;">
-                            <div id="line-container">
-                                <h3 style="font-family: 'Times New Roman', Times, serif; text-align: center;">Congratulations!</h3>
-                                <div  style="font-size: large; text-align: center;">Correct Answer</div>
-                                <div style="display: flex; font-size: x-large;">
-                                    <button id="submit-line-number" type="button" class="btn btn-outline-warning" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="toggleToPourQuestion()">NEXT QUESTION</button>
-                                </div> 
+                            <div id="part1Result">
                             </div>
                         </div>
                         <div class="carousel-item" style="border-style: solid; border-radius: 10px; border-color: rgb(223, 223, 223); padding: 10px;">
                             <div id="button-container-pour" style="text-align: center;">
                                 <h3 style="font-family: 'Times New Roman', Times, serif; text-align: center; padding: 0vw 1vw 1vw">In Correspondence To WCAG, Which Principle Does This Line Defy?</h3>
-                                <button type="button" class="btn btn-outline-success" id="button-perceivable" onclick="toggleToCriterionQuestion()">Perceivable</button>
-                                <button type="button" class="btn btn-outline-success" id="button-operable" onclick="toggleToCriterionQuestion()">Operable</button>
-                                <button type="button" class="btn btn-outline-success" id="button-understandable" onclick="toggleToCriterionQuestion()">Understandable</button>
-                                <button type="button" class="btn btn-outline-success" id="button-robost" onclick="toggleToCriterionQuestion()">Robost</button>
+                                <button type="button" class="btn btn-outline-success" id="button-perceivable" onclick="onSubmitPourQuestion('button-perceivable')">Perceivable</button>
+                                <button type="button" class="btn btn-outline-success" id="button-operable" onclick="onSubmitPourQuestion('button-operable')">Operable</button>
+                                <button type="button" class="btn btn-outline-success" id="button-understandable" onclick="onSubmitPourQuestion('button-understandable')">Understandable</button>
+                                <button type="button" class="btn btn-outline-success" id="button-robost" onclick="onSubmitPourQuestion('button-robost')">Robost</button>
                                 <!-- <div class="tooltipCustom">
                                     <button class="button-pour" id="button1-pour" onclick="toggleToButtons()">Perceivable</button>
                                     <span class="tooltiptextCustom" id="tip1-pour">Information and user interface components must be presented in ways that users can perceive. This includes providing alternatives for non-text content, ensuring content is distinguishable, and making sure it can be presented in different ways without losing meaning.</span>
@@ -85,27 +88,36 @@
                             </div>
                         </div>
                         <div class="carousel-item" style="border-style: solid; border-radius: 10px; border-color: rgb(223, 223, 223); padding: 10px;">
-                            <div id="line-container">
+                            <div id="part2Result">
                                 <h3 style="font-family: 'Times New Roman', Times, serif; text-align: center;">Congratulations!</h3>
                                 <div  style="font-size: large; text-align: center;">Correct Answer</div>
                                 <div style="display: flex; font-size: x-large;">
                                     <button id="submit-line-number" type="button" class="btn btn-outline-warning" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="toggleToPourQuestion()">BONUS QUESTION</button>
-                                </div> 
+                                </div>
                             </div>
                         </div>
                         <div class="carousel-item" style="border-style: solid; border-radius: 10px; border-color: rgb(223, 223, 223); padding: 10px;">
                             <div id="button-container-pour" style="text-align: center;">
                                 <h3 style="font-family: 'Times New Roman', Times, serif; text-align: center; padding: 0vw 1vw; font-size: x-large;">In Correspondence To WCAG Level A, Which Line In This Program Defies An Accessibility Criteria?</h3>
-                                <button type="button" class="btn btn-outline-success" id="button1" onclick="toggleToCriterionQuestion()"></button>
-                                <button type="button" class="btn btn-outline-success" id="button2" onclick="toggleToCriterionQuestion()"></button>
-                                <button type="button" class="btn btn-outline-success" id="button3" onclick="toggleToCriterionQuestion()"></button>
-                                <button type="button" class="btn btn-outline-success" id="button4" onclick="toggleToCriterionQuestion()"></button>
-                                <button type="button" class="btn btn-outline-success" id="button5" onclick="toggleToCriterionQuestion()"></button>
-                                <button type="button" class="btn btn-outline-success" id="button6" onclick="toggleToCriterionQuestion()"></button>
-                                <button type="button" class="btn btn-outline-success" id="button7" onclick="toggleToCriterionQuestion()"></button>
-                                <button type="button" class="btn btn-outline-success" id="button8" onclick="toggleToCriterionQuestion()"></button>
-                                <button type="button" class="btn btn-outline-success" id="button9" onclick="toggleToCriterionQuestion()"></button>
-                                <button type="button" class="btn btn-outline-success" id="button10" onclick="toggleToCriterionQuestion()"></button>
+                                <button type="button" class="btn btn-outline-success" id="button1" onclick="toggleToPourQuestion()"></button>
+                                <button type="button" class="btn btn-outline-success" id="button2" onclick="toggleToPourQuestion()"></button>
+                                <button type="button" class="btn btn-outline-success" id="button3" onclick="toggleToPourQuestion()"></button>
+                                <button type="button" class="btn btn-outline-success" id="button4" onclick="toggleToPourQuestion()"></button>
+                                <button type="button" class="btn btn-outline-success" id="button5" onclick="toggleToPourQuestion()"></button>
+                                <button type="button" class="btn btn-outline-success" id="button6" onclick="toggleToPourQuestion()"></button>
+                                <button type="button" class="btn btn-outline-success" id="button7" onclick="toggleToPourQuestion()"></button>
+                                <button type="button" class="btn btn-outline-success" id="button8" onclick="toggleToPourQuestion()"></button>
+                                <button type="button" class="btn btn-outline-success" id="button9" onclick="toggleToPourQuestion()"></button>
+                                <button type="button" class="btn btn-outline-success" id="button10" onclick="toggleToPourQuestion()"></button>
+                            </div>
+                        </div>
+                        <div class="carousel-item" style="border-style: solid; border-radius: 10px; border-color: rgb(223, 223, 223); padding: 10px;">
+                            <div id="part3Result">
+                                <h3 style="font-family: 'Times New Roman', Times, serif; text-align: center;">Congratulations!</h3>
+                                <div  style="font-size: large; text-align: center;">Correct Answer</div>
+                                <div style="display: flex; font-size: x-large;">
+                                    <button id="submit-line-number" type="button" class="btn btn-outline-warning" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="document.getElementById('goToPart1').click()">BACK</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -119,7 +131,7 @@
                     </button>
                 </div>
                 <div id="mainbar-images" style="flex: 0; transition: 1s; overflow: hidden; height: 150px;">
-                    <img src="./Images/WifiFullBar.png" alt="Wifi Full Bar Mainbar" style="position: relative; top: 25%; left: 50%; transform: translateX(-50%); height: 100px !important;">
+                    <img src="./Images/WifiFullBar.png" alt="Wifi Full Bar Mainbar" style="position: relative; top: 25%; left: 50%; transform: translateX(-50%); height: 100px !important;" id="wifiImageMain">
                 </div>
             </div>
         </div>
@@ -135,7 +147,7 @@
 			</div>
             <br>
 			<div>
-                <img src="./Images/WifiFullBar.png" alt="Wifi Full Bar Sidebar" style="position: relative; top: 0%; left: 50%; transform: translateX(-50%); height: 100px !important;">
+                <img src="./Images/WifiFullBar.png" alt="Wifi Full Bar Sidebar" style="position: relative; top: 0%; left: 50%; transform: translateX(-50%); height: 100px !important;" id="wifiImageSide">
             </div>
 		</div>
 
@@ -144,5 +156,7 @@
     <script src="./scripts/demoJS/replaceTags.js"></script>
     <script src="./scripts/indexJS/buttonBehaviour.js"></script>
     <script src="./scripts/demoJS/parser.js"></script>
+    <script src="./scripts/indexJS/lineQuestion.js"></script>
+    <script src="./scripts/indexJS/pourQuestion.js"></script>
 </body>
 </html>

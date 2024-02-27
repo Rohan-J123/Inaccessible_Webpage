@@ -209,10 +209,10 @@ data[22][1] =
 
 // Success Criteria 3.3.2 Provide labels for form controls using the label element
 data[23][0] = 
-`<input type="text" id="username" name="username">`;
+`<input type="text" id="name" name="name">`;
 data[23][1] = 
-`<label for="username">Username:</label>
-    <input type="text" id="username" name="username">`;
+`<label for="name">Name:</label>
+    <input type="text" id="name" name="name">`;
 
 // Success Criteria 3.3.7 If same question is repeated, make sure that input is autopopulated
 data[24][0] = 

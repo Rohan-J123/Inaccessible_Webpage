@@ -17,6 +17,7 @@ function replaceTags(textContent) {
     var put = new Array(26).fill(-1);
 
     let numberOfLines = 0;
+    var lineNumbers = [];
 
     while (startIndex !== -1 && endIndex !== -1) {
         var tag = parseInt(newText.slice(startIndex+5,startIndex+7));
@@ -24,6 +25,7 @@ function replaceTags(textContent) {
         if(chosenCriterion.includes(tag)){
             newText = newText.substring(0, startIndex) + data[tag][0] + "\n" + newText.substring(endIndex + endMarker.length + 1);
             numberOfLines += numberOfLinesPerCriterion[tag][0];
+            lineNumbers.push(numberOfLines + 10);
             put[tag] = 1;
         }
         else{
@@ -32,14 +34,17 @@ function replaceTags(textContent) {
                 if(r == 0){
                     newText = newText.substring(0, startIndex) + data[tag][1] + "\n" + newText.substring(endIndex + endMarker.length + 1);
                     numberOfLines += numberOfLinesPerCriterion[tag][1];
+                    lineNumbers.push(numberOfLines + 10);
                     put[tag] = 0;
                 } else{
                     newText = newText.substring(0, startIndex) + data[tag][2] + "\n" + newText.substring(endIndex + endMarker.length);
                     numberOfLines += numberOfLinesPerCriterion[tag][2];
+                    lineNumbers.push(numberOfLines + 10);
                 }
             } else{
                 newText = newText.substring(0, startIndex) + data[tag][1] + "\n" + newText.substring(endIndex + endMarker.length + 1);
                 numberOfLines += numberOfLinesPerCriterion[tag][1];
+                lineNumbers.push(numberOfLines + 10);
                 put[tag] = 0;
             }
         }
