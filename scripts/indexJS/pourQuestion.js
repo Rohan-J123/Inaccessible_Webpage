@@ -38,9 +38,10 @@ function onFindingCriterion(lineNumber){
 function onCorrectPour(){
     var inner = 
     `<h3 style="font-family: 'Times New Roman', Times, serif; text-align: center;">Congratulations!</h3>
-    <div  style="font-size: large; text-align: center;">Correct Answer! Bonus questions have no penalties so feel free to choose the option that feels right.</div>
+    <div  style="font-size: large; text-align: center;">Bonus questions have no penalties so feel free to choose the option that feels right. Correct answer increases the number of bars.</div>
     <div style="display: flex; font-size: x-large;">
-        <button id="submit-line-number" type="button" class="btn btn-outline-warning" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="document.getElementById('goToPart3').click();">BONUS QUESTION</button>
+        <button type="button" class="btn btn-outline-primary" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="document.getElementById('goToPart1').click();">SKIP</button>
+        <button type="button" class="btn btn-outline-warning" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="document.getElementById('goToPart3').click();">BONUS QUESTION</button>
     </div>`;
     document.getElementById('part2Result').innerHTML = inner;
 }
@@ -50,7 +51,7 @@ function onWrongPour(){
     `<h3 style="font-family: 'Times New Roman', Times, serif; text-align: center;">Sorry!</h3>
     <div  style="font-size: large; text-align: center;">Wrong Answer!</div>
     <div style="display: flex; font-size: x-large;">
-        <button id="submit-line-number" type="button" class="btn btn-outline-danger" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="document.getElementById('goToPart1').click();">BACK</button>
+        <button type="button" class="btn btn-outline-danger" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="document.getElementById('goToPart2').click();">BACK</button>
     </div>`;
     document.getElementById('part2Result').innerHTML = inner;
     reduceBar();

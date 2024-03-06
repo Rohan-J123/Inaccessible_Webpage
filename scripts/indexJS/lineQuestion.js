@@ -15,6 +15,10 @@ function onSubmitLineNumber(){
             <button id="submit-line-number" type="button" class="btn btn-outline-warning" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="document.getElementById('goToPart2').click();">NEXT QUESTION</button>
         </div> `;
         document.getElementById('part1Result').innerHTML = inner;
+
+        // document.getElementById('criterion-line').innerText = data[onFindingCriterion(lineNumber)][0];
+        // document.getElementById('pour-line').innerText = data[onFindingCriterion(lineNumber)][0];
+        
         sessionStorage.setItem('currentLineNumber', parseInt(lineNumber));
     } else {
         var inner = 
@@ -27,6 +31,7 @@ function onSubmitLineNumber(){
         reduceBar();
     }
     document.getElementById('goToPart1Result').click();
+    document.getElementById('lineInput').value = "";
 }
 
 function onFindingLineNumber(searchString){
@@ -88,5 +93,30 @@ function reduceBar(){
         document.getElementById('wifiImageSide').src = "./Images/WifiNoBar.png";
     } else {
         console.log("Game Over!");
+    }
+}
+
+function increaseBar(){
+    let fullBar = "FullBar";
+    let threeBar = "ThreeBar";
+    let twoBar = "TwoBar";
+    let oneBar = "OneBar";
+
+    var imageType = document.getElementById('wifiImageMain').src;
+    if (imageType.indexOf(threeBar) !== -1) {
+        document.getElementById('wifiImageMain').src = "./Images/WifiFullBar.png";
+    } else if (imageType.indexOf(twoBar) !== -1) {
+        document.getElementById('wifiImageMain').src = "./Images/WifiThreeBar.png";
+    } else if (imageType.indexOf(oneBar) !== -1) {
+        document.getElementById('wifiImageMain').src = "./Images/WifiTwoBar.png";
+    }
+
+    var imageType = document.getElementById('wifiImageSide').src;
+    if (imageType.indexOf(threeBar) !== -1) {
+        document.getElementById('wifiImageSide').src = "./Images/WifiFullBar.png";
+    } else if (imageType.indexOf(twoBar) !== -1) {
+        document.getElementById('wifiImageSide').src = "./Images/WifiThreeBar.png";
+    } else if (imageType.indexOf(oneBar) !== -1) {
+        document.getElementById('wifiImageSide').src = "./Images/WifiTwoBar.png";
     }
 }
