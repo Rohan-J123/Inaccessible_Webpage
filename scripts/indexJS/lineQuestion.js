@@ -17,6 +17,9 @@ function onSubmitLineNumber(){
         document.getElementById('part1Result').innerHTML = inner;
         document.getElementById('sidebar-line').innerText = data[onFindingCriterion(lineNumber)][0];
 
+        document.getElementById('part-2-title').innerText = `In Correspondence To WCAG Level A, Which Principle Do The Lines ` + lineNumber + `-`+ (parseInt(lineNumber) + parseInt(numberOfLinesPerCriterion[onFindingCriterion(lineNumber)][0]) - 1) +` Defy?`;
+        document.getElementById('part-3-title').innerText = `In Correspondence To WCAG Level A, Which Accessibility Criteria Do The Lines ` + lineNumber + `-`+ (parseInt(lineNumber) + parseInt(numberOfLinesPerCriterion[onFindingCriterion(lineNumber)][0]) - 1) +` Defy?`;
+
         sessionStorage.setItem('currentLineNumber', parseInt(lineNumber));
     } else {
         var inner = 
