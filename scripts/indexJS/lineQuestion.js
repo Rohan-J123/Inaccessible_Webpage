@@ -15,9 +15,7 @@ function onSubmitLineNumber(){
             <button id="submit-line-number" type="button" class="btn btn-outline-warning" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="document.getElementById('goToPart2').click();">NEXT QUESTION</button>
         </div> `;
         document.getElementById('part1Result').innerHTML = inner;
-
-        // document.getElementById('criterion-line').innerText = data[onFindingCriterion(lineNumber)][0];
-        // document.getElementById('pour-line').innerText = data[onFindingCriterion(lineNumber)][0];
+        document.getElementById('sidebar-line').innerText = data[onFindingCriterion(lineNumber)][0];
 
         sessionStorage.setItem('currentLineNumber', parseInt(lineNumber));
     } else {
@@ -78,20 +76,22 @@ function reduceBar(){
         document.getElementById('wifiImageMain').src = "./Images/WifiOneBar.png";
     } else if (imageType.indexOf(oneBar) !== -1) {
         document.getElementById('wifiImageMain').src = "./Images/WifiNoBar.png";
-    } else {
         console.log("Game Over!");
     }
 
     var imageType = document.getElementById('wifiImageSide').src;
     if (imageType.indexOf(fullBar) !== -1) {
         document.getElementById('wifiImageSide').src = "./Images/WifiThreeBar.png";
+        document.getElementById('wifi-sidebar-label').innerText = "Three Bars";
     } else if (imageType.indexOf(threeBar) !== -1) {
         document.getElementById('wifiImageSide').src = "./Images/WifiTwoBar.png";
+        document.getElementById('wifi-sidebar-label').innerText = "Two Bars";
     } else if (imageType.indexOf(twoBar) !== -1) {
         document.getElementById('wifiImageSide').src = "./Images/WifiOneBar.png";
+        document.getElementById('wifi-sidebar-label').innerText = "One Bar";
     } else if (imageType.indexOf(oneBar) !== -1) {
         document.getElementById('wifiImageSide').src = "./Images/WifiNoBar.png";
-    } else {
+        document.getElementById('wifi-sidebar-label').innerText = "Game Over!";
         console.log("Game Over!");
     }
 }
@@ -114,9 +114,12 @@ function increaseBar(){
     var imageType = document.getElementById('wifiImageSide').src;
     if (imageType.indexOf(threeBar) !== -1) {
         document.getElementById('wifiImageSide').src = "./Images/WifiFullBar.png";
+        document.getElementById('wifi-sidebar-label').innerText = "Four Bars";
     } else if (imageType.indexOf(twoBar) !== -1) {
         document.getElementById('wifiImageSide').src = "./Images/WifiThreeBar.png";
+        document.getElementById('wifi-sidebar-label').innerText = "Three Bars";
     } else if (imageType.indexOf(oneBar) !== -1) {
         document.getElementById('wifiImageSide').src = "./Images/WifiTwoBar.png";
+        document.getElementById('wifi-sidebar-label').innerText = "Two Bars";
     }
 }

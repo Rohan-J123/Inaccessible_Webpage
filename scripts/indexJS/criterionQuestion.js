@@ -20,6 +20,7 @@ function onCorrectCriterion(){
         <button id="submit-line-number" type="button" class="btn btn-outline-warning" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="document.getElementById('goToPart1').click()">BACK</button>
     </div>`;
     document.getElementById('part3Result').innerHTML = inner;
+    document.getElementById('sidebar-line').innerText = "";
     increaseBar();
 }
 
@@ -31,5 +32,4 @@ function onWrongCriterion(){
         <button id="submit-line-number" type="button" class="btn btn-outline-danger" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="document.getElementById('goToPart3').click()">BACK</button>
     </div>`;
     document.getElementById('part3Result').innerHTML = inner;
-    reduceBar();
 }
