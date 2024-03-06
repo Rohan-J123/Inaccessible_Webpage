@@ -18,7 +18,7 @@ function onSubmitLineNumber(){
 
         // document.getElementById('criterion-line').innerText = data[onFindingCriterion(lineNumber)][0];
         // document.getElementById('pour-line').innerText = data[onFindingCriterion(lineNumber)][0];
-        
+
         sessionStorage.setItem('currentLineNumber', parseInt(lineNumber));
     } else {
         var inner = 
