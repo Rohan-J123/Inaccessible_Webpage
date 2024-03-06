@@ -17,10 +17,9 @@ function onCorrectCriterion(){
     `<h3 style="font-family: 'Times New Roman', Times, serif; text-align: center;">Congratulations!</h3>
     <div  style="font-size: large; text-align: center;">Correct Answer</div>
     <div style="display: flex; font-size: x-large;">
-        <button id="submit-line-number" type="button" class="btn btn-outline-warning" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="document.getElementById('goToPart1').click()">BACK</button>
+        <button id="submit-line-number" type="button" class="btn btn-outline-warning" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="document.getElementById('goToPart1').click(); document.getElementById('sidebar-line').innerText = '';">BACK</button>
     </div>`;
     document.getElementById('part3Result').innerHTML = inner;
-    document.getElementById('sidebar-line').innerText = "";
     increaseBar();
 }
 
