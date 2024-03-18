@@ -32,6 +32,7 @@
             <img src="./Images/web-dev.png" alt="Header Web Dev Icon" style="height: 72.5px; padding-left: 1vw;">
 	        <div class="days-one-regular" style="font-size: calc(10px + 1.25vw); text-align: left; padding-top: 2vh; padding-bottom: 2vh; padding-left: 2vw; padding-right: 2vw; transform: scaleY(1.5); text-align: center;"><b>&lt;h1&gt;INACCESSIBLE WEBPAGE GAME&lt;/h1&gt;</b></div>
         </div>
+        <div class="wallpoet-regular" style="flex-grow: 1; font-size: calc(25px + 1.5vw); white-space: nowrap; text-align: left; padding-left: 15px;" id="clock">00:00</div>
         <div class="wallpoet-regular" style="flex-grow: 1; font-size: calc(25px + 1.5vw); white-space: nowrap; text-align: right; padding-right: 15px;">Score: 0</div>
     </div>
 	
@@ -151,12 +152,13 @@
             <div style="background-color: lightgray; margin: 20px; height: 1.5px;"></div>
             <div>
                 <h4 style="text-align: center;">Current Line Selection:</h4>
-                <div id="sidebar-line" style="font-style: italic; text-align: left; padding: 10px 2vw; overflow: scroll; height: 125px; font-size: large;"></div>
+                <div id="sidebar-line" style="font-style: italic; text-align: left; padding: 10px 2vw; overflow: scroll; height: 125px; font-size: large; text-wrap: nowrap;"></div>
             </div>
 		</div>
 
 	</div>
 
+    <script src="./scripts/indexJS/clock.js"></script>
     <script src="./scripts/demoJS/replaceTags.js"></script>
     <script src="./scripts/indexJS/buttonBehaviour.js"></script>
     <script src="./scripts/demoJS/parser.js"></script>
