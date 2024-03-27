@@ -10,6 +10,7 @@ for(let i = 0; i < 4; i++){
 }
 
 sessionStorage.setItem('chosenCriterion', JSON.stringify(chosenCriterion));
+sessionStorage.setItem('score', 0);
 
 var chosenButtonValues = [];
 for(let i = 0; i < 6; i++){

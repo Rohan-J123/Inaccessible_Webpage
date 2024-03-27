@@ -21,6 +21,8 @@ function onSubmitLineNumber(){
         document.getElementById('part-3-title').innerText = `In Correspondence To WCAG Level A, Which Accessibility Criteria Do The Lines ` + lineNumber + `-`+ (parseInt(lineNumber) + parseInt(numberOfLinesPerCriterion[onFindingCriterion(lineNumber)][0]) - 1) +` Defy?`;
 
         sessionStorage.setItem('currentLineNumber', parseInt(lineNumber));
+        sessionStorage.setItem('score', parseInt(sessionStorage.getItem('score')) + 10);
+        onScoreIncrease();
     } else {
         var inner = 
         `<h3 style="font-family: 'Times New Roman', Times, serif; text-align: center;">Sorry!</h3>

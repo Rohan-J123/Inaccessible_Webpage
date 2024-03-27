@@ -4,16 +4,18 @@ function toggleSidebarOn() {
     var mainbarImages = document.getElementById('mainbar-images');
     var questions = document.getElementById('carouselExampleIndicators');
 
-    if(window.innerWidth < 600){
+    if(window.innerWidth < 1000){
         sidebar.style.transition = '0s';
         mainbar.style.transition = '0s';
         mainbarImages.style.transition = '0s';
         questions.style.transition = '0s';
+        sidebar.style.height = '1500px';
     }else{
         sidebar.style.transition = '1s';
         mainbar.style.transition = 'margin-right 1s';
         mainbarImages.style.transition = '1s';
         questions.style.transition = '1s';
+        sidebar.style.height = '86.5vh';
     }
 
     sidebar.style.width = sidebar.style.width === '600px' ? '0px' : '600px';
@@ -67,6 +69,9 @@ function toggleSidebarOff() {
     mainbarImages.style.flex = 1;
     mainbar.scrollIntoView({ behavior: 'smooth' });
 }
+
+toggleSidebarOff();
+toggleSidebarOn();
 
 function toggleBack(){
     var buttonNext = document.getElementById("button-previous-question");
