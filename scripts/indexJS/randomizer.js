@@ -1,5 +1,5 @@
 var chosenCriterion = [];
-for(let i = 0; i < 4; i++){
+for(let i = 0; i < sessionStorage.getItem('question-number'); i++){
     var randValue = Math.floor(Math.random() * 25);
     if (!chosenCriterion.includes(randValue)) {
         chosenCriterion.push(randValue);
@@ -10,10 +10,9 @@ for(let i = 0; i < 4; i++){
 }
 
 sessionStorage.setItem('chosenCriterion', JSON.stringify(chosenCriterion));
-sessionStorage.setItem('score', 0);
 
 var chosenButtonValues = [];
-for(let i = 0; i < 6; i++){
+for(let i = 0; i < 10 - sessionStorage.getItem('question-number'); i++){
     var randValue = Math.floor(Math.random() * 25);
     if (!chosenButtonValues.includes(randValue) && !chosenCriterion.includes(randValue)) {
         chosenButtonValues.push(randValue);

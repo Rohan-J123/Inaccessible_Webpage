@@ -82,6 +82,7 @@ function reduceBar(){
     } else if (imageType.indexOf(oneBar) !== -1) {
         document.getElementById('wifiImageMain').src = "./Images/WifiNoBar.png";
         console.log("Game Over!");
+        onIncorrectQuestionComplete();
     }
 
     var imageType = document.getElementById('wifiImageSide').src;

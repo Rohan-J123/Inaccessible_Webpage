@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirect Page</title>
-    <script type="text/javascript">  
-        sessionStorage.setItem('question-number', 1);
-
+    <script>
         function redirect() {
+            sessionStorage.setItem('question-number', 1);
+            sessionStorage.setItem('correct-questions', JSON.stringify([]));
+            sessionStorage.setItem('score', 0);
             window.location.href = "./question.html";
         }
 
