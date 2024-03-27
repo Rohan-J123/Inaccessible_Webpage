@@ -3,6 +3,7 @@ correctQuestions = JSON.parse(sessionStorage.getItem('correct-questions'));
 
 document.getElementById('question-label-text').innerText = "Question: " + sessionStorage.getItem('question-number');
 document.getElementById('score-text').innerText = "Score: " + sessionStorage.getItem('score');
+document.getElementById('criterions-remaining-label-text').innerText = "Criteria Left: " + remaining;
 
 for(var i = 1; i < parseInt(sessionStorage.getItem('question-number')); i++){
     if(correctQuestions.includes(i)){

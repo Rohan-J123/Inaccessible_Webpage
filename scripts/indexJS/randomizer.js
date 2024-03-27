@@ -1,5 +1,5 @@
 var chosenCriterion = [];
-for(let i = 0; i < sessionStorage.getItem('question-number'); i++){
+for(let i = 0; i < JSON.parse(sessionStorage.getItem('correct-questions')).length + 1; i++){
     var randValue = Math.floor(Math.random() * 25);
     if (!chosenCriterion.includes(randValue)) {
         chosenCriterion.push(randValue);
@@ -8,6 +8,8 @@ for(let i = 0; i < sessionStorage.getItem('question-number'); i++){
         i--;
     }
 }
+
+var remaining = JSON.parse(sessionStorage.getItem('correct-questions')).length + 1;
 
 sessionStorage.setItem('chosenCriterion', JSON.stringify(chosenCriterion));
 

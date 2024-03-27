@@ -141,9 +141,12 @@
                 <p style="font-size: large; text-align: justify; font-family: 'Times New Roman', Times, serif; line-height: normal;">This game serves to raise awareness on Web Content Accessibility Guidelines (WCAG) developed by the Web Accessibility Initiative (WAI) of the World Wide Web Consortium (W3C). The given program although syntactically correct would prove to be an accessiblity issue to some groups. Can you guess which criterion in accordance to WCAG does this program violate? Every wrongly guessed criteria will decrease Wi-Fi strength by 1 bar. Find out all accessibility issues in the given code before your Wi-Fi runs out!</p>
 			</div>
             <br>
-            <div style="display: flex; margin-bottom: 30px; flex-wrap: wrap;">
+            <div style="display: flex; flex-wrap: wrap;">
                 <div style="flex: 4; text-align: center;">
-                    <h5 class="lobster-regular" id="question-label-text">Question: 1</h5>
+                    <div style="display: flex; flex-wrap: wrap;">
+                        <h5 class="lobster-regular" id="question-label-text" style="text-align: left; flex: 1; padding-left: 2vw;">Question: 1</h5>
+                        <h5 class="lobster-regular" id="criterions-remaining-label-text" style="text-align: right; flex: 1; padding-right: 2vw;">Criteria Left: 1</h5>
+                    </div>
                     <div id="question-label-container">
                         <button type="button" class="btn btn-outline-primary question-label" id="question-label-1" tabindex="-1">1</button>
                         <button type="button" class="btn btn-outline-primary question-label" id="question-label-2" tabindex="-1">2</button>
@@ -162,7 +165,7 @@
                     <h5 style="text-align: center; padding-top: 20px;" id="wifi-sidebar-label" class="lobster-regular">Four Bars</h5>
                 </div>
             </div>
-            <div style="background-color: lightgray; margin: 20px; height: 1.5px;"></div>
+            <div style="background-color: lightgray; margin: 15px; height: 1.5px;"></div>
             <div>
                 <h4 style="text-align: center;">Current Block Selection:</h4>
                 <div id="sidebar-line" style="font-style: italic; text-align: left; padding: 10px 2vw; overflow: scroll; height: 125px; font-size: large; text-wrap: nowrap;"></div>

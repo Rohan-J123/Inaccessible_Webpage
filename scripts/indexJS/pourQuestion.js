@@ -35,7 +35,6 @@ function onSubmitPourQuestion(id){
         }
     }
 
-    
     document.getElementById('goToPart2Result').click();
 }
 
@@ -66,6 +65,8 @@ function onCorrectPour(){
     document.getElementById('part2Result').innerHTML = inner;
     sessionStorage.setItem('score', parseInt(sessionStorage.getItem('score')) + 20);
     onScoreIncrease();
+    remaining -= 1;
+    document.getElementById('criterions-remaining-label-text').innerText = "Criteria Left: " + remaining;
 }
 
 function onCorrectPourButQuestionComplete(){
@@ -79,6 +80,8 @@ function onCorrectPourButQuestionComplete(){
     document.getElementById('part2Result').innerHTML = inner;
     sessionStorage.setItem('score', parseInt(sessionStorage.getItem('score')) + 20);
     onScoreIncrease();
+    remaining -= 1;
+    document.getElementById('criterions-remaining-label-text').innerText = "Criteria Left: " + remaining;
 }
 
 function onWrongPour(){
