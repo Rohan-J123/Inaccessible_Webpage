@@ -9,7 +9,6 @@ function toggleSidebarOn() {
         mainbar.style.transition = '0s';
         mainbarImages.style.transition = '0s';
         questions.style.transition = '0s';
-        sidebar.style.height = '1500px';
     }else{
         sidebar.style.transition = '1s';
         mainbar.style.transition = 'margin-right 1s';

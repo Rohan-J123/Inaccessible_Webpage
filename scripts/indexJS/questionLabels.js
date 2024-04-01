@@ -7,9 +7,9 @@ document.getElementById('criterions-remaining-label-text').innerText = "Criteria
 
 for(var i = 1; i < parseInt(sessionStorage.getItem('question-number')); i++){
     if(correctQuestions.includes(i)){
-        s += '<button type="button" class="btn btn-success question-label" id="question-label-1" tabindex="-1">' + i +'</button>';
+        s += '<button type="button" class="btn btn-success question-label" id="question-label-1" tabindex="-1">' + i +'<span>&#10003;</span></button>';
     } else {
-        s += '<button type="button" class="btn btn-danger question-label" id="question-label-1" tabindex="-1">' + i +'</button>';
+        s += '<button type="button" class="btn btn-danger question-label" id="question-label-1" tabindex="-1">' + i +'<span>&#10007;</span></button>';
     }
 }
 
@@ -28,7 +28,7 @@ function onCorrectQuestionComplete(){
     correctQuesions = JSON.parse(sessionStorage.getItem('correct-questions'));
     correctQuesions.push(currentQuestionNumber);
     sessionStorage.setItem('correct-questions', JSON.stringify(correctQuesions));
-    location.reload();
+    document.getElementById('modalOpenButton').click();
 }
 
 function onIncorrectQuestionComplete(){
@@ -40,3 +40,17 @@ function onScoreIncrease(){
     document.getElementById('score-text').innerText = "Score: " + sessionStorage.getItem('score');
 }
 
+var m = "";
+var im = "";
+var chosenCriterionAll = JSON.parse(sessionStorage.getItem('chosenCriterionAll'));
+
+for(var i = 0; i < chosenCriterionAll.length; i++) {
+    var correctText = data[chosenCriterionAll[i]][0].replace(new RegExp('<', 'g'), '&lt;').replace(new RegExp('>', 'g'), '&gt;');
+    var incorrectText = data[chosenCriterionAll[i]][1].replace(new RegExp('<', 'g'), '&lt;').replace(new RegExp('>', 'g'), '&gt;');
+
+    m += `<li>${correctText}</li>`;
+    im += `<li>${incorrectText}</li>`;
+}
+
+document.getElementById('correctCriterionResult').innerHTML = m;
+document.getElementById('incorrectCriterionResult').innerHTML = im;

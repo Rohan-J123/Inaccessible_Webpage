@@ -33,7 +33,7 @@
         <div class="wallpoet-regular" style="flex-grow: 1; font-size: calc(25px + 1.5vw); white-space: nowrap; text-align: right; padding-right: 15px;" id="score-text">Score: 0</div>
     </div>
 	
-	<div class="content" style="display: flex; height: 90vh; flex-wrap: wrap;">
+	<div class="content" style="display: flex; flex-wrap: wrap;">
         <div id="mainbar" style="flex: 1; transition: margin-right 1s; margin-left: 15px; margin-right: 15px; overflow: hidden; margin-bottom: 30px;">
             <pre style="border-radius: 10px; margin-bottom: 10px;"><div style="display: flex; flex-wrap: nowrap; height: 40px;">
                     <span style="width: 40px; background-color: black;"></span>
@@ -93,7 +93,6 @@
                         <div class="carousel-item" style="border-style: solid; border-radius: 10px; border-color: rgb(223, 223, 223); padding: 10px;">
                             <div id="button-container-pour" style="text-align: center;">
                                 <h3 style="font-family: 'Times New Roman', Times, serif; text-align: center; padding: 0vw 1vw; font-size: x-large;" id="part-3-title">In Correspondence To WCAG Level A, Which Accessibility Criteria Do The Lines Defy?</h3>
-                                <!-- <h4 id="criterion-line" style="font-style: italic; text-align: left; padding: 10px  5vw"></h4> -->
                                 <button type="button" class="btn btn-outline-success" id="button1" onclick="onSubmitCriterionQuestion('button1')"></button>
                                 <button type="button" class="btn btn-outline-success" id="button2" onclick="onSubmitCriterionQuestion('button2')"></button>
                                 <button type="button" class="btn btn-outline-success" id="button3" onclick="onSubmitCriterionQuestion('button3')"></button>
@@ -131,7 +130,7 @@
             </div>
         </div>
 
-		<div id="sidebar" style="width: 600px; overflow: hidden; transition: 1s; background-color: rgb(240, 240, 240); border-radius: 10px; height: 86.5vh;">
+		<div id="sidebar" style="width: 600px; overflow: hidden; transition: 1s; background-color: rgb(240, 240, 240); border-radius: 10px;">
             <div id="info-container" style="padding-right: 15px; padding-left: 15px;">
                 <div style="display: flex; flex-wrap: nowrap;">
                     <div style="flex: 1; height: 40px;"></div>
@@ -171,8 +170,42 @@
                 <div id="sidebar-line" style="font-style: italic; text-align: left; padding: 10px 2vw; overflow: scroll; height: 125px; font-size: large; text-wrap: nowrap;"></div>
             </div>
 		</div>
-
 	</div>
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="modalOpenButton" style="display: none;">
+    </button>
+  
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Question Criterion:</h1>
+                </div>
+                <div class="modal-body" style="display: flex; flex-wrap: wrap;">
+                    <div style="flex: 1; padding: 10px;">
+                        <h3 style="text-align: center;">Incorrect Blocks:</h3>
+                        <ol id="correctCriterionResult">
+                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad facilis nulla numquam enim illum quasi, cupiditate unde ipsum officiis sed magni cumque repudiandae, odit obcaecati nemo. Tempora ex culpa perferendis.</li>
+                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad facilis nulla numquam enim illum quasi, cupiditate unde ipsum officiis sed magni cumque repudiandae, odit obcaecati nemo. Tempora ex culpa perferendis.</li>
+                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad facilis nulla numquam enim illum quasi, cupiditate unde ipsum officiis sed magni cumque repudiandae, odit obcaecati nemo. Tempora ex culpa perferendis.</li>
+                        </ol>
+                    </div>
+                    <div style="background-color: lightgray;"></div>
+                    <div style="flex: 1; padding: 10px;">
+                        <h3 style="text-align: center;">Corrected Blocks:</h3>
+                        <ol id="incorrectCriterionResult">
+                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad facilis nulla numquam enim illum quasi, cupiditate unde ipsum officiis sed magni cumque repudiandae, odit obcaecati nemo. Tempora ex culpa perferendis.</li>
+                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad facilis nulla numquam enim illum quasi, cupiditate unde ipsum officiis sed magni cumque repudiandae, odit obcaecati nemo. Tempora ex culpa perferendis.</li>
+                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad facilis nulla numquam enim illum quasi, cupiditate unde ipsum officiis sed magni cumque repudiandae, odit obcaecati nemo. Tempora ex culpa perferendis.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="location.reload();">NEXT QUESTION</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="./scripts/indexJS/toggle.js"></script>
     <script src="./scripts/indexJS/questionLabels.js"></script>

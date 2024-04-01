@@ -12,6 +12,7 @@ for(let i = 0; i < JSON.parse(sessionStorage.getItem('correct-questions')).lengt
 var remaining = JSON.parse(sessionStorage.getItem('correct-questions')).length + 1;
 
 sessionStorage.setItem('chosenCriterion', JSON.stringify(chosenCriterion));
+sessionStorage.setItem('chosenCriterionAll', JSON.stringify(chosenCriterion));
 
 var chosenButtonValues = [];
 for(let i = 0; i < 10 - sessionStorage.getItem('question-number'); i++){
