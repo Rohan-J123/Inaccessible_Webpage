@@ -33,7 +33,7 @@ function onCorrectQuestionComplete(){
 
 function onIncorrectQuestionComplete(){
     sessionStorage.setItem('question-number', parseInt(sessionStorage.getItem('question-number')) + 1);
-    location.reload();
+    document.getElementById('modalOpenButton').click();
 }
 
 function onScoreIncrease(){
