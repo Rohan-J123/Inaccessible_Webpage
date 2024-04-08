@@ -40,17 +40,45 @@ function onScoreIncrease(){
     document.getElementById('score-text').innerText = "Score: " + sessionStorage.getItem('score');
 }
 
-var m = "";
-var im = "";
+var result = "";
 var chosenCriterionAll = JSON.parse(sessionStorage.getItem('chosenCriterionAll'));
 
 for(var i = 0; i < chosenCriterionAll.length; i++) {
     var correctText = data[chosenCriterionAll[i]][0].replace(new RegExp('<', 'g'), '&lt;').replace(new RegExp('>', 'g'), '&gt;');
     var incorrectText = data[chosenCriterionAll[i]][1].replace(new RegExp('<', 'g'), '&lt;').replace(new RegExp('>', 'g'), '&gt;');
+    var cr = successCriterionLabels[chosenCriterionAll[i]];
+    var prNo = cr.split(' ')[1].split('.')[0];
+    var pr = "";
+    if(prNo == 1){
+        pr = "Perceivable";
+    }  else if (prNo == 2){
+        pr = "Operable";
+    }  else if (prNo == 3){
+        pr = "Understandable";
+    }  else if (prNo == 4){
+        pr = "Robost";
+    }
 
-    m += `<li>${correctText}</li>`;
-    im += `<li>${incorrectText}</li>`;
+    result += 
+`<li>
+    <h4>Criterion: ${cr}</h4>
+    <h4>Principle: ${pr}</h4>
+    <div style="display: flex; flex-wrap: wrap; font-size: medium;">
+        <div style="padding: 5px; flex: 1;">
+            <h5 style="text-align: center;">Incorrect:</h5>
+            <div>
+                ${incorrectText}
+            </div>
+        </div>
+        <div style="padding: 5px; flex: 1;">
+            <h5 style="text-align: center;" >Correct:</h5>
+            <div>
+                ${correctText}
+            </div>
+        </div>
+    </div>
+</li>`;
 }
 
-document.getElementById('correctCriterionResult').innerHTML = m;
-document.getElementById('incorrectCriterionResult').innerHTML = im;
+document.getElementById('question-criteria-results').innerHTML = result;
+

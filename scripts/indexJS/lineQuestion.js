@@ -4,6 +4,8 @@ function onSubmitLineNumber(){
     for(var i = 0; i < 26; i++){
         if(onFindingLineNumber(data[i][0].toString()) != -1){
             validLineNumbers.push(onFindingLineNumber(data[i][0].toString()));
+        } else if(onFindingLineNumber(data[i][3].toString()) != -1){
+            validLineNumbers.push(onFindingLineNumber(data[i][3].toString()));
         }
     }
 

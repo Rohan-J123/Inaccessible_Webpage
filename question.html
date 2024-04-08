@@ -44,7 +44,7 @@
                     <div id="code" style="flex: 1; padding-left: 5px;">
                     </div>
             </code></pre>
-            <p style="color: black; text-align: center; cursor: pointer; font-size: x-large; margin-bottom: 10px;"><u>HINT</u></p>
+            <p style="color: black; text-align: center; cursor: pointer; font-size: x-large; margin-bottom: 10px;" onclick="onHintClicked();" tabindex="0"><u>HINT</u></p>
             <div style="display: flex; flex-wrap: wrap;">
                 <div id="carouselExampleIndicators" class="carousel slide" style="transition: 1s; width: 100%">
                     <div class="carousel-indicators" style="display: none;">
@@ -180,25 +180,11 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Question Criterion:</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="location.reload();"></button>
                 </div>
                 <div class="modal-body" style="display: flex; flex-wrap: wrap;">
-                    <div style="flex: 1; padding: 10px;">
-                        <h3 style="text-align: center;">Incorrect Blocks:</h3>
-                        <ol id="correctCriterionResult">
-                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad facilis nulla numquam enim illum quasi, cupiditate unde ipsum officiis sed magni cumque repudiandae, odit obcaecati nemo. Tempora ex culpa perferendis.</li>
-                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad facilis nulla numquam enim illum quasi, cupiditate unde ipsum officiis sed magni cumque repudiandae, odit obcaecati nemo. Tempora ex culpa perferendis.</li>
-                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad facilis nulla numquam enim illum quasi, cupiditate unde ipsum officiis sed magni cumque repudiandae, odit obcaecati nemo. Tempora ex culpa perferendis.</li>
-                        </ol>
-                    </div>
-                    <div style="background-color: lightgray;"></div>
-                    <div style="flex: 1; padding: 10px;">
-                        <h3 style="text-align: center;">Corrected Blocks:</h3>
-                        <ol id="incorrectCriterionResult">
-                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad facilis nulla numquam enim illum quasi, cupiditate unde ipsum officiis sed magni cumque repudiandae, odit obcaecati nemo. Tempora ex culpa perferendis.</li>
-                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad facilis nulla numquam enim illum quasi, cupiditate unde ipsum officiis sed magni cumque repudiandae, odit obcaecati nemo. Tempora ex culpa perferendis.</li>
-                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad facilis nulla numquam enim illum quasi, cupiditate unde ipsum officiis sed magni cumque repudiandae, odit obcaecati nemo. Tempora ex culpa perferendis.</li>
-                        </ol>
-                    </div>
+                    <ol style="font-size: x-large; width: 100%;" id="question-criteria-results">
+                    </ol>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" onclick="location.reload();">NEXT QUESTION</button>
@@ -207,14 +193,15 @@
         </div>
     </div>
 
+    <script src="./scripts/indexJS/buttonBehaviour.js"></script>
     <script src="./scripts/indexJS/toggle.js"></script>
     <script src="./scripts/indexJS/questionLabels.js"></script>
     <script src="./scripts/indexJS/clock.js"></script>
     <script src="./scripts/demoJS/replaceTags.js"></script>
-    <script src="./scripts/indexJS/buttonBehaviour.js"></script>
     <script src="./scripts/demoJS/parser.js"></script>
     <script src="./scripts/indexJS/lineQuestion.js"></script>
     <script src="./scripts/indexJS/pourQuestion.js"></script>
     <script src="./scripts/indexJS/criterionQuestion.js"></script>
+    <script src="./scripts/indexJS/hint.js"></script>
 </body>
 </html>

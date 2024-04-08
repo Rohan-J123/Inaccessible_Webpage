@@ -44,10 +44,11 @@ function onFindingCriterion(lineNumber){
 
     for(var i = 0; i < 26; i++){
         var lines = data[i][0].trim().split('\n')[0];
+        var linesHinted = data[i][3].trim().split('\n')[0];
         var searchStringLine = currentLine.trim();
         var lineNumber = -1;
 
-        if(lines == searchStringLine){
+        if(lines == searchStringLine || linesHinted == searchStringLine){
             return i;
         }
     }
