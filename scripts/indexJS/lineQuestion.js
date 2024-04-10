@@ -1,13 +1,6 @@
 function onSubmitLineNumber(){
     var lineNumber = document.getElementById('lineInput').value;
-    var validLineNumbers = [];
-    for(var i = 0; i < 26; i++){
-        if(onFindingLineNumber(data[i][0].toString()) != -1){
-            validLineNumbers.push(onFindingLineNumber(data[i][0].toString()));
-        } else if(onFindingLineNumber(data[i][3].toString()) != -1){
-            validLineNumbers.push(onFindingLineNumber(data[i][3].toString()));
-        }
-    }
+    var validLineNumbers = JSON.parse(sessionStorage.getItem('correct-line-numbers'));
 
     if(validLineNumbers.includes(parseInt(lineNumber))){
         var inner = 

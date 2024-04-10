@@ -51,12 +51,5 @@ function replaceTags(textContent) {
         startIndex = newText.indexOf(startMarker);
         endIndex = newText.indexOf(endMarker);
     }
-
-    let numberOfLinesStr = '';
-    for(let i = 1; i < numberOfLines + 10; i++){
-        numberOfLinesStr += (i.toString() + '. ');
-    }
-    document.getElementById('line-numbers').textContent = numberOfLinesStr;
-
     return removeEmptyLines(newText);
 }

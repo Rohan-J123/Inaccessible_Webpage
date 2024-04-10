@@ -39,20 +39,14 @@ function onSubmitPourQuestion(id){
 }
 
 function onFindingCriterion(lineNumber){
-    var codeBlock = document.getElementById('code');
-    var currentLine = codeBlock.textContent.trim().split('\n')[lineNumber-1];
+    var validLineNumbers = JSON.parse(sessionStorage.getItem('correct-line-numbers'));
+    var chosenCriterionAll = JSON.parse(sessionStorage.getItem('chosenCriterionAll'));
 
-    for(var i = 0; i < 26; i++){
-        var lines = data[i][0].trim().split('\n')[0];
-        var linesHinted = data[i][3].trim().split('\n')[0];
-        var searchStringLine = currentLine.trim();
-        var lineNumber = -1;
-
-        if(lines == searchStringLine || linesHinted == searchStringLine){
-            return i;
-        }
+    if(validLineNumbers.includes(parseInt(lineNumber))){
+        return chosenCriterionAll[validLineNumbers.indexOf(parseInt(lineNumber))];
+    } else {
+        return -1;
     }
-    return -1;
 } 
 
 function onCorrectPour(){
