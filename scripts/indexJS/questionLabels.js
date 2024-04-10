@@ -61,8 +61,8 @@ for(var i = 0; i < chosenCriterionAll.length; i++) {
 
     result += 
 `<li>
-    <h4>Criterion: ${cr}</h4>
-    <h4>Principle: ${pr}</h4>
+    <h5>Criterion: ${cr}</h5>
+    <h5>Principle: ${pr}</h5>
     <div style="display: flex; flex-wrap: wrap; font-size: medium;">
         <div style="padding: 5px; flex: 1;">
             <h5 style="text-align: center;">Incorrect:</h5>
