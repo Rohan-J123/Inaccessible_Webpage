@@ -6,7 +6,7 @@ if(sessionStorage.getItem("user-id") == null){
 
 document.getElementById("login-info").addEventListener("submit", function(event) {
     event.preventDefault();
-
+    document.getElementById('spinner-circle').style.display = 'block';
     const name = document.getElementById("login-name").value;
     const email = document.getElementById("login-email").value;
     const field = document.getElementById("login-field").value;
@@ -22,6 +22,7 @@ document.getElementById("login-info").addEventListener("submit", function(event)
         console.log("Document successfully written with ID: ", userId);
         startStop();
         sessionStorage.setItem("user-id", userId);
+        document.getElementById('spinner-circle').style.display = 'none';
         document.getElementById("login-close").click();
     })
     .catch(function(error) {

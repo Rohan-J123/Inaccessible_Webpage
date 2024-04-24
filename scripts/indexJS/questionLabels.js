@@ -20,7 +20,7 @@ function playAgainUpdateDB(){
         console.error("User ID not found in sessionStorage");
         return;
     }
-
+    document.getElementById('spinner-circle').style.display = 'block';
     var chosenCriterion = sessionStorage.getItem('chosenCriterionAll');
     var unpickedCriterion = sessionStorage.getItem('chosenCriterion');
     var score = sessionStorage.getItem('score');
@@ -54,6 +54,7 @@ function playAgainUpdateDB(){
             }, { merge: true })
             .then(function() {
                 console.log("Document successfully updated!");
+                document.getElementById('spinner-circle').style.display = 'none';
                 window.location.href = './index.html';
             })
             .catch(function(error) {
@@ -169,6 +170,7 @@ function sumArray(arr) {
 }
 
 function updateDB() {
+    document.getElementById('spinner-circle').style.display = 'block';
     var userId = sessionStorage.getItem('user-id');
 
     if (!userId) {
@@ -207,6 +209,7 @@ function updateDB() {
             }, { merge: true })
             .then(function() {
                 console.log("Document successfully updated!");
+                document.getElementById('spinner-circle').style.display = 'none';
                 location.reload();
             })
             .catch(function(error) {
