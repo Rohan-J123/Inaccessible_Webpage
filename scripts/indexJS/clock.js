@@ -1,7 +1,18 @@
 let timer;
-let seconds = 0;
-let minutes = 0;
-let hours = 0;
+let seconds = parseInt(sessionStorage.getItem('timer').split(':')[2]);
+let minutes = parseInt(sessionStorage.getItem('timer').split(':')[1]);
+let hours = parseInt(sessionStorage.getItem('timer').split(':')[0]);
+
+var stop = false;
+
+document.getElementById("clock").textContent =
+        (hours < 10 ? "0" : "") + hours + ":" +
+        (minutes < 10 ? "0" : "") + minutes + ":" +
+        (seconds < 10 ? "0" : "") + seconds;
+
+let secondsMini = 0;
+let minutesMini = 0;
+let hoursMini = 0;
 
 function startStop() {
     if (!timer) {
@@ -13,19 +24,33 @@ function startStop() {
 }
 
 function updateTime() {
-    seconds++;
-    if (seconds >= 60) {
-        seconds = 0;
-        minutes++;
-        if (minutes >= 60) {
-            minutes = 0;
-            hours++;
+    if(!stop){
+        seconds++;
+        if (seconds >= 60) {
+            seconds = 0;
+            minutes++;
+            if (minutes >= 60) {
+                minutes = 0;
+                hours++;
+            }
         }
-    }
-    document.getElementById("clock").textContent =
-        (hours < 10 ? "0" : "") + hours + ":" +
-        (minutes < 10 ? "0" : "") + minutes + ":" +
-        (seconds < 10 ? "0" : "") + seconds;
-}
+        document.getElementById("clock").textContent =
+            (hours < 10 ? "0" : "") + hours + ":" +
+            (minutes < 10 ? "0" : "") + minutes + ":" +
+            (seconds < 10 ? "0" : "") + seconds;
 
-startStop();
+        secondsMini++;
+        if (secondsMini >= 60) {
+            secondsMini = 0;
+            minutesMini++;
+            if (minutesMini >= 60) {
+                minutesMini = 0;
+                hoursMini++;
+            }
+        }
+        document.getElementById("clock-mini").textContent = 
+            (hoursMini < 10 ? "0" : "") + hoursMini + ":" +
+            (minutesMini < 10 ? "0" : "") + minutesMini + ":" +
+            (secondsMini < 10 ? "0" : "") + secondsMini;
+    }   
+}

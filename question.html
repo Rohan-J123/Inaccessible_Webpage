@@ -7,6 +7,10 @@
 
 	<script>var exports = {};</script>
 
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    
     <link rel="stylesheet" href="./src/bootstrap/main.css">
     <script src="./scripts/dependencies/bootstrap.bundle.min.js"></script>
 
@@ -20,6 +24,7 @@
 
     <script src="./scripts/indexJS/randomizer.js"></script>
     <script src="./scripts/indexJS/database.js"></script>
+    <script src="./scripts/indexJS/firebase.js"></script>
 
     <title>Inaccessible WebPage Game</title>
 </head>
@@ -44,7 +49,7 @@
                     <div id="code" style="flex: 1; padding-left: 5px;">
                     </div>
             </code></pre>
-            <p style="color: black; text-align: center; cursor: pointer; font-size: x-large; margin-bottom: 10px;" onclick="onHintClicked();" tabindex="0"><u>HINT</u></p>
+            <button type="button" class="btn btn-light" onclick="onHintClicked();" style="position: relative; left: 50%; transform: translateX(-50%); margin-bottom: 10px; font-size: x-large; border-radius: 15px; padding: 0px 10px;">HINT</button>
             <div style="display: flex; flex-wrap: wrap;">
                 <div id="carouselExampleIndicators" class="carousel slide" style="transition: 1s; width: 100%">
                     <div class="carousel-indicators" style="display: none;">
@@ -133,6 +138,7 @@
 		<div id="sidebar" style="width: 600px; overflow: hidden; transition: 1s; background-color: rgb(240, 240, 240); border-radius: 10px;">
             <div id="info-container" style="padding-right: 15px; padding-left: 15px;">
                 <div style="display: flex; flex-wrap: nowrap;">
+                    <div style="font-size: 30px;" class="lobster-regular" id="clock-mini">00:00:00</div>
                     <div style="flex: 1; height: 40px;"></div>
                     <span tabindex="0" id ="toggle-button-to-hide-info" class="material-symbols-outlined" onclick="toggleSidebarOff()" style="width: 40px; cursor: pointer; font-size: 30px; text-align: right; padding-top: 5px; color: grey; z-index: 999; padding-right: 5px;">cancel</span>
                 </div>
@@ -172,31 +178,77 @@
 		</div>
 	</div>
 
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="modalOpenButton" style="display: none;">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#endResults" id="modalOpenButton" style="display: none;">
     </button>
   
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="endResults" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="endResultsLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
-            <div class="modal-content">
+            <div class="modal-content" id="question-final-modal">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Question Criterion:</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="location.reload();"></button>
+                    <h1 class="modal-title fs-5" id="endResultsLabel">Question Criterion:</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="updateDB();"></button>
                 </div>
                 <div class="modal-body" style="display: flex; flex-wrap: wrap;">
                     <ol style="font-size: x-large; width: 100%;" id="question-criteria-results">
                     </ol>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="location.reload();">NEXT QUESTION</button>
+                    <button type="button" class="btn btn-primary" onclick="updateDB();">NEXT QUESTION</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login" id="login-open" style="display: none;">
+    </button>
+  
+    <div class="modal fade" id="login" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="loginLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-3 lobster-regular" id="loginLabel" style="width: 100%; text-align: center;">User Information</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="display: none;" id="login-close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="login-info" style="padding: 20px;">
+                    <div class="mb-3">
+                        <label for="login-name" class="form-label">Your Name: <span style="color: red;">*</span></label>
+                        <input type="text" class="form-control" id="login-name" name="login-name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="login-email" class="form-label">Email Address: <span style="color: red;">*</span></label>
+                        <input type="email" class="form-control" id="login-email" name="login-email" placeholder="name@example.com" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="login-field" class="form-label">Field: <span style="color: red;">*</span></label>
+                        <select class="form-control" id="login-field" name="login-field" required>
+                            <option value="option1">High School Student</option>
+                            <option value="option2">Undergraduate Student</option>
+                            <option value="option3">Graduate Student</option>
+                            <option value="option3">Working Professional</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="login-accessibilty-knowledge" class="form-label">Proficiency in Accessibility: <span style="color: red;">*</span></label>
+                        <select class="form-control" id="login-accessibilty-knowledge" name="login-accessibilty-knowledge" required>
+                            <option value="option1">Novice</option>
+                            <option value="option2">Competent</option>
+                            <option value="option3">Proficient</option>
+                            <option value="option3">Expert</option>
+                        </select>
+                    </div>
+                    <button type="button submit" class="btn btn-outline-primary" style="margin-top: 20px; width: 100px; height: 40px; font-size: large;">Submit</button>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <script src="./scripts/indexJS/clock.js"></script>
+    <script src="./scripts/indexJS/login.js"></script>
     <script src="./scripts/indexJS/buttonBehaviour.js"></script>
     <script src="./scripts/indexJS/toggle.js"></script>
     <script src="./scripts/indexJS/questionLabels.js"></script>
-    <script src="./scripts/indexJS/clock.js"></script>
     <script src="./scripts/demoJS/replaceTags.js"></script>
     <script src="./scripts/demoJS/parser.js"></script>
     <script src="./scripts/indexJS/lineQuestion.js"></script>

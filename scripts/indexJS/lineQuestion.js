@@ -1,6 +1,18 @@
+function numberOfLinesInTheCriterion(i){
+    var d = data[i][0];
+    return countSubstringOccurrences(d, '\n');
+}
+
+
+
 function onSubmitLineNumber(){
     var lineNumber = document.getElementById('lineInput').value;
     var validLineNumbers = JSON.parse(sessionStorage.getItem('correct-line-numbers'));
+
+    if(sessionStorage.getItem('chosenCriterionAll').includes(onFindingCriterion(lineNumber)) && !sessionStorage.getItem('chosenCriterion').includes(onFindingCriterion(lineNumber))){
+        alert("Criterion has previously been selected!");
+        return;
+    }
 
     if(validLineNumbers.includes(parseInt(lineNumber))){
         var inner = 
@@ -12,9 +24,15 @@ function onSubmitLineNumber(){
         document.getElementById('part1Result').innerHTML = inner;
         document.getElementById('sidebar-line').innerText = data[onFindingCriterion(lineNumber)][0];
 
-        document.getElementById('part-2-title').innerText = `In Correspondence To WCAG Level A, Which Principle Do The Lines ` + lineNumber + `-`+ (parseInt(lineNumber) + parseInt(numberOfLinesPerCriterion[onFindingCriterion(lineNumber)][0]) - 1) +` Defy?`;
-        document.getElementById('part-3-title').innerText = `In Correspondence To WCAG Level A, Which Accessibility Criteria Do The Lines ` + lineNumber + `-`+ (parseInt(lineNumber) + parseInt(numberOfLinesPerCriterion[onFindingCriterion(lineNumber)][0]) - 1) +` Defy?`;
-
+        if(numberOfLinesInTheCriterion(onFindingCriterion(lineNumber)) != 0){
+            document.getElementById('part-2-title').innerText = `In Correspondence To WCAG Level A, Which Principle Do The Lines ` + lineNumber + `-`+ (parseInt(lineNumber) + numberOfLinesInTheCriterion(onFindingCriterion(lineNumber))) +` Defy?`;
+            document.getElementById('part-3-title').innerText = `In Correspondence To WCAG Level A, Which Accessibility Criteria Do The Lines ` + lineNumber + `-`+ (parseInt(lineNumber) + numberOfLinesInTheCriterion(onFindingCriterion(lineNumber))) +` Defy?`;
+        }
+        else {
+            document.getElementById('part-2-title').innerText = `In Correspondence To WCAG Level A, Which Principle Does The Line ` + lineNumber +` Defy?`;
+            document.getElementById('part-3-title').innerText = `In Correspondence To WCAG Level A, Which Accessibility Criteria Does The Line ` + lineNumber +` Defy?`;
+        }
+        
         sessionStorage.setItem('currentLineNumber', parseInt(lineNumber));
         sessionStorage.setItem('score', parseInt(sessionStorage.getItem('score')) + 10);
         onScoreIncrease();
@@ -30,35 +48,6 @@ function onSubmitLineNumber(){
     }
     document.getElementById('goToPart1Result').click();
     document.getElementById('lineInput').value = "";
-}
-
-function onFindingLineNumber(searchString){
-    var codeBlock = document.getElementById('code');
-    var lines = codeBlock.textContent.trim().split('\n');
-    var searchStringLines = searchString.trim().split('\n');
-    var lineNumber = -1;
-
-    for (var i = 0; i < lines.length - searchStringLines.length + 1; i++) {
-        if (lines[i].includes(searchStringLines[0])) {
-            var match = true;
-            for (var j = 1; j < searchStringLines.length; j++) {
-                if (lines[i + j] !== searchStringLines[j]) {
-                    match = false;
-                    break;
-                }
-            }
-            if (match) {
-                lineNumber = i + 1; 
-                break;
-            }
-        }
-    }
-
-    if (lineNumber !== -1) {
-        return lineNumber;
-    } else{
-        return -1;
-    }
 }
 
 function reduceBar(){

@@ -1,3 +1,68 @@
+if(parseInt(sessionStorage.getItem('question-number')) == 10){
+    document.getElementById('question-final-modal').innerHTML = 
+    `<div class="modal-header">
+        <h1 class="modal-title fs-5" id="endResultsLabel">Question Criterion:</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="playAgainUpdateDB()"></button>
+    </div>
+    <div class="modal-body" style="display: flex; flex-wrap: wrap;">
+        <ol style="font-size: x-large; width: 100%;" id="question-criteria-results">
+        </ol>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="playAgainUpdateDB()">Play Again</button>
+    </div>`;
+}
+
+var userId = sessionStorage.getItem('user-id');
+
+function playAgainUpdateDB(){
+    if (!userId) {
+        console.error("User ID not found in sessionStorage");
+        return;
+    }
+
+    var chosenCriterion = sessionStorage.getItem('chosenCriterionAll');
+    var unpickedCriterion = sessionStorage.getItem('chosenCriterion');
+    var score = sessionStorage.getItem('score');
+    var timeTaken = document.getElementById('clock-mini').textContent;
+    
+    db.collection("users").doc(userId).get().then(function(doc) {
+        if (doc.exists) {
+            var docData = doc.data();
+            var updatedCriterion = docData.questionCriterion || [];
+            var updatedUnpickedCriterion = docData.unpickedCriterion || [];
+            var updatedScore = docData.score || [];
+            var updatedTimeTaken = docData.timeTaken || [];
+
+            updatedCriterion.push(chosenCriterion);
+            updatedUnpickedCriterion.push(unpickedCriterion);
+            score = score - sumArray(updatedScore);
+            updatedScore.push(score);
+            updatedTimeTaken.push(timeTaken);
+
+            db.collection("users").doc(userId).set({
+                questionCriterion: updatedCriterion,
+                unpickedCriterion: updatedUnpickedCriterion,
+                score: updatedScore,
+                timeTaken: updatedTimeTaken,
+                finalScore: sessionStorage.getItem('score'),
+                totalTimeTaken: document.getElementById('clock').textContent
+            }, { merge: true })
+            .then(function() {
+                console.log("Document successfully updated!");
+                window.location.href = './index.html';
+            })
+            .catch(function(error) {
+                console.error("Error writing document: ", error);
+            });
+        } else {
+            console.log("No such document!");
+        }
+    }).catch(function(error) {
+        console.error("Error getting document:", error);
+    });
+}
+
 var s = "";
 correctQuestions = JSON.parse(sessionStorage.getItem('correct-questions'));
 
@@ -21,19 +86,28 @@ for(var i = parseInt(sessionStorage.getItem('question-number')) + 1; i <= 10; i+
 
 document.getElementById('question-label-container').innerHTML = s;
 
-
 function onCorrectQuestionComplete(){
+    if(parseInt(sessionStorage.getItem('question-number')) == 10){
+        sessionStorage.removeItem('user-id');
+    }   
     currentQuestionNumber = parseInt(sessionStorage.getItem('question-number'));
     sessionStorage.setItem('question-number', currentQuestionNumber + 1);
     correctQuesions = JSON.parse(sessionStorage.getItem('correct-questions'));
     correctQuesions.push(currentQuestionNumber);
     sessionStorage.setItem('correct-questions', JSON.stringify(correctQuesions));
     document.getElementById('modalOpenButton').click();
+    sessionStorage.setItem('timer', document.getElementById("clock").textContent);
+    stop = true;
 }
 
 function onIncorrectQuestionComplete(){
+    if(parseInt(sessionStorage.getItem('question-number')) == 10){
+        sessionStorage.removeItem('user-email');
+    }
     sessionStorage.setItem('question-number', parseInt(sessionStorage.getItem('question-number')) + 1);
     document.getElementById('modalOpenButton').click();
+    sessionStorage.setItem('timer', document.getElementById("clock").textContent);
+    stop = true;
 }
 
 function onScoreIncrease(){
@@ -82,3 +156,58 @@ for(var i = 0; i < chosenCriterionAll.length; i++) {
 
 document.getElementById('question-criteria-results').innerHTML = result;
 
+function sumArray(arr) {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+function updateDB() {
+    var userId = sessionStorage.getItem('user-id');
+
+    if (!userId) {
+        console.error("User ID not found in sessionStorage");
+        return;
+    }
+
+    var chosenCriterion = sessionStorage.getItem('chosenCriterionAll');
+    var unpickedCriterion = sessionStorage.getItem('chosenCriterion');
+    var score = sessionStorage.getItem('score');
+    var timeTaken = document.getElementById('clock-mini').textContent;
+    
+    db.collection("users").doc(userId).get().then(function(doc) {
+        if (doc.exists) {
+            var docData = doc.data();
+            var updatedCriterion = docData.questionCriterion || [];
+            var updatedUnpickedCriterion = docData.unpickedCriterion || [];
+            var updatedScore = docData.score || [];
+            var updatedTimeTaken = docData.timeTaken || [];
+
+            updatedCriterion.push(chosenCriterion);
+            updatedUnpickedCriterion.push(unpickedCriterion);
+            score = score - sumArray(updatedScore);
+            updatedScore.push(score);
+            updatedTimeTaken.push(timeTaken);
+
+            db.collection("users").doc(userId).set({
+                questionCriterion: updatedCriterion,
+                unpickedCriterion: updatedUnpickedCriterion,
+                score: updatedScore,
+                timeTaken: updatedTimeTaken
+            }, { merge: true })
+            .then(function() {
+                console.log("Document successfully updated!");
+                location.reload();
+            })
+            .catch(function(error) {
+                console.error("Error writing document: ", error);
+            });
+        } else {
+            console.log("No such document!");
+        }
+    }).catch(function(error) {
+        console.error("Error getting document:", error);
+    });
+}
