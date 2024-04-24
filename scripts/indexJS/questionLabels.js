@@ -25,6 +25,7 @@ function playAgainUpdateDB(){
     var unpickedCriterion = sessionStorage.getItem('chosenCriterion');
     var score = sessionStorage.getItem('score');
     var timeTaken = document.getElementById('clock-mini').textContent;
+    var livesRemaining = document.getElementById('wifi-sidebar-label').innerText.split(' ')[0];
     
     db.collection("users").doc(userId).get().then(function(doc) {
         if (doc.exists) {
@@ -33,12 +34,14 @@ function playAgainUpdateDB(){
             var updatedUnpickedCriterion = docData.unpickedCriterion || [];
             var updatedScore = docData.score || [];
             var updatedTimeTaken = docData.timeTaken || [];
+            var updatedLivesRemaining = docData.livesRemaining || [];
 
             updatedCriterion.push(chosenCriterion);
             updatedUnpickedCriterion.push(unpickedCriterion);
             score = score - sumArray(updatedScore);
             updatedScore.push(score);
             updatedTimeTaken.push(timeTaken);
+            updatedLivesRemaining.push(livesRemaining);
 
             db.collection("users").doc(userId).set({
                 questionCriterion: updatedCriterion,
@@ -46,7 +49,8 @@ function playAgainUpdateDB(){
                 score: updatedScore,
                 timeTaken: updatedTimeTaken,
                 finalScore: sessionStorage.getItem('score'),
-                totalTimeTaken: document.getElementById('clock').textContent
+                totalTimeTaken: document.getElementById('clock').textContent,
+                livesRemaining: updatedLivesRemaining
             }, { merge: true })
             .then(function() {
                 console.log("Document successfully updated!");
@@ -176,6 +180,7 @@ function updateDB() {
     var unpickedCriterion = sessionStorage.getItem('chosenCriterion');
     var score = sessionStorage.getItem('score');
     var timeTaken = document.getElementById('clock-mini').textContent;
+    var livesRemaining = document.getElementById('wifi-sidebar-label').innerText.split(' ')[0];
     
     db.collection("users").doc(userId).get().then(function(doc) {
         if (doc.exists) {
@@ -184,18 +189,21 @@ function updateDB() {
             var updatedUnpickedCriterion = docData.unpickedCriterion || [];
             var updatedScore = docData.score || [];
             var updatedTimeTaken = docData.timeTaken || [];
+            var updatedLivesRemaining = docData.livesRemaining || [];
 
             updatedCriterion.push(chosenCriterion);
             updatedUnpickedCriterion.push(unpickedCriterion);
             score = score - sumArray(updatedScore);
             updatedScore.push(score);
             updatedTimeTaken.push(timeTaken);
+            updatedLivesRemaining.push(livesRemaining);
 
             db.collection("users").doc(userId).set({
                 questionCriterion: updatedCriterion,
                 unpickedCriterion: updatedUnpickedCriterion,
                 score: updatedScore,
-                timeTaken: updatedTimeTaken
+                timeTaken: updatedTimeTaken,
+                livesRemaining: updatedLivesRemaining
             }, { merge: true })
             .then(function() {
                 console.log("Document successfully updated!");
