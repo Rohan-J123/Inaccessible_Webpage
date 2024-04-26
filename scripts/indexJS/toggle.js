@@ -27,7 +27,7 @@ function toggleSidebarOn() {
     mainbarImages.style.flex = 0;
     sidebar.scrollIntoView({ behavior: 'smooth' });
 
-    document.getElementById('mainbar-images').style.display = "none";
+    document.getElementById('mainbar-images').style.display = 'none';
 }
 
 function toggleSidebarOff() {
@@ -36,11 +36,12 @@ function toggleSidebarOff() {
     var mainbarImages = document.getElementById('mainbar-images');
     var questions = document.getElementById('carouselExampleIndicators');
 
-    if(window.innerWidth < 600){
+    if(window.innerWidth < 1000){
         sidebar.style.transition = '0s';
         mainbar.style.transition = '0s';
         mainbarImages.style.transition = '0s';
         questions.style.transition = '0s';
+        questions.style.marginBottom =  '30px';
     }else{
         sidebar.style.transition = '1s';
         mainbar.style.transition = 'margin-right 1s';
@@ -58,11 +59,33 @@ function toggleSidebarOff() {
     mainbarImages.style.flex = 1;
     mainbar.scrollIntoView({ behavior: 'smooth' });
 
-    document.getElementById('mainbar-images').style.display = "block";
+    setTimeout(function() {
+        var div = document.getElementById('mainbar-images');
+        div.style.display = 'block';
+    }, 1000);
 }
 
-toggleSidebarOff();
-toggleSidebarOn();
+function setInitialConditions(){
+    var mainbar = document.getElementById('mainbar');
+    var sidebar = document.getElementById('sidebar');
+    var mainbarImages = document.getElementById('mainbar-images');
+    var questions = document.getElementById('carouselExampleIndicators');
+
+    if(window.innerWidth < 1000){
+        sidebar.style.transition = '0s';
+        mainbar.style.transition = '0s';
+        mainbarImages.style.transition = '0s';
+        questions.style.transition = '0s';
+    }else{
+        sidebar.style.transition = '1s';
+        mainbar.style.transition = 'margin-right 1s';
+        mainbarImages.style.transition = '1s';
+        questions.style.transition = '1s';
+        sidebar.style.height = '86.5vh';
+    }
+}
+
+setInitialConditions();
 
 function toggleBack(){
     var buttonNext = document.getElementById("button-previous-question");
