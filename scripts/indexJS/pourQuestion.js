@@ -58,7 +58,7 @@ function onCorrectPour(){
         <button type="button" class="btn btn-outline-primary" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="document.getElementById('goToPart1').click(); document.getElementById('sidebar-line').innerText = '';">SKIP</button>
     </div>`;
     document.getElementById('part2Result').innerHTML = inner;
-    sessionStorage.setItem('score', parseInt(sessionStorage.getItem('score')) + 20);
+    sessionStorage.setItem('score', parseInt(sessionStorage.getItem('score')) + 30);
     onScoreIncrease();
     remaining -= 1;
     document.getElementById('criterions-remaining-label-text').innerText = "Criteria Left: " + remaining;
@@ -73,7 +73,7 @@ function onCorrectPourButQuestionComplete(){
         <button type="button" class="btn btn-outline-info" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="onCorrectQuestionComplete()">NEXT</button>
     </div>`;
     document.getElementById('part2Result').innerHTML = inner;
-    sessionStorage.setItem('score', parseInt(sessionStorage.getItem('score')) + 20);
+    sessionStorage.setItem('score', parseInt(sessionStorage.getItem('score')) + 30);
     onScoreIncrease();
     remaining -= 1;
     document.getElementById('criterions-remaining-label-text').innerText = "Criteria Left: " + remaining;

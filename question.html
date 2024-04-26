@@ -39,19 +39,40 @@
     </div>
 	
 	<div class="content" style="display: flex; flex-wrap: wrap;">
-        <div id="mainbar" style="flex: 1; transition: margin-right 1s; margin-left: 15px; margin-right: 15px; overflow: hidden; margin-bottom: 30px;">
-            <pre style="border-radius: 10px; margin-bottom: 10px;"><div style="display: flex; flex-wrap: nowrap; height: 40px;">
-                    <span style="width: 40px; background-color: black;"></span>
+        <div id="mainbar" style="flex: 1; transition: margin-right 1s; margin-left: 15px; margin-right: 15px; overflow: hidden; margin-bottom: 10px;">
+            <div id="main-code-area" style="display: none;"><pre style="border-radius: 10px; margin-bottom: 10px;"><div style="display: flex; flex-wrap: nowrap; height: 40px;">
+                    <div style="width: 40px; background-color: black;"></div>
                     <p style="text-align: center; margin: 0%; padding-bottom: 0%; padding-top: 1vh; background-color: black; color: white; font-family: 'Times New Roman', Times, serif; font-size: large; text-align: center; flex: 1;"><b><i>CODE:</i></b></p>
-                    <span tabindex="-1" id ="toggle-button-to-show-info" class="material-symbols-outlined" onclick="toggleSidebarOn()" style="width: 40px; cursor: pointer; font-size: 30px; text-align: right; color: darkgray; background-color: black; padding-right: 5px; pointer-events: none; padding-top: 5px; z-index: 999;"></span>
+                    <div style="width: 40px; background-color: black; padding-top: 5px; padding-right: 5px;"><button id ="toggle-button-to-show-info" aria-label="info-button" onclick="toggleSidebarOn()" style="padding: 1px; background-color: black; display: none; color: darkgray; border: 3px solid darkgray; border-radius: 50px; font-size: large; position: relative; left: 100%; transform: translateX(-100%); height: 30px; width: 30px;">i</button></div>
                 </div><code class="html" style="overflow-y: scroll; height: 50vh; tab-size: 4; padding-top: 0%; display: flex; padding-left: 0%">
                     <b><div id="line-numbers" style="padding-left: 5px; width: 50px; color: rgb(125, 125, 125); white-space: break-spaces; text-align: end;">1. 2. 3. 4. 5. 6. 7. 8. 9. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 20. 21. </div></b>
                     <div id="code" style="flex: 1; padding-left: 5px;">
                     </div>
             </code></pre>
-            <button type="button" class="btn btn-light" onclick="onHintClicked();" style="position: relative; left: 50%; transform: translateX(-50%); margin-bottom: 10px; font-size: x-large; border-radius: 15px; padding: 0px 10px;">HINT</button>
+            </div>
+            <div id="main-start-area" style="display: block;"><pre style="border-radius: 10px; margin-bottom: 10px;"><div style="display: flex; flex-wrap: nowrap; height: 40px;">
+                    <div style="width: 40px; background-color: black;"></div>
+                    <p style="text-align: center; margin: 0%; padding-bottom: 0%; padding-top: 1vh; background-color: black; color: white; font-family: 'Times New Roman', Times, serif; font-size: large; text-align: center; flex: 1;"><b><i>RULES:</i></b></p>
+                    <div style="width: 40px; background-color: black; padding-top: 5px; padding-right: 5px;"><button id ="toggle-button-to-show-info-start" aria-label="info-button" onclick="toggleSidebarOn()" style="padding: 1px; background-color: black; display: none; color: darkgray; border: 3px solid darkgray; border-radius: 50px; font-size: large; position: relative; left: 100%; transform: translateX(-100%); height: 30px; width: 30px;">i</button></div>
+                </div><code class="html" style="overflow-y: scroll; height: 50vh; tab-size: 4; padding-top: 0%; padding-left: 20px;">
+1. Guessing the line number that defies an accessibility criterion correctly earns you 20 points, while an incorrect guess decreases Wi-Fi strength by one bar.
+2. Guessing the Principle the block defies correctly earns you 30 points, while an incorrect guess decreases Wi-Fi strength by one bar.
+3. Identifying the Criterion the block defies successfully will add 50 points to your score and refills Wi-Fi strength by one bar, with no change in Wi-Fi strength for an incorrect guess.
+4. The criterion may be guessed until the correct one is determined, or you may opt to skip the question.
+5. Hints appear as comments in the code, and next hint can be taken only after the previous hint is utilized as answer.
+
+Find out all accessibility issues in the given code before your Wi-Fi runs out!
+
+(The WCAG Criterion utilized within the game can be accessed through the following link: <a href="https://www.w3.org/TR/WCAG21/" target="_blank">WCAG 2.1</a>)
+
+<input type="checkbox" id="hide-starting-instructions"> <label for="hide-starting-instructions">Don't show these instructions again. </label> 
+
+<button type="button" class="btn btn-primary" style="position: relative; left: 50%; transform: translateX(-50%);" onclick="startButtonPressed();">START</button>
+            </code></pre>
+            </div>
+            <button id="game-hint-button" type="button" class="btn btn-light" onclick="onHintClicked();" style="position: relative; left: 50%; transform: translateX(-50%); margin-bottom: 10px; font-size: x-large; border-radius: 15px; padding: 0px 10px; pointer-events: none;">HINT</button>
             <div style="display: flex; flex-wrap: wrap;">
-                <div id="carouselExampleIndicators" class="carousel slide" style="transition: 1s; width: 100%">
+                <div id="carouselExampleIndicators" class="carousel slide" style="transition: 1s; width: 100%;">
                     <div class="carousel-indicators" style="display: none;">
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" id="goToPart1"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" id="goToPart1Result"></button>
@@ -69,7 +90,7 @@
                                         <label for="lineInput" style="white-space: nowrap; width: 85px; font-size: 20px; color: rgba(0, 0, 0, 0.7);">Line Number:</label>
                                         <input type="number" id="lineInput" style="text-align: center; width: 50%;">
                                     </div>
-                                    <button id="submit-line-number" type="button" class="btn btn-outline-primary" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px;" onclick="onSubmitLineNumber()">SUBMIT</button>
+                                    <button id="submit-line-number" type="button" class="btn btn-outline-primary" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; pointer-events: none;" onclick="onSubmitLineNumber()">SUBMIT</button>
                                 </div> 
                             </div>
                         </div>
@@ -129,8 +150,9 @@
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
-                <div id="mainbar-images" style="flex: 0; transition: 1s; overflow: hidden; height: 150px;">
-                    <img src="./Images/WifiFullBar.png" alt="Wifi Full Bar Mainbar" style="position: relative; top: 25%; left: 50%; transform: translateX(-50%); height: 100px !important;" id="wifiImageMain">
+                <div id="mainbar-images" style="transition: 1s; display: none; padding-top: 10px;">
+                    <img src="./Images/WifiFullBar.png" alt="Wifi Full Bar Mainbar" style="position: relative; left: 50%; transform: translateX(-50%); height: 100px !important;" id="wifiImageMain">
+                    <h5 style="text-align: center; padding-top: 20px;" id="wifi-mainbar-label" class="lobster-regular">Four Bars</h5>
                 </div>
             </div>
         </div>
@@ -138,12 +160,12 @@
 		<div id="sidebar" style="width: 600px; overflow: hidden; transition: 1s; background-color: rgb(240, 240, 240); border-radius: 10px;">
             <div id="info-container" style="padding-right: 15px; padding-left: 15px;">
                 <div style="display: flex; flex-wrap: nowrap;">
-                    <div style="font-size: 30px;" class="lobster-regular" id="clock-mini">00:00:00</div>
-                    <div style="flex: 1; height: 40px;"></div>
-                    <span tabindex="0" id ="toggle-button-to-hide-info" class="material-symbols-outlined" onclick="toggleSidebarOff()" style="width: 40px; cursor: pointer; font-size: 30px; text-align: right; padding-top: 5px; color: grey; z-index: 999; padding-right: 5px;">cancel</span>
+                    <div style="width: 40px; padding-top: 7px; padding-right: 20px;"></div>
+                    <div style="font-size: x-large; text-align: center; flex: 1; padding-top: 5px; color: gray;" class="lobster-regular" id="clock-mini">Question Timer :: 00:00:00</div>
+                    <div style="width: 40px; padding-top: 7px; padding-right: 20px;"><button type="button" class="btn-close" aria-label="Close-Sidebar" id ="toggle-button-to-hide-info" onclick="toggleSidebarOff()" style="display: block; position: relative; left: 100%; transform: translateX(-50%); color: grey; border: 3px solid #000; border-radius: 50px; padding: 5px; font-size: small;"></button></div>
                 </div>
                 <h2 style="margin-top: 0%; text-align: center; text-align: center;">Instructions:</h2>
-                <p style="font-size: large; text-align: justify; font-family: 'Times New Roman', Times, serif; line-height: normal;">This game serves to raise awareness on Web Content Accessibility Guidelines (WCAG) developed by the Web Accessibility Initiative (WAI) of the World Wide Web Consortium (W3C). The given program although syntactically correct would prove to be an accessiblity issue to some groups. Can you guess which criterion in accordance to WCAG does this program violate? Every wrongly guessed criteria will decrease Wi-Fi strength by 1 bar. Find out all accessibility issues in the given code before your Wi-Fi runs out!</p>
+                <p style="font-size: large; text-align: justify; font-family: 'Times New Roman', Times, serif; line-height: normal;">This game serves to raise awareness on Web Content Accessibility Guidelines (WCAG) developed by the Web Accessibility Initiative (WAI) of the World Wide Web Consortium (W3C). The given program, although syntactically correct, would prove to be an accessiblity issue to some groups. Can you guess which Principles and Criteria, in accordance to WCAG, does this program violate?</p>
 			</div>
             <br>
             <div style="display: flex; flex-wrap: wrap;">
@@ -173,12 +195,12 @@
             <div style="background-color: lightgray; margin: 15px; height: 1.5px;"></div>
             <div>
                 <h4 style="text-align: center;">Current Block Selection:</h4>
-                <div id="sidebar-line" style="font-style: italic; text-align: left; padding: 10px 2vw; overflow: scroll; height: 125px; font-size: large; text-wrap: nowrap;"></div>
+                <div id="sidebar-line" style="font-style: italic; text-align: left; padding: 10px 2vw; overflow: scroll; height: 160px; font-size: large; text-wrap: nowrap;"></div>
             </div>
 		</div>
 	</div>
 
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#endResults" id="modalOpenButton" style="display: none;">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#endResults" id="modalOpenButton" style="display: none;">End Result Modal Open Button
     </button>
   
     <div class="modal fade" id="endResults" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="endResultsLabel" aria-hidden="true">
@@ -199,7 +221,7 @@
         </div>
     </div>
 
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login" id="login-open" style="display: none;">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login" id="login-open" style="display: none;">Login Open Button
     </button>
   
     <div class="modal fade" id="login" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="loginLabel" aria-hidden="true">

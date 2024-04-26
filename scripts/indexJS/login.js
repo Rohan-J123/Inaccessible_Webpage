@@ -1,7 +1,5 @@
 if(sessionStorage.getItem("user-id") == null){
     document.getElementById("login-open").click();
-} else {
-    startStop();
 }
 
 document.getElementById("login-info").addEventListener("submit", function(event) {
@@ -20,7 +18,6 @@ document.getElementById("login-info").addEventListener("submit", function(event)
     })
     .then(function() {
         console.log("Document successfully written with ID: ", userId);
-        startStop();
         sessionStorage.setItem("user-id", userId);
         document.getElementById('spinner-circle').style.display = 'none';
         document.getElementById("login-close").click();

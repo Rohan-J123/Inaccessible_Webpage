@@ -19,19 +19,15 @@ function toggleSidebarOn() {
 
     sidebar.style.width = sidebar.style.width === '600px' ? '0px' : '600px';
 
-    var toggleButtonShowInfo = document.getElementById('toggle-button-to-show-info');
-    toggleButtonShowInfo.style.pointerEvents = 'none';
-    toggleButtonShowInfo.innerText ='';
-    toggleButtonShowInfo.tabIndex = -1;
-
-    var toggleButtonHideInfo = document.getElementById('toggle-button-to-hide-info');
-    toggleButtonHideInfo.style.pointerEvents = 'auto';
-    toggleButtonHideInfo.innerText = 'cancel';
-    toggleButtonHideInfo.tabIndex = 0;
+    document.getElementById('toggle-button-to-show-info').style.display="none";
+    document.getElementById('toggle-button-to-show-info-start').style.display="none";
+    document.getElementById('toggle-button-to-hide-info').style.display="block";
 
     questions.style.width = '100%';
     mainbarImages.style.flex = 0;
     sidebar.scrollIntoView({ behavior: 'smooth' });
+
+    document.getElementById('mainbar-images').style.display = "none";
 }
 
 function toggleSidebarOff() {
@@ -54,19 +50,15 @@ function toggleSidebarOff() {
 
     sidebar.style.width = sidebar.style.width === '600px' ? '0px' : '600px';
 
-    var toggleButtonShowInfo = document.getElementById('toggle-button-to-show-info');
-    toggleButtonShowInfo.style.pointerEvents = 'auto';
-    toggleButtonShowInfo.innerText = 'info';
-    toggleButtonShowInfo.tabIndex = 0;
+    document.getElementById('toggle-button-to-show-info').style.display="block";
+    document.getElementById('toggle-button-to-show-info-start').style.display="block";
+    document.getElementById('toggle-button-to-hide-info').style.display="none";
 
-    var toggleButtonHideInfo = document.getElementById('toggle-button-to-hide-info');
-    toggleButtonHideInfo.style.pointerEvents = 'none';
-    toggleButtonHideInfo.innerText = '';
-    toggleButtonHideInfo.tabIndex = -1;
-
-    questions.style.width = '900px';
+    questions.style.width = '1050px';
     mainbarImages.style.flex = 1;
     mainbar.scrollIntoView({ behavior: 'smooth' });
+
+    document.getElementById('mainbar-images').style.display = "block";
 }
 
 toggleSidebarOff();

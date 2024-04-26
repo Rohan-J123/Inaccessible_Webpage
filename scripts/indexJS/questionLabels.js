@@ -77,16 +77,16 @@ document.getElementById('criterions-remaining-label-text').innerText = "Criteria
 
 for(var i = 1; i < parseInt(sessionStorage.getItem('question-number')); i++){
     if(correctQuestions.includes(i)){
-        s += '<button type="button" class="btn btn-success question-label" id="question-label-1" tabindex="-1">' + i +'<span>&#10003;</span></button>';
+        s += '<button type="button" class="btn btn-success question-label" id="question-label-1" tabindex="-1" style="font-size: x-large;">' + i +'<span>&#10003;</span></button>';
     } else {
-        s += '<button type="button" class="btn btn-danger question-label" id="question-label-1" tabindex="-1">' + i +'<span>&#10007;</span></button>';
+        s += '<button type="button" class="btn btn-danger question-label" id="question-label-1" tabindex="-1" style="font-size: x-large;">' + i +'<span>&#10007;</span></button>';
     }
 }
 
-s += '<button type="button" class="btn btn-warning question-label" id="question-label-1" tabindex="-1">' + parseInt(sessionStorage.getItem('question-number')) +'</button>';
+s += '<button type="button" class="btn btn-warning question-label" id="question-label-1" tabindex="-1" style="font-size: x-large;">' + parseInt(sessionStorage.getItem('question-number')) +'</button>';
 
 for(var i = parseInt(sessionStorage.getItem('question-number')) + 1; i <= 10; i++){
-    s += '<button type="button" class="btn btn-outline-primary question-label" id="question-label-1" tabindex="-1">' + i +'</button>';
+    s += '<button type="button" class="btn btn-outline-primary question-label" id="question-label-1" tabindex="-1" style="font-size: x-large;">' + i +'</button>';
 }
 
 document.getElementById('question-label-container').innerHTML = s;
@@ -140,7 +140,7 @@ for(var i = 0; i < chosenCriterionAll.length; i++) {
 
     result += 
 `<li>
-    <h5>Criterion: ${cr}</h5>
+    <h5 style="text-align: center;">${cr}</h5>
     <h5>Principle: ${pr}</h5>
     <div style="display: flex; flex-wrap: wrap; font-size: medium;">
         <div style="padding: 5px; flex: 1;">
@@ -221,4 +221,12 @@ function updateDB() {
     }).catch(function(error) {
         console.error("Error getting document:", error);
     });
+}
+
+function startButtonPressed(){
+    document.getElementById('main-code-area').style.display="block";
+    document.getElementById('main-start-area').style.display="none";
+    startStop();
+    document.getElementById('submit-line-number').style.pointerEvents="auto";
+    document.getElementById('game-hint-button').style.pointerEvents="auto";
 }

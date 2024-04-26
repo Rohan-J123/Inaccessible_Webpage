@@ -48,7 +48,7 @@ function updateTime() {
                 hoursMini++;
             }
         }
-        document.getElementById("clock-mini").textContent = 
+        document.getElementById("clock-mini").textContent = "Question Timer :: " +
             (hoursMini < 10 ? "0" : "") + hoursMini + ":" +
             (minutesMini < 10 ? "0" : "") + minutesMini + ":" +
             (secondsMini < 10 ? "0" : "") + secondsMini;

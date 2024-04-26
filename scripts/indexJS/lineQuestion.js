@@ -34,7 +34,7 @@ function onSubmitLineNumber(){
         }
         
         sessionStorage.setItem('currentLineNumber', parseInt(lineNumber));
-        sessionStorage.setItem('score', parseInt(sessionStorage.getItem('score')) + 10);
+        sessionStorage.setItem('score', parseInt(sessionStorage.getItem('score')) + 20);
         onScoreIncrease();
     } else {
         var inner = 
@@ -84,6 +84,7 @@ function reduceBar(){
         document.getElementById('wifi-sidebar-label').innerText = "Game Over!";
         console.log("Game Over!");
     }
+    document.getElementById('wifi-mainbar-label').innerText = document.getElementById('wifi-sidebar-label').innerText;
 }
 
 function increaseBar(){
@@ -112,4 +113,5 @@ function increaseBar(){
         document.getElementById('wifiImageSide').src = "./Images/WifiTwoBar.png";
         document.getElementById('wifi-sidebar-label').innerText = "Two Bars";
     }
+    document.getElementById('wifi-mainbar-label').innerText = document.getElementById('wifi-sidebar-label').innerText;
 }
