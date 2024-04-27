@@ -107,7 +107,7 @@ function onCorrectQuestionComplete(){
 
 function onIncorrectQuestionComplete(){
     if(parseInt(sessionStorage.getItem('question-number')) == 10){
-        sessionStorage.removeItem('user-email');
+        sessionStorage.removeItem('user-id');
     }
     sessionStorage.setItem('question-number', parseInt(sessionStorage.getItem('question-number')) + 1);
     document.getElementById('modalOpenButton').click();
@@ -223,10 +223,18 @@ function updateDB() {
     });
 }
 
+if(sessionStorage.getItem('start-dont-show') == 'true'){
+    startButtonPressed();
+}
+
 function startButtonPressed(){
     document.getElementById('main-code-area').style.display="block";
     document.getElementById('main-start-area').style.display="none";
     startStop();
     document.getElementById('submit-line-number').style.pointerEvents="auto";
     document.getElementById('game-hint-button').style.pointerEvents="auto";
+
+    if (document.getElementById("hide-starting-instructions").checked) {
+        sessionStorage.setItem('start-dont-show', 'true');
+    }
 }

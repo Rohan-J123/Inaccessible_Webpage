@@ -19,6 +19,8 @@ document.getElementById("login-info").addEventListener("submit", function(event)
     .then(function() {
         console.log("Document successfully written with ID: ", userId);
         sessionStorage.setItem("user-id", userId);
+        sessionStorage.setItem("user-name", name);
+        sessionStorage.setItem("user-email", email);
         document.getElementById('spinner-circle').style.display = 'none';
         document.getElementById("login-close").click();
     })
@@ -26,3 +28,9 @@ document.getElementById("login-info").addEventListener("submit", function(event)
         console.error("Error writing document: ", error);
     });
 });
+
+function accountOpen(){
+    document.getElementById('account-name').innerText = "Name: " + sessionStorage.getItem('user-name');
+    document.getElementById('account-email').innerText = "Email: " + sessionStorage.getItem('user-email');
+    document.getElementById('account-score').innerText = document.getElementById('score-text').innerText;
+}

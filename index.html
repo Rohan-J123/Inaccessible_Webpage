@@ -10,6 +10,9 @@
             sessionStorage.setItem('correct-questions', JSON.stringify([]));
             sessionStorage.setItem('score', 0);
             sessionStorage.setItem('timer', '00:00:00');
+            sessionStorage.setItem('info-dont-show', 'false');
+            sessionStorage.setItem('start-dont-show', 'false');
+            sessionStorage.removeItem('user-id');
             window.location.href = "./question.html";
         }
 

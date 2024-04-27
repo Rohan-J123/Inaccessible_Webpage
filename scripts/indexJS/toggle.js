@@ -28,6 +28,7 @@ function toggleSidebarOn() {
     sidebar.scrollIntoView({ behavior: 'smooth' });
 
     document.getElementById('mainbar-images').style.display = 'none';
+    sessionStorage.setItem('info-dont-show', 'false');
 }
 
 function toggleSidebarOff() {
@@ -62,7 +63,12 @@ function toggleSidebarOff() {
     setTimeout(function() {
         var div = document.getElementById('mainbar-images');
         div.style.display = 'block';
-    }, 1000);
+    }, 500);
+    sessionStorage.setItem('info-dont-show', 'true');
+}
+
+if(sessionStorage.getItem('info-dont-show') == 'true'){
+    toggleSidebarOff();
 }
 
 function setInitialConditions(){

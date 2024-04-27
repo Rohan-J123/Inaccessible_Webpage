@@ -36,6 +36,12 @@ function onSubmitLineNumber(){
         sessionStorage.setItem('currentLineNumber', parseInt(lineNumber));
         sessionStorage.setItem('score', parseInt(sessionStorage.getItem('score')) + 20);
         onScoreIncrease();
+
+        var numberOfLinesToBeReplaced = '';
+        for(let i = 0; i <= numberOfLinesInTheCriterion(onFindingCriterion(lineNumber)); i++){
+            numberOfLinesToBeReplaced += ((parseInt(lineNumber) + i).toString() + '. ');
+        }
+        document.getElementById('line-numbers').innerHTML = document.getElementById('line-numbers').innerHTML.replace(numberOfLinesToBeReplaced, `<span style="color: rgb(255, 54, 54);">` + numberOfLinesToBeReplaced + `</span>`)
     } else {
         var inner = 
         `<h3 style="font-family: 'Times New Roman', Times, serif; text-align: center;">Sorry!</h3>
