@@ -46,7 +46,7 @@
                     <div style="width: 40px; background-color: black;"></div>
                     <p style="text-align: center; margin: 0%; padding-bottom: 0%; padding-top: 1vh; background-color: black; color: white; font-family: 'Times New Roman', Times, serif; font-size: large; text-align: center; flex: 1;"><b><i>CODE:</i></b></p>
                     <div style="width: 40px; background-color: black; padding-top: 5px; padding-right: 5px;"><button id ="toggle-button-to-show-info" aria-label="info-button" onclick="toggleSidebarOn()" style="padding: 1px; background-color: black; display: none; color: darkgray; border: 3px solid darkgray; border-radius: 50px; font-size: large; position: relative; left: 100%; transform: translateX(-100%); height: 30px; width: 30px;">i</button></div>
-                </div><code class="html" style="overflow-y: scroll; height: 50vh; tab-size: 4; padding-top: 0%; display: flex; padding-left: 0%">
+                </div><code class="html" style="overflow-y: scroll; height: 50vh; tab-size: 4; padding-top: 0%; display: flex; padding-left: 0%" onkeydown="scrollWithArrows(event)" tabindex="0">
                     <b><div id="line-numbers" style="padding-left: 5px; width: 50px; color: rgb(125, 125, 125); white-space: break-spaces; text-align: end;">1. 2. 3. 4. 5. 6. 7. 8. 9. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 20. 21. </div></b>
                     <div id="code" style="flex: 1; padding-left: 5px;">
                     </div>
@@ -56,7 +56,7 @@
                     <div style="width: 40px; background-color: black;"></div>
                     <p style="text-align: center; margin: 0%; padding-bottom: 0%; padding-top: 1vh; background-color: black; color: white; font-family: 'Times New Roman', Times, serif; font-size: large; text-align: center; flex: 1;"><b><i>RULES:</i></b></p>
                     <div style="width: 40px; background-color: black; padding-top: 5px; padding-right: 5px;"><button id ="toggle-button-to-show-info-start" aria-label="info-button" onclick="toggleSidebarOn()" style="padding: 1px; background-color: black; display: none; color: darkgray; border: 3px solid darkgray; border-radius: 50px; font-size: large; position: relative; left: 100%; transform: translateX(-100%); height: 30px; width: 30px;">i</button></div>
-                </div><code class="html" style="overflow-y: scroll; height: 50vh; tab-size: 4; padding-top: 0%; padding-left: 20px;">
+                </div><code class="html" style="overflow-y: scroll; height: 50vh; tab-size: 4; padding-top: 0%; padding-left: 20px;"  onkeydown="scrollWithArrows(event)" tabindex="0">
 1. Guessing the line number that defies an accessibility criterion correctly earns you 20 points, while an incorrect guess decreases Wi-Fi strength by one bar.
 2. Guessing the Principle the block defies correctly earns you 30 points, while an incorrect guess decreases Wi-Fi strength by one bar.
 3. Identifying the Criterion the block defies successfully will add 50 points to your score and refills Wi-Fi strength by one bar, with no change in Wi-Fi strength for an incorrect guess.
@@ -163,7 +163,7 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
             <div id="info-container" style="padding-right: 15px; padding-left: 15px; margin-bottom: 20px;">
                 <div style="display: flex; flex-wrap: nowrap;">
                     <div style="width: 40px; padding-top: 7px; padding-right: 20px;" class="dropdown">
-                        <button data-bs-toggle="dropdown" aria-expanded="false" type="button" style="height: 30px; width: 30px; align-self: center; border-radius: 100px; padding: 2px; margin-right: 10px; border: 3px solid grey; color: grey;" onmouseover="this.style.borderColor ='black'; this.style.color ='black'" onmouseout="this.style.borderColor='grey'; this.style.color ='grey'" onclick="accountOpen()">
+                        <button aria-label="account-button" data-bs-toggle="dropdown" aria-expanded="false" type="button" style="height: 30px; width: 30px; align-self: center; border-radius: 100px; padding: 2px; margin-right: 10px; border: 3px solid grey; color: grey;" onmouseover="this.style.borderColor ='black'; this.style.color ='black'" onmouseout="this.style.borderColor='grey'; this.style.color ='grey'" onclick="accountOpen()">
                             <span class="material-symbols-outlined" style="font-size: 20px; font-weight: bold;">person</span>
                         </button>
                         <ul class="dropdown-menu" style="padding: 10px;">

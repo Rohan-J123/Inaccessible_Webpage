@@ -238,3 +238,32 @@ function startButtonPressed(){
         sessionStorage.setItem('start-dont-show', 'true');
     }
 }
+
+document.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        var focusedElement = document.activeElement;
+        if (focusedElement.type === "checkbox") {
+            focusedElement.checked = !focusedElement.checked;
+        }
+    }
+});
+
+function scrollWithArrows(event) {
+    var keyCode = event.keyCode;
+    var scrollableElement = document.querySelector('.scrollable-content');
+    var scrollAmount = 50; 
+
+    if (keyCode === 37) { // Left arrow
+        scrollableElement.scrollLeft -= scrollAmount;
+        event.preventDefault();
+    } else if (keyCode === 38) { // Up arrow
+        scrollableElement.scrollTop -= scrollAmount;
+        event.preventDefault();
+    } else if (keyCode === 39) { // Right arrow
+        scrollableElement.scrollLeft += scrollAmount;
+        event.preventDefault();
+    } else if (keyCode === 40) { // Down arrow
+        scrollableElement.scrollTop += scrollAmount;
+        event.preventDefault();
+    }
+}
