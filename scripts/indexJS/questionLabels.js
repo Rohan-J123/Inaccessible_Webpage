@@ -140,23 +140,20 @@ for(var i = 0; i < chosenCriterionAll.length; i++) {
 
     result += 
 `<li>
-    <h5 style="text-align: center;">${cr}</h5>
-    <h5>Principle: ${pr}</h5>
+    <h4 style="text-align: center;" class="lobster-regular">${cr}</h4>
+    <h5 style="text-align: center; color: rgb(100, 100, 100)">${pr}</h5>
     <div style="display: flex; flex-wrap: wrap; font-size: medium;">
-        <div style="padding: 5px; flex: 1;">
-            <h5 style="text-align: center;">Incorrect:</h5>
-            <div>
-                ${incorrectText}
-            </div>
+        <div style="padding: 5px; flex: 1; width: 50%;">
+            <h5 style="text-align: center;" class="lobster-regular">Incorrect:</h5>
+            <div style="white-space: pre-line; background-color: black; color: white; height: 150px; border-radius: 10px; padding: 10px; overflow-y: scroll;">${incorrectText}</div>
         </div>
-        <div style="padding: 5px; flex: 1;">
-            <h5 style="text-align: center;" >Correct:</h5>
-            <div>
-                ${correctText}
-            </div>
+        <div style="padding: 5px; flex: 1; width: 50%;">
+            <h5 style="text-align: center;" class="lobster-regular">Correct:</h5>
+            <div style="white-space: pre-line; background-color: black; color: white; height: 150px; border-radius: 10px; padding: 10px; overflow-y: scroll;">${correctText}</div>
         </div>
     </div>
-</li>`;
+</li>
+<br>`;
 }
 
 document.getElementById('question-criteria-results').innerHTML = result;
@@ -267,3 +264,12 @@ function scrollWithArrows(event) {
         event.preventDefault();
     }
 }
+
+// var containersizes = [document.getElementById('line-container').clientHeight, document.getElementById('part1Result').clientHeight, document.getElementById('button-container-pour').clientHeight, document.getElementById('part2Result').clientHeight, document.getElementById('button-container-criteria').clientHeight, document.getElementById('part3Result').clientHeight];
+// var maxSize =  Math.max(...containersizes);
+// document.getElementById('line-container').style.height = maxSize.toString() + 'px';
+// document.getElementById('part1Result').style.height = maxSize.toString() + 'px';
+// document.getElementById('button-container-pour').style.height = maxSize.toString() + 'px';
+// document.getElementById('part2Result').style.height = maxSize.toString() + 'px';
+// document.getElementById('button-container-criteria').style.height = maxSize.toString() + 'px';
+// document.getElementById('part3Result').style.height = maxSize.toString() + 'px';

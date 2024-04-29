@@ -62,7 +62,10 @@ function onCorrectPour(){
     onScoreIncrease();
     remaining -= 1;
     document.getElementById('criterions-remaining-label-text').innerText = "Criteria Left: " + remaining;
+    document.getElementById('criteria-mainbar-label').innerText = document.getElementById('criterions-remaining-label-text').innerText;
 }
+
+document.getElementById('criteria-mainbar-label').innerText = document.getElementById('criterions-remaining-label-text').innerText;
 
 function onCorrectPourButQuestionComplete(){
     var inner = 
@@ -77,6 +80,7 @@ function onCorrectPourButQuestionComplete(){
     onScoreIncrease();
     remaining -= 1;
     document.getElementById('criterions-remaining-label-text').innerText = "Criteria Left: " + remaining;
+    document.getElementById('criteria-mainbar-label').innerText = document.getElementById('criterions-remaining-label-text').innerText;
 }
 
 function onWrongPour(){

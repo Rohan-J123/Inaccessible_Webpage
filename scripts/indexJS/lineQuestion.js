@@ -41,7 +41,7 @@ function onSubmitLineNumber(){
         for(let i = 0; i <= numberOfLinesInTheCriterion(onFindingCriterion(lineNumber)); i++){
             numberOfLinesToBeReplaced += ((parseInt(lineNumber) + i).toString() + '. ');
         }
-        document.getElementById('line-numbers').innerHTML = document.getElementById('line-numbers').innerHTML.replace(numberOfLinesToBeReplaced, `<span style="color: rgb(255, 54, 54);">` + numberOfLinesToBeReplaced + `</span>`)
+        document.getElementById('line-numbers').innerHTML = document.getElementById('line-numbers').innerHTML.replace(numberOfLinesToBeReplaced, `<span style="color: rgb(255, 54, 54);">` + numberOfLinesToBeReplaced.replaceAll('.', '*.') + `</span>`)
     } else {
         var inner = 
         `<h3 style="font-family: 'Times New Roman', Times, serif; text-align: center;">Sorry!</h3>
@@ -71,7 +71,6 @@ function reduceBar(){
         document.getElementById('wifiImageMain').src = "./Images/WifiOneBar.png";
     } else if (imageType.indexOf(oneBar) !== -1) {
         document.getElementById('wifiImageMain').src = "./Images/WifiNoBar.png";
-        console.log("Game Over!");
         onIncorrectQuestionComplete();
     }
 
@@ -88,7 +87,6 @@ function reduceBar(){
     } else if (imageType.indexOf(oneBar) !== -1) {
         document.getElementById('wifiImageSide').src = "./Images/WifiNoBar.png";
         document.getElementById('wifi-sidebar-label').innerText = "Game Over!";
-        console.log("Game Over!");
     }
     document.getElementById('wifi-mainbar-label').innerText = document.getElementById('wifi-sidebar-label').innerText;
 }

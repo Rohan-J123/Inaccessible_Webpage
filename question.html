@@ -28,6 +28,8 @@
     <script src="./scripts/indexJS/database.js"></script>
     <script src="./scripts/indexJS/firebase.js"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <title>Inaccessible WebPage Game</title>
 </head>
 <body>
@@ -56,7 +58,7 @@
                     <div style="width: 40px; background-color: black;"></div>
                     <p style="text-align: center; margin: 0%; padding-bottom: 0%; padding-top: 1vh; background-color: black; color: white; font-family: 'Times New Roman', Times, serif; font-size: large; text-align: center; flex: 1;"><b><i>RULES:</i></b></p>
                     <div style="width: 40px; background-color: black; padding-top: 5px; padding-right: 5px;"><button id ="toggle-button-to-show-info-start" aria-label="info-button" onclick="toggleSidebarOn()" style="padding: 1px; background-color: black; display: none; color: darkgray; border: 3px solid darkgray; border-radius: 50px; font-size: large; position: relative; left: 100%; transform: translateX(-100%); height: 30px; width: 30px;">i</button></div>
-                </div><code class="html" style="overflow-y: scroll; height: 50vh; tab-size: 4; padding-top: 0%; padding-left: 20px;"  onkeydown="scrollWithArrows(event)" tabindex="0">
+                </div><code class="html" style="overflow-y: scroll; height: 50vh; tab-size: 4; padding-top: 0%; padding-left: 20px;" onkeydown="scrollWithArrows(event)" tabindex="0">
 1. Guessing the line number that defies an accessibility criterion correctly earns you 20 points, while an incorrect guess decreases Wi-Fi strength by one bar.
 2. Guessing the Principle the block defies correctly earns you 30 points, while an incorrect guess decreases Wi-Fi strength by one bar.
 3. Identifying the Criterion the block defies successfully will add 50 points to your score and refills Wi-Fi strength by one bar, with no change in Wi-Fi strength for an incorrect guess.
@@ -119,7 +121,7 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                             </div>
                         </div>
                         <div class="carousel-item" style="border-style: solid; border-radius: 10px; border-color: rgb(223, 223, 223); padding: 10px;">
-                            <div id="button-container-pour" style="text-align: center;">
+                            <div id="button-container-criteria" style="text-align: center;">
                                 <h3 style="font-family: 'Times New Roman', Times, serif; text-align: center; padding: 0vw 1vw; font-size: x-large;" id="part-3-title">In Correspondence To WCAG Level A, Which Accessibility Criteria Do The Lines Defy?</h3>
                                 <button type="button" class="btn btn-outline-success" id="button1" onclick="onSubmitCriterionQuestion('button1')"></button>
                                 <button type="button" class="btn btn-outline-success" id="button2" onclick="onSubmitCriterionQuestion('button2')"></button>
@@ -152,9 +154,17 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
-                <div id="mainbar-images" style="padding-top: 10px; display: none;">
-                    <img src="./Images/WifiFullBar.png" alt="Wifi Full Bar Mainbar" style="position: relative; left: 50%; transform: translateX(-50%); height: 100px !important;" id="wifiImageMain">
-                    <h5 style="text-align: center; padding-top: 20px;" id="wifi-mainbar-label" class="lobster-regular">Four Bars</h5>
+                <div id="mainbar-images" style="padding-top: 10px; display: none; justify-content: center;">
+                    <div style="display: flex; width: 100%;">
+                        <div style="flex: 1; text-align: center;">   
+                            <img src="./Images/WifiFullBar.png" alt="Wifi Full Bar Mainbar" style="height: 100px !important;" id="wifiImageMain">
+                            <h5 style="text-align: center; padding-top: 20px;" id="wifi-mainbar-label" class="lobster-regular">Four Bars</h5>
+                        </div>
+                        <div style="flex: 1; text-align: center;">   
+                            <img src="./Images/criteria-image.png" alt="Criteria Image Mainbar" style="height: 100px !important;" id="criteriaImageMain">
+                            <h5 style="text-align: center; padding-top: 20px;" id="criteria-mainbar-label" class="lobster-regular">Criteria Left: </h5>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -223,7 +233,7 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                     <h1 class="modal-title fs-5" id="endResultsLabel">Question Criterion:</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="updateDB();"></button>
                 </div>
-                <div class="modal-body" style="display: flex; flex-wrap: wrap;">
+                <div class="modal-body" style="display: flex; flex-wrap: wrap; overflow: scroll; height: 70vh;">
                     <ol style="font-size: x-large; width: 100%;" id="question-criteria-results">
                     </ol>
                 </div>
@@ -247,30 +257,61 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
             <div class="modal-body">
                 <form id="login-info" style="padding: 20px;">
                     <div class="mb-3">
-                        <label for="login-name" class="form-label">Your Name: <span style="color: red;">*</span></label>
+                        <label for="login-name" class="form-label">Your Name: <span style="color: rgb(225, 1, 1);">*</span></label>
                         <input type="text" class="form-control" id="login-name" name="login-name" required>
                     </div>
                     <div class="mb-3">
-                        <label for="login-email" class="form-label">Email Address: <span style="color: red;">*</span></label>
+                        <label for="login-email" class="form-label">Email Address: <span style="color: rgb(225, 1, 1);">*</span></label>
                         <input type="email" class="form-control" id="login-email" name="login-email" placeholder="name@example.com" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="login-field" class="form-label">Field: <span style="color: red;">*</span></label>
-                        <select class="form-control" id="login-field" name="login-field" required>
-                            <option value="High School Student">High School Student</option>
-                            <option value="Undergraduate Student">Undergraduate Student</option>
-                            <option value="Graduate Student">Graduate Student</option>
-                            <option value="Working Professional">Working Professional</option>
-                        </select>
+                    <div style="display: flex;">
+                        <div class="mb-3" style="flex: 1; margin-right: 10px;">
+                            <label for="login-field" class="form-label">User Type: <span style="color: rgb(225, 0, 0);">*</span></label>
+                            <select class="form-control" id="login-field" name="login-field" required>
+                                <option value="High School Student">High School Student</option>
+                                <option value="Undergraduate Student">Undergraduate Student</option>
+                                <option value="Graduate Student">Graduate Student</option>
+                                <option value="Working Professional">Working Professional</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-3" style="flex: 1; margin-left: 10px;" id="sub-field-dropdowns">
+                            <label id="subfield-highschool-label" for="subfield-highschool" class="form-label" style="display: block;">School Course: <span style="color: rgb(225, 0, 0);">*</span></label>
+                            <input type="text" class="form-control" id="subfield-highschool" class="sub-field-dropdown" name="subfield-highschool" style="display: block;">
+                            
+                            <label id="subfield-undergrad-label" for="subfield-undergrad" class="form-label" style="display: none;">Undergraduate Course: <span style="color: rgb(225, 0, 0);">*</span></label>
+                            <input type="text" class="form-control" id="subfield-undergrad" class="sub-field-dropdown" name="subfield-undergrad" style="display: none;">
+                            
+                            <label id="subfield-grad-label" for="subfield-grad" class="form-label" style="display: none;">Graduate Course: <span style="color: rgb(225, 0, 0);">*</span></label>
+                            <input type="text" class="form-control" id="subfield-grad" class="sub-field-dropdown" name="subfield-grad" style="display: none;">
+                            
+                            <label id="subfield-worker-label" for="subfield-worker" class="form-label" style="display: none;">Profession: <span style="color: rgb(225, 0, 0);">*</span></label>
+                            <input type="text" class="form-control" id="subfield-worker" class="sub-field-dropdown" name="subfield-worker" style="display: none;">
+                            
+                            <label id="subfield-other-label" for="subfield-other" class="form-label" style="display: none;">Other: <span style="color: rgb(225, 0, 0);">*</span></label>
+                            <input type="text" class="form-control" id="subfield-other" class="sub-field-dropdown" name="subfield-other" style="display: none;">
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="login-accessibilty-knowledge" class="form-label">Proficiency in Accessibility: <span style="color: red;">*</span></label>
-                        <select class="form-control" id="login-accessibilty-knowledge" name="login-accessibilty-knowledge" required>
-                            <option value="Novice">Novice</option>
-                            <option value="Competent">Competent</option>
-                            <option value="Proficient">Proficient</option>
-                            <option value="Expert">Expert</option>
-                        </select>
+                    <div style="display: flex;">
+                        <div class="mb-3" style="flex: 1; margin-right: 10px;">
+                            <label for="login-accessibilty-knowledge" class="form-label">Proficiency in Accessibility: <span style="color: rgb(225, 1, 1);">*</span></label>
+                            <select class="form-control" id="login-accessibilty-knowledge" name="login-accessibilty-knowledge" required>
+                                <option value="Novice">Novice</option>
+                                <option value="Competent">Competent</option>
+                                <option value="Proficient">Proficient</option>
+                                <option value="Expert">Expert</option>
+                            </select>
+                        </div>
+                        <div class="mb-3" style="flex: 1; margin-left: 10px;">
+                            <label for="login-area" class="form-label">Area: <span style="color: rgb(225, 1, 1);">*</span></label>
+                            <select class="form-control" id="login-area" name="login-area" required>
+                                <option value="Africa">Africa</option>
+                                <option value="America">America</option>
+                                <option value="Asia">Asia</option>
+                                <option value="Europe">Europe</option>
+                                
+                            </select>
+                        </div>
                     </div>
                     <button type="button submit" class="btn btn-outline-primary" style="margin-top: 20px; width: 100px; height: 40px; font-size: large;">Submit</button>
                 </form>
