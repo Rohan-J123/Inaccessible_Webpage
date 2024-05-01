@@ -2,15 +2,19 @@ if(parseInt(sessionStorage.getItem('question-number')) == 10){
     document.getElementById('question-final-modal').innerHTML = 
     `<div class="modal-header">
         <h1 class="modal-title fs-5" id="endResultsLabel">Question Criterion:</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="playAgainUpdateDB()"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="updateDB();"></button>
     </div>
-    <div class="modal-body" style="display: flex; flex-wrap: wrap;">
+    <div class="modal-body" style="display: flex; flex-wrap: wrap; overflow: scroll; height: 70vh;">
         <ol style="font-size: x-large; width: 100%;" id="question-criteria-results">
         </ol>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-primary" onclick="playAgainUpdateDB()">Play Again</button>
     </div>`;
+}
+
+if(parseInt(sessionStorage.getItem('question-number')) > 10){
+    window.location.href = './index.html';
 }
 
 var userId = sessionStorage.getItem('user-id');
@@ -26,6 +30,11 @@ function playAgainUpdateDB(){
     var score = sessionStorage.getItem('score');
     var timeTaken = document.getElementById('clock-mini').textContent;
     var livesRemaining = document.getElementById('wifi-sidebar-label').innerText.split(' ')[0];
+    var hintedCriteriaList = JSON.stringify(hintedCriteria);
+    var correctlyAnswered = true;
+    if(document.getElementById('wifi-sidebar-label').innerText == "Game Over!"){
+        correctlyAnswered = false;
+    }
     
     db.collection("users").doc(userId).get().then(function(doc) {
         if (doc.exists) {
@@ -35,6 +44,8 @@ function playAgainUpdateDB(){
             var updatedScore = docData.score || [];
             var updatedTimeTaken = docData.timeTaken || [];
             var updatedLivesRemaining = docData.livesRemaining || [];
+            var updatedhintedCriteriaList = docData.hintedCriteriaList || [];
+            var updatedCorrectlyAnswered = docData.correctlyAnswered || [];
 
             updatedCriterion.push(chosenCriterion);
             updatedUnpickedCriterion.push(unpickedCriterion);
@@ -42,6 +53,8 @@ function playAgainUpdateDB(){
             updatedScore.push(score);
             updatedTimeTaken.push(timeTaken);
             updatedLivesRemaining.push(livesRemaining);
+            updatedhintedCriteriaList.push(hintedCriteriaList);
+            updatedCorrectlyAnswered.push(correctlyAnswered);
 
             db.collection("users").doc(userId).set({
                 questionCriterion: updatedCriterion,
@@ -50,7 +63,9 @@ function playAgainUpdateDB(){
                 timeTaken: updatedTimeTaken,
                 finalScore: sessionStorage.getItem('score'),
                 totalTimeTaken: document.getElementById('clock').textContent,
-                livesRemaining: updatedLivesRemaining
+                livesRemaining: updatedLivesRemaining,
+                hintedCriteriaList: updatedhintedCriteriaList,
+                correctlyAnswered: updatedCorrectlyAnswered
             }, { merge: true })
             .then(function() {
                 console.log("Document successfully updated!");
@@ -175,11 +190,18 @@ function updateDB() {
         return;
     }
 
+    console.log(hintedCriteria);
+
     var chosenCriterion = sessionStorage.getItem('chosenCriterionAll');
     var unpickedCriterion = sessionStorage.getItem('chosenCriterion');
     var score = sessionStorage.getItem('score');
     var timeTaken = document.getElementById('clock-mini').textContent;
     var livesRemaining = document.getElementById('wifi-sidebar-label').innerText.split(' ')[0];
+    var hintedCriteriaList = JSON.stringify(hintedCriteria);
+    var correctlyAnswered = true;
+    if(document.getElementById('wifi-sidebar-label').innerText == "Game Over!"){
+        correctlyAnswered = false;
+    }
     
     db.collection("users").doc(userId).get().then(function(doc) {
         if (doc.exists) {
@@ -189,6 +211,8 @@ function updateDB() {
             var updatedScore = docData.score || [];
             var updatedTimeTaken = docData.timeTaken || [];
             var updatedLivesRemaining = docData.livesRemaining || [];
+            var updatedhintedCriteriaList = docData.hintedCriteriaList || [];
+            var updatedCorrectlyAnswered = docData.correctlyAnswered || [];
 
             updatedCriterion.push(chosenCriterion);
             updatedUnpickedCriterion.push(unpickedCriterion);
@@ -196,13 +220,17 @@ function updateDB() {
             updatedScore.push(score);
             updatedTimeTaken.push(timeTaken);
             updatedLivesRemaining.push(livesRemaining);
+            updatedhintedCriteriaList.push(hintedCriteriaList);
+            updatedCorrectlyAnswered.push(correctlyAnswered);
 
             db.collection("users").doc(userId).set({
                 questionCriterion: updatedCriterion,
                 unpickedCriterion: updatedUnpickedCriterion,
                 score: updatedScore,
                 timeTaken: updatedTimeTaken,
-                livesRemaining: updatedLivesRemaining
+                livesRemaining: updatedLivesRemaining,
+                hintedCriteriaList: updatedhintedCriteriaList,
+                correctlyAnswered: updatedCorrectlyAnswered
             }, { merge: true })
             .then(function() {
                 console.log("Document successfully updated!");
@@ -264,12 +292,3 @@ function scrollWithArrows(event) {
         event.preventDefault();
     }
 }
-
-// var containersizes = [document.getElementById('line-container').clientHeight, document.getElementById('part1Result').clientHeight, document.getElementById('button-container-pour').clientHeight, document.getElementById('part2Result').clientHeight, document.getElementById('button-container-criteria').clientHeight, document.getElementById('part3Result').clientHeight];
-// var maxSize =  Math.max(...containersizes);
-// document.getElementById('line-container').style.height = maxSize.toString() + 'px';
-// document.getElementById('part1Result').style.height = maxSize.toString() + 'px';
-// document.getElementById('button-container-pour').style.height = maxSize.toString() + 'px';
-// document.getElementById('part2Result').style.height = maxSize.toString() + 'px';
-// document.getElementById('button-container-criteria').style.height = maxSize.toString() + 'px';
-// document.getElementById('part3Result').style.height = maxSize.toString() + 'px';

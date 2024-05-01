@@ -82,6 +82,7 @@ function setInitialConditions(){
         mainbar.style.transition = '0s';
         mainbarImages.style.transition = '0s';
         questions.style.transition = '0s';
+        questions.style.marginBottom = '30px';
     }else{
         sidebar.style.transition = '1s';
         mainbar.style.transition = 'margin-right 1s';
