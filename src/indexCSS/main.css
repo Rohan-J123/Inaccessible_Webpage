@@ -78,3 +78,9 @@
     border-width: 2px;
     border-color: black;
 }
+
+#instructions-block-in-sidebar{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1s ease-out;
+}

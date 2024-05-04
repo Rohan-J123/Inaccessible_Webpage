@@ -58,17 +58,19 @@
             </div>
             <div id="main-start-area" style="display: block;"><pre style="border-radius: 10px; margin-bottom: 10px;"><div style="display: flex; flex-wrap: nowrap; height: 40px;">
                     <div style="width: 40px; background-color: black;"></div>
-                    <p style="text-align: center; margin: 0%; padding-bottom: 0%; padding-top: 1vh; background-color: black; color: white; font-family: 'Times New Roman', Times, serif; font-size: large; text-align: center; flex: 1;"><b><i>RULES:</i></b></p>
+                    <p style="text-align: center; margin: 0%; padding-bottom: 0%; padding-top: 1vh; background-color: black; color: white; font-family: 'Times New Roman', Times, serif; font-size: large; text-align: center; flex: 1;"><b><i>ABOUT:</i></b></p>
                     <div style="width: 40px; background-color: black; padding-top: 5px; padding-right: 5px;"><button id ="toggle-button-to-show-info-start" aria-label="info-button" onclick="toggleSidebarOn()" style="padding: 1px; background-color: black; display: none; color: darkgray; border: 3px solid darkgray; border-radius: 50px; font-size: large; position: relative; left: 100%; transform: translateX(-100%); height: 30px; width: 30px;">i</button></div>
                 </div><code class="html" style="overflow-y: scroll; height: 50vh; tab-size: 4; padding-top: 0%; padding-left: 20px;" onkeydown="scrollWithArrows(event)" tabindex="0">
-1. Guessing the line number that defies an accessibility criterion correctly earns you 20 points, while an incorrect guess decreases Wi-Fi strength by one bar.
+This game serves to raise awareness on Web Content Accessibility Guidelines (WCAG) developed by the Web Accessibility Initiative (WAI) of the World Wide Web Consortium (W3C). 
+The given program, although syntactically correct, would prove to be an accessiblity issue to some groups. Can you guess which Principles and Criteria, in accordance to WCAG, does this program violate?
+
+1. Guessing the line number of the code block that defies an accessibility criterion correctly earns you 20 points, while an incorrect guess decreases Wi-Fi strength by one bar.
 2. Guessing the Principle the block defies correctly earns you 30 points, while an incorrect guess decreases Wi-Fi strength by one bar.
 3. Identifying the Criterion the block defies successfully will add 50 points to your score and refills Wi-Fi strength by one bar, with no change in Wi-Fi strength for an incorrect guess.
 4. The criterion may be guessed until the correct one is determined, or you may opt to skip the question.
 5. Hints appear as comments in the code, and next hint can be taken only after the previous hint is utilized as answer.
 
 Find out all accessibility issues in the given code before your Wi-Fi runs out!
-
 (The WCAG Criterion utilized within the game can be accessed through the following link: <a href="https://www.w3.org/TR/WCAG21/" target="_blank">WCAG 2.1</a>)
 
 <input type="checkbox" id="hide-starting-instructions"> <label for="hide-starting-instructions">Don't show these instructions again. </label> 
@@ -171,7 +173,7 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
             </div>
         </div>
 
-		<div id="sidebar" style="width: 600px; overflow: hidden; transition: 1s; background-color: rgb(240, 240, 240); border-radius: 10px;">
+		<div id="sidebar" style="width: 600px; overflow: hidden; transition: 1s; background-color: rgb(240, 240, 240); border-radius: 10px; display: flex; flex-direction: column;">
             <div id="info-container" style="padding-right: 15px; padding-left: 15px; margin-bottom: 20px;">
                 <div style="display: flex; flex-wrap: nowrap;">
                     <div style="width: 40px; padding-top: 7px; padding-right: 20px;" class="dropdown">
@@ -190,8 +192,18 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                     <div style="font-size: x-large; text-align: center; flex: 1; padding-top: 5px; color: gray;" class="lobster-regular" id="clock-mini">Question Timer :: 00:00:00</div>
                     <div style="width: 40px; padding-top: 7px; padding-right: 20px;"><button type="button" class="btn-close" aria-label="Close-Sidebar" id ="toggle-button-to-hide-info" onclick="toggleSidebarOff()" style="display: block; position: relative; left: 100%; transform: translateX(-50%); color: grey; border: 3px solid #000; border-radius: 50px; padding: 5px; font-size: small;"></button></div>
                 </div>
-                <h2 style="margin-top: 0%; text-align: center; text-align: center;">Instructions:</h2>
-                <p style="font-size: large; text-align: justify; font-family: 'Times New Roman', Times, serif; line-height: normal;">This game serves to raise awareness on Web Content Accessibility Guidelines (WCAG) developed by the Web Accessibility Initiative (WAI) of the World Wide Web Consortium (W3C). The given program, although syntactically correct, would prove to be an accessiblity issue to some groups. Can you guess which Principles and Criteria, in accordance to WCAG, does this program violate?</p>
+                <div id="instructions-block-in-sidebar">
+                    <h2 style="margin-top: 0%; text-align: center; text-align: center;">Instructions:</h2>
+                    <p style="font-size: large; text-align: justify; font-family: 'Times New Roman', Times, serif; line-height: normal; white-space: pre-line;">
+1. Correct Line Number guess: +20 points, incorrect: -1 Wi-Fi bar.
+2. Correct Principle guess: +30 points, incorrect: -1 Wi-Fi bar.
+3. Identifying Criterion: +50 points, refill Wi-Fi bar; incorrect: no change.
+4. Guess Criterion until correct answer is determined or skip.
+5. Hints appear as comments. Next hint can be taken after previous is utilized.
+
+Find out all accessibility issues in the given code before your Wi-Fi runs out!
+                    </p>
+                </div>
 			</div>
             <div style="display: flex; flex-wrap: wrap; padding-bottom: 10px;">
                 <div style="flex: 4; text-align: center;">
@@ -218,9 +230,9 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                 </div>
             </div>
             <div style="background-color: lightgray; margin: 15px; height: 1.5px;"></div>
-            <div>
+            <div style="flex: 1; display: flex; flex-direction: column;">
                 <h4 style="text-align: center;">Current Block Selection:</h4>
-                <div id="sidebar-line" style="font-style: italic; text-align: left; padding: 10px 2vw; overflow: scroll; height: 160px; font-size: large; text-wrap: nowrap;"></div>
+                <div id="sidebar-line" style="font-style: italic; text-align: left; padding: 10px 2vw; overflow: scroll; height: 140px; font-size: large; text-wrap: nowrap; flex: 1; margin-bottom: 10px;"></div>
             </div>
 		</div>
 	</div>

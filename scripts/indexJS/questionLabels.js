@@ -255,6 +255,14 @@ if(sessionStorage.getItem('start-dont-show') == 'true'){
 function startButtonPressed(){
     document.getElementById('main-code-area').style.display="block";
     document.getElementById('main-start-area').style.display="none";
+
+    var element = document.getElementById("instructions-block-in-sidebar");
+    if (element.style.maxHeight) {
+        element.style.maxHeight = null;
+    } else {
+        element.style.maxHeight = element.scrollHeight + "px";
+    }
+
     startStop();
     document.getElementById('submit-line-number').style.pointerEvents="auto";
     document.getElementById('game-hint-button').style.pointerEvents="auto";
