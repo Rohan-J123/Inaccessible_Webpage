@@ -84,3 +84,9 @@
     overflow: hidden;
     transition: max-height 1s ease-out;
 }
+
+.custom-tooltip {
+    --bs-tooltip-bg: #0d6dfd;
+    --bs-tooltip-color: white;
+    font-size: large;
+}

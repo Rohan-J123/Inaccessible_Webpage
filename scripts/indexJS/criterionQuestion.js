@@ -27,7 +27,7 @@ function onCorrectCriterion(){
     `<h3 style="font-family: 'Times New Roman', Times, serif; text-align: center;">Congratulations!</h3>
     <div  style="font-size: large; text-align: center;">Correct Answer</div>
     <div style="display: flex; font-size: x-large;">
-        <button id="submit-line-number" type="button" class="btn btn-outline-warning" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="document.getElementById('goToPart1').click(); document.getElementById('sidebar-line').innerText = '';">BACK</button>
+        <button id="submit-line-number" type="button" class="btn btn-outline-warning" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="document.getElementById('goToPart1').click(); document.getElementById('sidebar-line').innerText = ''; if(hintedCriteria.includes(onFindingCriterion(sessionStorage.getItem('currentLineNumber')))){document.getElementById('game-hint-button').disabled = false;}">BACK</button>
     </div>`;
     document.getElementById('part3Result').innerHTML = inner;
     increaseBar();
@@ -54,7 +54,7 @@ function onWrongCriterion(){
     <div  style="font-size: large; text-align: center;">Wrong Answer</div>
     <div style="display: flex; font-size: x-large;">
         <button type="button" class="btn btn-outline-danger" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="document.getElementById('goToPart3').click()" id="submit-line-number">BACK</button>
-        <button type="button" class="btn btn-outline-primary" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="document.getElementById('goToPart1').click(); document.getElementById('sidebar-line').innerText = '';">SKIP</button>
+        <button type="button" class="btn btn-outline-primary" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="document.getElementById('goToPart1').click(); document.getElementById('sidebar-line').innerText = ''; if(hintedCriteria.includes(onFindingCriterion(sessionStorage.getItem('currentLineNumber')))){document.getElementById('game-hint-button').disabled = false;}">SKIP</button>
     </div>`;
     document.getElementById('part3Result').innerHTML = inner;
 }

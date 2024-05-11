@@ -264,8 +264,8 @@ function startButtonPressed(){
     }
 
     startStop();
-    document.getElementById('submit-line-number').style.pointerEvents="auto";
-    document.getElementById('game-hint-button').style.pointerEvents="auto";
+    document.getElementById('submit-line-number').disabled = false;
+    document.getElementById('game-hint-button').disabled = false;
 
     if (document.getElementById("hide-starting-instructions").checked) {
         sessionStorage.setItem('start-dont-show', 'true');

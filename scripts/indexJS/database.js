@@ -61,23 +61,23 @@ data[3][3] =
         <h2>Article Title</h2>
     </article>`;
 
-// Success Criteria 1.3.3 Don't rely solely on sensory characteristics
+// Success Criteria 1.3.3 Don't solely rely on sensory characteristics of the content such as shape, color, size, visual location, orientation, or sound.
 data[4][0] = 
-`<div style="background-color: red; width: 100px; height: 100px;"></div>`;
+`<div id="wrong-answer" style="background-color: red; width: 100px; height: 100px;"></div>`;
 data[4][1] = 
-`<img src="image.jpg" alt="Visual representation of data">`;
+`<img src="/src/images/cross.jpg" alt="Image of a cross to show wrong answer.">`;
 data[4][3] = 
-`<div style="background-color: red; width: 100px; height: 100px;"></div>                <!-- Don't solely rely on sensory characteristics of the content. -->`;
+`<div id="div-to-show-wrong-answer" style="background-color: red; width: 100px; height: 100px;"></div>                <!-- Don't solely rely on sensory characteristics of the content such as shape, color, size, visual location, orientation, or sound. -->`;
 
 // Success Criteria 1.4.1 Ensure information conveyed by color is also conveyed without color
 data[5][0] = 
-`<h1 style="color: red;">Important Heading</h1>
+`<h2 style="color: red;">Important Heading</h2>
     <p>This is some important information.</p>`;
 data[5][1] = 
-`<h1 style="color: red;"><span style="border: 2px solid red;">Important Heading</span></h1>
+`<h2 style="color: red;"><span style="border: 2px solid red;">Important Heading</span></h2>
     <p>This is some important information.</p>`;
 data[5][3] = 
-`<h1 style="color: red;">Important Heading</h1>             <!-- Information conveyed by color should also be conveyed without color. -->
+`<h2 style="color: red;">Important Heading</h2>             <!-- Information conveyed by color should also be conveyed without color. -->
     <p>This is some important information.</p>`;
 
 // Success Criteria 1.4.2 Provide controls to pause, stop, or adjust the volume of audio content
@@ -299,20 +299,20 @@ data[24][0] =
 `<label for="userInput">Enter something:</label>
     <input type="text" id="userInput">
     <br>
-    <label for="userInput">Enter something:</label>
-    <input type="text" id="userInput">`;
+    <label for="userInputAgain">Enter something:</label>
+    <input type="text" id="userInputAgain">`;
 data[24][1] = 
 `<label for="userInput">Enter something:</label>
     <input type="text" id="userInput">
     <br>
-    <label for="userInput">Enter something:</label>
-    <input type="text" id="userInput" onblur="storePreviousEntry(this)" onfocus="autopopulate(this)">`;
+    <label for="userInputAgain">Enter something:</label>
+    <input type="text" id="userInputAgain" onblur="storePreviousEntry(this)" onfocus="autopopulate(this)">`;
 data[24][3] = 
 `<label for="userInput">Enter something:</label>               <!-- If same question is repeated, make sure that input is autopopulated. -->
     <input type="text" id="userInput">
     <br>
-    <label for="userInput">Enter something:</label>
-    <input type="text" id="userInput">`;
+    <label for="userInputAgain">Enter something:</label>
+    <input type="text" id="userInputAgain">`;
 
 // Success Criteria 4.1.2 User interface components must have accessible names and roles
 data[25][0] = 

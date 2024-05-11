@@ -71,14 +71,18 @@ The given program, although syntactically correct, would prove to be an accessib
 5. Hints appear as comments in the code, and next hint can be taken only after the previous hint is utilized as answer.
 
 Find out all accessibility issues in the given code before your Wi-Fi runs out!
-(The WCAG Criterion utilized within the game can be accessed through the following link: <a href="https://www.w3.org/TR/WCAG21/" target="_blank">WCAG 2.1</a>)
+(The WCAG Criterion utilized within the game can be accessed through the following link: <a href="https://www.w3.org/TR/WCAG21/" target="_blank">WCAG 2.1</a> or using the button below.)
 
-<input type="checkbox" id="hide-starting-instructions"> <label for="hide-starting-instructions">Don't show these instructions again. </label> 
+<input type="checkbox" id="hide-starting-instructions"> <label for="hide-starting-instructions">Don't show these instructions again. </label>
 
 <button type="button" class="btn btn-primary" style="position: relative; left: 50%; transform: translateX(-50%);" onclick="startButtonPressed();">START</button>
             </code></pre>
             </div>
-            <button id="game-hint-button" type="button" class="btn btn-light" onclick="onHintClicked();" style="position: relative; left: 50%; transform: translateX(-50%); margin-bottom: 10px; font-size: x-large; border-radius: 15px; padding: 0px 10px; pointer-events: none;">HINT</button>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; margin: 10px;">
+                <button id="game-hint-button" type="button" class="btn btn-outline-primary" onclick="onHintClicked();" style="font-size: x-large; width: 150px; border-radius: 50px; margin: 0px 100px; height: 40px; justify-content: center; align-items: center; display: flex;" disabled>HINT</button>
+                <!-- <button type="button" data-bs-title="This button opens WCAG 2.1 website in a new tab." data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="btn btn-outline-primary" onclick='window.open(`https://www.w3.org/TR/WCAG21/`, `_blank`);' style="font-size: x-large; width: 150px; border-radius: 50px; margin-left: 30px; height: 40px; justify-content: center; align-items: center; display: flex;"><u>WCAG 2.1</u></button> -->
+                <button type="button" class="btn btn-outline-primary" onclick='window.open(`https://www.w3.org/TR/WCAG21/`, `_blank`);' style="font-size: x-large; width: 150px; border-radius: 50px; margin: 0px 100px; height: 40px; justify-content: center; align-items: center; display: flex;"><u>WCAG 2.1</u></button>
+            </div>
             <div style="display: flex; flex-wrap: wrap;">
                 <div id="carouselExampleIndicators" class="carousel slide" style="transition: 1s; width: 100%;">
                     <div class="carousel-indicators" style="display: none;">
@@ -98,7 +102,7 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                                         <label for="lineInput" style="white-space: nowrap; width: 85px; font-size: 20px; color: rgba(0, 0, 0, 0.7);">Line Number:</label>
                                         <input type="number" id="lineInput" style="text-align: center; width: 50%;">
                                     </div>
-                                    <button id="submit-line-number" type="button" class="btn btn-outline-primary" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; pointer-events: none;" onclick="onSubmitLineNumber()">SUBMIT</button>
+                                    <button id="submit-line-number" type="button" class="btn btn-outline-primary" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px;" onclick="onSubmitLineNumber()" disabled>SUBMIT</button>
                                 </div> 
                             </div>
                         </div>

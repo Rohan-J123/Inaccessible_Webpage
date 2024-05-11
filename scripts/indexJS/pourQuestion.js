@@ -55,7 +55,7 @@ function onCorrectPour(){
     <div  style="font-size: large; text-align: center;">Bonus questions have no penalties so feel free to choose the option that feels right. Correct answer refills the Wifi strength and also fetches you 50 extra points.</div>
     <div style="display: flex; font-size: x-large;">
         <button type="button" class="btn btn-outline-warning" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="document.getElementById('goToPart3').click();">BONUS</button>
-        <button type="button" class="btn btn-outline-primary" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="document.getElementById('goToPart1').click(); document.getElementById('sidebar-line').innerText = '';">SKIP</button>
+        <button type="button" class="btn btn-outline-primary" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="document.getElementById('goToPart1').click(); document.getElementById('sidebar-line').innerText = ''; if(hintedCriteria.includes(onFindingCriterion(sessionStorage.getItem('currentLineNumber')))){document.getElementById('game-hint-button').disabled = false;}">SKIP</button>
     </div>`;
     document.getElementById('part2Result').innerHTML = inner;
     sessionStorage.setItem('score', parseInt(sessionStorage.getItem('score')) + 30);
