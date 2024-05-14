@@ -38,10 +38,10 @@
 	<div style="display: flex; flex-wrap: wrap;">
         <div style="display: flex; flex-wrap: nowrap;">
             <img src="./Images/web-dev.png" alt="Header Web Dev Icon" style="height: 72.5px; padding-left: 1vw;">
-	        <div class="days-one-regular" style="font-size: calc(10px + 1.25vw); text-align: left; padding-top: 2vh; padding-bottom: 2vh; padding-left: 2vw; padding-right: 2vw; transform: scaleY(1.5); text-align: center;"><b>&lt;h1&gt;INACCESSIBLE WEBPAGE GAME&lt;/h1&gt;</b></div>
+	        <div class="days-one-regular" style="font-size: calc(10px + 1.25vw); text-align: left; padding-top: 2vh; padding-bottom: 2vh; padding-left: 2vw; padding-right: 1vw; transform: scaleY(1.5); text-align: center;"><b>&lt;h1&gt;A11Y BUG HUNTER&lt;/h1&gt;</b></div>
         </div>
-        <div class="wallpoet-regular" style="flex-grow: 1; font-size: calc(25px + 1.5vw); white-space: nowrap; text-align: left; padding-left: 15px;" id="clock">00:00:00</div>
-        <div class="wallpoet-regular" style="flex-grow: 1; font-size: calc(25px + 1.5vw); white-space: nowrap; text-align: right; padding-right: 15px;" id="score-text">Score: 0</div>
+        <div class="wallpoet-regular" style="flex-grow: 1; font-size: calc(25px + 1.5vw); white-space: nowrap; text-align: right; padding-right: 50px;" id="clock">00:00:00</div>
+        <div class="wallpoet-regular" style="font-size: calc(25px + 1.5vw); white-space: nowrap; text-align: right; padding-right: 15px;" id="score-text">Score: 0</div>
     </div>
 	
 	<div class="content" style="display: flex; flex-wrap: wrap;">
@@ -58,11 +58,10 @@
             </div>
             <div id="main-start-area" style="display: block;"><pre style="border-radius: 10px; margin-bottom: 10px;"><div style="display: flex; flex-wrap: nowrap; height: 40px;">
                     <div style="width: 40px; background-color: black;"></div>
-                    <p style="text-align: center; margin: 0%; padding-bottom: 0%; padding-top: 1vh; background-color: black; color: white; font-family: 'Times New Roman', Times, serif; font-size: large; text-align: center; flex: 1;"><b><i>ABOUT:</i></b></p>
+                    <p style="text-align: center; margin: 0%; padding-bottom: 0%; padding-top: 1vh; background-color: black; color: white; font-family: 'Times New Roman', Times, serif; font-size: large; text-align: center; flex: 1;"><b><i>ABOUT (Start Button at the end):</i></b></p>
                     <div style="width: 40px; background-color: black; padding-top: 5px; padding-right: 5px;"><button id ="toggle-button-to-show-info-start" aria-label="info-button" onclick="toggleSidebarOn()" style="padding: 1px; background-color: black; display: none; color: darkgray; border: 3px solid darkgray; border-radius: 50px; font-size: large; position: relative; left: 100%; transform: translateX(-100%); height: 30px; width: 30px;">i</button></div>
-                </div><code class="html" style="overflow-y: scroll; height: 50vh; tab-size: 4; padding-top: 0%; padding-left: 20px;" onkeydown="scrollWithArrows(event)" tabindex="0">
-This game serves to raise awareness on Web Content Accessibility Guidelines (WCAG) developed by the Web Accessibility Initiative (WAI) of the World Wide Web Consortium (W3C). 
-The given program, although syntactically correct, would prove to be an accessiblity issue to some groups. Can you guess which Principles and Criteria, in accordance to WCAG, does this program violate?
+                </div><code class="html" style="overflow-y: scroll; height: 50vh; tab-size: 4; padding-top: 0%; padding-left: 20px; text-wrap: wrap; text-align: justify;" onkeydown="scrollWithArrows(event)" tabindex="0">
+This game serves to raise awareness on Web Content Accessibility Guidelines (WCAG) developed by the Web Accessibility Initiative (WAI) of the World Wide Web Consortium (W3C). The given program, although syntactically correct, would prove to be an accessiblity issue to some groups. Can you guess which Principles and Criteria, in accordance to WCAG, does this program violate?
 
 1. Guessing the line number of the code block that defies an accessibility criterion correctly earns you 20 points, while an incorrect guess decreases Wi-Fi strength by one bar.
 2. Guessing the Principle the block defies correctly earns you 30 points, while an incorrect guess decreases Wi-Fi strength by one bar.
@@ -170,7 +169,7 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                         </div>
                         <div style="flex: 1; text-align: center;">   
                             <img src="./Images/criteria-image.png" alt="Criteria Image Mainbar" style="height: 100px !important;" id="criteriaImageMain">
-                            <h5 style="text-align: center; padding-top: 20px;" id="criteria-mainbar-label" class="lobster-regular">Criteria Left: </h5>
+                            <h5 style="text-align: center; padding-top: 20px;" id="criteria-mainbar-label" class="lobster-regular">Bugs To Hunt: </h5>
                         </div>
                     </div>
                 </div>
@@ -213,7 +212,7 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                 <div style="flex: 4; text-align: center;">
                     <div style="display: flex; flex-wrap: wrap;">
                         <h5 class="lobster-regular" id="question-label-text" style="text-align: left; flex: 1; padding-left: 2vw;">Question: 1</h5>
-                        <h5 class="lobster-regular" id="criterions-remaining-label-text" style="text-align: right; flex: 1; padding-right: 2vw;">Criteria Left: 1</h5>
+                        <h5 class="lobster-regular" id="criterions-remaining-label-text" style="text-align: right; flex: 1; padding-right: 2vw;">Bugs To Hunt: 1</h5>
                     </div>
                     <div id="question-label-container">
                         <button type="button" class="btn btn-outline-primary question-label" id="question-label-1" tabindex="-1">1</button>
@@ -270,70 +269,88 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-3 lobster-regular" id="loginLabel" style="width: 100%; text-align: center;">User Information</h1>
+                <h1 class="modal-title fs-3 lobster-regular" id="loginLabel" style="width: 100%; text-align: center;">Player Entry</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="display: none;" id="login-close"></button>
             </div>
             <div class="modal-body">
-                <form id="login-info" style="padding: 20px;">
-                    <div class="mb-3">
-                        <label for="login-name" class="form-label">Your Name: <span style="color: rgb(225, 1, 1);">*</span></label>
-                        <input type="text" class="form-control" id="login-name" name="login-name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="login-email" class="form-label">Email Address: <span style="color: rgb(225, 1, 1);">*</span></label>
-                        <input type="email" class="form-control" id="login-email" name="login-email" placeholder="name@example.com" required>
-                    </div>
-                    <div style="display: flex;">
-                        <div class="mb-3" style="flex: 1; margin-right: 10px;">
-                            <label for="login-field" class="form-label">User Type: <span style="color: rgb(225, 0, 0);">*</span></label>
-                            <select class="form-control" id="login-field" name="login-field" required>
-                                <option value="High School Student">High School Student</option>
-                                <option value="Undergraduate Student">Undergraduate Student</option>
-                                <option value="Graduate Student">Graduate Student</option>
-                                <option value="Working Professional">Working Professional</option>
-                                <option value="Other">Other</option>
-                            </select>
+                <div id="First-Modal" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <form id="login-info" style="padding: 20px;">
+                                <div class="mb-3">
+                                    <label for="login-name" class="form-label">Your Name: <span style="color: rgb(225, 1, 1);">*</span></label>
+                                    <input type="text" class="form-control" id="login-name" name="login-name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="login-email" class="form-label">Email Address: <span style="color: rgb(225, 1, 1);">*</span></label>
+                                    <input type="email" class="form-control" id="login-email" name="login-email" required>
+                                </div>
+                                <div style="display: flex;">
+                                    <div class="mb-3" style="flex: 1; margin-right: 10px;">
+                                        <label for="login-field" class="form-label">User Type: <span style="color: rgb(225, 0, 0);">*</span></label>
+                                        <select class="form-control" id="login-field" name="login-field" required>
+                                            <option value="High School Student">High School Student</option>
+                                            <option value="Undergraduate Student">Undergraduate Student</option>
+                                            <option value="Graduate Student">Graduate Student</option>
+                                            <option value="Working Professional">Working Professional</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3" style="flex: 1; margin-left: 10px;" id="sub-field-dropdowns">
+                                        <label id="subfield-highschool-label" for="subfield-highschool" class="form-label" style="display: block;">School Course: <span style="color: rgb(225, 0, 0);">*</span></label>
+                                        <input type="text" class="form-control" id="subfield-highschool" class="sub-field-dropdown" name="subfield-highschool" style="display: block;">
+                                        
+                                        <label id="subfield-undergrad-label" for="subfield-undergrad" class="form-label" style="display: none;">Undergraduate Course: <span style="color: rgb(225, 0, 0);">*</span></label>
+                                        <input type="text" class="form-control" id="subfield-undergrad" class="sub-field-dropdown" name="subfield-undergrad" style="display: none;">
+                                        
+                                        <label id="subfield-grad-label" for="subfield-grad" class="form-label" style="display: none;">Graduate Course: <span style="color: rgb(225, 0, 0);">*</span></label>
+                                        <input type="text" class="form-control" id="subfield-grad" class="sub-field-dropdown" name="subfield-grad" style="display: none;">
+                                        
+                                        <label id="subfield-worker-label" for="subfield-worker" class="form-label" style="display: none;">Profession: <span style="color: rgb(225, 0, 0);">*</span></label>
+                                        <input type="text" class="form-control" id="subfield-worker" class="sub-field-dropdown" name="subfield-worker" style="display: none;">
+                                        
+                                        <label id="subfield-other-label" for="subfield-other" class="form-label" style="display: none;">Other: <span style="color: rgb(225, 0, 0);">*</span></label>
+                                        <input type="text" class="form-control" id="subfield-other" class="sub-field-dropdown" name="subfield-other" style="display: none;">
+                                    </div>
+                                </div>
+                                <div style="display: flex;">
+                                    <div class="mb-3" style="flex: 1; margin-right: 10px;">
+                                        <label for="login-accessibilty-knowledge" class="form-label">Proficiency in Accessibility: <span style="color: rgb(225, 1, 1);">*</span></label>
+                                        <select class="form-control" id="login-accessibilty-knowledge" name="login-accessibilty-knowledge" required>
+                                            <option value="Novice">Novice</option>
+                                            <option value="Competent">Competent</option>
+                                            <option value="Proficient">Proficient</option>
+                                            <option value="Expert">Expert</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3" style="flex: 1; margin-left: 10px;">
+                                        <label for="login-area" class="form-label">Area: <span style="color: rgb(225, 1, 1);">*</span></label>
+                                        <select class="form-control" id="login-area" name="login-area" required>
+                                            <option value="Africa">Africa</option>
+                                            <option value="America">America</option>
+                                            <option value="Asia">Asia</option>
+                                            <option value="Europe">Europe</option>
+                                            
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="button submit" class="btn btn-outline-primary" style="margin-top: 20px; width: 100px; height: 40px; font-size: large; position: relative; left: 50%; transform: translateX(-50%);" onclick="document.getElementById('First-Modal-Next').click()">Next</button>
+                            </form>
                         </div>
-                        <div class="mb-3" style="flex: 1; margin-left: 10px;" id="sub-field-dropdowns">
-                            <label id="subfield-highschool-label" for="subfield-highschool" class="form-label" style="display: block;">School Course: <span style="color: rgb(225, 0, 0);">*</span></label>
-                            <input type="text" class="form-control" id="subfield-highschool" class="sub-field-dropdown" name="subfield-highschool" style="display: block;">
-                            
-                            <label id="subfield-undergrad-label" for="subfield-undergrad" class="form-label" style="display: none;">Undergraduate Course: <span style="color: rgb(225, 0, 0);">*</span></label>
-                            <input type="text" class="form-control" id="subfield-undergrad" class="sub-field-dropdown" name="subfield-undergrad" style="display: none;">
-                            
-                            <label id="subfield-grad-label" for="subfield-grad" class="form-label" style="display: none;">Graduate Course: <span style="color: rgb(225, 0, 0);">*</span></label>
-                            <input type="text" class="form-control" id="subfield-grad" class="sub-field-dropdown" name="subfield-grad" style="display: none;">
-                            
-                            <label id="subfield-worker-label" for="subfield-worker" class="form-label" style="display: none;">Profession: <span style="color: rgb(225, 0, 0);">*</span></label>
-                            <input type="text" class="form-control" id="subfield-worker" class="sub-field-dropdown" name="subfield-worker" style="display: none;">
-                            
-                            <label id="subfield-other-label" for="subfield-other" class="form-label" style="display: none;">Other: <span style="color: rgb(225, 0, 0);">*</span></label>
-                            <input type="text" class="form-control" id="subfield-other" class="sub-field-dropdown" name="subfield-other" style="display: none;">
+                        <div class="carousel-item">
+                            <video controls style="position: relative; left: 50%; transform: translateX(-50%); margin-bottom: 10px;"></video>
+                            <br>
+                            <br>
+                            <input type="checkbox" id="login-video-understand-button" style="z-index: 2000;"> <label for="login-video-understand-button">I understand how the game is to be played. </label>
+                            <br>
+                            <button id="login-enter-button" type="button" class="btn btn-outline-primary" style="margin-top: 20px; width: 100px; height: 40px; font-size: large; position: relative; left: 50%; transform: translateX(-50%);" onclick="document.getElementById('login-close').click();" disabled>Enter</button>
                         </div>
                     </div>
-                    <div style="display: flex;">
-                        <div class="mb-3" style="flex: 1; margin-right: 10px;">
-                            <label for="login-accessibilty-knowledge" class="form-label">Proficiency in Accessibility: <span style="color: rgb(225, 1, 1);">*</span></label>
-                            <select class="form-control" id="login-accessibilty-knowledge" name="login-accessibilty-knowledge" required>
-                                <option value="Novice">Novice</option>
-                                <option value="Competent">Competent</option>
-                                <option value="Proficient">Proficient</option>
-                                <option value="Expert">Expert</option>
-                            </select>
-                        </div>
-                        <div class="mb-3" style="flex: 1; margin-left: 10px;">
-                            <label for="login-area" class="form-label">Area: <span style="color: rgb(225, 1, 1);">*</span></label>
-                            <select class="form-control" id="login-area" name="login-area" required>
-                                <option value="Africa">Africa</option>
-                                <option value="America">America</option>
-                                <option value="Asia">Asia</option>
-                                <option value="Europe">Europe</option>
-                                
-                            </select>
-                        </div>
-                    </div>
-                    <button type="button submit" class="btn btn-outline-primary" style="margin-top: 20px; width: 100px; height: 40px; font-size: large;">Submit</button>
-                </form>
+                    <button class="carousel-control-next" type="button" data-bs-target="#First-Modal" data-bs-slide="next" id="First-Modal-Next" style="display: none;">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
             </div>
         </div>
         </div>

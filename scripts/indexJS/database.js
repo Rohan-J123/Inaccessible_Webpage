@@ -65,7 +65,7 @@ data[3][3] =
 data[4][0] = 
 `<div id="wrong-answer" style="background-color: red; width: 100px; height: 100px;"></div>`;
 data[4][1] = 
-`<img src="/src/images/cross.jpg" alt="Image of a cross to show wrong answer.">`;
+`<div id="wrong-answer" style="background-color: red; width: 100px; height: 100px;">X</div>`;
 data[4][3] = 
 `<div id="div-to-show-wrong-answer" style="background-color: red; width: 100px; height: 100px;"></div>                <!-- Don't solely rely on sensory characteristics of the content such as shape, color, size, visual location, orientation, or sound. -->`;
 

@@ -61,7 +61,7 @@ function onCorrectPour(){
     sessionStorage.setItem('score', parseInt(sessionStorage.getItem('score')) + 30);
     onScoreIncrease();
     remaining -= 1;
-    document.getElementById('criterions-remaining-label-text').innerText = "Criteria Left: " + remaining;
+    document.getElementById('criterions-remaining-label-text').innerText = "Bugs To Hunt: " + remaining;
     document.getElementById('criteria-mainbar-label').innerText = document.getElementById('criterions-remaining-label-text').innerText;
 }
 
@@ -79,7 +79,7 @@ function onCorrectPourButQuestionComplete(){
     sessionStorage.setItem('score', parseInt(sessionStorage.getItem('score')) + 30);
     onScoreIncrease();
     remaining -= 1;
-    document.getElementById('criterions-remaining-label-text').innerText = "Criteria Left: " + remaining;
+    document.getElementById('criterions-remaining-label-text').innerText = "Bugs To Hunt: " + remaining;
     document.getElementById('criteria-mainbar-label').innerText = document.getElementById('criterions-remaining-label-text').innerText;
 }
 

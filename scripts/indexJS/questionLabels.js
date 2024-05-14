@@ -88,20 +88,20 @@ correctQuestions = JSON.parse(sessionStorage.getItem('correct-questions'));
 
 document.getElementById('question-label-text').innerText = "Question: " + sessionStorage.getItem('question-number');
 document.getElementById('score-text').innerText = "Score: " + sessionStorage.getItem('score');
-document.getElementById('criterions-remaining-label-text').innerText = "Criteria Left: " + remaining;
+document.getElementById('criterions-remaining-label-text').innerText = "Bugs To Hunt: " + remaining;
 
 for(var i = 1; i < parseInt(sessionStorage.getItem('question-number')); i++){
     if(correctQuestions.includes(i)){
-        s += '<button type="button" class="btn btn-success question-label" id="question-label-1" tabindex="-1" style="font-size: x-large;">' + i +'<span>&#10003;</span></button>';
+        s += '<button type="button" class="btn btn-success question-label" id="question-label-1" tabindex="-1" style="font-size: x-large;" disabled>' + i +'<span>&#10003;</span></button>';
     } else {
-        s += '<button type="button" class="btn btn-danger question-label" id="question-label-1" tabindex="-1" style="font-size: x-large;">' + i +'<span>&#10007;</span></button>';
+        s += '<button type="button" class="btn btn-danger question-label" id="question-label-1" tabindex="-1" style="font-size: x-large;" disabled>' + i +'<span>&#10007;</span></button>';
     }
 }
 
 s += '<button type="button" class="btn btn-warning question-label" id="question-label-1" tabindex="-1" style="font-size: x-large;">' + parseInt(sessionStorage.getItem('question-number')) +'</button>';
 
 for(var i = parseInt(sessionStorage.getItem('question-number')) + 1; i <= 10; i++){
-    s += '<button type="button" class="btn btn-outline-primary question-label" id="question-label-1" tabindex="-1" style="font-size: x-large;">' + i +'</button>';
+    s += '<button type="button" class="btn btn-outline-primary question-label" id="question-label-1" tabindex="-1" style="font-size: x-large;" disabled>' + i +'</button>';
 }
 
 document.getElementById('question-label-container').innerHTML = s;

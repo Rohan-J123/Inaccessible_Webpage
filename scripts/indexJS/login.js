@@ -22,24 +22,31 @@ document.getElementById("login-info").addEventListener("submit", function(event)
 
     var userId = db.collection("users").doc().id;
 
-    db.collection("users").doc(userId).set({
-        name: name,
-        email: email,
-        field: field,
-        accessibilityKnowledge: accessibilityKnowledge,
-        area: area,
-        subfield: subfield
+    firebase.auth().createUserWithEmailAndPassword(email, userId)
+    .then((userCredential) => {
+        db.collection("users").doc(userId).set({
+            name: name,
+            email: email,
+            field: field,
+            accessibilityKnowledge: accessibilityKnowledge,
+            area: area,
+            subfield: subfield
+        })
+        .then(function() {
+            console.log("Document successfully written with ID: ", userId);
+            sessionStorage.setItem("user-id", userId);
+            sessionStorage.setItem("user-name", name);
+            sessionStorage.setItem("user-email", email);
+            document.getElementById('spinner-circle').style.display = 'none';
+        })
+        .catch(function(error) {
+            console.error("Error writing document: ", error);
+        });
     })
-    .then(function() {
-        console.log("Document successfully written with ID: ", userId);
-        sessionStorage.setItem("user-id", userId);
-        sessionStorage.setItem("user-name", name);
-        sessionStorage.setItem("user-email", email);
-        document.getElementById('spinner-circle').style.display = 'none';
-        document.getElementById("login-close").click();
-    })
-    .catch(function(error) {
-        console.error("Error writing document: ", error);
+    .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log("Error:", errorCode, errorMessage);
     });
 });
 
@@ -66,4 +73,13 @@ document.getElementById('login-field').addEventListener('change', function() {
 
     document.getElementById(selectedValue).style.display = 'block';
     document.getElementById(selectedValue + '-label').style.display = 'block';
+});
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const checkbox = document.getElementById('login-video-understand-button');
+    const button = document.getElementById('login-enter-button');
+
+    checkbox.addEventListener('change', () => {
+      button.disabled = !checkbox.checked;
+    });
 });
