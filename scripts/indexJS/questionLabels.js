@@ -9,6 +9,9 @@ if(parseInt(sessionStorage.getItem('question-number')) == 10){
         </ol>
     </div>
     <div class="modal-footer">
+        <a href="./Images/WCAG Level A.pdf" download="WCAG_LevelA_Criteria.pdf" style="margin-left: 20px;">
+            <button type="button" class="btn btn-primary">Download WCAG Criteria (Level A)</button>
+        </a>
         <button type="button" class="btn btn-primary" onclick="playAgainUpdateDB()">Play Again</button>
     </div>`;
 }

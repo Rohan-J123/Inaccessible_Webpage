@@ -21,8 +21,9 @@ document.getElementById("login-info").addEventListener("submit", function(event)
     }
 
     var userId = db.collection("users").doc().id;
+    console.log(typeof userId);
 
-    firebase.auth().createUserWithEmailAndPassword(userId + "@123", userId)
+    firebase.auth().createUserWithEmailAndPassword(userId + "@123.com", userId)
     .then((userCredential) => {
         db.collection("users").doc(userId).set({
             name: name,
