@@ -39,6 +39,7 @@ document.getElementById("login-info").addEventListener("submit", function(event)
             sessionStorage.setItem("user-name", name);
             sessionStorage.setItem("user-email", email);
             document.getElementById('spinner-circle').style.display = 'none';
+            document.getElementById('First-Modal-Next').click();
         })
         .catch(function(error) {
             console.error("Error writing document: ", error);
@@ -74,13 +75,4 @@ document.getElementById('login-field').addEventListener('change', function() {
 
     document.getElementById(selectedValue).style.display = 'block';
     document.getElementById(selectedValue + '-label').style.display = 'block';
-});
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    const checkbox = document.getElementById('login-video-understand-button');
-    const button = document.getElementById('login-enter-button');
-
-    checkbox.addEventListener('change', () => {
-      button.disabled = !checkbox.checked;
-    });
 });
