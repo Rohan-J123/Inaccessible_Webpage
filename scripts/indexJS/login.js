@@ -27,6 +27,7 @@ document.getElementById("login-info").addEventListener("submit", function(event)
             sessionStorage.setItem("user-name", name);
             sessionStorage.setItem("user-email", email);
             document.getElementById('spinner-circle').style.display = 'none';
+            document.getElementById('First-Modal-Next').click();
         })
         .catch(function(error) {
             console.error("Error writing document: ", error);
@@ -44,12 +45,3 @@ function accountOpen(){
     document.getElementById('account-email').innerText = "Email: " + sessionStorage.getItem('user-email');
     document.getElementById('account-score').innerText = document.getElementById('score-text').innerText;
 }
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    const checkbox = document.getElementById('login-video-understand-button');
-    const button = document.getElementById('login-enter-button');
-
-    checkbox.addEventListener('change', () => {
-      button.disabled = !checkbox.checked;
-    });
-});
