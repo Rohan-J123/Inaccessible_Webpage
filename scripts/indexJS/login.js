@@ -45,16 +45,3 @@ function accountOpen(){
     document.getElementById('account-email').innerText = "Email: " + sessionStorage.getItem('user-email');
     document.getElementById('account-score').innerText = document.getElementById('score-text').innerText;
 }
-
-document.addEventListener("DOMContentLoaded", function() {
-    var label1 = document.getElementById('login-accessibility-knowledge-label');
-    var label2 = document.getElementById('login-area-label');
-    
-    var label1Height = label1.clientHeight;
-    var label2Height = label2.clientHeight;
-    
-    var maxHeight = Math.max(label1Height, label2Height);
-    
-    label1.style.height = maxHeight + 'px';
-    label2.style.height = maxHeight + 'px';
-});
