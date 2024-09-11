@@ -26,6 +26,7 @@ for(let i = 0; i < 10 - JSON.parse(sessionStorage.getItem('correct-questions')).
 }
 
 chosenButtonValues = chosenButtonValues.concat(chosenCriterion)
+
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
