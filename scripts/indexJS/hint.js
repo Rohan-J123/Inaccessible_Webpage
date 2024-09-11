@@ -1,5 +1,8 @@
 var hintedCriteria = [];
 
+// document.getElementById('game-run-code-button').click();
+// document.getElementById('game-instr-button').click();
+
 function onHintClicked(){
     var text = document.getElementById('code').innerText;
     var chosenCriterion = JSON.parse(sessionStorage.getItem('chosenCriterion'));

@@ -35,13 +35,14 @@
     <title>Inaccessible WebPage Game</title>
 </head>
 <body>
-	<div style="display: flex; flex-wrap: wrap;">
+	<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; margin-left: 1vw;">
         <div style="display: flex; flex-wrap: nowrap;">
-            <img src="./Images/web-dev.png" alt="Header Web Dev Icon" style="height: 72.5px; padding-left: 1vw;">
+            <img src="./Images/web-dev.png" alt="Header Web Dev Icon" style="height: 72.5px;">
 	        <div class="days-one-regular" style="font-size: calc(10px + 1.25vw); text-align: left; padding-top: 2vh; padding-bottom: 2vh; padding-left: 2vw; padding-right: 1vw; transform: scaleY(1.5); text-align: center;"><b>&lt;h1&gt;A11Y BUG HUNTER&lt;/h1&gt;</b></div>
         </div>
         <div class="wallpoet-regular" style="flex-grow: 1; font-size: calc(25px + 1.5vw); white-space: nowrap; text-align: right; padding-right: 50px;" id="clock">00:00:00</div>
         <div class="wallpoet-regular" style="font-size: calc(25px + 1.5vw); white-space: nowrap; text-align: right; padding-right: 15px;" id="score-text">Score: 0</div>
+        <img id="rank-image" src="./Images/rank0.png" style="height: 60px; width: 60px; margin-right: 0.25vw;">
     </div>
 	
 	<div class="content" style="display: flex; flex-wrap: wrap;">
@@ -49,7 +50,7 @@
             <div id="main-code-area" style="display: none;"><pre style="border-radius: 10px; margin-bottom: 10px;"><div style="display: flex; flex-wrap: nowrap; height: 40px;">
                     <div style="width: 40px; background-color: black;"></div>
                     <p style="text-align: center; margin: 0%; padding-bottom: 0%; padding-top: 1vh; background-color: black; color: white; font-family: 'Times New Roman', Times, serif; font-size: large; text-align: center; flex: 1;"><b><i>CODE:</i></b></p>
-                    <div style="width: 40px; background-color: black; padding-top: 5px; padding-right: 5px;"><button id ="toggle-button-to-show-info" aria-label="info-button" onclick="toggleSidebarOn()" style="padding: 1px; background-color: black; display: none; color: darkgray; border: 3px solid darkgray; border-radius: 50px; font-size: large; position: relative; left: 100%; transform: translateX(-100%); height: 30px; width: 30px;">i</button></div>
+                    <div style="width: 40px; background-color: black; padding-top: 5px; padding-right: 5px;"><button id ="toggle-button-to-show-info" aria-label="info-button" onclick="toggleSidebarOn()" style="padding: 1px; background-color: black; display: none; color: darkgray; border: 3px solid darkgray; border-radius: 50px; font-size: large; position: relative; left: 100%; transform: translateX(-100%); height: 30px; width: 30px;"><span class="material-symbols-outlined" style="font-size: 22.5px;"><b>arrow_back</b></span></button></div>
                 </div><code class="html" style="overflow-y: scroll; height: 50vh; tab-size: 4; padding-top: 0%; display: flex; padding-left: 0%" onkeydown="scrollWithArrows(event)" tabindex="0">
                     <b><div id="line-numbers" style="padding-left: 5px; width: 50px; color: rgb(125, 125, 125); white-space: break-spaces; text-align: end;">1. 2. 3. 4. 5. 6. 7. 8. 9. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 20. 21. </div></b>
                     <div id="code" style="flex: 1; padding-left: 5px;">
@@ -59,7 +60,7 @@
             <div id="main-start-area" style="display: block;"><pre style="border-radius: 10px; margin-bottom: 10px;"><div style="display: flex; flex-wrap: nowrap; height: 40px;">
                     <div style="width: 40px; background-color: black;"></div>
                     <p style="text-align: center; margin: 0%; padding-bottom: 0%; padding-top: 1vh; background-color: black; color: white; font-family: 'Times New Roman', Times, serif; font-size: large; text-align: center; flex: 1;"><b><i>ABOUT (Start Button at the end):</i></b></p>
-                    <div style="width: 40px; background-color: black; padding-top: 5px; padding-right: 5px;"><button id ="toggle-button-to-show-info-start" aria-label="info-button" onclick="toggleSidebarOn()" style="padding: 1px; background-color: black; display: none; color: darkgray; border: 3px solid darkgray; border-radius: 50px; font-size: large; position: relative; left: 100%; transform: translateX(-100%); height: 30px; width: 30px;">i</button></div>
+                    <div style="width: 40px; background-color: black; padding-top: 5px; padding-right: 5px;"><button id ="toggle-button-to-show-info-start" aria-label="info-button" onclick="toggleSidebarOn()" style="padding: 1px; background-color: black; display: none; color: darkgray; border: 3px solid darkgray; border-radius: 50px; font-size: large; position: relative; left: 100%; transform: translateX(-100%); height: 30px; width: 30px;"><span class="material-symbols-outlined" style="font-size: 22.5px;"><b>arrow_back</b></span></button></div>
                 </div><code class="html" style="overflow-y: scroll; height: 50vh; tab-size: 4; padding-top: 0%; padding-left: 20px; text-wrap: wrap; text-align: justify;" onkeydown="scrollWithArrows(event)" tabindex="0">
 This game serves to raise awareness on Web Content Accessibility Guidelines (WCAG) developed by the Web Accessibility Initiative (WAI) of the World Wide Web Consortium (W3C). The given program, although syntactically correct, would prove to be an accessiblity issue to some groups. Can you guess which Principles and Criteria, in accordance to WCAG, does this program violate?
 
@@ -68,6 +69,7 @@ This game serves to raise awareness on Web Content Accessibility Guidelines (WCA
 3. Identifying the Criterion the block defies successfully will add 50 points to your score and refills Wi-Fi strength by one bar, with no change in Wi-Fi strength for an incorrect guess.
 4. The criterion may be guessed until the correct one is determined, or you may opt to skip the question.
 5. Hints appear as comments in the code, and next hint can be taken only after the previous hint is utilized as answer.
+6. Using the Run button will result in a 100 points deduction from your score, and Run result can be viewed in the sidebar.
 
 Find out all accessibility issues in the given code before your Wi-Fi runs out!
 (The WCAG Criterion utilized within the game can be accessed through the following link: <a href="https://www.w3.org/TR/WCAG21/" target="_blank">WCAG 2.1</a> or using the button below.)
@@ -78,9 +80,20 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
             </code></pre>
             </div>
             <div style="display: flex; flex-wrap: wrap; justify-content: center; margin: 10px;">
-                <button id="game-hint-button" type="button" class="btn btn-outline-primary" onclick="onHintClicked();" style="font-size: x-large; width: 150px; border-radius: 50px; margin: 0px 100px; height: 40px; justify-content: center; align-items: center; display: flex;" disabled>HINT</button>
-                <!-- <button type="button" data-bs-title="This button opens WCAG 2.1 website in a new tab." data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" class="btn btn-outline-primary" onclick='window.open(`https://www.w3.org/TR/WCAG21/`, `_blank`);' style="font-size: x-large; width: 150px; border-radius: 50px; margin-left: 30px; height: 40px; justify-content: center; align-items: center; display: flex;"><u>WCAG 2.1</u></button> -->
-                <button type="button" class="btn btn-outline-primary" onclick='window.open(`https://www.w3.org/TR/WCAG21/`, `_blank`);' style="font-size: x-large; width: 150px; border-radius: 50px; margin: 0px 100px; height: 40px; justify-content: center; align-items: center; display: flex;"><u>WCAG 2.1</u></button>
+                <button id="game-hint-button" type="button" class="btn btn-outline-primary" onclick="onHintClicked();" style="padding: 0%; font-size: 25px; width: 150px; border-radius: 50px; height: 40px; justify-content: center; align-items: center; display: flex; margin: 0px 40px;" disabled>HINT</button>
+                <button type="button" class="btn btn-outline-primary" onclick='window.open(`https://www.w3.org/TR/WCAG21/`, `_blank`);' style="padding: 0%; font-size: 25px; width: 150px; border-radius: 50px; height: 40px; justify-content: center; align-items: center; display: flex; margin: 0px 40px;"><u>WCAG 2.1</u></button>
+                <div id="run-button-div" style="position: relative;">
+                    <button type="button" id="game-run-code-button" class="btn btn-outline-primary" onclick='addRunCodeToOutput();' style="font-size: 25px; width: 150px; border-radius: 50px; height: 40px; justify-content: center; align-items: center; display: flex; margin: 0px 40px; padding: 0%; position: relative;" disabled>
+                        RUN
+                        <span id="run-div-tick" class="material-symbols-outlined" style="display: none; margin-left: 10px;">
+                            check_circle
+                        </span>
+                        <span id="run-div-unchecked" class="material-symbols-outlined" style="margin-left: 10px;">
+                            radio_button_checked
+                        </span>
+                    </button>                    
+                </div>
+                <button id="game-instr-button"type="button" class="btn btn-outline-primary" onclick='removeRunCodeFromOutput()' style="font-size: 25px; width: 150px; border-radius: 50px; height: 40px; justify-content: center; align-items: center; display: flex; margin: 0px 40px; display: none; padding: 0%;">INFO</button>
             </div>
             <div style="display: flex; flex-wrap: wrap;">
                 <div id="carouselExampleIndicators" class="carousel slide" style="transition: 1s; width: 100%;">
@@ -177,66 +190,86 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
         </div>
 
 		<div id="sidebar" style="width: 600px; overflow: hidden; transition: 1s; background-color: rgb(240, 240, 240); border-radius: 10px; display: flex; flex-direction: column;">
-            <div id="info-container" style="padding-right: 15px; padding-left: 15px; margin-bottom: 20px;">
-                <div style="display: flex; flex-wrap: nowrap;">
-                    <div style="width: 40px; padding-top: 7px; padding-right: 20px;" class="dropdown">
-                        <button aria-label="account-button" data-bs-toggle="dropdown" aria-expanded="false" type="button" style="height: 30px; width: 30px; align-self: center; border-radius: 100px; padding: 2px; margin-right: 10px; border: 3px solid grey; color: grey;" onmouseover="this.style.borderColor ='black'; this.style.color ='black'" onmouseout="this.style.borderColor='grey'; this.style.color ='grey'" onclick="accountOpen()">
-                            <span class="material-symbols-outlined" style="font-size: 20px; font-weight: bold;">person</span>
-                        </button>
-                        <ul class="dropdown-menu" style="padding: 10px;">
-                            <li style="cursor: default; white-space: nowrap;" id="account-name">Name: </li>
-                            <li style="cursor: default; white-space: nowrap;" id="account-email">Email: </li>
-                            <li style="cursor: default; white-space: nowrap;;" id="account-score">Score: </li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="./index.html" style="padding-left: 0%;">Restart</a></li>
-                            <li><a class="dropdown-item" href="https://swaroopjoshi.in/project/sugamyata/" target="_blank" style="padding-left: 0%;">About Us</a></li>
-                        </ul>
-                    </div>
-                    <div style="font-size: x-large; text-align: center; flex: 1; padding-top: 5px; color: gray;" class="lobster-regular" id="clock-mini">Question Timer :: 00:00:00</div>
-                    <div style="width: 40px; padding-top: 7px; padding-right: 20px;"><button type="button" class="btn-close" aria-label="Close-Sidebar" id ="toggle-button-to-hide-info" onclick="toggleSidebarOff()" style="display: block; position: relative; left: 100%; transform: translateX(-50%); color: grey; border: 3px solid #000; border-radius: 50px; padding: 5px; font-size: small;"></button></div>
+            <div style="display: flex; flex-wrap: nowrap; padding-right: 15px; padding-left: 15px; margin-bottom: 0px;">
+                <div style="width: 40px; padding-top: 7px; padding-right: 20px;" class="dropdown">
+                    <button aria-label="account-button" data-bs-toggle="dropdown" aria-expanded="false" type="button" style="height: 30px; width: 30px; align-self: center; border-radius: 100px; padding: 2px; margin-right: 10px; border: 3px solid grey; color: grey;" onmouseover="this.style.borderColor ='black'; this.style.color ='black'" onmouseout="this.style.borderColor='grey'; this.style.color ='grey'" onclick="accountOpen()">
+                        <span class="material-symbols-outlined" style="font-size: 20px; font-weight: bold;">person</span>
+                    </button>
+                    <ul class="dropdown-menu" style="padding: 10px;">
+                        <li style="cursor: default; white-space: nowrap;" id="account-name">Name: </li>
+                        <li style="cursor: default; white-space: nowrap;" id="account-email">Email: </li>
+                        <li style="cursor: default; white-space: nowrap;;" id="account-score">Score: </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="./index.html" style="padding-left: 0%;">Restart</a></li>
+                        <li><a class="dropdown-item" href="https://swaroopjoshi.in/project/sugamyata/" target="_blank" style="padding-left: 0%;">About Us</a></li>
+                    </ul>
                 </div>
-                <div id="instructions-block-in-sidebar">
-                    <h2 style="margin-top: 0%; text-align: center; text-align: center;">Instructions:</h2>
-                    <p style="font-size: large; text-align: justify; font-family: 'Times New Roman', Times, serif; line-height: normal; white-space: pre-line;">
+                <button type="button" style="height: 30px; width: 30px; align-self: center; border-radius: 100px; border: 3px solid grey; color: grey; padding: 0%;" onmouseover="this.style.borderColor ='black'; this.style.color ='black'" onmouseout="this.style.borderColor='grey'; this.style.color ='grey'" onclick="document.getElementById('leaderboardModalOpenButton').click();">
+                    <span class="material-symbols-outlined" style="font-size: 22.5px;">leaderboard</span>
+                </button>
+                <div style="font-size: x-large; text-align: center; flex: 1; padding-top: 5px; color: gray;" class="lobster-regular" id="clock-mini">Question Timer :: 00:00:00</div>
+                <!-- <div style="width: 40px; padding-top: 7px; padding-right: 20px;"><button type="button" class="btn-close" aria-label="Close-Sidebar" id ="toggle-button-to-hide-info" onclick="toggleSidebarOff()" style="display: block; position: relative; left: 100%; transform: translateX(-50%); color: grey; border: 3px solid #000; border-radius: 50px; padding: 5px; font-size: small;"></button></div> -->
+                <div style="padding-top: 7px;"><button id="toggle-button-to-hide-info" type="button" 
+                        style="height: 30px; width: 30px; border-radius: 100px; border: 3px solid grey; 
+                            color: grey; display: flex; justify-content: center; align-items: center; 
+                            text-align: center; padding: 0;" 
+                        onmouseover="this.style.borderColor ='black'; this.style.color ='black'" 
+                        onmouseout="this.style.borderColor='grey'; this.style.color ='grey'" 
+                        onclick="toggleSidebarOff();">
+                    <span class="material-symbols-outlined" style="font-size: 22.5px; line-height: 1;"><b>arrow_forward</b></span>
+                </button></div>
+                <!-- <button id ="toggle-button-to-hide-info" aria-label="close-sidebar" onclick="toggleSidebarOff()" style="padding: 1px; color: darkgray; border: 3px solid darkgray; border-radius: 50px; font-size: large; position: relative; left: 100%; transform: translateX(-100%); height: 40px; width: 40px;"><span class="material-symbols-outlined" style="font-size: 22.5px;"><b>arrow_back</b></span></button> -->
+            </div>
+            <div id="sidebar-main-content">    
+                <div id="info-container" style="padding-right: 15px; padding-left: 15px; margin-bottom: 20px;">
+                    <div id="instructions-block-in-sidebar">
+                        <h2 style="margin-top: 0%; text-align: center; text-align: center;"><i>Instructions:</i></h2>
+                        <p style="font-size: large; text-align: justify; font-family: 'Times New Roman', Times, serif; line-height: normal; white-space: pre-line;">
 1. Correct Line Number guess: +20 points, incorrect: -1 Wi-Fi bar.
 2. Correct Principle guess: +30 points, incorrect: -1 Wi-Fi bar.
 3. Identifying Criterion: +50 points, refill Wi-Fi bar; incorrect: no change.
 4. Guess Criterion until correct answer is determined or skip.
 5. Hints appear as comments. Next hint can be taken after previous is utilized.
+6. Using Run option will result in 100 point deduction.
 
 Find out all accessibility issues in the given code before your Wi-Fi runs out!
-                    </p>
-                </div>
-			</div>
-            <div style="display: flex; flex-wrap: wrap; padding-bottom: 10px;">
-                <div style="flex: 4; text-align: center;">
-                    <div style="display: flex; flex-wrap: wrap;">
-                        <h5 class="lobster-regular" id="question-label-text" style="text-align: left; flex: 1; padding-left: 2vw;">Question: 1</h5>
-                        <h5 class="lobster-regular" id="criterions-remaining-label-text" style="text-align: right; flex: 1; padding-right: 2vw;">Bugs To Hunt: 1</h5>
-                    </div>
-                    <div id="question-label-container">
-                        <button type="button" class="btn btn-outline-primary question-label" id="question-label-1" tabindex="-1">1</button>
-                        <button type="button" class="btn btn-outline-primary question-label" id="question-label-2" tabindex="-1">2</button>
-                        <button type="button" class="btn btn-outline-primary question-label" id="question-label-3" tabindex="-1">3</button>
-                        <button type="button" class="btn btn-outline-primary question-label" id="question-label-4" tabindex="-1">4</button>
-                        <button type="button" class="btn btn-outline-primary question-label" id="question-label-5" tabindex="-1">5</button>
-                        <button type="button" class="btn btn-outline-primary question-label" id="question-label-6" tabindex="-1">6</button>
-                        <button type="button" class="btn btn-outline-primary question-label" id="question-label-7" tabindex="-1">7</button>
-                        <button type="button" class="btn btn-outline-primary question-label" id="question-label-8" tabindex="-1">8</button>
-                        <button type="button" class="btn btn-outline-primary question-label" id="question-label-9" tabindex="-1">9</button>
-                        <button type="button" class="btn btn-outline-primary question-label" id="question-label-10" tabindex="-1">10</button>
+                        </p>
                     </div>
                 </div>
-                <div style="flex: 3;">
-                    <img src="./Images/WifiFullBar.png" alt="Wifi Full Bar Sidebar" style="position: relative; top: 0%; left: 50%; transform: translateX(-50%); height: 100px !important;" id="wifiImageSide">
-                    <h5 style="text-align: center; padding-top: 20px;" id="wifi-sidebar-label" class="lobster-regular">Four Bars</h5>
+                <div style="display: flex; flex-wrap: wrap; padding-bottom: 10px;">
+                    <div style="flex: 4; text-align: center;">
+                        <div style="display: flex; flex-wrap: wrap;">
+                            <h5 class="lobster-regular" id="question-label-text" style="text-align: left; flex: 1; padding-left: 2vw;">Question: 1</h5>
+                            <h5 class="lobster-regular" id="criterions-remaining-label-text" style="text-align: right; flex: 1; padding-right: 2vw;">Bugs To Hunt: 1</h5>
+                        </div>
+                        <div id="question-label-container">
+                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-1" tabindex="-1">1</button>
+                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-2" tabindex="-1">2</button>
+                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-3" tabindex="-1">3</button>
+                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-4" tabindex="-1">4</button>
+                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-5" tabindex="-1">5</button>
+                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-6" tabindex="-1">6</button>
+                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-7" tabindex="-1">7</button>
+                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-8" tabindex="-1">8</button>
+                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-9" tabindex="-1">9</button>
+                            <button type="button" class="btn btn-outline-primary question-label" id="question-label-10" tabindex="-1">10</button>
+                        </div>
+                    </div>
+                    <div style="flex: 3;">
+                        <img src="./Images/WifiFullBar.png" alt="Wifi Full Bar Sidebar" style="position: relative; top: 0%; left: 50%; transform: translateX(-50%); height: 100px !important;" id="wifiImageSide">
+                        <h5 style="text-align: center; padding-top: 20px;" id="wifi-sidebar-label" class="lobster-regular">Four Bars</h5>
+                    </div>
+                </div>
+                <div style="background-color: lightgray; margin: 15px; height: 1.5px;"></div>
+                <div style="flex: 1; display: flex; flex-direction: column; overflow-y: auto;">
+                    <h4 style="text-align: center;">Current Block Selection:</h4>
+                    <div id="sidebar-line" style="font-style: italic; text-align: left; padding: 10px 2vw; overflow-x: auto; font-size: large; text-wrap: nowrap; flex: 1; margin-bottom: 10px;">
+                    </div>
                 </div>
             </div>
-            <div style="background-color: lightgray; margin: 15px; height: 1.5px;"></div>
-            <div style="flex: 1; display: flex; flex-direction: column; overflow-y: auto;">
-                <h4 style="text-align: center;">Current Block Selection:</h4>
-                <div id="sidebar-line" style="font-style: italic; text-align: left; padding: 10px 2vw; overflow-x: auto; font-size: large; text-wrap: nowrap; flex: 1; margin-bottom: 10px;">
-                </div>
+            <div id="sidebar-run-output" style="width: 100%; height: 100%; display: none;">
+                <!-- <div style="background-color: rgb(215, 215, 215); height: 1px; margin: 0px 10px;"></div> -->
+                <iframe id="outputFrame" title="HTML Output" style="width: 100%; height: 100%; padding-right: 15px; padding-left: 15px; margin-top: 20px; padding-bottom: 20px;"></iframe>
             </div>
 		</div>
 	</div>
@@ -248,7 +281,8 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
         <div class="modal-dialog modal-lg">
             <div class="modal-content" id="question-final-modal">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="endResultsLabel">Question Criterion:</h1>
+                    <!-- <h1 class="modal-title fs-5" id="endResultsLabel">Question Criterion:</h1> -->
+                    <h1 class="modal-title fs-3 lobster-regular" id="leaderboardResultsLabel" style="text-align: center; width: 100%;">Question Criterion</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="updateDB();"></button>
                 </div>
                 <div class="modal-body" style="display: flex; flex-wrap: wrap; overflow: scroll; height: 70vh;">
@@ -257,6 +291,103 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" onclick="updateDB();">NEXT QUESTION</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#leaderboardResults" id="leaderboardModalOpenButton" style="display: none;">Leaderboard Modal Open Button
+    </button>
+  
+    <div class="modal fade" id="leaderboardResults" data-bs-keyboard="false" tabindex="-1" aria-labelledby="leaderboardResultsLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-3 lobster-regular" id="leaderboardResultsLabel" style="text-align: center; width: 100%;">LEADERBOARD</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="display: flex; flex-wrap: wrap; overflow: scroll; height: 70vh;">
+                    <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+                        <select class="form-control" id="leaderboard-filter-field" name="leaderboard-filter-field" required="" style="width: 300px; margin: 0px 10px;">
+                            <option value="All Time Field">All Time</option>
+                            <option value="Today Field">Today</option>
+                            <option value="Past Week Field">Past Week</option>
+                            <option value="Past Month Field">Past Month</option>
+                            <option value="Past 6 Months Field">Past 6 Months</option>
+                            <option value="Past Year Field">Past Year</option>
+                        </select>
+                        <div class="dropdown-center">  
+                            <button class="btn btn-primary d-flex justify-content-center align-items-center" data-bs-auto-close="outside" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin: 0px 10px;">
+                                <span class="material-symbols-outlined">
+                                    filter_list
+                                </span>
+                            </button>
+                            <div class="dropdown-menu" style="width: 350px; padding: 20px; font-size: large;">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="leaderboardFilter" id="AllUsersRadio" checked>
+                                    <label class="form-check-label" for="AllUsersRadio">
+                                        All Users
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="leaderboardFilter" id="High School Student Radio">
+                                    <label class="form-check-label" for="High School Student Radio">
+                                        High School Students Only
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="leaderboardFilter" id="Undergraduate Student Radio">
+                                    <label class="form-check-label" for="Undergraduate Student Radio">
+                                        Undergraduate Students Only
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="leaderboardFilter" id="Graduate Student Radio">
+                                    <label class="form-check-label" for="Graduate Student Radio">
+                                        Graduate Students Only
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="leaderboardFilter" id="Working Professional Radio">
+                                    <label class="form-check-label" for="Working Professional Radio">
+                                        Working Professionals Only
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="leaderboardFilter" id="Novice Radio">
+                                    <label class="form-check-label" for="NoviceRadio">
+                                        Novice Proficiency Only
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="leaderboardFilter" id="Competent Radio">
+                                    <label class="form-check-label" for="CompetentRadio">
+                                        Competent Proficiency Only
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="leaderboardFilter" id="Proficient Radio">
+                                    <label class="form-check-label" for="ProficientRadio">
+                                        Proficient Proficiency Only
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="leaderboardFilter" id="Expert Radio">
+                                    <label class="form-check-label" for="ExpertRadio">
+                                        Expert Proficiency Only
+                                    </label>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="cursive-regular" style="display: flex; font-size: x-large; width: 100%;">
+                        <div style="text-align: left; flex: 2; margin-left: 50px;"><b><i>Name</i></b></div>
+                        <div style="text-align: center; flex: 1;"><b><i>Time Taken</i></b></div>
+                        <div style="text-align: right; margin-right: 20px; width: 80px;"><b><i>Score</i></b></div>
+                    </div>
+                    <ol style="font-size: x-large; width: 100%;" id="leaderboard-results"></ol>
                 </div>
             </div>
         </div>
@@ -362,6 +493,27 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
         </div>
     </div>
 
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#congratsModal" id="congratsModalOpenButton" style="display: none;">Congratulations Modal Open Button
+    </button>
+  
+    <div class="modal fade" id="congratsModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="congratsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-3 lobster-regular" id="congratsModalLabel" style="text-align: center; width: 100%;">Congratulations</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <img src="./Images/rank1.png" style="width: 100px; height: 100px;" id="congrats-modal-image">
+                    </div>
+                    <div style="text-align: center; font-size: large;"><b><i>🌟You've ranked up!🌟</i></b></div>
+                    <div style="text-align: center; font-size: medium;"><i>Your hard work and skill have paid off</i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="spinner-border text-primary" role="status" id="spinner-circle" style="position: fixed; top: 45%; left: 50%; height: 50px; width: 50px; z-index: 1999; display: none;">
         <span class="visually-hidden">Loading...</span>
     </div>
@@ -377,5 +529,7 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
     <script src="./scripts/indexJS/pourQuestion.js"></script>
     <script src="./scripts/indexJS/criterionQuestion.js"></script>
     <script src="./scripts/indexJS/hint.js"></script>
+    <script src="./scripts/indexJS/leaderboard.js"></script>
+    <script src="./scripts/indexJS/ranks.js"></script>
 </body>
 </html>

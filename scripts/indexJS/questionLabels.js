@@ -269,6 +269,7 @@ function startButtonPressed(){
     startStop();
     document.getElementById('submit-line-number').disabled = false;
     document.getElementById('game-hint-button').disabled = false;
+    document.getElementById('game-run-code-button').disabled = false;
 
     if (document.getElementById("hide-starting-instructions").checked) {
         sessionStorage.setItem('start-dont-show', 'true');

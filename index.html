@@ -4,16 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirect Page</title>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+    <script src = "./scripts/indexJS/firebase.js"></script>
+
     <script>
+        function totalTime(arr){
+            let secondsTaken = [];
+            let minutesTaken = [];
+            let hoursTaken = [];
+            for (let i = 0; i < arr.length; i++) {
+                let splitArray = arr[i].split(" ");
+                let timeParts = splitArray[splitArray.length - 1].split(":");
+                secondsTaken.push(parseInt(timeParts[2]));
+                minutesTaken.push(parseInt(timeParts[1]));
+                hoursTaken.push(parseInt(timeParts[0]));
+            }
+            let playerFinalSeconds = secondsTaken.reduce((acc, curr) => acc + curr, 0);
+            let playerFinalMinutes = minutesTaken.reduce((acc, curr) => acc + curr, 0);
+            let playerFinalHours = hoursTaken.reduce((acc, curr) => acc + curr, 0);
+            
+            playerFinalMinutes += Math.floor(playerFinalSeconds / 60);
+            playerFinalSeconds = playerFinalSeconds % 60;
+
+            playerFinalHours += Math.floor(playerFinalMinutes / 60);
+            playerFinalMinutes = playerFinalMinutes % 60;
+
+            playerFinalHours = (playerFinalHours).toString();
+            playerFinalMinutes = (playerFinalMinutes).toString();
+            playerFinalSeconds = (playerFinalSeconds).toString();
+
+            while(playerFinalHours.length < 2){
+                playerFinalHours = "0" + playerFinalHours;
+            }
+
+            while(playerFinalMinutes.length < 2){
+                playerFinalMinutes = "0" + playerFinalMinutes;
+            }
+
+            while(playerFinalSeconds.length < 2){
+                playerFinalSeconds = "0" + playerFinalSeconds;
+            }
+
+            return [playerFinalHours, playerFinalMinutes, playerFinalSeconds];
+        }
+
         function redirect() {
-            sessionStorage.setItem('question-number', 1);
-            sessionStorage.setItem('correct-questions', JSON.stringify([]));
-            sessionStorage.setItem('score', 0);
-            sessionStorage.setItem('timer', '00:00:00');
-            sessionStorage.setItem('info-dont-show', 'false');
-            sessionStorage.setItem('start-dont-show', 'false');
-            sessionStorage.removeItem('user-id');
-            window.location.href = "./question.html";
+            const collectionName = "users";
+            let playerDatas = [];
+            let cutoffDate = new Date("May 16, 2024");
+
+            db.collection(collectionName).get()
+                .then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    if(doc.data().timestamp){
+                        let entryDate = new Date(doc.data().timestamp);
+                        if (isNaN(entryDate.getTime()) == false) {
+                            if(entryDate > cutoffDate && Array.isArray(doc.data().score) && doc.data().score.length > 0 ){
+                                const playerScores = doc.data().score;
+                                const playerFinalScore = playerScores.reduce((acc, curr) => acc + curr, 0);
+                                let totalTimeTaken = totalTime(doc.data().timeTaken);
+                                let singlePlayerEntry = [doc.data().name, playerFinalScore, totalTimeTaken, entryDate, doc.data().accessibilityKnowledge, doc.data().field];
+                                playerDatas.push(singlePlayerEntry);
+                            }
+                        }
+                    }
+                });
+                playerDatas.sort((a, b) => {
+                    if (b[1] !== a[1]) {
+                        return b[1] - a[1];
+                    } 
+                    else {
+                        const timeA = a[2].join(':');
+                        const timeB = b[2].join(':');
+                        return timeA.localeCompare(timeB);
+                    }
+                });
+                sessionStorage.setItem('allPlayers', JSON.stringify(playerDatas));
+                sessionStorage.setItem('question-number', 1);
+                sessionStorage.setItem('correct-questions', JSON.stringify([]));
+                sessionStorage.setItem('score', 0);
+                sessionStorage.setItem('timer', '00:00:00');
+                sessionStorage.setItem('info-dont-show', 'false');
+                sessionStorage.setItem('start-dont-show', 'false');
+                sessionStorage.removeItem('user-id');
+                window.location.href = "./question.html";
+            })
+            .catch((error) => {
+                console.error("Error getting documents: ", error);
+            });
         }
 
         window.onload = redirect;

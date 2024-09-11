@@ -1,0 +1,9 @@
+.break {
+    content: "";
+    display: block;
+    height: 20px;
+}
+
+.bodyType {
+    background-color:  rgb(240, 240, 240);
+}

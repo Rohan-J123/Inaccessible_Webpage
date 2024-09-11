@@ -26,3 +26,14 @@
     font-weight: 400;
     font-style: normal;
 }
+
+.cursive-regular {
+    font-family: cursive;
+    font-weight: 400;
+    font-style: italic;
+}
+
+#game-run-code-button:hover #run-div-tick,
+#game-run-code-button:hover #run-div-unchecked {
+    color: #ffffff;
+}

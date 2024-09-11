@@ -4,7 +4,7 @@ fetch('./demoFolder/demoCode.html')
         var eofMarker = "</html>";
         var eofIndex = data.indexOf(eofMarker);
 
-        var sofMarker = "<body>";
+        var sofMarker = "<body";
         var sofIndex = data.indexOf(sofMarker);
         
         newText = data;
@@ -55,6 +55,57 @@ function abcdefg(){
         numberOfLinesStr += (i.toString() + '. ');
     }
     document.getElementById('line-numbers').textContent = numberOfLinesStr;
+}
+
+let runUsed = false;
+
+var htmlCode = document.getElementById('code').textContent;
+var iframe = document.getElementById('outputFrame');
+iframe.contentWindow.document.open();
+iframe.contentWindow.document.write(htmlCode);
+iframe.contentWindow.document.close();
+
+var audio = iframe.contentWindow.document.querySelector('audio');
+if (audio) {
+    audio.pause();
+    audio.currentTime = 0;
+}
+
+function addRunCodeToOutput (){
+    document.getElementById("sidebar-main-content").style.display = "none"; 
+    document.getElementById("sidebar-run-output").style.display = "block"; 
+    document.getElementById("run-button-div").style.display = "none"; 
+    document.getElementById("game-instr-button").style.display = "block";
+
+    var htmlCode = document.getElementById('code').textContent;
+    var iframe = document.getElementById('outputFrame');
+    iframe.contentWindow.document.open();
+    iframe.contentWindow.document.write(htmlCode);
+    iframe.contentWindow.document.close();
+
+    if(runUsed == false){
+        sessionStorage.setItem('score', parseInt(sessionStorage.getItem('score')) - 100);
+        onScoreIncrease();
+
+        document.getElementById("run-div-tick").style.display = "block";
+        document.getElementById("run-div-unchecked").style.display = "none";
+
+        runUsed = true;
+    }
+}
+
+function removeRunCodeFromOutput (){
+    document.getElementById("sidebar-main-content").style.display = "block";
+    document.getElementById("sidebar-run-output").style.display = "none";
+    document.getElementById("run-button-div").style.display = "block";
+    document.getElementById("game-instr-button").style.display = "none";
+
+    var iframe = document.getElementById('outputFrame');
+    var audio = iframe.contentWindow.document.querySelector('audio');
+    if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+    }
 }
 
 function countSubstringOccurrences(string, substring) {
