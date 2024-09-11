@@ -42,7 +42,7 @@
         </div>
         <div class="wallpoet-regular" style="flex-grow: 1; font-size: calc(25px + 1.5vw); white-space: nowrap; text-align: right; padding-right: 50px;" id="clock">00:00:00</div>
         <div class="wallpoet-regular" style="font-size: calc(25px + 1.5vw); white-space: nowrap; text-align: right; padding-right: 15px;" id="score-text">Score: 0</div>
-        <img id="rank-image" src="./Images/rank0.png" style="height: 60px; width: 60px; margin-right: 0.25vw;">
+        <img id="rank-image" src="./Images/rank0.png" style="height: 60px; width: 60px; margin-right: 0.25vw;" alt="You are at Rank 1">
     </div>
 	
 	<div class="content" style="display: flex; flex-wrap: wrap;">
@@ -193,7 +193,7 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
             <div style="display: flex; flex-wrap: nowrap; padding-right: 15px; padding-left: 15px; margin-bottom: 0px;">
                 <div style="width: 40px; padding-top: 7px; padding-right: 20px;" class="dropdown">
                     <button aria-label="account-button" data-bs-toggle="dropdown" aria-expanded="false" type="button" style="height: 30px; width: 30px; align-self: center; border-radius: 100px; padding: 2px; margin-right: 10px; border: 3px solid grey; color: grey;" onmouseover="this.style.borderColor ='black'; this.style.color ='black'" onmouseout="this.style.borderColor='grey'; this.style.color ='grey'" onclick="accountOpen()">
-                        <span class="material-symbols-outlined" style="font-size: 20px; font-weight: bold;">person</span>
+                        <span class="material-symbols-outlined" style="font-size: 21.5px; font-weight: bold;">person</span>
                     </button>
                     <ul class="dropdown-menu" style="padding: 10px;">
                         <li style="cursor: default; white-space: nowrap;" id="account-name">Name: </li>
@@ -204,8 +204,8 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                         <li><a class="dropdown-item" href="https://swaroopjoshi.in/project/sugamyata/" target="_blank" style="padding-left: 0%;">About Us</a></li>
                     </ul>
                 </div>
-                <button type="button" style="height: 30px; width: 30px; align-self: center; border-radius: 100px; border: 3px solid grey; color: grey; padding: 0%;" onmouseover="this.style.borderColor ='black'; this.style.color ='black'" onmouseout="this.style.borderColor='grey'; this.style.color ='grey'" onclick="document.getElementById('leaderboardModalOpenButton').click();">
-                    <span class="material-symbols-outlined" style="font-size: 22.5px;">leaderboard</span>
+                <button type="button" style="height: 30px; width: 30px; align-self: center; border-radius: 100px; border: 3px solid grey; color: grey; padding: 0%; display: flex; justify-content: center; align-items: center;" onmouseover="this.style.borderColor ='black'; this.style.color ='black'" onmouseout="this.style.borderColor='grey'; this.style.color ='grey'" onclick="document.getElementById('leaderboardModalOpenButton').click();">
+                    <span class="material-symbols-outlined" style="font-size: 21.5px; font-weight: bold;">leaderboard</span>
                 </button>
                 <div style="font-size: x-large; text-align: center; flex: 1; padding-top: 5px; color: gray;" class="lobster-regular" id="clock-mini">Question Timer :: 00:00:00</div>
                 <!-- <div style="width: 40px; padding-top: 7px; padding-right: 20px;"><button type="button" class="btn-close" aria-label="Close-Sidebar" id ="toggle-button-to-hide-info" onclick="toggleSidebarOff()" style="display: block; position: relative; left: 100%; transform: translateX(-50%); color: grey; border: 3px solid #000; border-radius: 50px; padding: 5px; font-size: small;"></button></div> -->
@@ -282,7 +282,7 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
             <div class="modal-content" id="question-final-modal">
                 <div class="modal-header">
                     <!-- <h1 class="modal-title fs-5" id="endResultsLabel">Question Criterion:</h1> -->
-                    <h1 class="modal-title fs-3 lobster-regular" id="leaderboardResultsLabel" style="text-align: center; width: 100%;">Question Criterion</h1>
+                    <h1 class="modal-title fs-3 lobster-regular" id="endResultsLabel" style="text-align: center; width: 100%;">Question Criterion</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="updateDB();"></button>
                 </div>
                 <div class="modal-body" style="display: flex; flex-wrap: wrap; overflow: scroll; height: 70vh;">
@@ -357,25 +357,25 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                                 <br>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="leaderboardFilter" id="Novice Radio">
-                                    <label class="form-check-label" for="NoviceRadio">
+                                    <label class="form-check-label" for="Novice Radio">
                                         Novice Proficiency Only
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="leaderboardFilter" id="Competent Radio">
-                                    <label class="form-check-label" for="CompetentRadio">
+                                    <label class="form-check-label" for="Competent Radio">
                                         Competent Proficiency Only
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="leaderboardFilter" id="Proficient Radio">
-                                    <label class="form-check-label" for="ProficientRadio">
+                                    <label class="form-check-label" for="Proficient Radio">
                                         Proficient Proficiency Only
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="leaderboardFilter" id="Expert Radio">
-                                    <label class="form-check-label" for="ExpertRadio">
+                                    <label class="form-check-label" for="Expert Radio">
                                         Expert Proficiency Only
                                     </label>
                                 </div>
@@ -505,7 +505,7 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                 </div>
                 <div class="modal-body">
                     <div style="display: flex; justify-content: center; align-items: center;">
-                        <img src="./Images/rank1.png" style="width: 100px; height: 100px;" id="congrats-modal-image">
+                        <img src="./Images/rank1.png" style="width: 100px; height: 100px;" id="congrats-modal-image" alt="You are at Rank 2">
                     </div>
                     <div style="text-align: center; font-size: large;"><b><i>🌟You've ranked up!🌟</i></b></div>
                     <div style="text-align: center; font-size: medium;"><i>Your hard work and skill have paid off</i></div>

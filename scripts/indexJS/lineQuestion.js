@@ -65,12 +65,16 @@ function reduceBar(){
     var imageType = document.getElementById('wifiImageMain').src;
     if (imageType.indexOf(fullBar) !== -1) {
         document.getElementById('wifiImageMain').src = "./Images/WifiThreeBar.png";
+        document.getElementById('wifiImageMain').alt = "Wifi Three Bars Mainbar";
     } else if (imageType.indexOf(threeBar) !== -1) {
         document.getElementById('wifiImageMain').src = "./Images/WifiTwoBar.png";
+        document.getElementById('wifiImageMain').alt = "Wifi Two Bars Mainbar";
     } else if (imageType.indexOf(twoBar) !== -1) {
         document.getElementById('wifiImageMain').src = "./Images/WifiOneBar.png";
+        document.getElementById('wifiImageMain').alt = "Wifi One Bar Mainbar";
     } else if (imageType.indexOf(oneBar) !== -1) {
         document.getElementById('wifiImageMain').src = "./Images/WifiNoBar.png";
+        document.getElementById('wifiImageMain').alt = "Wifi No Bars Mainbar";
         onIncorrectQuestionComplete();
     }
 
@@ -78,15 +82,19 @@ function reduceBar(){
     if (imageType.indexOf(fullBar) !== -1) {
         document.getElementById('wifiImageSide').src = "./Images/WifiThreeBar.png";
         document.getElementById('wifi-sidebar-label').innerText = "Three Bars";
+        document.getElementById('wifiImageSide').alt = "Wifi Three Bars Mainbar";
     } else if (imageType.indexOf(threeBar) !== -1) {
         document.getElementById('wifiImageSide').src = "./Images/WifiTwoBar.png";
         document.getElementById('wifi-sidebar-label').innerText = "Two Bars";
+        document.getElementById('wifiImageSide').alt = "Wifi Two Bars Mainbar";
     } else if (imageType.indexOf(twoBar) !== -1) {
         document.getElementById('wifiImageSide').src = "./Images/WifiOneBar.png";
         document.getElementById('wifi-sidebar-label').innerText = "One Bar";
+        document.getElementById('wifiImageSide').alt = "Wifi One Bar Mainbar";
     } else if (imageType.indexOf(oneBar) !== -1) {
         document.getElementById('wifiImageSide').src = "./Images/WifiNoBar.png";
         document.getElementById('wifi-sidebar-label').innerText = "Game Over!";
+        document.getElementById('wifiImageSide').alt = "Wifi No Bars Mainbar";
     }
     document.getElementById('wifi-mainbar-label').innerText = document.getElementById('wifi-sidebar-label').innerText;
 }
@@ -100,22 +108,28 @@ function increaseBar(){
     var imageType = document.getElementById('wifiImageMain').src;
     if (imageType.indexOf(threeBar) !== -1) {
         document.getElementById('wifiImageMain').src = "./Images/WifiFullBar.png";
+        document.getElementById('wifiImageMain').alt = "Wifi Full Bars Mainbar";
     } else if (imageType.indexOf(twoBar) !== -1) {
         document.getElementById('wifiImageMain').src = "./Images/WifiThreeBar.png";
+        document.getElementById('wifiImageMain').alt = "Wifi Three Bars Mainbar";
     } else if (imageType.indexOf(oneBar) !== -1) {
         document.getElementById('wifiImageMain').src = "./Images/WifiTwoBar.png";
+        document.getElementById('wifiImageMain').alt = "Wifi Two Bars Mainbar";
     }
 
     var imageType = document.getElementById('wifiImageSide').src;
     if (imageType.indexOf(threeBar) !== -1) {
         document.getElementById('wifiImageSide').src = "./Images/WifiFullBar.png";
         document.getElementById('wifi-sidebar-label').innerText = "Four Bars";
+        document.getElementById('wifiImageSide').alt = "Wifi Full Bars Mainbar";
     } else if (imageType.indexOf(twoBar) !== -1) {
         document.getElementById('wifiImageSide').src = "./Images/WifiThreeBar.png";
         document.getElementById('wifi-sidebar-label').innerText = "Three Bars";
+        document.getElementById('wifiImageSide').alt = "Wifi Three Bars Mainbar";
     } else if (imageType.indexOf(oneBar) !== -1) {
         document.getElementById('wifiImageSide').src = "./Images/WifiTwoBar.png";
         document.getElementById('wifi-sidebar-label').innerText = "Two Bars";
+        document.getElementById('wifiImageSide').alt = "Wifi Two Bars Mainbar";
     }
     document.getElementById('wifi-mainbar-label').innerText = document.getElementById('wifi-sidebar-label').innerText;
 }
