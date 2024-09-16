@@ -61,7 +61,7 @@
                     <div style="width: 40px; background-color: black;"></div>
                     <p style="text-align: center; margin: 0%; padding-bottom: 0%; padding-top: 1vh; background-color: black; color: white; font-family: 'Times New Roman', Times, serif; font-size: large; text-align: center; flex: 1;"><b><i>ABOUT (Start Button at the end):</i></b></p>
                     <div style="width: 40px; background-color: black; padding-top: 5px; padding-right: 5px;"><button id ="toggle-button-to-show-info-start" aria-label="info-button" onclick="toggleSidebarOn()" style="padding: 1px; background-color: black; display: none; color: darkgray; border: 3px solid darkgray; border-radius: 50px; font-size: large; position: relative; left: 100%; transform: translateX(-100%); height: 30px; width: 30px;"><span class="material-symbols-outlined" style="font-size: 22.5px;"><b>arrow_back</b></span></button></div>
-                </div><code class="html" style="overflow-y: scroll; height: 50vh; tab-size: 4; padding-top: 0%; padding-left: 20px; text-wrap: wrap; text-align: justify;" onkeydown="scrollWithArrows(event)" tabindex="0">
+                </div><code id="game_instructions_review" class="html" style="overflow-y: scroll; height: 50vh; tab-size: 4; padding-top: 0%; padding-left: 20px; text-wrap: wrap; text-align: justify;" onkeydown="scrollWithArrows(event)" tabindex="0">
 This game serves to raise awareness on Web Content Accessibility Guidelines (WCAG) developed by the Web Accessibility Initiative (WAI) of the World Wide Web Consortium (W3C). The given program, although syntactically correct, would prove to be an accessiblity issue to some groups. Can you guess which Principles and Criteria, in accordance to WCAG, does this program violate?
 
 1. Guessing the line number of the code block that defies an accessibility criterion correctly earns you 20 points, while an incorrect guess decreases Wi-Fi strength by one bar.
@@ -81,7 +81,7 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
             </div>
             <div style="display: flex; flex-wrap: wrap; justify-content: center; margin: 10px;">
                 <button id="game-hint-button" type="button" class="btn btn-outline-primary" onclick="onHintClicked();" style="padding: 0%; font-size: 25px; width: 150px; border-radius: 50px; height: 40px; justify-content: center; align-items: center; display: flex; margin: 0px 40px;" disabled>HINT</button>
-                <button type="button" class="btn btn-outline-primary" onclick='window.open(`https://www.w3.org/TR/WCAG21/`, `_blank`);' style="padding: 0%; font-size: 25px; width: 150px; border-radius: 50px; height: 40px; justify-content: center; align-items: center; display: flex; margin: 0px 40px;"><u>WCAG 2.1</u></button>
+                <button id="redirect-to-WCAG" type="button" class="btn btn-outline-primary" onclick='window.open(`https://www.w3.org/TR/WCAG21/`, `_blank`);' style="padding: 0%; font-size: 25px; width: 150px; border-radius: 50px; height: 40px; justify-content: center; align-items: center; display: flex; margin: 0px 40px;"><u>WCAG 2.1</u></button>
                 <div id="run-button-div" style="position: relative;">
                     <button type="button" id="game-run-code-button" class="btn btn-outline-primary" onclick='addRunCodeToOutput();' style="font-size: 25px; width: 150px; border-radius: 50px; height: 40px; justify-content: center; align-items: center; display: flex; margin: 0px 40px; padding: 0%; position: relative;" disabled>
                         RUN
@@ -192,7 +192,7 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
 		<div id="sidebar" style="width: 600px; overflow: hidden; transition: 1s; background-color: rgb(240, 240, 240); border-radius: 10px; display: flex; flex-direction: column;">
             <div style="display: flex; flex-wrap: nowrap; padding-right: 15px; padding-left: 15px; margin-bottom: 0px;">
                 <div style="width: 40px; padding-top: 7px; padding-right: 20px;" class="dropdown">
-                    <button aria-label="account-button" data-bs-toggle="dropdown" aria-expanded="false" type="button" style="height: 30px; width: 30px; align-self: center; border-radius: 100px; padding: 2px; margin-right: 10px; border: 3px solid grey; color: grey;" onmouseover="this.style.borderColor ='black'; this.style.color ='black'" onmouseout="this.style.borderColor='grey'; this.style.color ='grey'" onclick="accountOpen()">
+                    <button id="open-account" aria-label="account-button" data-bs-toggle="dropdown" aria-expanded="false" type="button" style="height: 30px; width: 30px; align-self: center; border-radius: 100px; padding: 2px; margin-right: 10px; border: 3px solid grey; color: grey;" onmouseover="this.style.borderColor ='black'; this.style.color ='black'" onmouseout="this.style.borderColor='grey'; this.style.color ='grey'" onclick="accountOpen()">
                         <span class="material-symbols-outlined" style="font-size: 21.5px; font-weight: bold;">person</span>
                     </button>
                     <ul class="dropdown-menu" style="padding: 10px;">
@@ -204,7 +204,7 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                         <li><a class="dropdown-item" href="https://swaroopjoshi.in/project/sugamyata/" target="_blank" style="padding-left: 0%;">About Us</a></li>
                     </ul>
                 </div>
-                <button type="button" style="height: 30px; width: 30px; align-self: center; border-radius: 100px; border: 3px solid grey; color: grey; padding: 0%; display: flex; justify-content: center; align-items: center;" onmouseover="this.style.borderColor ='black'; this.style.color ='black'" onmouseout="this.style.borderColor='grey'; this.style.color ='grey'" onclick="document.getElementById('leaderboardModalOpenButton').click();">
+                <button id="open-leaderboard" type="button" style="height: 30px; width: 30px; align-self: center; border-radius: 100px; border: 3px solid grey; color: grey; padding: 0%; display: flex; justify-content: center; align-items: center;" onmouseover="this.style.borderColor ='black'; this.style.color ='black'" onmouseout="this.style.borderColor='grey'; this.style.color ='grey'" onclick="document.getElementById('leaderboardModalOpenButton').click();">
                     <span class="material-symbols-outlined" style="font-size: 21.5px; font-weight: bold;">leaderboard</span>
                 </button>
                 <div style="font-size: x-large; text-align: center; flex: 1; padding-top: 5px; color: gray;" class="lobster-regular" id="clock-mini">Question Timer :: 00:00:00</div>
@@ -237,7 +237,7 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                     </div>
                 </div>
                 <div style="display: flex; flex-wrap: wrap; padding-bottom: 10px;">
-                    <div style="flex: 4; text-align: center;">
+                    <div style="flex: 4; text-align: center;" id="questions-headings-and-labels">
                         <div style="display: flex; flex-wrap: wrap;">
                             <h5 class="lobster-regular" id="question-label-text" style="text-align: left; flex: 1; padding-left: 2vw;">Question: 1</h5>
                             <h5 class="lobster-regular" id="criterions-remaining-label-text" style="text-align: right; flex: 1; padding-right: 2vw;">Bugs To Hunt: 1</h5>
@@ -255,7 +255,7 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                             <button type="button" class="btn btn-outline-primary question-label" id="question-label-10" tabindex="-1">10</button>
                         </div>
                     </div>
-                    <div style="flex: 3;">
+                    <div style="flex: 3;" id="wifi-bars-and-label">
                         <img src="./Images/WifiFullBar.png" alt="Wifi Full Bar Sidebar" style="position: relative; top: 0%; left: 50%; transform: translateX(-50%); height: 100px !important;" id="wifiImageSide">
                         <h5 style="text-align: center; padding-top: 20px;" id="wifi-sidebar-label" class="lobster-regular">Four Bars</h5>
                     </div>
@@ -480,7 +480,7 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                             </video>
                             <br>
                             <br>
-                            <button id="login-enter-button" type="button" class="btn btn-outline-primary" style="margin-top: 20px; width: 200px; height: 40px; font-size: large; position: relative; left: 50%; transform: translateX(-50%);" onclick="document.getElementById('login-close').click();">LET'S GO</button>
+                            <button id="login-enter-button" type="button" class="btn btn-outline-primary" style="margin-top: 20px; width: 200px; height: 40px; font-size: large; position: relative; left: 50%; transform: translateX(-50%);" onclick="document.getElementById('login-close').click(); document.getElementById('UI_tutorials_button').click()">LET'S GO</button>
                         </div>
                     </div>
                     <button class="carousel-control-next" type="button" data-bs-target="#First-Modal" data-bs-slide="next" id="First-Modal-Next" style="display: none;">
@@ -514,6 +514,29 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
         </div>
     </div>
 
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#UI_tutorials" id="UI_tutorials_button" style="display: none;">
+        Launch UI tutorials modal
+    </button>
+    
+    <div class="modal fade" id="UI_tutorials" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="UI_tutorialsLabel" aria-hidden="true">
+        <div id="UI_tutorials_content" class="modal-dialog modal-sm" style="height: 250px; width: 250px;">
+            <div class="modal-content">
+                <div class="modal-header" style="height: 60px;">
+                    <h1 class="modal-title fs-5 lobster-regular" id="UI_tutorialsLabel" style="text-align: center; width: 100%;">Modal title</h1>
+                    <button id="UI_tutorials_close" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div id="UI_tutorials_modal_body" class="modal-body" style="overflow-y: auto; height: 130px; padding-top: 10px; text-align: justify;">
+                    ...
+                </div>
+                <div class="modal-footer" style="height: 60px;">
+                    <button type="button" id="tutorials_skip_button" class="btn btn-info me-auto" data-bs-dismiss="modal" style="width: 100px;">SKIP</button>
+                    <button type="button" id="tutorials_next_button" class="btn btn-primary" style="width: 100px;" onclick="onTutorialLoad();">NEXT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="spinner-border text-primary" role="status" id="spinner-circle" style="position: fixed; top: 45%; left: 50%; height: 50px; width: 50px; z-index: 1999; display: none;">
         <span class="visually-hidden">Loading...</span>
     </div>
@@ -531,5 +554,6 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
     <script src="./scripts/indexJS/hint.js"></script>
     <script src="./scripts/indexJS/leaderboard.js"></script>
     <script src="./scripts/indexJS/ranks.js"></script>
+    <script src="./scripts/indexJS/tutorials.js"></script>
 </body>
 </html>
