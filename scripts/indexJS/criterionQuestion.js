@@ -2,7 +2,7 @@ function onSubmitCriterionQuestion(id){
     var criterionClicked = document.getElementById(id).innerText.split(" ")[1];
     var currentLineNumber = sessionStorage.getItem('currentLineNumber');
 
-    var criterionSelected = successCriterionLabels[onFindingCriterion(currentLineNumber)].split(" ")[1];
+    var criterionSelected = data[[onFindingCriterion(currentLineNumber)]]['Criterion'].split(" ")[1];
 
     var chosenCriterion = JSON.parse(sessionStorage.getItem('chosenCriterion'));
    

@@ -1,5 +1,14 @@
 const tutorialsModal = document.getElementById('UI_tutorials_content');
 
+function isElementVisible(id) {
+    const element = document.getElementById(id);
+    if (!element) return false;
+
+    const rect = element.getBoundingClientRect();
+    const viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+    return !(rect.bottom < 0 || rect.top - viewHeight >= 0);
+}
+
 var tutorialUIs =   [
     document.getElementById('game_instructions_review'), 
     document.getElementById('game-hint-button'),
@@ -11,6 +20,7 @@ var tutorialUIs =   [
     document.getElementById('open-leaderboard'),
     document.getElementById('questions-headings-and-labels'),
     document.getElementById('wifi-bars-and-label'),
+    document.getElementById('tutorial-reset-button'),
     document.getElementById('rank-image')
 ]
 
@@ -25,6 +35,7 @@ var tutorialUIsModalNames =   [
     "Leaderboard Button",
     "Question Numbers",
     "WiFi Bars",
+    "Tutorial Button",
     "Rank"
 ]
 
@@ -39,6 +50,7 @@ var tutorialUIsModalBody = [
     "Press this button to access the leaderboard, where top ten performers are displayed based on the selected filters.",
     "The current question number and remaining criteria to be identified will be displayed here.",
     "The remaining WiFi bars are shown here; the game ends when all bars are depleted.",
+    "Click this button to run this UI tutorial again.",
     "Users will be promoted to a higher rank upon reaching every 1,000-point milestone."
 ]
 
@@ -72,8 +84,22 @@ function onTutorialLoad(){
     document.getElementById('UI_tutorials_modal_body').innerHTML = tutorialUIsModalBody[currentUIElement];
     
     switch(currentUIElement){
-        case 0:     var leftPosition = containerLeft + (containerWidth - tutorialsModalWidth) / 2;
-                    var topPosition = containerTop;
+        case 0:     
+                    const container2 = document.getElementById('game_code_box');
+                    const containerRect2 = container2.getBoundingClientRect();
+                    const containerWidth2 = containerRect2.width;
+                    const containerTop2 = containerRect2.top;
+
+                    var leftPosition = containerLeft + (containerWidth + containerWidth2 - tutorialsModalWidth) / 2;
+                    var topPosition = containerTop + containerTop2;
+
+                    document.getElementById("tutorials_skip_button").innerText = "SKIP";
+                    document.getElementById("tutorials_next_button").style.display = "block";
+
+                    var modalContent = document.querySelector('.custom-modal-content');
+                    modalContent.classList.remove('tail-right');
+                    modalContent.classList.add('tail-bottom');
+
                     break;
         case 1:     var leftPosition = containerLeft + (containerWidth - tutorialsModalWidth) / 2;
                     var topPosition = containerTop - tutorialsModalHeight - containerHeight;
@@ -103,11 +129,19 @@ function onTutorialLoad(){
         case 10:    var leftPosition = containerLeft + (containerWidth - tutorialsModalWidth);
                     var topPosition = containerTop + containerHeight / 2;
 
+                    var modalContent = document.querySelector('.custom-modal-content');
+                    modalContent.classList.remove('tail-top');
+                    modalContent.classList.add('tail-slight-right');
+
+                    break;
+        case 11:    var leftPosition = containerLeft + (containerWidth - tutorialsModalWidth);
+                    var topPosition = containerTop + containerHeight / 2;
+
                     document.getElementById("tutorials_skip_button").innerText = "CLOSE";
                     document.getElementById("tutorials_next_button").style.display = "none";
 
                     var modalContent = document.querySelector('.custom-modal-content');
-                    modalContent.classList.remove('tail-top');
+                    modalContent.classList.remove('tail-slight-right');
                     modalContent.classList.add('tail-right');
                     break;
         default:    var leftPosition = containerLeft + (containerWidth - tutorialsModalWidth) / 2;

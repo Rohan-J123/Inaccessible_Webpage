@@ -113,6 +113,17 @@
     border-color: white transparent transparent transparent;
 }
 
+.tail-slight-right::before {
+    content: '';
+    position: absolute;
+    bottom: 99%;
+    left: 99%;
+    transform: translateX(-100%);
+    border-width: 20px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+}
+
 .tail-right::before {
     content: '';
     position: absolute;

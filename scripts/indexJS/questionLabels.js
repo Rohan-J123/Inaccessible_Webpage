@@ -143,7 +143,7 @@ var chosenCriterionAll = JSON.parse(sessionStorage.getItem('chosenCriterionAll')
 for(var i = 0; i < chosenCriterionAll.length; i++) {
     var incorrectText = data[chosenCriterionAll[i]]["Incorrect"].replace(new RegExp('<', 'g'), '&lt;').replace(new RegExp('>', 'g'), '&gt;');
     var correctText = data[chosenCriterionAll[i]]["Correct"].replace(new RegExp('<', 'g'), '&lt;').replace(new RegExp('>', 'g'), '&gt;');
-    var cr = successCriterionLabels[chosenCriterionAll[i]];
+    var cr = data[[chosenCriterionAll[i]]]['Criterion'];
     var prNo = cr.split(' ')[1].split('.')[0];
     var pr = "";
     if(prNo == 1){
