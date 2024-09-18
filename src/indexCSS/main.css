@@ -90,3 +90,36 @@
     --bs-tooltip-color: white;
     font-size: large;
 }
+
+.tail-top::before {
+    content: '';
+    position: absolute;
+    bottom: 99%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 20px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+}
+
+.tail-bottom::before {
+    content: '';
+    position: absolute;
+    top: 99%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 20px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+.tail-right::before {
+    content: '';
+    position: absolute;
+    bottom: 99%;
+    left: 97.5%;
+    transform: translateX(-100%);
+    border-width: 20px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+}

@@ -44,6 +44,18 @@ var tutorialUIsModalBody = [
 
 var currentUIElement = 0;
 
+function switchTail() {
+    var modalContent = document.querySelector('.custom-modal-content');
+    
+    if (modalContent.classList.contains('tail-top')) {
+      modalContent.classList.remove('tail-top');
+      modalContent.classList.add('tail-bottom');
+    } else {
+      modalContent.classList.remove('tail-bottom');
+      modalContent.classList.add('tail-top');
+    }
+}
+
 function onTutorialLoad(){
     const container = tutorialUIs[currentUIElement];
 
@@ -60,7 +72,7 @@ function onTutorialLoad(){
     document.getElementById('UI_tutorials_modal_body').innerHTML = tutorialUIsModalBody[currentUIElement];
     
     switch(currentUIElement){
-        case 0:    var leftPosition = containerLeft + (containerWidth - tutorialsModalWidth) / 2;
+        case 0:     var leftPosition = containerLeft + (containerWidth - tutorialsModalWidth) / 2;
                     var topPosition = containerTop;
                     break;
         case 1:     var leftPosition = containerLeft + (containerWidth - tutorialsModalWidth) / 2;
@@ -73,10 +85,11 @@ function onTutorialLoad(){
                     var topPosition = containerTop - tutorialsModalHeight - containerHeight;
                     break;
         case 4:     var leftPosition = containerLeft + (containerWidth - tutorialsModalWidth) / 2;
-                    var topPosition = containerTop - tutorialsModalHeight / 2;
+                    var topPosition = containerTop - tutorialsModalHeight;
                     break;
         case 6:     var leftPosition = containerLeft + (containerWidth - tutorialsModalWidth) / 2;
-                    var topPosition = containerTop + (containerHeight);  
+                    var topPosition = containerTop + (containerHeight);
+                    switchTail();  
                     break;
         case 7:     var leftPosition = containerLeft + (containerWidth - tutorialsModalWidth) / 2;
                     var topPosition = containerTop + (containerHeight);  
@@ -89,8 +102,13 @@ function onTutorialLoad(){
                     break;
         case 10:    var leftPosition = containerLeft + (containerWidth - tutorialsModalWidth);
                     var topPosition = containerTop + containerHeight / 2;
+
                     document.getElementById("tutorials_skip_button").innerText = "CLOSE";
                     document.getElementById("tutorials_next_button").style.display = "none";
+
+                    var modalContent = document.querySelector('.custom-modal-content');
+                    modalContent.classList.remove('tail-top');
+                    modalContent.classList.add('tail-right');
                     break;
         default:    var leftPosition = containerLeft + (containerWidth - tutorialsModalWidth) / 2;
                     var topPosition = containerTop + (containerHeight - tutorialsModalHeight) / 2;
@@ -106,3 +124,9 @@ function onTutorialLoad(){
 
 
 onTutorialLoad();
+
+function onTutorialReset(){
+    currentUIElement = 0; 
+    onTutorialLoad();
+    document.getElementById("UI_tutorials_button").click();
+}

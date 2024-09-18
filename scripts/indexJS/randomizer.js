@@ -1,6 +1,6 @@
 var chosenCriterion = [];
 for(let i = 0; i < JSON.parse(sessionStorage.getItem('correct-questions')).length + 1; i++){
-    var randValue = Math.floor(Math.random() * 25);
+    var randValue = Math.floor(Math.random() * data.length);
     if (!chosenCriterion.includes(randValue)) {
         chosenCriterion.push(randValue);
     }
@@ -16,7 +16,7 @@ sessionStorage.setItem('chosenCriterionAll', JSON.stringify(chosenCriterion));
 
 var chosenButtonValues = [];
 for(let i = 0; i < 10 - JSON.parse(sessionStorage.getItem('correct-questions')).length - 1; i++){
-    var randValue = Math.floor(Math.random() * 25);
+    var randValue = Math.floor(Math.random() * data.length);
     if (!chosenButtonValues.includes(randValue) && !chosenCriterion.includes(randValue)) {
         chosenButtonValues.push(randValue);
     }

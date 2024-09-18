@@ -42,7 +42,7 @@ function abcdefg(){
     var codeText = document.getElementById('code').innerText;
     var lineNos = [];
     for(var i = 0; i < chosenCriterionAll.length; i++){
-        var indexOfData = codeText.indexOf(data[chosenCriterionAll[i]][0]);
+        var indexOfData = codeText.indexOf(data[chosenCriterionAll[i]]["Incorrect"]);
         lineNos.push(countSubstringOccurrences(codeText.slice(0, indexOfData), '\n') + 1);
     }
 

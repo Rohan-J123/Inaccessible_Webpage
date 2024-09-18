@@ -1,5 +1,5 @@
 function numberOfLinesInTheCriterion(i){
-    var d = data[i][0];
+    var d = data[i]["Incorrect"];
     return countSubstringOccurrences(d, '\n');
 }
 
@@ -22,7 +22,7 @@ function onSubmitLineNumber(){
             <button id="submit-line-number" type="button" class="btn btn-outline-warning" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="document.getElementById('goToPart2').click();">NEXT QUESTION</button>
         </div> `;
         document.getElementById('part1Result').innerHTML = inner;
-        document.getElementById('sidebar-line').innerText = data[onFindingCriterion(lineNumber)][0];
+        document.getElementById('sidebar-line').innerText = data[onFindingCriterion(lineNumber)]["Incorrect"];
 
         if(numberOfLinesInTheCriterion(onFindingCriterion(lineNumber)) != 0){
             document.getElementById('part-2-title').innerText = `In Correspondence To WCAG Level A, Which Principle Do The Lines ` + lineNumber + `-`+ (parseInt(lineNumber) + numberOfLinesInTheCriterion(onFindingCriterion(lineNumber))) +` Defy?`;
