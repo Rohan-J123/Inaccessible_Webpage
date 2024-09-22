@@ -33,6 +33,9 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.2.0/introjs.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.2.0/intro.min.js"></script>
+
     <title>Inaccessible WebPage Game</title>
 </head>
 <body>
@@ -491,7 +494,7 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                             </video>
                             <br>
                             <br>
-                            <button id="login-enter-button" type="button" class="btn btn-outline-primary" style="margin-top: 20px; width: 200px; height: 40px; font-size: large; position: relative; left: 50%; transform: translateX(-50%);" onclick="document.getElementById('login-close').click(); document.getElementById('UI_tutorials_button').click()">LET'S GO</button>
+                            <button id="login-enter-button" type="button" class="btn btn-outline-primary" style="margin-top: 20px; width: 200px; height: 40px; font-size: large; position: relative; left: 50%; transform: translateX(-50%);" onclick="document.getElementById('login-close').click(); onTutorialReset();">LET'S GO</button>
                         </div>
                     </div>
                     <button class="carousel-control-next" type="button" data-bs-target="#First-Modal" data-bs-slide="next" id="First-Modal-Next" style="display: none;">
