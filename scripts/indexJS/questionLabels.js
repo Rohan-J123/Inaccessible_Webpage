@@ -121,6 +121,7 @@ function onCorrectQuestionComplete(){
     document.getElementById('modalOpenButton').click();
     sessionStorage.setItem('timer', document.getElementById("clock").textContent);
     stop = true;
+    confettiAnimation();
 }
 
 function onIncorrectQuestionComplete(){
@@ -131,6 +132,7 @@ function onIncorrectQuestionComplete(){
     document.getElementById('modalOpenButton').click();
     sessionStorage.setItem('timer', document.getElementById("clock").textContent);
     stop = true;
+    shakeScreen();
 }
 
 function onScoreIncrease(){
