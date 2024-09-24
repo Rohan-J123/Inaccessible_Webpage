@@ -479,5 +479,78 @@ let data = [
 `<button type="button" class="btn btn-primary" onclick="closeDialog()" style="width: 50px; margin-left: auto; margin-right: auto;" disabled>X</button><br class="break">               <!--  User interface components must have accessible names and roles. -->`,
 "Criterion" :
 'Criteria 4.1.2'
+},
+
+{
+// Test
+"Incorrect" : 
+`<p>Get deals <span style="font-weight: bold;">now</span>!</p><br class="break">`,
+"Correct" : 
+`Get deals <em>now</em>!<br class="break">`,
+"Chosen":
+"",
+"Commented" : 
+`<p>Get deals <span style="font-weight: bold;">now</span>!</p><br class="break">               <!--  Information, structure, and relationships conveyed through presentation should be programmatically determined. -->`,
+"Criterion" :
+'Criteria 1.3.1'
+},
+
+{
+// Test
+"Incorrect" : 
+`<div class="button">Interested?</div><br class="break">`,
+"Correct" : 
+`<div role="button" tabindex="0">Interested?</div><br class="break">`,
+"Chosen":
+"",
+"Commented" : 
+`<div class="button">Interested?</div><br class="break">               <!--  User interface components and navigation must be operable. -->`,
+"Criterion" :
+'Criteria 2.1.1'
+},
+
+{
+// Test
+"Incorrect" : 
+`<a href="google.com">this is a link to a webpage</a><br class="break">`,
+"Correct" : 
+`<a href="google.com">Go to Google</a><br class="break">`,
+"Chosen":
+"",
+"Commented" : 
+`<a href="google.com">this is a link to a webpage</a><br class="break">               <!--  The target or purpose of the link must be clear by the link text alone. -->`,
+"Criterion" :
+'Criteria 2.4.4'
+},
+
+{
+// Test
+"Incorrect" : 
+`<button>buy</button><br class="break">`,
+"Correct" : 
+`<button aria-label="buy cars">buy cars</button><br class="break">`,
+"Chosen":
+"",
+"Commented" : 
+`<button>buy</button><br class="break">               <!--  A speech input user would say 'buy', but the speech software won't know what item to add. -->`,
+"Criterion" :
+'Criteria 2.5.3'
+},
+
+{
+// Test
+"Incorrect" : 
+`<button id="button">submit</button>
+    <button id="button">login</button><br class="break">`,
+"Correct" : 
+`<button id="submit">submit</button>
+    <button id="login">login</button><br class="break">`,
+"Chosen":
+"",
+"Commented" : 
+`<button id="button">submit</button>
+    <button id="button">login</button><br class="break">              <!--  Make sure elements have unique IDs. -->`,
+"Criterion" :
+'Criteria 4.1.1'
 }
 ]
