@@ -11,12 +11,14 @@ function onSubmitCriterionQuestion(id){
             onCorrectCriterion();
         } else {
             onWrongCriterion();
+            shakeElement(document.getElementById("carouselExampleIndicators"));
         }
     } else {
         if(criterionSelected == criterionClicked){
             onCorrectCriterionButQuestionComplete();
         } else {
             onWrongCriterionButQuestionComplete();
+            shakeElement(document.getElementById("carouselExampleIndicators"));
         }
     }
     document.getElementById('goToPart3Result').click();

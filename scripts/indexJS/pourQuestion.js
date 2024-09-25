@@ -20,6 +20,7 @@ function onSubmitPourQuestion(id){
             onCorrectPour();
         } else {
             onWrongPour();
+            shakeElement(document.getElementById("carouselExampleIndicators"));
         }
     } else {
         if(criterionPour == 1 && id == 'button-perceivable' ){
@@ -32,6 +33,7 @@ function onSubmitPourQuestion(id){
             onCorrectPourButQuestionComplete();
         } else {
             onWrongPour();
+            shakeElement(document.getElementById("carouselExampleIndicators"));
         }
     }
 

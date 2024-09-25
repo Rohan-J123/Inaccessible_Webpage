@@ -51,6 +51,7 @@ function onSubmitLineNumber(){
         </div> `;
         document.getElementById('part1Result').innerHTML = inner;
         reduceBar();
+        shakeElement(document.getElementById("carouselExampleIndicators"));
     }
     document.getElementById('goToPart1Result').click();
     document.getElementById('lineInput').value = "";

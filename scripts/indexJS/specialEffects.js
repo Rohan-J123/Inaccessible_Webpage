@@ -24,3 +24,10 @@ function shakeScreen(){
       shakeElement.classList.remove("shake-slow");
     }, 1000);
 }
+
+function shakeElement(shakeElement) {
+    shakeElement.classList.add("shake-slow");
+    setTimeout(function () {
+      shakeElement.classList.remove("shake-slow");
+    }, 1000);
+}
