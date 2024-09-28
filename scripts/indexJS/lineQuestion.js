@@ -6,7 +6,8 @@ function numberOfLinesInTheCriterion(i){
 
 
 function onSubmitLineNumber(){
-    var lineNumber = document.getElementById('lineInput').value;
+    var lineNumber = String(document.getElementById('lineInput').innerHTML.split(" ")[0]);
+
     var validLineNumbers = JSON.parse(sessionStorage.getItem('correct-line-numbers'));
 
     if(sessionStorage.getItem('chosenCriterionAll').includes(onFindingCriterion(lineNumber)) && !sessionStorage.getItem('chosenCriterion').includes(onFindingCriterion(lineNumber))){
@@ -54,7 +55,8 @@ function onSubmitLineNumber(){
         shakeElement(document.getElementById("carouselExampleIndicators"));
     }
     document.getElementById('goToPart1Result').click();
-    document.getElementById('lineInput').value = "";
+
+    searchCriterion(divisions[0][0]);
 }
 
 function reduceBar(){

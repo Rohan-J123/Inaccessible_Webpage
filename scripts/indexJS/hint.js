@@ -15,7 +15,8 @@ function onHintClicked(){
 
         var indexOfData = document.getElementById('code').innerText.indexOf(data[chosenCriterion[0]]["Commented"]);
         var lineNoOfCriterion = countSubstringOccurrences(document.getElementById('code').innerText.slice(0, indexOfData), '\n') + 1;
-        document.getElementById('lineInput').value = lineNoOfCriterion.toString();
+        // document.getElementById('lineInput').value = lineNoOfCriterion.toString();
+        searchCriterion(lineNoOfCriterion);
 
         document.getElementById('game-hint-button').disabled = true;
     } else {

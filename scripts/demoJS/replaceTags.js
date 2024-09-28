@@ -11,6 +11,8 @@ function replaceTags(textContent) {
     var startMarker = "<h$";
     var endMarker = "$>";
 
+    var chosenCriterionActuallyCorrect = [];
+
     var startIndex = newText.indexOf(startMarker);
     var endIndex = newText.indexOf(endMarker);
 
@@ -24,6 +26,7 @@ function replaceTags(textContent) {
             var r = Math.floor(Math.random() * 3);
             if(r == 0){
                 newText = newText.substring(0, startIndex) + data[tag]["Correct"] + "\n" + newText.substring(endIndex + endMarker.length + 1);
+                chosenCriterionActuallyCorrect.push(tag);
             } else{
                 newText = newText.substring(0, startIndex) + data[tag]["Chosen"] + "\n" + newText.substring(endIndex + endMarker.length);
             }
@@ -31,5 +34,8 @@ function replaceTags(textContent) {
         startIndex = newText.indexOf(startMarker);
         endIndex = newText.indexOf(endMarker);
     }
+
+    sessionStorage.setItem('chosenCriterion-actually-correct', JSON.stringify(chosenCriterionActuallyCorrect));
+
     return removeEmptyLines(newText);
 }

@@ -41,12 +41,24 @@ function abcdefg(){
     var chosenCriterionAll = JSON.parse(sessionStorage.getItem('chosenCriterionAll'));
     var codeText = document.getElementById('code').innerText;
     var lineNos = [];
+    
     for(var i = 0; i < chosenCriterionAll.length; i++){
         var indexOfData = codeText.indexOf(data[chosenCriterionAll[i]]["Incorrect"]);
         lineNos.push(countSubstringOccurrences(codeText.slice(0, indexOfData), '\n') + 1);
     }
 
     sessionStorage.setItem('correct-line-numbers', JSON.stringify(lineNos));
+
+    var chosenCriterionActuallyCorrect = JSON.parse(sessionStorage.getItem('chosenCriterion-actually-correct'));
+    var lineNosActuallyCorrect = [];
+    
+    for(var i = 0; i < chosenCriterionActuallyCorrect.length; i++){
+        var indexOfData = codeText.indexOf(data[chosenCriterionActuallyCorrect[i]]["Correct"]);
+        lineNosActuallyCorrect.push(countSubstringOccurrences(codeText.slice(0, indexOfData), '\n') + 1);
+    }
+
+    sessionStorage.setItem('actually-correct-line-numbers', JSON.stringify(lineNosActuallyCorrect));
+
 
     var indexOfEnd = codeText.indexOf('</html>');
     var numberOfLines = countSubstringOccurrences(codeText.slice(0, indexOfEnd), '\n') + 1;
