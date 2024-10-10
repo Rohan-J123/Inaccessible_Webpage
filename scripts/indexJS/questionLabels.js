@@ -269,7 +269,11 @@ function startButtonPressed(){
     }
 
     startStop();
-    document.getElementById('submit-line-number').disabled = false;
+
+    document.getElementById('submitLineNumber').disabled = false;
+    document.getElementById("lineInputFrontButton").disabled = false;
+    document.getElementById("lineInputBackButton").disabled = false;
+
     document.getElementById('game-hint-button').disabled = false;
     document.getElementById('game-run-code-button').disabled = false;
 

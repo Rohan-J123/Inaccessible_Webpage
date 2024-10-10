@@ -45,7 +45,6 @@
     <!-- <link rel="stylesheet" type="text/css" href="http://csshake.surge.sh/csshake-slow.min.css"> -->
     <script src="./scripts/dependencies/confetti.browzer.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./scripts/dependencies/csshake-slow.min.css">
-    <script src="./scripts/indexJS/specialEffects.js"></script>
 
     <title>Inaccessible WebPage Game</title>
 </head>
@@ -135,12 +134,12 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                                     <div style="padding-left: 1vw; width: 80%;">
                                         <div style="white-space: nowrap; width: 85px; font-size: 20px; color: rgba(0, 0, 0, 0.7); margin-bottom: 5px;">Line Numbers:</div>
                                         <div style="height: 30px; display: flex; flex-wrap: wrap;">
-                                            <button type="button" class="btn btn-primary" style="width: 40px;" onclick="previousLineIndex()">&lt</button>
+                                            <button id="lineInputBackButton" type="button" class="btn btn-primary" style="width: 40px;" onclick="previousLineIndex()" disabled>&lt</button>
                                             <div id="lineInput" class="lobster-regular" style="border-width: 1px; width: 150px; border-style: solid; border-radius: 10px; margin: 0px 20px; text-align: center; display: flex; align-items: center; justify-content: center;">1-1</div>                                        
-                                            <button type="button" class="btn btn-primary" style="width: 40px;" onclick="nextLineIndex()">&gt</button>
+                                            <button id="lineInputFrontButton" type="button" class="btn btn-primary" style="width: 40px;" onclick="nextLineIndex()" disabled>&gt</button>
                                         </div>
                                     </div>
-                                    <button id="submit-line-number" type="button" class="btn btn-outline-primary" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px;" onclick="onSubmitLineNumber()" disabled>SUBMIT</button>
+                                    <button id="submitLineNumber" type="button" class="btn btn-outline-primary" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px;" onclick="onSubmitLineNumber()" disabled>SUBMIT</button>
                                 </div> 
                             </div>
                         </div>
@@ -221,10 +220,17 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                     <button id="open-account" aria-label="account-button" data-bs-toggle="dropdown" aria-expanded="false" type="button" style="height: 30px; width: 30px; align-self: center; border-radius: 100px; padding: 2px; margin-right: 10px; border: 3px solid grey; color: grey;" onmouseover="this.style.borderColor ='black'; this.style.color ='black'" onmouseout="this.style.borderColor='grey'; this.style.color ='grey'" onclick="accountOpen()">
                         <span class="material-symbols-outlined" style="font-size: 21.5px; font-weight: bold;">person</span>
                     </button>
-                    <ul class="dropdown-menu" style="padding: 10px;">
+                    <ul class="dropdown-menu" style="padding: 10px; width: 175px;">
                         <li style="cursor: default; white-space: nowrap;" id="account-name">Name: </li>
                         <li style="cursor: default; white-space: nowrap;" id="account-email">Email: </li>
                         <li style="cursor: default; white-space: nowrap;;" id="account-score">Score: </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="specialEffectsToggle" checked>
+                                <label class="form-check-label" for="specialEffectsToggle">Special Effects</label>
+                            </div>
+                        </li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="./index.html" style="padding-left: 0%;">Restart</a></li>
                         <li><a class="dropdown-item" href="https://swaroopjoshi.in/project/sugamyata/" target="_blank" style="padding-left: 0%;">About Us</a></li>
@@ -586,6 +592,7 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
         + 100
     </div>
 
+    <script src="./scripts/indexJS/specialEffects.js"></script>
     <script src="./scripts/indexJS/clock.js"></script>
     <script src="./scripts/indexJS/login.js"></script>
     <script src="./scripts/indexJS/buttonBehaviour.js"></script>
