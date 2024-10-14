@@ -498,13 +498,13 @@ let data = [
 {
 // Test
 "Incorrect" : 
-`<div class="button">Interested?</div><br class="break">`,
+`<div class="button" style="pointer-events: none;">Interested?</div><br class="break">`,
 "Correct" : 
-`<div role="button" tabindex="0">Interested?</div><br class="break">`,
+`<div role="button" tabindex="0" style="pointer-events: none;">Interested?</div><br class="break">`,
 "Chosen":
 "",
 "Commented" : 
-`<div class="button">Interested?</div><br class="break">               <!--  User interface components and navigation must be operable. -->`,
+`<div class="button" style="pointer-events: none;">Interested?</div><br class="break">               <!--  User interface components and navigation must be operable. -->`,
 "Criterion" :
 'Criteria 2.1.1'
 },
@@ -512,13 +512,13 @@ let data = [
 {
 // Test
 "Incorrect" : 
-`<a href="google.com">this is a link to a webpage</a><br class="break">`,
+`<a href="google.com" style="pointer-events: none;">this is a link to a webpage</a><br class="break">`,
 "Correct" : 
-`<a href="google.com">Go to Google</a><br class="break">`,
+`<a href="google.com" style="pointer-events: none;">Go to Google</a><br class="break">`,
 "Chosen":
 "",
 "Commented" : 
-`<a href="google.com">this is a link to a webpage</a><br class="break">               <!--  The target or purpose of the link must be clear by the link text alone. -->`,
+`<a href="google.com" style="pointer-events: none;">this is a link to a webpage</a><br class="break">               <!--  The target or purpose of the link must be clear by the link text alone. -->`,
 "Criterion" :
 'Criteria 2.4.4'
 },
@@ -526,13 +526,13 @@ let data = [
 {
 // Test
 "Incorrect" : 
-`<button>buy</button><br class="break">`,
+`<button button type="button" class="btn btn-primary" disabled>buy</button><br class="break">`,
 "Correct" : 
-`<button aria-label="buy cars">buy cars</button><br class="break">`,
+`<button button type="button" class="btn btn-primary" aria-label="buy cars" disabled>buy cars</button><br class="break">`,
 "Chosen":
 "",
 "Commented" : 
-`<button>buy</button><br class="break">               <!--  A speech input user would say 'buy', but the speech software won't know what item to add. -->`,
+`<button button type="button" class="btn btn-primary" disabled>buy</button><br class="break">               <!--  A speech input user would say 'buy', but the speech software won't know what item to add. -->`,
 "Criterion" :
 'Criteria 2.5.3'
 },
@@ -540,16 +540,16 @@ let data = [
 {
 // Test
 "Incorrect" : 
-`<button id="button">submit</button>
-    <button id="button">login</button><br class="break">`,
+`<button button type="button" class="btn btn-primary" id="button" disabled>submit</button>
+    <button button type="button" class="btn btn-primary" id="button" disabled>login</button><br class="break">`,
 "Correct" : 
-`<button id="submit">submit</button>
-    <button id="login">login</button><br class="break">`,
+`<button button type="button" class="btn btn-primary" id="submit" disabled>submit</button>
+    <button button type="button" class="btn btn-primary" id="login" disabled>login</button><br class="break">`,
 "Chosen":
 "",
 "Commented" : 
-`<button id="button">submit</button>
-    <button id="button">login</button><br class="break">              <!--  Make sure elements have unique IDs. -->`,
+`<button button type="button" class="btn btn-primary" id="button" disabled>submit</button>
+    <button button type="button" class="btn btn-primary" id="button" disabled>login</button><br class="break">              <!--  Make sure elements have unique IDs. -->`,
 "Criterion" :
 'Criteria 4.1.1'
 }

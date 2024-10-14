@@ -1,7 +1,11 @@
+var CChosenQuestionStart = sessionStorage.getItem("chosenCriterionTillNow") 
+              ? JSON.parse(sessionStorage.getItem("chosenCriterionTillNow")) 
+              : [];
+              
 var chosenCriterion = [];
 for(let i = 0; i < JSON.parse(sessionStorage.getItem('correct-questions')).length + 1; i++){
     var randValue = Math.floor(Math.random() * data.length);
-    if (!chosenCriterion.includes(randValue)) {
+    if (!chosenCriterion.includes(randValue) && !CChosenQuestionStart.includes(randValue)) {
         chosenCriterion.push(randValue);
     }
     else{

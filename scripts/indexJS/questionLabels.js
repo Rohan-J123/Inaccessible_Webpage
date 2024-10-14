@@ -186,7 +186,27 @@ function sumArray(arr) {
     return sum;
 }
 
+function findingCriterionChosenCorrectly(){
+    var chosenCAll = JSON.parse(sessionStorage.getItem("chosenCriterionAll"));
+    var chosenC = JSON.parse(sessionStorage.getItem("chosenCriterion"));
+
+    var CChosen = sessionStorage.getItem("chosenCriterionTillNow") 
+              ? JSON.parse(sessionStorage.getItem("chosenCriterionTillNow")) 
+              : [];
+
+
+    chosenCAll.forEach(item => {
+        if (!chosenC.includes(item) && !CChosen.includes(item)) {
+            CChosen.push(item);
+        }
+    });
+
+    sessionStorage.setItem("chosenCriterionTillNow", JSON.stringify(CChosen));
+}
+
 function updateDB() {
+    findingCriterionChosenCorrectly();
+
     document.getElementById('spinner-circle').style.display = 'block';
     var userId = sessionStorage.getItem('user-id');
 
