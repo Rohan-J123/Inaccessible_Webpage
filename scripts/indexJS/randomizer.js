@@ -1,12 +1,12 @@
-var CChosenQuestionStart = sessionStorage.getItem("chosenCriterionTillNow") 
-              ? JSON.parse(sessionStorage.getItem("chosenCriterionTillNow")) 
+var criterionCorrectlyChosenTillNow = sessionStorage.getItem("criterion-correctly-chosen-till-now") 
+              ? JSON.parse(sessionStorage.getItem("criterion-correctly-chosen-till-now")) 
               : [];
               
-var chosenCriterion = [];
+var chosenIncorrectCriterion = [];
 for(let i = 0; i < JSON.parse(sessionStorage.getItem('correct-questions')).length + 1; i++){
     var randValue = Math.floor(Math.random() * data.length);
-    if (!chosenCriterion.includes(randValue) && !CChosenQuestionStart.includes(randValue)) {
-        chosenCriterion.push(randValue);
+    if (!chosenIncorrectCriterion.includes(randValue) && !criterionCorrectlyChosenTillNow.includes(randValue)) {
+        chosenIncorrectCriterion.push(randValue);
     }
     else{
         i--;
@@ -14,14 +14,13 @@ for(let i = 0; i < JSON.parse(sessionStorage.getItem('correct-questions')).lengt
 }
 
 var remaining = JSON.parse(sessionStorage.getItem('correct-questions')).length + 1;
-
-sessionStorage.setItem('chosenCriterion', JSON.stringify(chosenCriterion));
-sessionStorage.setItem('chosenCriterionAll', JSON.stringify(chosenCriterion));
+var criterionLeftToIdentify = chosenIncorrectCriterion;
+var chosenCorrectCriterion = [];
 
 var chosenButtonValues = [];
 for(let i = 0; i < 10 - JSON.parse(sessionStorage.getItem('correct-questions')).length - 1; i++){
     var randValue = Math.floor(Math.random() * data.length);
-    if (!chosenButtonValues.includes(randValue) && !chosenCriterion.includes(randValue)) {
+    if (!chosenButtonValues.includes(randValue) && !chosenIncorrectCriterion.includes(randValue)) {
         chosenButtonValues.push(randValue);
     }
     else{
@@ -29,13 +28,13 @@ for(let i = 0; i < 10 - JSON.parse(sessionStorage.getItem('correct-questions')).
     }
 }
 
-chosenButtonValues = chosenButtonValues.concat(chosenCriterion)
+chosenButtonValues = chosenButtonValues.concat(chosenIncorrectCriterion)
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
     }
 }
+
 shuffleArray(chosenButtonValues);
-sessionStorage.setItem('chosenButtonValues', JSON.stringify(chosenButtonValues));

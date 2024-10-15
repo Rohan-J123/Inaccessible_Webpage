@@ -94,18 +94,3 @@ function setInitialConditions(){
 
 setInitialConditions();
 
-function toggleBack(){
-    var buttonNext = document.getElementById("button-previous-question");
-    buttonNext.click();
-}
-
-function toggleToPourQuestion() {
-    var buttonNext = document.getElementById("button-next-question");
-    buttonNext.click();
-}
-
-function toggleToCriterionQuestion() {
-    var buttonNext = document.getElementById("button-next-question");
-    buttonNext.click();
-}
-

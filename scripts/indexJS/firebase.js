@@ -9,3 +9,5 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
+
+var collectionName = "refute-games-users";

@@ -1,8 +1,41 @@
+var button1 = document.getElementById('button1');
+button1.innerText = data[chosenButtonValues[0]]['Criterion'];
+
+var button2 = document.getElementById('button2');
+button2.innerText = data[chosenButtonValues[1]]['Criterion'];
+
+var button3 = document.getElementById('button3');
+button3.innerText = data[chosenButtonValues[2]]['Criterion'];
+
+var button4 = document.getElementById('button4');
+button4.innerText = data[chosenButtonValues[3]]['Criterion'];
+
+var button5 = document.getElementById('button5');
+button5.innerText = data[chosenButtonValues[4]]['Criterion'];
+
+var button6 = document.getElementById('button6');
+button6.innerText = data[chosenButtonValues[5]]['Criterion'];
+
+var button7 = document.getElementById('button7');
+button7.innerText = data[chosenButtonValues[6]]['Criterion'];
+
+var button8 = document.getElementById('button8');
+button8.innerText = data[chosenButtonValues[7]]['Criterion'];
+
+var button9 = document.getElementById('button9');
+button9.innerText = data[chosenButtonValues[8]]['Criterion'];
+
+var button10 = document.getElementById('button10');
+button10.innerText = data[chosenButtonValues[9]]['Criterion'];
+
+var hintedCriteria = [];
+var currentScore = parseInt(sessionStorage.getItem('score'));
+
 if(parseInt(sessionStorage.getItem('question-number')) == 10){
     document.getElementById('question-final-modal').innerHTML = 
     `<div class="modal-header">
         <h1 class="modal-title fs-5" id="endResultsLabel">Question Criterion:</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="updateDB();"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="playAgainUpdateDB();"></button>
     </div>
     <div class="modal-body" style="display: flex; flex-wrap: wrap; overflow: scroll; height: 70vh;">
         <ol style="font-size: x-large; width: 100%;" id="question-criteria-results">
@@ -28,18 +61,18 @@ function playAgainUpdateDB(){
         return;
     }
     document.getElementById('spinner-circle').style.display = 'block';
-    var chosenCriterion = sessionStorage.getItem('chosenCriterionAll');
-    var unpickedCriterion = sessionStorage.getItem('chosenCriterion');
-    var score = sessionStorage.getItem('score');
+    var chosenCriterion = chosenIncorrectCriterion;
+    var unpickedCriterion = criterionLeftToIdentify;
+    var score = parseInt(currentScore);
     var timeTaken = document.getElementById('clock-mini').textContent;
     var livesRemaining = document.getElementById('wifi-sidebar-label').innerText.split(' ')[0];
-    var hintedCriteriaList = JSON.stringify(hintedCriteria);
+    var hintedCriteriaList = hintedCriteria;
     var correctlyAnswered = true;
     if(document.getElementById('wifi-sidebar-label').innerText == "Game Over!"){
         correctlyAnswered = false;
     }
     
-    db.collection("users").doc(userId).get().then(function(doc) {
+    db.collection(collectionName).doc(userId).get().then(function(doc) {
         if (doc.exists) {
             var docData = doc.data();
             var updatedCriterion = docData.questionCriterion || [];
@@ -50,21 +83,21 @@ function playAgainUpdateDB(){
             var updatedhintedCriteriaList = docData.hintedCriteriaList || [];
             var updatedCorrectlyAnswered = docData.correctlyAnswered || [];
 
-            updatedCriterion.push(chosenCriterion);
-            updatedUnpickedCriterion.push(unpickedCriterion);
+            updatedCriterion.push(JSON.stringify(chosenCriterion));
+            updatedUnpickedCriterion.push(JSON.stringify(unpickedCriterion));
             score = score - sumArray(updatedScore);
             updatedScore.push(score);
             updatedTimeTaken.push(timeTaken);
             updatedLivesRemaining.push(livesRemaining);
-            updatedhintedCriteriaList.push(hintedCriteriaList);
+            updatedhintedCriteriaList.push(JSON.stringify(hintedCriteriaList));
             updatedCorrectlyAnswered.push(correctlyAnswered);
 
-            db.collection("users").doc(userId).set({
+            db.collection(collectionName).doc(userId).set({
                 questionCriterion: updatedCriterion,
                 unpickedCriterion: updatedUnpickedCriterion,
                 score: updatedScore,
                 timeTaken: updatedTimeTaken,
-                finalScore: sessionStorage.getItem('score'),
+                finalScore: currentScore,
                 totalTimeTaken: document.getElementById('clock').textContent,
                 livesRemaining: updatedLivesRemaining,
                 hintedCriteriaList: updatedhintedCriteriaList,
@@ -73,6 +106,7 @@ function playAgainUpdateDB(){
             .then(function() {
                 console.log("Document successfully updated!");
                 document.getElementById('spinner-circle').style.display = 'none';
+                sessionStorage.setItem('score', currentScore);
                 window.location.href = './index.html';
             })
             .catch(function(error) {
@@ -90,7 +124,7 @@ var s = "";
 correctQuestions = JSON.parse(sessionStorage.getItem('correct-questions'));
 
 document.getElementById('question-label-text').innerText = "Question: " + sessionStorage.getItem('question-number');
-document.getElementById('score-text').innerText = "Score: " + sessionStorage.getItem('score');
+document.getElementById('score-text').innerText = "Score: " + currentScore;
 document.getElementById('criterions-remaining-label-text').innerText = "Bugs To Hunt: " + remaining;
 
 for(var i = 1; i < parseInt(sessionStorage.getItem('question-number')); i++){
@@ -136,16 +170,15 @@ function onIncorrectQuestionComplete(){
 }
 
 function onScoreIncrease(){
-    document.getElementById('score-text').innerText = "Score: " + sessionStorage.getItem('score');
+    document.getElementById('score-text').innerText = "Score: " + currentScore;
 }
 
 var result = "";
-var chosenCriterionAll = JSON.parse(sessionStorage.getItem('chosenCriterionAll'));
 
-for(var i = 0; i < chosenCriterionAll.length; i++) {
-    var incorrectText = data[chosenCriterionAll[i]]["Incorrect"].replace(new RegExp('<', 'g'), '&lt;').replace(new RegExp('>', 'g'), '&gt;');
-    var correctText = data[chosenCriterionAll[i]]["Correct"].replace(new RegExp('<', 'g'), '&lt;').replace(new RegExp('>', 'g'), '&gt;');
-    var cr = data[[chosenCriterionAll[i]]]['Criterion'];
+for(var i = 0; i < chosenIncorrectCriterion.length; i++) {
+    var incorrectText = data[chosenIncorrectCriterion[i]]["Incorrect"].replace(new RegExp('<', 'g'), '&lt;').replace(new RegExp('>', 'g'), '&gt;');
+    var correctText = data[chosenIncorrectCriterion[i]]["Correct"].replace(new RegExp('<', 'g'), '&lt;').replace(new RegExp('>', 'g'), '&gt;');
+    var cr = data[[chosenIncorrectCriterion[i]]]['Criterion'];
     var prNo = cr.split(' ')[1].split('.')[0];
     var pr = "";
     if(prNo == 1){
@@ -186,26 +219,14 @@ function sumArray(arr) {
     return sum;
 }
 
-function findingCriterionChosenCorrectly(){
-    var chosenCAll = JSON.parse(sessionStorage.getItem("chosenCriterionAll"));
-    var chosenC = JSON.parse(sessionStorage.getItem("chosenCriterion"));
-
-    var CChosen = sessionStorage.getItem("chosenCriterionTillNow") 
-              ? JSON.parse(sessionStorage.getItem("chosenCriterionTillNow")) 
-              : [];
-
-
-    chosenCAll.forEach(item => {
-        if (!chosenC.includes(item) && !CChosen.includes(item)) {
-            CChosen.push(item);
+function updateDB() {
+    chosenIncorrectCriterion.forEach(item => {
+        if (!criterionLeftToIdentify.includes(item) && !criterionCorrectlyChosenTillNow.includes(item)) {
+            criterionCorrectlyChosenTillNow.push(item);
         }
     });
 
-    sessionStorage.setItem("chosenCriterionTillNow", JSON.stringify(CChosen));
-}
-
-function updateDB() {
-    findingCriterionChosenCorrectly();
+    sessionStorage.setItem("criterion-correctly-chosen-till-now", JSON.stringify(criterionCorrectlyChosenTillNow));
 
     document.getElementById('spinner-circle').style.display = 'block';
     var userId = sessionStorage.getItem('user-id');
@@ -215,20 +236,18 @@ function updateDB() {
         return;
     }
 
-    console.log(hintedCriteria);
-
-    var chosenCriterion = sessionStorage.getItem('chosenCriterionAll');
-    var unpickedCriterion = sessionStorage.getItem('chosenCriterion');
-    var score = sessionStorage.getItem('score');
+    var chosenCriterion = chosenIncorrectCriterion;
+    var unpickedCriterion = criterionLeftToIdentify;
+    var score = parseInt(currentScore);
     var timeTaken = document.getElementById('clock-mini').textContent;
     var livesRemaining = document.getElementById('wifi-sidebar-label').innerText.split(' ')[0];
-    var hintedCriteriaList = JSON.stringify(hintedCriteria);
+    var hintedCriteriaList = hintedCriteria;
     var correctlyAnswered = true;
     if(document.getElementById('wifi-sidebar-label').innerText == "Game Over!"){
         correctlyAnswered = false;
     }
     
-    db.collection("users").doc(userId).get().then(function(doc) {
+    db.collection(collectionName).doc(userId).get().then(function(doc) {
         if (doc.exists) {
             var docData = doc.data();
             var updatedCriterion = docData.questionCriterion || [];
@@ -239,16 +258,16 @@ function updateDB() {
             var updatedhintedCriteriaList = docData.hintedCriteriaList || [];
             var updatedCorrectlyAnswered = docData.correctlyAnswered || [];
 
-            updatedCriterion.push(chosenCriterion);
-            updatedUnpickedCriterion.push(unpickedCriterion);
+            updatedCriterion.push(JSON.stringify(chosenCriterion));
+            updatedUnpickedCriterion.push(JSON.stringify(unpickedCriterion));
             score = score - sumArray(updatedScore);
             updatedScore.push(score);
             updatedTimeTaken.push(timeTaken);
             updatedLivesRemaining.push(livesRemaining);
-            updatedhintedCriteriaList.push(hintedCriteriaList);
+            updatedhintedCriteriaList.push(JSON.stringify(hintedCriteriaList));
             updatedCorrectlyAnswered.push(correctlyAnswered);
 
-            db.collection("users").doc(userId).set({
+            db.collection(collectionName).doc(userId).set({
                 questionCriterion: updatedCriterion,
                 unpickedCriterion: updatedUnpickedCriterion,
                 score: updatedScore,
@@ -260,6 +279,7 @@ function updateDB() {
             .then(function() {
                 console.log("Document successfully updated!");
                 document.getElementById('spinner-circle').style.display = 'none';
+                sessionStorage.setItem('score', currentScore);
                 location.reload();
             })
             .catch(function(error) {
@@ -316,16 +336,16 @@ function scrollWithArrows(event) {
     var scrollableElement = document.querySelector('.scrollable-content');
     var scrollAmount = 50; 
 
-    if (keyCode === 37) { // Left arrow
+    if (keyCode === 37) {
         scrollableElement.scrollLeft -= scrollAmount;
         event.preventDefault();
-    } else if (keyCode === 38) { // Up arrow
+    } else if (keyCode === 38) {
         scrollableElement.scrollTop -= scrollAmount;
         event.preventDefault();
-    } else if (keyCode === 39) { // Right arrow
+    } else if (keyCode === 39) {
         scrollableElement.scrollLeft += scrollAmount;
         event.preventDefault();
-    } else if (keyCode === 40) { // Down arrow
+    } else if (keyCode === 40) {
         scrollableElement.scrollTop += scrollAmount;
         event.preventDefault();
     }

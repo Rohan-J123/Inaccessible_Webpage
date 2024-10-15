@@ -3,10 +3,8 @@ function onSubmitCriterionQuestion(id){
     var currentLineNumber = sessionStorage.getItem('currentLineNumber');
 
     var criterionSelected = data[[onFindingCriterion(currentLineNumber)]]['Criterion'].split(" ")[1];
-
-    var chosenCriterion = JSON.parse(sessionStorage.getItem('chosenCriterion'));
    
-    if(chosenCriterion.length != 0){
+    if(criterionLeftToIdentify.length != 0){
         if(criterionSelected == criterionClicked){
             onCorrectCriterion();
         } else {
@@ -33,7 +31,7 @@ function onCorrectCriterion(){
     </div>`;
     document.getElementById('part3Result').innerHTML = inner;
     increaseBar();
-    sessionStorage.setItem('score', parseInt(sessionStorage.getItem('score')) + 50);
+    currentScore = currentScore + 50;
     onScoreIncrease();
 }
 
@@ -46,7 +44,7 @@ function onCorrectCriterionButQuestionComplete(){
     </div>`;
     document.getElementById('part3Result').innerHTML = inner;
     increaseBar();
-    sessionStorage.setItem('score', parseInt(sessionStorage.getItem('score')) + 50);
+    currentScore = currentScore + 50;
     onScoreIncrease();
 }
 

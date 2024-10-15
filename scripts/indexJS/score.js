@@ -1,10 +1,9 @@
 var scoreTextBox = document.getElementById("score-text");
 
-var tempScore = parseInt(scoreTextBox.innerHTML.split(" ")[1]);
+var tempScore = parseInt(currentScore);
 
 const scoreObserver = new MutationObserver(() => {
     var scoreIncreaseText = document.querySelector("#score-increase-text");
-    var currentScore = parseInt(scoreTextBox.innerHTML.split(" ")[1]);
     if(currentScore - tempScore > 0){
         scoreIncreaseText.innerHTML = "+" + String(currentScore - tempScore);
     } else {

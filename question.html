@@ -32,19 +32,13 @@
     <script src="./scripts/indexJS/randomizer.js"></script>
     <script src="./scripts/indexJS/firebase.js"></script>
 
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <script src="./scripts/dependencies/jquery.min.js"></script>
 
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.2.0/introjs.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.2.0/intro.min.js"></script> -->
-
-    <link rel="stylesheet" href="./scripts/dependencies/intro.min.css">
+    <link rel="stylesheet" href="./src/intro/intro.min.css">
     <script src="./scripts/dependencies/intro.min.js"></script>
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script> -->
-    <!-- <link rel="stylesheet" type="text/css" href="http://csshake.surge.sh/csshake-slow.min.css"> -->
     <script src="./scripts/dependencies/confetti.browzer.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="./scripts/dependencies/csshake-slow.min.css">
+    <link rel="stylesheet" type="text/css" href="./src/confetti/csshake-slow.min.css">
 
     <title>Inaccessible WebPage Game</title>
 </head>
@@ -69,7 +63,7 @@
                     <b><div id="line-numbers" style="padding-left: 5px; width: 50px; color: rgb(125, 125, 125); white-space: break-spaces; text-align: end;">1. 2. 3. 4. 5. 6. 7. 8. 9. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 20. 21. </div></b>
                     <div id="code" style="flex: 1; padding-left: 5px;">
                     </div>
-            </code></pre>
+                </code></pre>
             </div>
             <div id="main-start-area" style="display: block;"><pre style="border-radius: 10px; margin-bottom: 10px;"><div style="display: flex; flex-wrap: nowrap; height: 40px;">
                     <div style="width: 40px; background-color: black;"></div>
@@ -124,13 +118,6 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                             <div id="line-container">
                                 <h3 style="font-family: 'Times New Roman', Times, serif; text-align: center; padding-bottom: 0%;">In Correspondence To WCAG Level A, Which Block In This Program Defies An Accessibility Criteria?</h3>
                                 <div style="display: flex; font-size: x-large; flex-wrap: wrap; padding-bottom: 5px;">
-                                    <!-- <div role="Line Number" style="padding-left: 1vw; display: flex; flex-wrap: wrap; width: 80%;">
-                                        <label for="lineInput" style="white-space: nowrap; width: 85px; font-size: 20px; color: rgba(0, 0, 0, 0.7);">Line Number:</label>
-                                        <input type="number" id="lineInput" style="text-align: center; width: 50%;">
-                                        <button type="button" class="btn btn-primary" style="height: 50px;">&lt</button>
-                                        <div style="border-width: 1px; width: 100px; border-style: solid; height: 50px; border-radius: 10px;">1-1</div>
-                                        <button type="button" class="btn btn-primary" style="height: 50px;">&gt</button>
-                                    </div> -->
                                     <div style="padding-left: 1vw; width: 80%;">
                                         <div style="white-space: nowrap; width: 85px; font-size: 20px; color: rgba(0, 0, 0, 0.7); margin-bottom: 5px;">Line Numbers:</div>
                                         <div style="height: 30px; display: flex; flex-wrap: wrap;">
@@ -158,11 +145,6 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                         </div>
                         <div class="carousel-item" style="border-style: solid; border-radius: 10px; border-color: rgb(223, 223, 223); padding: 10px;">
                             <div id="part2Result">
-                                <h3 style="font-family: 'Times New Roman', Times, serif; text-align: center;">Congratulations!</h3>
-                                <div  style="font-size: large; text-align: center;">Correct Answer</div>
-                                <div style="display: flex; font-size: x-large;">
-                                    <button id="submit-line-number" type="button" class="btn btn-outline-warning" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="toggleToPourQuestion()">BONUS QUESTION</button>
-                                </div>
                             </div>
                         </div>
                         <div class="carousel-item" style="border-style: solid; border-radius: 10px; border-color: rgb(223, 223, 223); padding: 10px;">
@@ -182,11 +164,6 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                         </div>
                         <div class="carousel-item" style="border-style: solid; border-radius: 10px; border-color: rgb(223, 223, 223); padding: 10px;">
                             <div id="part3Result">
-                                <h3 style="font-family: 'Times New Roman', Times, serif; text-align: center;">Congratulations!</h3>
-                                <div  style="font-size: large; text-align: center;">Correct Answer</div>
-                                <div style="display: flex; font-size: x-large;">
-                                    <button id="submit-line-number" type="button" class="btn btn-outline-warning" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="document.getElementById('goToPart1').click()">BACK</button>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -240,7 +217,6 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                     <span class="material-symbols-outlined" style="font-size: 21.5px; font-weight: bold;">leaderboard</span>
                 </button>
                 <div style="font-size: x-large; text-align: center; flex: 1; padding-top: 5px; color: gray;" class="lobster-regular" id="clock-mini">Question Timer :: 00:00:00</div>
-                <!-- <div style="width: 40px; padding-top: 7px; padding-right: 20px;"><button type="button" class="btn-close" aria-label="Close-Sidebar" id ="toggle-button-to-hide-info" onclick="toggleSidebarOff()" style="display: block; position: relative; left: 100%; transform: translateX(-50%); color: grey; border: 3px solid #000; border-radius: 50px; padding: 5px; font-size: small;"></button></div> -->
                 <div id="tutorial-reset-button" style="margin-top: 7px; margin-right: 10px; display: flex; align-items: center; justify-content: center;">
                     <button type="button" style="position: relative; height: 30px; width: 30px; border-radius: 100px; border: 3px solid grey; 
                             color: grey; display: flex; justify-content: center; align-items: center; 
@@ -260,7 +236,6 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                         onclick="toggleSidebarOff();">
                     <span class="material-symbols-outlined" style="font-size: 22.5px; line-height: 1;"><b>arrow_forward</b></span>
                 </button></div>
-                <!-- <button id ="toggle-button-to-hide-info" aria-label="close-sidebar" onclick="toggleSidebarOff()" style="padding: 1px; color: darkgray; border: 3px solid darkgray; border-radius: 50px; font-size: large; position: relative; left: 100%; transform: translateX(-100%); height: 40px; width: 40px;"><span class="material-symbols-outlined" style="font-size: 22.5px;"><b>arrow_back</b></span></button> -->
             </div>
             <div id="sidebar-main-content">    
                 <div id="info-container" style="padding-right: 15px; padding-left: 15px; margin-bottom: 20px;">
@@ -303,14 +278,13 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                     </div>
                 </div>
                 <div style="background-color: lightgray; margin: 15px; height: 1.5px;"></div>
-                <div style="flex: 1; display: flex; flex-direction: column; overflow-y: auto;">
+                <div style="flex: 1; display: flex; flex-direction: column; overflow-y: auto; height: 175px;">
                     <h4 style="text-align: center;">Current Block Selection:</h4>
                     <div id="sidebar-line" style="font-style: italic; text-align: left; padding: 10px 2vw; overflow-x: auto; font-size: large; text-wrap: nowrap; flex: 1; margin-bottom: 10px;">
                     </div>
                 </div>
             </div>
             <div id="sidebar-run-output" style="width: 100%; height: 100%; display: none;">
-                <!-- <div style="background-color: rgb(215, 215, 215); height: 1px; margin: 0px 10px;"></div> -->
                 <iframe id="outputFrame" title="HTML Output" style="width: 100%; height: 100%; padding-right: 15px; padding-left: 15px; margin-top: 20px; padding-bottom: 20px;"></iframe>
             </div>
 		</div>
@@ -323,7 +297,6 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
         <div class="modal-dialog modal-lg">
             <div class="modal-content" id="question-final-modal">
                 <div class="modal-header">
-                    <!-- <h1 class="modal-title fs-5" id="endResultsLabel">Question Criterion:</h1> -->
                     <h1 class="modal-title fs-3 lobster-regular" id="endResultsLabel" style="text-align: center; width: 100%;">Question Criterion</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="updateDB();"></button>
                 </div>
@@ -595,19 +568,17 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
     <script src="./scripts/indexJS/specialEffects.js"></script>
     <script src="./scripts/indexJS/clock.js"></script>
     <script src="./scripts/indexJS/login.js"></script>
-    <script src="./scripts/indexJS/buttonBehaviour.js"></script>
     <script src="./scripts/indexJS/toggle.js"></script>
     <script src="./scripts/indexJS/questionLabels.js"></script>
     <script src="./scripts/demoJS/replaceTags.js"></script>
     <script src="./scripts/demoJS/parser.js"></script>
-    <script src="./scripts/indexJS/lineQuestion.js"></script>
     <script src="./scripts/indexJS/pourQuestion.js"></script>
+    <script src="./scripts/indexJS/lineQuestion.js"></script>
     <script src="./scripts/indexJS/criterionQuestion.js"></script>
     <script src="./scripts/indexJS/hint.js"></script>
     <script src="./scripts/indexJS/leaderboard.js"></script>
     <script src="./scripts/indexJS/ranks.js"></script>
     <script src="./scripts/indexJS/tutorials.js"></script>
     <script src="./scripts/indexJS/score.js"></script>
-    <script src="./scripts/indexJS/lineQuestionAlt.js"></script>
 </body>
 </html>

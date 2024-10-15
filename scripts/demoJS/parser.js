@@ -1,3 +1,21 @@
+let runUsed = false;
+
+var incorrectCriterionLineNumbers = [];
+var correctCriterionLineNumbers = [];
+
+var htmlCode = document.getElementById('code').textContent;
+var iframe = document.getElementById('outputFrame');
+
+function countSubstringOccurrences(string, substring) {
+    let count = 0;
+    let position = string.indexOf(substring);
+    while (position !== -1) {
+        count++;
+        position = string.indexOf(substring, position + 1);
+    }
+    return count;
+}
+
 fetch('./demoFolder/demoCode.html')
     .then(response => response.text())
     .then(data => {
@@ -38,26 +56,17 @@ fetch('./demoFolder/demoCode.html')
 
 
 function abcdefg(){
-    var chosenCriterionAll = JSON.parse(sessionStorage.getItem('chosenCriterionAll'));
     var codeText = document.getElementById('code').innerText;
-    var lineNos = [];
     
-    for(var i = 0; i < chosenCriterionAll.length; i++){
-        var indexOfData = codeText.indexOf(data[chosenCriterionAll[i]]["Incorrect"]);
-        lineNos.push(countSubstringOccurrences(codeText.slice(0, indexOfData), '\n') + 1);
+    for(var i = 0; i < chosenIncorrectCriterion.length; i++){
+        var indexOfData = codeText.indexOf(data[chosenIncorrectCriterion[i]]["Incorrect"]);
+        incorrectCriterionLineNumbers.push(countSubstringOccurrences(codeText.slice(0, indexOfData), '\n') + 1);
     }
-
-    sessionStorage.setItem('correct-line-numbers', JSON.stringify(lineNos));
-
-    var chosenCriterionActuallyCorrect = JSON.parse(sessionStorage.getItem('chosenCriterion-actually-correct'));
-    var lineNosActuallyCorrect = [];
     
-    for(var i = 0; i < chosenCriterionActuallyCorrect.length; i++){
-        var indexOfData = codeText.indexOf(data[chosenCriterionActuallyCorrect[i]]["Correct"]);
-        lineNosActuallyCorrect.push(countSubstringOccurrences(codeText.slice(0, indexOfData), '\n') + 1);
+    for(var i = 0; i < chosenCorrectCriterion.length; i++){
+        var indexOfData = codeText.indexOf(data[chosenCorrectCriterion[i]]["Correct"]);
+        correctCriterionLineNumbers.push(countSubstringOccurrences(codeText.slice(0, indexOfData), '\n') + 1);
     }
-
-    sessionStorage.setItem('actually-correct-line-numbers', JSON.stringify(lineNosActuallyCorrect));
 
 
     var indexOfEnd = codeText.indexOf('</html>');
@@ -67,15 +76,17 @@ function abcdefg(){
         numberOfLinesStr += (i.toString() + '. ');
     }
     document.getElementById('line-numbers').textContent = numberOfLinesStr;
+
+    iframe.contentWindow.document.open();
+    iframe.contentWindow.document.write(htmlCode);
+    iframe.contentWindow.document.close();
+
+    var audio = iframe.contentWindow.document.querySelector('audio');
+    if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+    }
 }
-
-let runUsed = false;
-
-var htmlCode = document.getElementById('code').textContent;
-var iframe = document.getElementById('outputFrame');
-iframe.contentWindow.document.open();
-iframe.contentWindow.document.write(htmlCode);
-iframe.contentWindow.document.close();
 
 var audio = iframe.contentWindow.document.querySelector('audio');
 if (audio) {
@@ -96,7 +107,7 @@ function addRunCodeToOutput (){
     iframe.contentWindow.document.close();
 
     if(runUsed == false){
-        sessionStorage.setItem('score', parseInt(sessionStorage.getItem('score')) - 100);
+        currentScore = currentScore - 100;
         onScoreIncrease();
 
         document.getElementById("run-div-tick").style.display = "block";
@@ -118,14 +129,4 @@ function removeRunCodeFromOutput (){
         audio.pause();
         audio.currentTime = 0;
     }
-}
-
-function countSubstringOccurrences(string, substring) {
-    let count = 0;
-    let position = string.indexOf(substring);
-    while (position !== -1) {
-        count++;
-        position = string.indexOf(substring, position + 1);
-    }
-    return count;
 }

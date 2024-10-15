@@ -1,55 +1,14 @@
-/* .floating-button-container {
-    transition: 0.5s;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-    color: blueviolet;
-} */
-
 ::placeholder {
     font-size: calc(2.5vh + 3px);
 }
 
 #button-robost, #button-perceivable, #button-operable, #button-understandable {
-    /* color: black; */
     margin: 10px 20px;
-    /* font-size: 16px; */
     cursor: pointer;
-    /* border-radius: 50px; */
     width: 150px;
     height: 50px;
     z-index: 999;
     font-size: large;
-}
-
-
-.tooltipCustom {
-    position: relative;
-    display: inline-block;
-    z-index: 999;
-}
-
-.tooltipCustom .tooltiptextCustom {
-    visibility: hidden;
-    width: 200px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -105px;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.tooltipCustom:hover .tooltiptextCustom {
-    visibility: visible;
-    opacity: 1;
 }
 
 #button1, #button2, #button3, #button4, #button5, #button6, #button7, #button8, #button9, #button10  {
@@ -83,56 +42,6 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 1s ease-out;
-}
-
-.custom-tooltip {
-    --bs-tooltip-bg: #0d6dfd;
-    --bs-tooltip-color: white;
-    font-size: large;
-}
-
-.tail-top::before {
-    content: '';
-    position: absolute;
-    bottom: 99%;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 20px;
-    border-style: solid;
-    border-color: transparent transparent white transparent;
-}
-
-.tail-bottom::before {
-    content: '';
-    position: absolute;
-    top: 99%;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 20px;
-    border-style: solid;
-    border-color: white transparent transparent transparent;
-}
-
-.tail-slight-right::before {
-    content: '';
-    position: absolute;
-    bottom: 99%;
-    left: 99%;
-    transform: translateX(-100%);
-    border-width: 20px;
-    border-style: solid;
-    border-color: transparent transparent white transparent;
-}
-
-.tail-right::before {
-    content: '';
-    position: absolute;
-    bottom: 99%;
-    left: 97.5%;
-    transform: translateX(-100%);
-    border-width: 20px;
-    border-style: solid;
-    border-color: transparent transparent white transparent;
 }
 
 .score-text {

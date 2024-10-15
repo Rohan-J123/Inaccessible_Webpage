@@ -1,22 +1,21 @@
 function onSubmitPourQuestion(id){
-    var pourClicked = document.getElementById(id).value;
     var currentLineNumber = sessionStorage.getItem('currentLineNumber');
 
     var criterionSelected = data[[onFindingCriterion(currentLineNumber)]]['Criterion'].split(" ")[1];
     var criterionPour = criterionSelected.split('.')[0];
 
-    var chosenCriterion = JSON.parse(sessionStorage.getItem('chosenCriterion'));
-    chosenCriterion = chosenCriterion.filter(item => item !== onFindingCriterion(currentLineNumber));
-    sessionStorage.setItem('chosenCriterion', JSON.stringify(chosenCriterion));
-
-    if(chosenCriterion.length != 0){
+    if(criterionLeftToIdentify.length != 1){
         if(criterionPour == 1 && id == 'button-perceivable' ){
+            criterionLeftToIdentify = criterionLeftToIdentify.filter(item => item !== onFindingCriterion(currentLineNumber));
             onCorrectPour();
         } else if(criterionPour == 2 && id == 'button-operable' ){
+            criterionLeftToIdentify = criterionLeftToIdentify.filter(item => item !== onFindingCriterion(currentLineNumber));
             onCorrectPour();
         } else if(criterionPour == 3 && id == 'button-understandable' ){
+            criterionLeftToIdentify = criterionLeftToIdentify.filter(item => item !== onFindingCriterion(currentLineNumber));
             onCorrectPour();
         } else if(criterionPour == 4 && id == 'button-robost' ){
+            criterionLeftToIdentify = criterionLeftToIdentify.filter(item => item !== onFindingCriterion(currentLineNumber));
             onCorrectPour();
         } else {
             onWrongPour();
@@ -24,12 +23,16 @@ function onSubmitPourQuestion(id){
         }
     } else {
         if(criterionPour == 1 && id == 'button-perceivable' ){
+            criterionLeftToIdentify = criterionLeftToIdentify.filter(item => item !== onFindingCriterion(currentLineNumber));
             onCorrectPourButQuestionComplete();
         } else if(criterionPour == 2 && id == 'button-operable' ){
+            criterionLeftToIdentify = criterionLeftToIdentify.filter(item => item !== onFindingCriterion(currentLineNumber));
             onCorrectPourButQuestionComplete();
         } else if(criterionPour == 3 && id == 'button-understandable' ){
+            criterionLeftToIdentify = criterionLeftToIdentify.filter(item => item !== onFindingCriterion(currentLineNumber));
             onCorrectPourButQuestionComplete();
         } else if(criterionPour == 4 && id == 'button-robost' ){
+            criterionLeftToIdentify = criterionLeftToIdentify.filter(item => item !== onFindingCriterion(currentLineNumber));
             onCorrectPourButQuestionComplete();
         } else {
             onWrongPour();
@@ -40,17 +43,6 @@ function onSubmitPourQuestion(id){
     document.getElementById('goToPart2Result').click();
 }
 
-function onFindingCriterion(lineNumber){
-    var validLineNumbers = JSON.parse(sessionStorage.getItem('correct-line-numbers'));
-    var chosenCriterionAll = JSON.parse(sessionStorage.getItem('chosenCriterionAll'));
-
-    if(validLineNumbers.includes(parseInt(lineNumber))){
-        return chosenCriterionAll[validLineNumbers.indexOf(parseInt(lineNumber))];
-    } else {
-        return -1;
-    }
-} 
-
 function onCorrectPour(){
     var inner = 
     `<h3 style="font-family: 'Times New Roman', Times, serif; text-align: center;">Congratulations!</h3>
@@ -60,7 +52,7 @@ function onCorrectPour(){
         <button type="button" class="btn btn-outline-primary" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="document.getElementById('goToPart1').click(); document.getElementById('sidebar-line').innerText = ''; if(hintedCriteria.includes(onFindingCriterion(sessionStorage.getItem('currentLineNumber')))){document.getElementById('game-hint-button').disabled = false;}">SKIP</button>
     </div>`;
     document.getElementById('part2Result').innerHTML = inner;
-    sessionStorage.setItem('score', parseInt(sessionStorage.getItem('score')) + 30);
+    currentScore = currentScore + 30;
     onScoreIncrease();
     remaining -= 1;
     document.getElementById('criterions-remaining-label-text').innerText = "Bugs To Hunt: " + remaining;
@@ -78,7 +70,7 @@ function onCorrectPourButQuestionComplete(){
         <button type="button" class="btn btn-outline-info" style="flex: 1; margin-right: 1vw; font-size: x-large; height: 50px; margin-top: 20px; margin-left: 1vw;" onclick="onCorrectQuestionComplete()">NEXT</button>
     </div>`;
     document.getElementById('part2Result').innerHTML = inner;
-    sessionStorage.setItem('score', parseInt(sessionStorage.getItem('score')) + 30);
+    currentScore = currentScore + 30;
     onScoreIncrease();
     remaining -= 1;
     document.getElementById('criterions-remaining-label-text').innerText = "Bugs To Hunt: " + remaining;

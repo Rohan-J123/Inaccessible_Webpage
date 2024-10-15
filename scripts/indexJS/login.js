@@ -11,11 +11,10 @@ document.getElementById("login-info").addEventListener("submit", function(event)
     const accessibilityKnowledge = document.getElementById("login-accessibilty-knowledge").value;
     const area = document.getElementById("login-area").value;
 
-    // Calculate current IST time
     const now = new Date();
-    const utcOffset = now.getTimezoneOffset() * 60000; // Get the current UTC offset in milliseconds
-    const istOffset = 5.5 * 60 * 60 * 1000; // IST offset in milliseconds
-    const istTime = new Date(now.getTime() + utcOffset + istOffset); // Adjust current time to IST    
+    const utcOffset = now.getTimezoneOffset() * 60000;
+    const istOffset = 5.5 * 60 * 60 * 1000;
+    const istTime = new Date(now.getTime() + utcOffset + istOffset);
 
     var subfield='';
     switch(document.getElementById("login-field").value){
@@ -26,13 +25,11 @@ document.getElementById("login-info").addEventListener("submit", function(event)
         case 'Other': subfield = document.getElementById('subfield-other').value; break;
     }
 
-    var userId = db.collection("users").doc().id;
-    console.log(userId);
-    // return;
+    var userId = db.collection(collectionName).doc().id;
 
     firebase.auth().createUserWithEmailAndPassword(userId + "@123.com", userId)
-    .then((userCredential) => {
-        db.collection("users").doc(userId).set({
+    .then(() => {
+        db.collection(collectionName).doc(userId).set({
             name: name,
             email: email,
             field: field,

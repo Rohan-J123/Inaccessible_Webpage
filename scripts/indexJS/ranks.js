@@ -7,8 +7,6 @@ let changedToTwoThousand = false;
 let changedToThreeThousand = false;
 let changedToFourThousand = false;
 
-const currentScore = parseInt(scoreDiv.textContent.split(' ')[1]);
-
 if(currentScore >= 4000){
     changedToFourThousand = true;
     changedToThreeThousand = true;
@@ -44,7 +42,6 @@ if(currentScore >= 4000){
 const callback = function(mutationsList, observer) {
     for(let mutation of mutationsList) {
         if (mutation.type === 'childList') {
-            const currentScore = parseInt(scoreDiv.textContent.split(' ')[1]);
             if(currentScore >= 1000 && changedToOneThousand == false){
                 rankImage.src = "./Images/rank1.png";
                 rankImage.alt = 'You are at Rank 2';
