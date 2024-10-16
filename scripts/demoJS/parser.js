@@ -3,6 +3,8 @@ let runUsed = false;
 var incorrectCriterionLineNumbers = [];
 var correctCriterionLineNumbers = [];
 
+var currentLIndex = 0;
+
 var htmlCode = document.getElementById('code').textContent;
 var iframe = document.getElementById('outputFrame');
 
@@ -146,8 +148,6 @@ function abcdefg(){
     
     divisions.sort((a, b) => a[0] - b[0]);
     divisionsIncorrect.sort((a, b) => a[0] - b[0]);
-    
-    var currentLIndex = 0;
     
     if(divisions[currentLIndex % divisions.length][0] == divisions[currentLIndex % divisions.length][1]){
         document.getElementById("lineInput").innerHTML = divisions[currentLIndex % divisions.length][0];
