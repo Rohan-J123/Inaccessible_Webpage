@@ -154,3 +154,26 @@ function increaseBar(){
     }
     document.getElementById('wifi-mainbar-label').innerText = document.getElementById('wifi-sidebar-label').innerText;
 }
+
+function nextLineIndex(){
+    currentLIndex += 1;
+
+    if(divisions[currentLIndex % divisions.length][0] == divisions[currentLIndex % divisions.length][1]){
+        document.getElementById("lineInput").innerHTML = divisions[currentLIndex % divisions.length][0];
+    } else {
+        document.getElementById("lineInput").innerHTML = String(divisions[currentLIndex % divisions.length][0]) + " - " + String(divisions[currentLIndex % divisions.length][1]);
+    }
+}
+
+function previousLineIndex(){
+    currentLIndex -= 1;
+    if(currentLIndex < 0){
+        currentLIndex = divisions.length - 1;
+    }
+    
+    if(divisions[currentLIndex % divisions.length][0] == divisions[currentLIndex % divisions.length][1]){
+        document.getElementById("lineInput").innerHTML = divisions[currentLIndex % divisions.length][0];
+    } else {
+        document.getElementById("lineInput").innerHTML = String(divisions[currentLIndex % divisions.length][0]) + " - " + String(divisions[currentLIndex % divisions.length][1]);
+    }
+}
