@@ -1,6 +1,3 @@
-var divisions = [];
-var divisionsIncorrect = [];
-
 for(var i = 0; i < chosenIncorrectCriterion .length; i++){
     var d = data[chosenIncorrectCriterion[i]]["Incorrect"];
     var lengthOfCriterion = countSubstringOccurrences(d, '\n');

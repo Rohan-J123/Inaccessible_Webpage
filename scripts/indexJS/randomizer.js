@@ -28,7 +28,10 @@ for(let i = 0; i < 10 - JSON.parse(sessionStorage.getItem('correct-questions')).
     }
 }
 
-chosenButtonValues = chosenButtonValues.concat(chosenIncorrectCriterion)
+chosenButtonValues = chosenButtonValues.concat(chosenIncorrectCriterion);
+
+var divisions = [];
+var divisionsIncorrect = [];
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
