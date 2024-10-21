@@ -63,3 +63,18 @@
       transform: translateY(-40px) translateX(-50%);
     }
 }
+
+#sidebar-line {
+    /* background-color: black;
+    color: white; */
+    height: 120px;
+    font-style: italic;
+    text-align: left;
+    margin: 0px 1vw;
+    padding: 5px;
+    text-wrap: nowrap;
+    overflow-y: auto;
+    font-size: large;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}

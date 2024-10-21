@@ -238,9 +238,9 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                 </button></div>
             </div>
             <div id="sidebar-main-content">    
-                <div id="info-container" style="padding-right: 15px; padding-left: 15px; margin-bottom: 20px;">
+                <div id="info-container" style="padding-right: 15px; padding-left: 15px; margin-bottom: 10px;">
                     <div id="instructions-block-in-sidebar">
-                        <h2 style="margin-top: 0%; text-align: center; text-align: center;"><i>Instructions:</i></h2>
+                        <h2 style="margin-top: 0%; text-align: center; margin-bottom: 0%;"><i>Instructions:</i></h2>
                         <p style="font-size: large; text-align: justify; font-family: 'Times New Roman', Times, serif; line-height: normal; white-space: pre-line;">
 1. Correct Line Number guess: +20 points, incorrect: -1 Wi-Fi bar.
 2. Correct Principle guess: +30 points, incorrect: -1 Wi-Fi bar.
@@ -256,8 +256,8 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                 <div style="display: flex; flex-wrap: wrap; padding-bottom: 10px;">
                     <div style="flex: 4; text-align: center;" id="questions-headings-and-labels">
                         <div style="display: flex; flex-wrap: wrap;">
-                            <h5 class="lobster-regular" id="question-label-text" style="text-align: left; flex: 1; padding-left: 2vw;">Question: 1</h5>
-                            <h5 class="lobster-regular" id="criterions-remaining-label-text" style="text-align: right; flex: 1; padding-right: 2vw;">Bugs To Hunt: 1</h5>
+                            <h4 class="lobster-regular" id="question-label-text" style="text-align: left; flex: 1; padding-left: 2vw;">Question: 1</h5>
+                            <h4 class="lobster-regular" id="criterions-remaining-label-text" style="text-align: right; flex: 1; padding-right: 2vw;">Bugs To Hunt: 1</h5>
                         </div>
                         <div id="question-label-container">
                             <button type="button" class="btn btn-outline-primary question-label" id="question-label-1" tabindex="-1">1</button>
@@ -272,16 +272,17 @@ Find out all accessibility issues in the given code before your Wi-Fi runs out!
                             <button type="button" class="btn btn-outline-primary question-label" id="question-label-10" tabindex="-1">10</button>
                         </div>
                     </div>
-                    <div style="flex: 3;" id="wifi-bars-and-label">
+                    <div style="flex: 2;" id="wifi-bars-and-label">
                         <img src="./Images/WifiFullBar.png" alt="Wifi Full Bar Sidebar" style="position: relative; top: 0%; left: 50%; transform: translateX(-50%); height: 100px !important;" id="wifiImageSide">
                         <h5 style="text-align: center; padding-top: 20px;" id="wifi-sidebar-label" class="lobster-regular">Four Bars</h5>
                     </div>
                 </div>
                 <div style="background-color: lightgray; margin: 15px; height: 1.5px;"></div>
-                <div style="flex: 1; display: flex; flex-direction: column; overflow-y: auto; height: 175px;">
+                <div style="display: flex; flex-direction: column; overflow-y: auto;">
                     <h4 style="text-align: center;">Current Block Selection:</h4>
-                    <div id="sidebar-line" style="font-style: italic; text-align: left; padding: 10px 2vw; overflow-x: auto; font-size: large; text-wrap: nowrap; flex: 1; margin-bottom: 10px;">
+                    <div id="sidebar-line">
                     </div>
+                    <!-- <div id="sidebar-line" style="font-style: italic; text-align: left; padding: 10px 2vw; font-size: large; white-space: pre-wrap; overflow-x: auto; max-height: 150px; overflow-y: auto; flex: 1; margin-bottom: 10px;"></div> -->
                 </div>
             </div>
             <div id="sidebar-run-output" style="width: 100%; height: 100%; display: none;">

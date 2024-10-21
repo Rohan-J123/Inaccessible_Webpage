@@ -1,6 +1,10 @@
 var criterionCorrectlyChosenTillNow = sessionStorage.getItem("criterion-correctly-chosen-till-now") 
               ? JSON.parse(sessionStorage.getItem("criterion-correctly-chosen-till-now")) 
               : [];
+
+var criterionGivenTillNow = sessionStorage.getItem("criterion-given-till-now") 
+              ? JSON.parse(sessionStorage.getItem("criterion-given-till-now")) 
+              : [];
               
 var chosenIncorrectCriterion = [];
 for(let i = 0; i < JSON.parse(sessionStorage.getItem('correct-questions')).length + 1; i++){
@@ -12,6 +16,9 @@ for(let i = 0; i < JSON.parse(sessionStorage.getItem('correct-questions')).lengt
         i--;
     }
 }
+
+criterionGivenTillNow.concat(chosenIncorrectCriterion);
+sessionStorage.setItem("criterion-given-till-now", JSON.stringify(criterionGivenTillNow));
 
 var remaining = JSON.parse(sessionStorage.getItem('correct-questions')).length + 1;
 var criterionLeftToIdentify = chosenIncorrectCriterion;

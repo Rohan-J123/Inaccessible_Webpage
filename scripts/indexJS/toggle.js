@@ -14,7 +14,7 @@ function toggleSidebarOn() {
         mainbar.style.transition = 'margin-right 1s';
         mainbarImages.style.transition = '1s';
         questions.style.transition = '1s';
-        sidebar.style.height = '86.5vh';
+        sidebar.style.height = 'calc(100vh - 100px)';
     }
 
     sidebar.style.width = sidebar.style.width === '600px' ? '0px' : '600px';
@@ -88,7 +88,7 @@ function setInitialConditions(){
         mainbar.style.transition = 'margin-right 1s';
         mainbarImages.style.transition = '1s';
         questions.style.transition = '1s';
-        sidebar.style.height = '86.5vh';
+        sidebar.style.height = 'calc(100vh - 100px)';
     }
 }
 
