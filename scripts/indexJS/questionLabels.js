@@ -256,6 +256,8 @@ function updateDB() {
     });
 
     sessionStorage.setItem("criterion-correctly-chosen-till-now", JSON.stringify(criterionCorrectlyChosenTillNow));
+    criterionGivenTillNow = criterionGivenTillNow.concat(chosenIncorrectCriterion);
+    sessionStorage.setItem("criterion-given-till-now", JSON.stringify(criterionGivenTillNow));
 
     document.getElementById('spinner-circle').style.display = 'block';
     var userId = sessionStorage.getItem('user-id');

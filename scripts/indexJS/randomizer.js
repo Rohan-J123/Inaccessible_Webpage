@@ -17,9 +17,6 @@ for(let i = 0; i < JSON.parse(sessionStorage.getItem('correct-questions')).lengt
     }
 }
 
-criterionGivenTillNow.concat(chosenIncorrectCriterion);
-sessionStorage.setItem("criterion-given-till-now", JSON.stringify(criterionGivenTillNow));
-
 var remaining = JSON.parse(sessionStorage.getItem('correct-questions')).length + 1;
 var criterionLeftToIdentify = chosenIncorrectCriterion;
 var chosenCorrectCriterion = [];
