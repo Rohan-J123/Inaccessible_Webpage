@@ -94,3 +94,75 @@ function continueButton(){
         
     window.location.href = './question.html';
 }
+
+var specialEffectsEnabled = sessionStorage.getItem("specialEffectsEnabled");
+
+function confettiAnimation(){
+    if(specialEffectsEnabled == 'true'){
+        confetti({
+            particleCount: 500,
+            spread: 90,
+            origin: {x: 0, y: 1},
+            startVelocity: 75,
+            angle: 45,
+            zIndex: 3000
+        });
+        confetti({
+            particleCount: 500,
+            spread: 90,
+            origin: {x: 1, y: 1},
+            startVelocity: 75,
+            angle: 135,
+            zIndex: 3000
+        });
+    }
+}
+
+confettiAnimation();
+
+
+var s = "";
+correctQuestions = JSON.parse(sessionStorage.getItem('correct-questions'));
+
+var disabledCheckpoint = 
+`<button type="button" class="btn btn-outline-warning question-label" style="font-size: x-large;">
+    &#128274;
+</button>`;
+
+var abledCheckpoint = 
+`<button type="button" class="btn btn-outline-warning question-label" style="font-size: x-large;">
+    &#128275;
+</button>`;
+
+for(var i = 1; i < parseInt(sessionStorage.getItem('question-number')); i++){
+    if(correctQuestions.includes(i)){
+        s += '<button type="button" class="btn btn-success question-label" id="question-label-1" tabindex="-1" style="font-size: x-large;" disabled>' + i +'<span>&#10003;</span></button>';
+    } else {
+        s += '<button type="button" class="btn btn-danger question-label" id="question-label-1" tabindex="-1" style="font-size: x-large;" disabled>' + i +'<span>&#10007;</span></button>';
+    }
+
+    if (i == 5 || i == 10) {
+        if(i > parseInt(sessionStorage.getItem('question-number'))){
+            s += disabledCheckpoint;
+        } else {
+            s += abledCheckpoint;
+        }
+        
+    }
+}
+if(i != 11){
+    s += '<button type="button" class="btn btn-warning question-label" id="question-label-1" tabindex="-1" style="font-size: x-large;">' + parseInt(sessionStorage.getItem('question-number')) +'</button>';
+}
+
+if(i == 10 || i == 5){
+    s += disabledCheckpoint;
+}
+
+for(var i = parseInt(sessionStorage.getItem('question-number')) + 1; i <= 10; i++){
+    s += '<button type="button" class="btn btn-outline-primary question-label" id="question-label-1" tabindex="-1" style="font-size: x-large;" disabled>' + i +'</button>';
+    if (i == 5 || i == 10) {
+        s += disabledCheckpoint;
+    }
+}
+
+document.getElementById('question-label-container').innerHTML = s;

@@ -31,29 +31,33 @@ button10.innerText = data[chosenButtonValues[9]]['Criterion'];
 var hintedCriteria = [];
 var currentScore = parseInt(sessionStorage.getItem('score'));
 
-if(parseInt(sessionStorage.getItem('question-number')) == 10){
-    document.getElementById('question-final-modal').innerHTML = 
-    `<div class="modal-header">
-        <h1 class="modal-title fs-5" id="endResultsLabel">Question Criterion:</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="playAgainUpdateDB();"></button>
-    </div>
-    <div class="modal-body" style="display: flex; flex-wrap: wrap; overflow: scroll; height: 70vh;">
-        <ol style="font-size: x-large; width: 100%;" id="question-criteria-results">
-        </ol>
-    </div>
-    <div class="modal-footer">
-        <a href="./Images/WCAG Level A.pdf" download="WCAG_LevelA_Criteria.pdf" style="margin-left: 20px;">
-            <button type="button" class="btn btn-primary">Download WCAG Criteria (Level A)</button>
-        </a>
-        <button type="button" class="btn btn-primary" onclick="playAgainUpdateDB()">Play Again</button>
-    </div>`;
-}
+// if(parseInt(sessionStorage.getItem('question-number')) == 10){
+//     document.getElementById('question-final-modal').innerHTML = 
+//     `<div class="modal-header">
+//         <h1 class="modal-title fs-5" id="endResultsLabel">Question Criterion:</h1>
+//         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="playAgainUpdateDB();"></button>
+//     </div>
+//     <div class="modal-body" style="display: flex; flex-wrap: wrap; overflow: scroll; height: 70vh;">
+//         <ol style="font-size: x-large; width: 100%;" id="question-criteria-results">
+//         </ol>
+//     </div>
+//     <div class="modal-footer">
+//         <a href="./Images/WCAG Level A.pdf" download="WCAG_LevelA_Criteria.pdf" style="margin-left: 20px;">
+//             <button type="button" class="btn btn-primary">Download WCAG Criteria (Level A)</button>
+//         </a>
+//         <button type="button" class="btn btn-primary" onclick="playAgainUpdateDB()">Play Again</button>
+//     </div>`;
+// }
 
 if(parseInt(sessionStorage.getItem('question-number')) == 6 && sessionStorage.getItem('checkpoint-5') == 'false'){
     window.location.href = './checkpoint.html';
 }
 
-if(parseInt(sessionStorage.getItem('question-number')) > 10){
+if(parseInt(sessionStorage.getItem('question-number')) > 10 && sessionStorage.getItem('checkpoint-10') == 'false'){
+    window.location.href = './checkpoint.html';
+}
+
+if(parseInt(sessionStorage.getItem('question-number')) > 10 && sessionStorage.getItem('checkpoint-10') == 'true'){
     window.location.href = './index.html';
 }
 
@@ -173,9 +177,9 @@ for(var i = parseInt(sessionStorage.getItem('question-number')) + 1; i <= 10; i+
 document.getElementById('question-label-container').innerHTML = s;
 
 function onCorrectQuestionComplete(){
-    if(parseInt(sessionStorage.getItem('question-number')) == 10){
-        sessionStorage.removeItem('user-id');
-    }   
+    // if(parseInt(sessionStorage.getItem('question-number')) == 10){
+    //     sessionStorage.removeItem('user-id');
+    // }   
     currentQuestionNumber = parseInt(sessionStorage.getItem('question-number'));
     sessionStorage.setItem('question-number', currentQuestionNumber + 1);
     correctQuesions = JSON.parse(sessionStorage.getItem('correct-questions'));
@@ -188,9 +192,9 @@ function onCorrectQuestionComplete(){
 }
 
 function onIncorrectQuestionComplete(){
-    if(parseInt(sessionStorage.getItem('question-number')) == 10){
-        sessionStorage.removeItem('user-id');
-    }
+    // if(parseInt(sessionStorage.getItem('question-number')) == 10){
+    //     sessionStorage.removeItem('user-id');
+    // }
     sessionStorage.setItem('question-number', parseInt(sessionStorage.getItem('question-number')) + 1);
     document.getElementById('modalOpenButton').click();
     sessionStorage.setItem('timer', document.getElementById("clock").textContent);
