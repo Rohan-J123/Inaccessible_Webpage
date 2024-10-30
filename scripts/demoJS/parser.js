@@ -37,7 +37,7 @@ function replaceTags(textContent) {
             newText = newText.substring(0, startIndex) + data[tag]["Incorrect"] + "\n" + newText.substring(endIndex + endMarker.length + 1);
         }
         else{
-            var r = Math.floor(Math.random() * 3);
+            var r = Math.floor(Math.random() * 5);
             if(r == 0){
                 newText = newText.substring(0, startIndex) + data[tag]["Correct"] + "\n" + newText.substring(endIndex + endMarker.length + 1);
                 chosenCorrectCriterion.push(tag);
@@ -140,11 +140,11 @@ function abcdefg(){
         divisions.push(startEndOfCriterion);
     }
     
-    console.log(chosenIncorrectCriterion);
-    console.log(chosenCorrectCriterion);
+    // console.log(chosenIncorrectCriterion);
+    // console.log(chosenCorrectCriterion);
     
-    console.log(divisions);
-    console.log(divisionsIncorrect);
+    // console.log(divisions);
+    // console.log(divisionsIncorrect);
     
     divisions.sort((a, b) => a[0] - b[0]);
     divisionsIncorrect.sort((a, b) => a[0] - b[0]);

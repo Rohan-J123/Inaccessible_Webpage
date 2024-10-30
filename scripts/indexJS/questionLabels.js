@@ -31,24 +31,6 @@ button10.innerText = data[chosenButtonValues[9]]['Criterion'];
 var hintedCriteria = [];
 var currentScore = parseInt(sessionStorage.getItem('score'));
 
-// if(parseInt(sessionStorage.getItem('question-number')) == 10){
-//     document.getElementById('question-final-modal').innerHTML = 
-//     `<div class="modal-header">
-//         <h1 class="modal-title fs-5" id="endResultsLabel">Question Criterion:</h1>
-//         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="playAgainUpdateDB();"></button>
-//     </div>
-//     <div class="modal-body" style="display: flex; flex-wrap: wrap; overflow: scroll; height: 70vh;">
-//         <ol style="font-size: x-large; width: 100%;" id="question-criteria-results">
-//         </ol>
-//     </div>
-//     <div class="modal-footer">
-//         <a href="./Images/WCAG Level A.pdf" download="WCAG_LevelA_Criteria.pdf" style="margin-left: 20px;">
-//             <button type="button" class="btn btn-primary">Download WCAG Criteria (Level A)</button>
-//         </a>
-//         <button type="button" class="btn btn-primary" onclick="playAgainUpdateDB()">Play Again</button>
-//     </div>`;
-// }
-
 if(parseInt(sessionStorage.getItem('question-number')) == 6 && sessionStorage.getItem('checkpoint-5') == 'false'){
     window.location.href = './checkpoint.html';
 }

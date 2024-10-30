@@ -1,6 +1,6 @@
 let data = [
-// Success Criteria 1.1.1 Text-Alternatives
 {
+// Success Criteria 1.1.1 Text-Alternatives
 "Incorrect" : 
 `<img src="./demoFolder/car.jpg" style="height: 200px; width: 300px; margin-left: auto; margin-right: auto;"><br class="break">`,
 "Correct" : 
@@ -188,15 +188,15 @@ let data = [
 {
 // Success Criteria 2.3.1 No part of content should flash more than three times per second
 "Incorrect" : 
-`<div style="animation: flashing 0.25s infinite; display: flex; align-items: center; justify-content: center;"><img src="./demoFolder/smileyFace.png" style="height: 200px; width: 200px;"></div><br class="break">
+`<div role="presentation" style="animation: flashing 0.25s infinite; display: flex; align-items: center; justify-content: center;"><img src="./demoFolder/smileyFace.png" style="height: 200px; width: 200px;"></div><br class="break">
     <style>@keyframes flashing {0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } } </style>`,
 "Correct" : 
-`<div style="animation: flashing 1s infinite; display: flex; align-items: center; justify-content: center;"><img src="./demoFolder/smileyFace.png" style="height: 200px; width: 200px"></div><br class="break">
+`<div role="presentation" style="animation: flashing 1s infinite; display: flex; align-items: center; justify-content: center;"><img src="./demoFolder/smileyFace.png" style="height: 200px; width: 200px"></div><br class="break">
     <style>@keyframes flashing {0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } } </style>`,
 "Chosen":
 "",
 "Commented" : 
-`<div style="animation: flashing 0.25s infinite; display: flex; align-items: center; justify-content: center;"><img src="./demoFolder/smileyFace.png" style="height: 200px; width: 200px"></div><br class="break">               <!-- No part of content should flash more than three times per second. -->
+`<div role="presentation" style="animation: flashing 0.25s infinite; display: flex; align-items: center; justify-content: center;"><img src="./demoFolder/smileyFace.png" style="height: 200px; width: 200px"></div><br class="break">               <!-- No part of content should flash more than three times per second. -->
     <style>@keyframes flashing {0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } } </style>`,
 "Criterion" :
 'Criteria 2.3.1'
@@ -552,5 +552,482 @@ let data = [
     <button button type="button" class="btn btn-primary" id="button" disabled>login</button><br class="break">              <!--  Make sure elements have unique IDs. -->`,
 "Criterion" :
 'Criteria 4.1.1'
+},
+
+{
+// Test
+"Incorrect" : 
+`<img src="./demoFolder/buttonImage.jpeg" alt="click the button to open more info" style="width: 100px"><br class="break">`,
+"Correct" : 
+`<button button type="button" class="btn btn-primary" id="submit" disabled>MORE INFO</button><br class="break">`,
+"Chosen":
+"",
+"Commented" : 
+`<img src="./demoFolder/buttonImage.jpeg" alt="click the button to open more info" style="width: 100px"><br class="break">              <!--  User interface components must have accessible names and roles. -->`,
+"Criterion" :
+'Criteria 4.1.2'
+},
+
+{
+// Test
+"Incorrect" : 
+`<input name="userEmail" type="text" placeholder="Enter your email address"><br class="break">`,
+"Correct" : 
+`<input name="userEmail" type="email" placeholder="Enter your email address"><br class="break">`,
+"Chosen":
+"",
+"Commented" : 
+`<input name="userEmail" type="text" placeholder="Enter your email address"><br class="break">              <!--  The purpose of input fields should be programmatically determinable. -->`,
+"Criterion" :
+'Criteria 1.3.5'
+},
+
+{
+// Test
+"Incorrect" : 
+`<style>
+        .card {
+            width: 500px;
+        }
+    </style><br class="break">`,
+"Correct" : 
+`<style>
+        .card{
+            width: 100%;
+        }
+        @media screen and (min-width: 768px) {
+            .card{
+                width: 500px;
+            }
+        }
+    </style><br class="break">`,
+"Chosen":
+"",
+"Commented" : 
+`<style>             <!--  Content adapts to different screen sizes and display orientation. -->
+        .card {
+            width: 500px;
+        }
+    </style><br class="break">`,
+"Criterion" :
+'Criteria 1.3.4'
+},
+
+{
+// Test
+"Incorrect" : 
+`<style>
+        .card-static-units {
+            height: 200px;
+            width: 400px;
+        }
+    </style><br class="break">`,
+"Correct" : 
+`<style>
+        .card-dynamic-units {
+            height: 12.5rem;
+            width: 25rem;
+        }
+    </style><br class="break">`,
+"Chosen":
+"",
+"Commented" : 
+`<style>              <!-- Static sizing will affect the readability of the text if user zooms in. -->
+        .card-static-units {
+            height: 200px;
+            width: 400px;
+        }
+    </style><br class="break">`,
+"Criterion" :
+'Criteria 1.4.4'
+},
+
+{
+// Test
+"Incorrect" : 
+`<img src="./demoFolder/HeadingText.png" style="width: 500px"><br class="break">`,
+"Correct" : 
+`<h1 style="text-align: center;"><i>Hello! This Is A Demo Webpage On Cars.</i></h1><br><br class="break">`,
+"Chosen":
+`<h1 style="text-align: center;"><i>Hello! This Is A Demo Webpage On Cars.</i></h1><br><br class="break">`,
+"Commented" :   
+`<img src="./demoFolder/HeadingText.png" style="width: 500px"><br class="break">              <!-- Use real text as much as possible instead of images of text. -->`,
+"Criterion" :
+'Criteria 1.4.5'
+},
+{
+// Test
+"Incorrect" : 
+`<label>Fill: </label>
+    <input type="text"><br class="break">`,
+"Correct" : 
+`<label>Occupation: </label>
+    <input name="occupation" type="text"><br class="break">`,
+"Chosen":
+``,
+"Commented" :   
+`<label>Fill: </label>              <!-- Headings and labels should be descriptive. -->
+    <input type="text"><br class="break">`,
+"Criterion" :
+'Criteria 2.4.6'
+},
+
+{
+// Test
+"Incorrect" : 
+`<p>Profitez de notre site!</p><br class="break">`,
+"Correct" : 
+`<p lang="fr">Profitez de notre site!</p><br class="break">`,
+"Chosen":
+``,
+"Commented" :   
+`<p>Profitez de notre site!</p><br class="break">              <!-- Programmatically define the language of any text or element with a different language than the primary. -->`,
+"Criterion" :
+'Criteria 3.1.2'
+},
+
+{
+// Test
+"Incorrect" : 
+`<a href="https://www.w3.org/" style="color: black; text-decoration: none; pointer-events: none;">See WCAG Guidelines</a><br class="break">`,
+"Correct" : 
+`<a href="https://www.w3.org/" style="pointer-events: none;">See WCAG Guidelines</a><br class="break">`,
+"Chosen":
+``,
+"Commented" :   
+`<a href="https://www.w3.org/" style="color: black; text-decoration: none; pointer-events: none;">See WCAG Guidelines</a><br class="break">              <!-- Provide a clearly visible focus indicator for all the interactive elements. -->`,
+"Criterion" :
+'Criteria 2.4.7'
+},
+
+{
+// Test
+"Incorrect" :
+`<a onFocus="this.blur()" href="./page.html" style="pointer-events: none;">Next Page</a><br class="break">`,
+"Correct" : 
+`<a href="./page.html" style="pointer-events: none;">Next Page</a><br class="break">`,
+"Chosen":
+``,
+"Commented" :   
+`<a onFocus="this.blur()" href="./page.html" style="pointer-events: none;">Next Page</a><br class="break">              <!-- Any keyboard operable UI must have a mode of operation where the keyboard focus indicator is visible. -->`,
+"Criterion" :
+'Criteria 2.4.7'
+},
+
+{
+// Test
+"Incorrect" : 
+`<label for="username">Pet Name:</label>
+    <input type="text" onFocus="this.blur();" name="username"><br class="break">`,
+"Correct" : 
+`<label for="username">Pet Name:</label>
+    <input type="text" name="username"><br class="break">`,
+"Chosen":
+``,
+"Commented" :   
+`<label for="username">Pet Name:</label>              <!-- All contents should be focusable. -->
+    <input type="text" onFocus="this.blur();" name="username"><br class="break">`,
+"Criterion" :
+'Criteria 2.1.1'
+},
+
+{
+// Test
+"Incorrect" : 
+`Our recent sales:-
+    <pre>
+                        Monday          Tuesday	            Wednesday	                Thursday	            Friday
+        8:00-9:00	    Sam				
+        9:00-10:00                                          Dr. Williams	            Sam again	            Lewis
+    </pre><br class="break">`,
+"Correct" : 
+`Our recent sales:-
+    <table>
+        <tr>
+            <th>Time</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th></tr>
+        <tr>
+            <td>8:00 - 9:00</td><td>Sam</td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+            <td>9:00 - 10:00</td><td></td><td></td><td>Dr. Williams</td><td>Sam again</td><td>Lewis</td>
+        </tr>
+    </table><br class="break">`,
+"Chosen":
+``,
+"Commented" :   
+`Our recent sales:-
+    <pre>              <!-- Information, structure, and relationships conveyed through presentation should be programmatically determined. -->
+                        Monday          Tuesday	            Wednesday	                Thursday	            Friday
+        8:00-9:00	    Sam				
+        9:00-10:00                                          Dr. Williams	            Sam again	            Lewis
+    </pre><br class="break">`,
+"Criterion" :
+'Criteria 1.3.1'
+},
+
+{
+// Test
+"Incorrect" : 
+`<table>
+        <tr><td>Cars</td><td>Top!</td></tr>
+        <tr><td>Get You</td><td>To The</td></tr>
+    </table><br class="break">`,
+"Correct" : 
+`<table>
+        <tr><td>Cars</td><td>Get You</td></tr>
+        <tr><td>To The</td><td>Top!</td></tr>
+    </table><br class="break">`,
+"Chosen":
+``,
+"Commented" :   
+`<table>              <!-- The correct reading order should be programmatically determined. -->
+        <tr><td>Cars</td><td>Top!</td></tr>
+        <tr><td>Get You</td><td>To The</td></tr>
+    </table><br class="break">`,
+"Criterion" :
+'Criteria 1.3.2'
+},
+
+{
+// Test
+"Incorrect" : 
+`<table>
+        <tr>
+            <td><a href="#" style="pointer-events: none;">Mercedes</a></td>
+            <td><img src="./demoFolder/car.jpg" alt="Car Image" style="width: 100px;"></td>
+        </tr> 
+        <tr><td><a href="#" style="pointer-events: none;">Ferreri</a></td></tr>
+        <tr><td><a href="#" style="pointer-events: none;">Audi</a></td></tr>
+    </table><br class="break">`,
+"Correct" : 
+`<table>
+        <tr><td><a href="#" style="pointer-events: none;">Mercedes</a></td></tr> 
+        <tr><td><a href="#" style="pointer-events: none;">Ferrari</a></td></tr>
+        <tr><td><a href="#" style="pointer-events: none;">Aui</a></td></tr>
+        <tr><td><img src="./demoFolder/car.jpg" alt="Car Image" style="width: 100px;"></td></tr>
+    </table><br class="break">`,
+"Chosen":
+``,
+"Commented" :   
+`<table>              <!-- The correct reading order should be programmatically determined. -->
+        <tr>
+            <td><a href="#" style="pointer-events: none;">Mercedes</a></td>
+            <td><img src="./demoFolder/car.jpg" alt="Car Image" style="width: 100px;"></td>
+        </tr> 
+        <tr><td><a href="#" style="pointer-events: none;">Ferrari</a></td></tr>
+        <tr><td><a href="#" style="pointer-events: none;">Audi</a></td></tr>
+    </table><br class="break">`,
+"Criterion" :
+'Criteria 1.3.2'
+},
+
+{
+// Test
+"Incorrect" : 
+`<p>
+        50% discount on cars for the next <span style="font-weight: bold; text-transform: uppercase;">15</span>, days! 
+    </p><br class="break">`,
+"Correct" : 
+`<p>
+        50% discount on cars for the next <strong>15</strong>, days! 
+    </p><br class="break">`,
+"Chosen":
+``,
+"Commented" :   
+`<p>              <!--  The information conveyed by using the CSS font-weight property is not conveyed through semantic markup. -->
+        50% discount on cars for the next <span style="font-weight: bold; text-transform: uppercase;">15</span>, days!
+    </p><br class="break">`,
+"Criterion" :
+'Criteria 1.3.1'
+},
+
+{
+// Test
+"Incorrect" : 
+`<marquee>The Best Car Shop Ever!</marquee>`,
+"Correct" : 
+`<marquee onclick="this.stop()" onmouseout="this.start()">The Best Car Shop Ever!</marquee>`,
+"Chosen":
+``,
+"Commented" :   
+`<marquee>The Best Car Shop Ever!</marquee>              <!--  For scrolling information that lasts more than five seconds, users must be presented with mechanism to pause, stop or hide it. -->`,
+"Criterion" :
+'Criteria 2.2.2'
+},
+
+{
+// Test
+"Incorrect" : 
+`<img src="./demoFolder/Tata.jpeg" alt="image" style="height: 200px; width: 300px; margin-left: auto; margin-right: auto;"><br class="break">`,
+"Correct" : 
+`<img src="./demoFolder/Tata.jpeg" style="height: 200px; width: 300px; margin-left: auto; margin-right: auto;" alt="A stationary Tata car image"><br class="break">`,
+"Chosen":
+"",
+"Commented" : 
+`<img src="./demoFolder/Tata.jpeg" alt="image" style="height: 200px; width: 300px; margin-left: auto; margin-right: auto;"><br class="break">              <!-- The alternative text should serve as an alternative without loss of any information. -->`,
+"Criterion" :
+'Criteria 1.1.1'
+},
+
+{
+// Test
+"Incorrect" : 
+`<h2 style="text-align: center;">W e l c o m e</h2><br class="break">`,
+"Correct" : 
+`<h2 style="text-align: center;">Welcome</h2><br class="break">`,
+"Chosen":
+"",
+"Commented" : 
+`<h2 style="text-align: center;">W e l c o m e</h2><br class="break">             <!-- The use of white space characters for formatting a word is a failure to present meaningful sequences properly. -->`,
+"Criterion" :
+'Criteria 1.3.2'
+},
+
+{
+// Test
+"Incorrect" : 
+`<h2 style="text-align: center;">C&nbsp;A&nbsp;R&nbsp;S!</h2><br class="break">`,
+"Correct" : 
+`<h2 style="text-align: center;">CARS!</h2><br class="break">`,
+"Chosen":
+"",
+"Commented" : 
+`<h2 style="text-align: center;">C&nbsp;A&nbsp;R&nbsp;S!</h2><br class="break">             <!-- The use of white space characters even as &nbsp; for formatting a word is a failure to present meaningful sequences properly. -->`,
+"Criterion" :
+'Criteria 1.3.2'
+},
+
+{
+// Test
+"Incorrect" : 
+`<form id="form1" onsubmit="event.preventDefault();">
+        <label for="AadharNumber">Aadhar Number:</label>
+        <input type="text" name="AadharNumber" onchange="if false form1.submit();">
+    </form><br class="break">`,
+"Correct" : 
+`<form id="form1" onsubmit="event.preventDefault();">
+        <label for="AadharNumber">Aadhar Number:</label>
+        <input type="text" name="AadharNumber">
+        <button class="btn btn-primary" type="submit" disabled>Submit</button><br class="break">
+    </form><br class="break">`,
+"Chosen":
+"",
+"Commented" : 
+`<form id="form1" onsubmit="event.preventDefault();">             <!-- Changing UI content shouldn't automatically change context unless user has been advised so. -->
+        <label for="AadharNumber">Aadhar Number:</label>
+        <input type="text" name="AadharNumber" onchange="if false form1.submit();">
+    </form><br class="break">`,
+"Criterion" :
+'Criteria 3.2.2'
+},
+
+{
+// Test
+"Incorrect" : 
+`<div style="animation: flashing 1s infinite; display: flex; align-items: center; justify-content: center;">
+        <img src="./demoFolder/Enjoy.png" style="height: 200px; width: 200px;">
+    </div><br class="break">
+    <style>@keyframes flashing {0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } } </style>`,
+"Correct" : 
+`<div role="presentation" style="animation: flashing 1s infinite; display: flex; align-items: center; justify-content: center;">
+        <img src="./demoFolder/Enjoy.png" style="height: 200px; width: 200px;">
+    </div><br class="break">
+    <style>@keyframes flashing {0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } } </style>`,
+"Chosen":
+"",
+"Commented" : 
+`<div style="animation: flashing 1s infinite; display: flex; align-items: center; justify-content: center;">                <!-- Decorative images should have alt="" attribute or role="presentation" attribute so it can be ignored by AT-->
+        <img src="./demoFolder/Enjoy.png" style="height: 200px; width: 200px;">
+    </div><br class="break">
+    <style>@keyframes flashing {0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } } </style>`,
+"Criterion" :
+'Criteria 1.1.1'
+},
+
+{
+// Test
+"Incorrect" : 
+`<span onclick="location.href='./Mahindra.html' style='pointer-events: none;'">
+        Redirect to Mahindra Page
+    </span><br class="break">`,
+"Correct" : 
+`<a href="./Mahindra.html" style="pointer-events: none;">Redirect to Mahindra Page</a><br class="break">`,
+"Chosen":
+"",
+"Commented" : 
+`<span onclick="location.href='./Mahindra.html' style='pointer-events: none;'">                <!-- Assistive technology would not recognize this element as a link. -->
+        Redirect to Mahindra Page
+    </span><br class="break">`,
+"Criterion" :
+'Criteria 1.3.1'
+},
+
+{
+// Test
+"Incorrect" : 
+`<p>Interested in learning more? Write to us at</p> 
+    <h4>3333 Third Avenue, Suite 300 · New York City</h4>
+    <p>And we'll send you the complete informational packet absolutely Free!</p><br class="break">`,
+"Correct" : 
+`<p>Interested in learning more? Write to us at 
+    3333 Third Avenue, Suite 300 · New York City
+    And we'll send you the complete informational packet absolutely Free!</p><br class="break">`,
+"Chosen":
+"",
+"Commented" : 
+`<p>Interested in learning more? Write to us at</p>                <!-- The address does not identify as a new section of the document, so it should not be marked as a heading. --> 
+    <h4>3333 Third Avenue, Suite 300 · New York City</h4>
+    <p>And we'll send you the complete informational packet absolutely Free!</p><br class="break">`,
+"Criterion" :
+'Criteria 1.3.1'
+},
+
+{
+// Test
+"Incorrect" : 
+`<ol>
+        <li><a href="./Tata.html" tabindex="4" style="pointer-events: none;">Tata Cars</a></li>
+        <li><a href="./Mahindra.html" tabindex="3" style="pointer-events: none;">Mahindra Cars</a></li>
+        <li><a href="./Ferrari" tabindex="1" style="pointer-events: none;">Ferrari Cars</a></li>
+    </ol><br class="break">`,
+"Correct" : 
+`<ol>
+        <li><a href="./Tata.html" style="pointer-events: none;">Tata Cars</a></li>
+        <li><a href="./Mahindra.html" style="pointer-events: none;">Mahindra Cars</a></li>
+        <li><a href="./Ferrari" style="pointer-events: none;">Ferrari Cars</a></li>
+    </ol><br class="break">`,
+"Chosen":
+"",
+"Commented" : 
+`<ol>                <!-- Focusable components should receive focus in an order that preserves meaning and operability. -->
+        <li><a href="./Tata.html" tabindex="4" style="pointer-events: none;">Tata Cars</a></li>
+        <li><a href="./Mahindra.html" tabindex="3" style="pointer-events: none;">Mahindra Cars</a></li>
+        <li><a href="./Ferrari" tabindex="1" style="pointer-events: none;">Ferrari Cars</a></li>
+    </ol><br class="break">`,
+"Criterion" :
+'Criteria 2.4.3'
+},
+
+{
+// Test
+"Incorrect" : 
+`<form>
+        Preferred name: 
+        <input type="text" name="preferredName">
+    </form><br class="break">`,
+"Correct" : 
+`<form>
+        <label for="preferredName">Preferred Name:</label>
+        <input type="text" name="preferredName">
+    </form><br class="break">`,
+"Chosen":
+"",
+"Commented" : 
+`<form>                <!-- Form control elements should have a name and label exposed to Assistive Technologies. -->
+        Preferred name: 
+        <input type="text" name="preferredName">
+    </form><br class="break">`,
+"Criterion" :
+'Criteria 4.1.2'
 }
 ]
