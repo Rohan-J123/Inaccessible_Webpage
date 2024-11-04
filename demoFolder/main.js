@@ -15,3 +15,23 @@ document.addEventListener("DOMContentLoaded", function() {
         return originalSetTimeout(callback, delay);
     };
 });
+
+
+const allElements = document.querySelectorAll('*');
+
+allElements.forEach(element => {
+    element.onclick = null;
+    element.replaceWith(element.cloneNode(true));
+});
+
+document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', event => {
+        event.preventDefault();
+    });
+});
+
+document.querySelectorAll('a').forEach(anchor => {
+    anchor.addEventListener('click', event => {
+        event.preventDefault();
+    });
+});

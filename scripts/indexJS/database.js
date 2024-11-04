@@ -134,7 +134,7 @@ let data = [
 "Incorrect" : 
 `<div onclick="bookService()">Book Service</div><br class="break">`,
 "Correct" : 
-`<button type="button" class="btn btn-primary" onclick="bookService()" tabindex="0" disabled>Book Service</button><br class="break">`,
+`<button type="button" class="btn btn-primary" onclick="bookService()" tabindex="0">Book Service</button><br class="break">`,
 "Chosen":
 "",
 "Commented" : 
@@ -146,13 +146,13 @@ let data = [
 {
 // Success Criteria 2.1.4 Avoid the use of single-character key shortcuts
 "Incorrect" : 
-`<button type="button" class="btn btn-primary" onclick="scheduleTestDrive()" accesskey="s" disabled>Schedule Test Drive.</button><br class="break">`,
+`<button type="button" class="btn btn-primary" onclick="scheduleTestDrive()" accesskey="s">Schedule Test Drive.</button><br class="break">`,
 "Correct" : 
-`<button type="button" class="btn btn-primary" onclick="scheduleTestDrive()" disabled>Schedule Test Drive.</button><br class="break">`,
+`<button type="button" class="btn btn-primary" onclick="scheduleTestDrive()">Schedule Test Drive.</button><br class="break">`,
 "Chosen":
 "",
 "Commented" : 
-`<button type="button" class="btn btn-primary" onclick="scheduleTestDrive()" accesskey="s" disabled>Schedule Test Drive.</button><br class="break">               <!-- Use of single-character key shortcuts should be avoided. -->`,
+`<button type="button" class="btn btn-primary" onclick="scheduleTestDrive()" accesskey="s">Schedule Test Drive.</button><br class="break">               <!-- Use of single-character key shortcuts should be avoided. -->`,
 "Criterion" :
 'Criteria 2.1.4'
 },
@@ -176,7 +176,7 @@ let data = [
 "Incorrect" : 
 `<meta http-equiv="refresh" content="5; url=bookingServices.com">`,
 "Correct" : 
-`<button type="button" class="btn btn-primary" onclick="location.href='example.com'" style="transform: translateX(-50%); position: relative; left: 50%;" disabled>Go to booking services</button><br class="break">`,
+`<button type="button" class="btn btn-primary" onclick="location.href='example.com'" style="transform: translateX(-50%); position: relative; left: 50%;" >Go to booking services</button><br class="break">`,
 "Chosen":
 "",
 "Commented" : 
@@ -238,7 +238,7 @@ let data = [
 // Success Criteria 2.4.3 Meaningful order of focus
 "Incorrect" : 
 `<form>
-        <button class="btn btn-primary" type="submit" disabled>Submit</button><br class="break">
+        <button class="btn btn-primary" type="submit"  >Submit</button><br class="break">
         <label for="username">Name:</label>
         <input type="text" id="username" name="username"><br class="break">
         <label for="email">Email:</label>
@@ -250,13 +250,13 @@ let data = [
         <input type="text" id="username" name="username"><br class="break">
         <label for="email">Email:</label>
         <input type="email" id="email" name="email"><br class="break">
-        <button class="btn btn-primary" type="submit" disabled>Submit</button>
+        <button class="btn btn-primary" type="submit"  >Submit</button>
     </form><br class="break">`,
 "Chosen":
 "",
 "Commented" : 
 `<form>               <!-- Form contents should be organized in a meaningful order. -->
-        <button type="submit" class="btn btn-primary" disabled>Submit</button><br class="break">
+        <button type="submit" class="btn btn-primary"  >Submit</button><br class="break">
         <label for="username">Name:</label>
         <input type="text" id="username" name="username"><br class="break">
         <label for="email">Email:</label>
@@ -269,13 +269,13 @@ let data = [
 {
 // Success Criteria 2.4.4 Link purpose must be stated clearly
 "Incorrect" : 
-`<a href="/page1" style="pointer-events: none; margin-left: auto; margin-right: auto;">Click here</a><br class="break">`,
+`<a href="/page1" style=" margin-left: auto; margin-right: auto;">Click here</a><br class="break">`,
 "Correct" : 
-`<a href="/contact" style="pointer-events: none; margin-left: auto; margin-right: auto;">Contact booking Services</a><br class="break">`,
+`<a href="/contact" style=" margin-left: auto; margin-right: auto;">Contact booking Services</a><br class="break">`,
 "Chosen":
 "",
 "Commented" : 
-`<a href="/page1" style="pointer-events: none; margin-left: auto; margin-right: auto;">Click here</a><br class="break">               <!-- Link purpose must be stated clearly. -->`,
+`<a href="/page1" style=" margin-left: auto; margin-right: auto;">Click here</a><br class="break">               <!-- Link purpose must be stated clearly. -->`,
 "Criterion" :
 'Criteria 2.4.4'
 },
@@ -286,7 +286,7 @@ let data = [
 `<div onpinch="openMenu()">Pinch to Open Menu</div><br class="break">`,
 "Correct" : 
 `<div onpinch="openMenu()" style="display: flex; justify-content: space-between; align-items: center;">Pinch to Open Menu
-        <button type="button" class="btn btn-primary" onclick="openMenu()" disabled style="margin-left: auto; margin-right: 20px;">Open Menu</button><br class="break">
+        <button type="button" class="btn btn-primary" onclick="openMenu()"   style="margin-left: auto; margin-right: 20px;">Open Menu</button><br class="break">
     </div><br class="break">`,
 "Chosen":
 "",
@@ -342,7 +342,7 @@ let data = [
 `<div onshake="shakeDevice()">Shake to Activate</div><br class="break">`,
 "Correct" : 
 `<div onshake="shakeDevice()" style="display: flex; justify-content: space-between; align-items: center;">Shake to Activate
-        <button class="btn btn-primary" onclick="shakeDevice()" disabled style="margin-left: auto; margin-right: 20px;">Shake Device</button><br class="break">
+        <button class="btn btn-primary" onclick="shakeDevice()"   style="margin-left: auto; margin-right: 20px;">Shake Device</button><br class="break">
     </div><br class="break">`,
 "Chosen":
 "",
@@ -371,17 +371,17 @@ let data = [
 "Incorrect" : 
 `<nav>
         <ul style="display: flex; justify-content: space-around;">
-            <li><a href="/" style="pointer-events: none;">Home</a></li>
-            <li><a href="/about" style="pointer-events: none;">About</a></li>
-            <li><div onclick="toggleContact()" style="pointer-events: none;">Contact</div></li>
+            <li><a href="/" style="">Home</a></li>
+            <li><a href="/about" style="">About</a></li>
+            <li><div onclick="toggleContact()" style="">Contact</div></li>
         </ul>
     </nav>`,
 "Correct" :  
 `<nav>
         <ul style="display: flex; justify-content: space-around;">
-            <li><a href="/" style="pointer-events: none;">Home</a></li>
-            <li><a href="/about" style="pointer-events: none;">About</a></li>
-            <li><a href="/contact" style="pointer-events: none;">Contact</a></li>
+            <li><a href="/" style="">Home</a></li>
+            <li><a href="/about" style="">About</a></li>
+            <li><a href="/contact" style="">Contact</a></li>
         </ul>
     </nav>`,
 "Chosen":
@@ -389,9 +389,9 @@ let data = [
 "Commented" : 
 `<nav>               <!-- Ways to navigate should be consistent. -->
         <ul style="display: flex; justify-content: space-around;">
-            <li><a href="/" style="pointer-events: none;">Home</a></li>
-            <li><a href="/about" style="pointer-events: none;">About</a></li>
-            <li><div onclick="toggleContact()" style="pointer-events: none;">Contact</div></li>
+            <li><a href="/" style="">Home</a></li>
+            <li><a href="/about" style="">About</a></li>
+            <li><div onclick="toggleContact()" style="">Contact</div></li>
         </ul>
     </nav>`,
 "Criterion" :
@@ -404,13 +404,13 @@ let data = [
 `<form action="/submit" method="post">
         <label for="reference">Booking Reference Number:</label>
         <input type="text" id="reference" name="reference"><br class="break">
-        <button class="btn btn-primary" type="submit" onclick="checkForErrors()" disabled>Submit</button>
+        <button class="btn btn-primary" type="submit" onclick="checkForErrors()"  >Submit</button>
     </form><br class="break">`,
 "Correct" : 
 `<form action="/submit" method="post" onsubmit="return checkForErrors()">
         <label for="reference">Booking Reference Number:</label>
         <input type="text" id="reference" name="reference"><br class="break">
-        <button class="btn btn-primary" type="submit" disabled>Submit</button>
+        <button class="btn btn-primary" type="submit"  >Submit</button>
     </form><br class="break">`,
 "Chosen":
 "",
@@ -418,7 +418,7 @@ let data = [
 `<form action="/submit" method="post">               <!-- Form submission should be allowed only if there are no errors. -->
         <label for="reference">Booking Reference Number:</label>
         <input type="text" id="reference" name="reference"><br class="break">
-        <button class="btn btn-primary" type="submit" onclick="checkForErrors()" disabled>Submit</button>
+        <button class="btn btn-primary" type="submit" onclick="checkForErrors()" >Submit</button>
     </form><br class="break">`,
 "Criterion" :
 'Criteria 3.3.1'
@@ -470,13 +470,13 @@ let data = [
 {
 // Success Criteria 4.1.2 User interface components must have accessible names and roles
 "Incorrect" : 
-`<button type="button" class="btn btn-primary" onclick="closeDialog()" style="width: 50px; margin-left: auto; margin-right: auto;" disabled>X</button><br class="break">`,
+`<button type="button" class="btn btn-primary" onclick="closeDialog()" style="width: 50px; margin-left: auto; margin-right: auto;" >X</button><br class="break">`,
 "Correct" : 
-`<button type="button" class="btn btn-primary" aria-label="Close" onclick="closeDialog()" style="width: 50px; margin-left: auto; margin-right: auto;" disabled>X</button><br class="break">`,
+`<button type="button" class="btn btn-primary" aria-label="Close" onclick="closeDialog()" style="width: 50px; margin-left: auto; margin-right: auto;" >X</button><br class="break">`,
 "Chosen":
 "",
 "Commented" : 
-`<button type="button" class="btn btn-primary" onclick="closeDialog()" style="width: 50px; margin-left: auto; margin-right: auto;" disabled>X</button><br class="break">               <!--  User interface components must have accessible names and roles. -->`,
+`<button type="button" class="btn btn-primary" onclick="closeDialog()" style="width: 50px; margin-left: auto; margin-right: auto;" >X</button><br class="break">               <!--  User interface components must have accessible names and roles. -->`,
 "Criterion" :
 'Criteria 4.1.2'
 },
@@ -498,13 +498,13 @@ let data = [
 {
 // Test
 "Incorrect" : 
-`<div class="button" style="pointer-events: none;">Interested?</div><br class="break">`,
+`<div class="button" style="">Interested?</div><br class="break">`,
 "Correct" : 
-`<div role="button" tabindex="0" style="pointer-events: none;">Interested?</div><br class="break">`,
+`<div role="button" tabindex="0" style="">Interested?</div><br class="break">`,
 "Chosen":
 "",
 "Commented" : 
-`<div class="button" style="pointer-events: none;">Interested?</div><br class="break">               <!--  User interface components and navigation must be operable. -->`,
+`<div class="button" style="">Interested?</div><br class="break">               <!--  User interface components and navigation must be operable. -->`,
 "Criterion" :
 'Criteria 2.1.1'
 },
@@ -512,13 +512,13 @@ let data = [
 {
 // Test
 "Incorrect" : 
-`<a href="google.com" style="pointer-events: none;">this is a link to a webpage</a><br class="break">`,
+`<a href="google.com" style="">this is a link to a webpage</a><br class="break">`,
 "Correct" : 
-`<a href="google.com" style="pointer-events: none;">Go to Google</a><br class="break">`,
+`<a href="google.com" style="">Go to Google</a><br class="break">`,
 "Chosen":
 "",
 "Commented" : 
-`<a href="google.com" style="pointer-events: none;">this is a link to a webpage</a><br class="break">               <!--  The target or purpose of the link must be clear by the link text alone. -->`,
+`<a href="google.com" style="">this is a link to a webpage</a><br class="break">               <!--  The target or purpose of the link must be clear by the link text alone. -->`,
 "Criterion" :
 'Criteria 2.4.4'
 },
@@ -526,13 +526,13 @@ let data = [
 {
 // Test
 "Incorrect" : 
-`<button button type="button" class="btn btn-primary" disabled>buy</button><br class="break">`,
+`<button button type="button" class="btn btn-primary" >buy</button><br class="break">`,
 "Correct" : 
-`<button button type="button" class="btn btn-primary" aria-label="buy cars" disabled>buy cars</button><br class="break">`,
+`<button button type="button" class="btn btn-primary" aria-label="buy cars" >buy cars</button><br class="break">`,
 "Chosen":
 "",
 "Commented" : 
-`<button button type="button" class="btn btn-primary" disabled>buy</button><br class="break">               <!--  A speech input user would say 'buy', but the speech software won't know what item to add. -->`,
+`<button button type="button" class="btn btn-primary" >buy</button><br class="break">               <!--  A speech input user would say 'buy', but the speech software won't know what item to add. -->`,
 "Criterion" :
 'Criteria 2.5.3'
 },
@@ -540,16 +540,16 @@ let data = [
 {
 // Test
 "Incorrect" : 
-`<button button type="button" class="btn btn-primary" id="button" disabled>submit</button>
-    <button button type="button" class="btn btn-primary" id="button" disabled>login</button><br class="break">`,
+`<button button type="button" class="btn btn-primary" id="button" >submit</button>
+    <button button type="button" class="btn btn-primary" id="button" >login</button><br class="break">`,
 "Correct" : 
-`<button button type="button" class="btn btn-primary" id="submit" disabled>submit</button>
-    <button button type="button" class="btn btn-primary" id="login" disabled>login</button><br class="break">`,
+`<button button type="button" class="btn btn-primary" id="submit" >submit</button>
+    <button button type="button" class="btn btn-primary" id="login" >login</button><br class="break">`,
 "Chosen":
 "",
 "Commented" : 
-`<button button type="button" class="btn btn-primary" id="button" disabled>submit</button>
-    <button button type="button" class="btn btn-primary" id="button" disabled>login</button><br class="break">              <!--  Make sure elements have unique IDs. -->`,
+`<button button type="button" class="btn btn-primary" id="button" >submit</button>
+    <button button type="button" class="btn btn-primary" id="button" >login</button><br class="break">              <!--  Make sure elements have unique IDs. -->`,
 "Criterion" :
 'Criteria 4.1.1'
 },
@@ -559,7 +559,7 @@ let data = [
 "Incorrect" : 
 `<img src="./demoFolder/buttonImage.jpeg" alt="click the button to open more info" style="width: 100px"><br class="break">`,
 "Correct" : 
-`<button button type="button" class="btn btn-primary" id="submit" disabled>MORE INFO</button><br class="break">`,
+`<button button type="button" class="btn btn-primary" id="submit" >MORE INFO</button><br class="break">`,
 "Chosen":
 "",
 "Commented" : 
@@ -689,13 +689,13 @@ let data = [
 {
 // Test
 "Incorrect" : 
-`<a href="https://www.w3.org/" style="color: black; text-decoration: none; pointer-events: none;">See WCAG Guidelines</a><br class="break">`,
+`<a href="https://www.w3.org/" style="color: black; text-decoration: none; ">See WCAG Guidelines</a><br class="break">`,
 "Correct" : 
-`<a href="https://www.w3.org/" style="pointer-events: none;">See WCAG Guidelines</a><br class="break">`,
+`<a href="https://www.w3.org/" style="">See WCAG Guidelines</a><br class="break">`,
 "Chosen":
 ``,
 "Commented" :   
-`<a href="https://www.w3.org/" style="color: black; text-decoration: none; pointer-events: none;">See WCAG Guidelines</a><br class="break">              <!-- Provide a clearly visible focus indicator for all the interactive elements. -->`,
+`<a href="https://www.w3.org/" style="color: black; text-decoration: none; ">See WCAG Guidelines</a><br class="break">              <!-- Provide a clearly visible focus indicator for all the interactive elements. -->`,
 "Criterion" :
 'Criteria 2.4.7'
 },
@@ -703,13 +703,13 @@ let data = [
 {
 // Test
 "Incorrect" :
-`<a onFocus="this.blur()" href="./page.html" style="pointer-events: none;">Next Page</a><br class="break">`,
+`<a onFocus="this.blur()" href="./page.html" style="">Next Page</a><br class="break">`,
 "Correct" : 
-`<a href="./page.html" style="pointer-events: none;">Next Page</a><br class="break">`,
+`<a href="./page.html" style="">Next Page</a><br class="break">`,
 "Chosen":
 ``,
 "Commented" :   
-`<a onFocus="this.blur()" href="./page.html" style="pointer-events: none;">Next Page</a><br class="break">              <!-- Any keyboard operable UI must have a mode of operation where the keyboard focus indicator is visible. -->`,
+`<a onFocus="this.blur()" href="./page.html" style="">Next Page</a><br class="break">              <!-- Any keyboard operable UI must have a mode of operation where the keyboard focus indicator is visible. -->`,
 "Criterion" :
 'Criteria 2.4.7'
 },
@@ -793,17 +793,17 @@ let data = [
 "Incorrect" : 
 `<table>
         <tr>
-            <td><a href="#" style="pointer-events: none;">Mercedes</a></td>
+            <td><a href="#" style="">Mercedes</a></td>
             <td><img src="./demoFolder/car.jpg" alt="Car Image" style="width: 100px;"></td>
         </tr> 
-        <tr><td><a href="#" style="pointer-events: none;">Ferreri</a></td></tr>
-        <tr><td><a href="#" style="pointer-events: none;">Audi</a></td></tr>
+        <tr><td><a href="#" style="">Ferreri</a></td></tr>
+        <tr><td><a href="#" style="">Audi</a></td></tr>
     </table><br class="break">`,
 "Correct" : 
 `<table>
-        <tr><td><a href="#" style="pointer-events: none;">Mercedes</a></td></tr> 
-        <tr><td><a href="#" style="pointer-events: none;">Ferrari</a></td></tr>
-        <tr><td><a href="#" style="pointer-events: none;">Aui</a></td></tr>
+        <tr><td><a href="#" style="">Mercedes</a></td></tr> 
+        <tr><td><a href="#" style="">Ferrari</a></td></tr>
+        <tr><td><a href="#" style="">Aui</a></td></tr>
         <tr><td><img src="./demoFolder/car.jpg" alt="Car Image" style="width: 100px;"></td></tr>
     </table><br class="break">`,
 "Chosen":
@@ -811,11 +811,11 @@ let data = [
 "Commented" :   
 `<table>              <!-- The correct reading order should be programmatically determined. -->
         <tr>
-            <td><a href="#" style="pointer-events: none;">Mercedes</a></td>
+            <td><a href="#" style="">Mercedes</a></td>
             <td><img src="./demoFolder/car.jpg" alt="Car Image" style="width: 100px;"></td>
         </tr> 
-        <tr><td><a href="#" style="pointer-events: none;">Ferrari</a></td></tr>
-        <tr><td><a href="#" style="pointer-events: none;">Audi</a></td></tr>
+        <tr><td><a href="#" style="">Ferrari</a></td></tr>
+        <tr><td><a href="#" style="">Audi</a></td></tr>
     </table><br class="break">`,
 "Criterion" :
 'Criteria 1.3.2'
@@ -908,7 +908,7 @@ let data = [
 `<form id="form1" onsubmit="event.preventDefault();">
         <label for="AadharNumber">Aadhar Number:</label>
         <input type="text" name="AadharNumber">
-        <button class="btn btn-primary" type="submit" disabled>Submit</button><br class="break">
+        <button class="btn btn-primary" type="submit" >Submit</button><br class="break">
     </form><br class="break">`,
 "Chosen":
 "",
@@ -947,15 +947,15 @@ let data = [
 {
 // Test
 "Incorrect" : 
-`<span onclick="location.href='./Mahindra.html' style='pointer-events: none;'">
+`<span onclick="location.href='./Mahindra.html' style=''">
         Redirect to Mahindra Page
     </span><br class="break">`,
 "Correct" : 
-`<a href="./Mahindra.html" style="pointer-events: none;">Redirect to Mahindra Page</a><br class="break">`,
+`<a href="./Mahindra.html" style="">Redirect to Mahindra Page</a><br class="break">`,
 "Chosen":
 "",
 "Commented" : 
-`<span onclick="location.href='./Mahindra.html' style='pointer-events: none;'">                <!-- Assistive technology would not recognize this element as a link. -->
+`<span onclick="location.href='./Mahindra.html' style=''">                <!-- Assistive technology would not recognize this element as a link. -->
         Redirect to Mahindra Page
     </span><br class="break">`,
 "Criterion" :
@@ -986,23 +986,23 @@ let data = [
 // Test
 "Incorrect" : 
 `<ol>
-        <li><a href="./Tata.html" tabindex="4" style="pointer-events: none;">Tata Cars</a></li>
-        <li><a href="./Mahindra.html" tabindex="3" style="pointer-events: none;">Mahindra Cars</a></li>
-        <li><a href="./Ferrari" tabindex="1" style="pointer-events: none;">Ferrari Cars</a></li>
+        <li><a href="./Tata.html" tabindex="4" style="">Tata Cars</a></li>
+        <li><a href="./Mahindra.html" tabindex="3" style="">Mahindra Cars</a></li>
+        <li><a href="./Ferrari" tabindex="1" style="">Ferrari Cars</a></li>
     </ol><br class="break">`,
 "Correct" : 
 `<ol>
-        <li><a href="./Tata.html" style="pointer-events: none;">Tata Cars</a></li>
-        <li><a href="./Mahindra.html" style="pointer-events: none;">Mahindra Cars</a></li>
-        <li><a href="./Ferrari" style="pointer-events: none;">Ferrari Cars</a></li>
+        <li><a href="./Tata.html" style="">Tata Cars</a></li>
+        <li><a href="./Mahindra.html" style="">Mahindra Cars</a></li>
+        <li><a href="./Ferrari" style="">Ferrari Cars</a></li>
     </ol><br class="break">`,
 "Chosen":
 "",
 "Commented" : 
 `<ol>                <!-- Focusable components should receive focus in an order that preserves meaning and operability. -->
-        <li><a href="./Tata.html" tabindex="4" style="pointer-events: none;">Tata Cars</a></li>
-        <li><a href="./Mahindra.html" tabindex="3" style="pointer-events: none;">Mahindra Cars</a></li>
-        <li><a href="./Ferrari" tabindex="1" style="pointer-events: none;">Ferrari Cars</a></li>
+        <li><a href="./Tata.html" tabindex="4" style="">Tata Cars</a></li>
+        <li><a href="./Mahindra.html" tabindex="3" style="">Mahindra Cars</a></li>
+        <li><a href="./Ferrari" tabindex="1" style="">Ferrari Cars</a></li>
     </ol><br class="break">`,
 "Criterion" :
 'Criteria 2.4.3'
