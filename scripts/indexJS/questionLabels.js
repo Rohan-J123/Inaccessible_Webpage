@@ -31,12 +31,43 @@ button10.innerText = data[chosenButtonValues[9]]['Criterion'];
 var hintedCriteria = [];
 var currentScore = parseInt(sessionStorage.getItem('score'));
 
+function finalDB(){
+    var userId = sessionStorage.getItem('user-id');
+
+    if (!userId) {
+        console.error("User ID not found in sessionStorage");
+        return;
+    }
+    document.getElementById('spinner-circle').style.display = 'block';
+    
+    db.collection(collectionName).doc(userId).get().then(function(doc) {
+        if (doc.exists) {
+            db.collection(collectionName).doc(userId).set({
+                finalScore: currentScore,
+                totalTimeTaken: document.getElementById('clock').textContent
+            }, { merge: true })
+            .then(function() {
+                console.log("Document successfully updated!");
+                document.getElementById('spinner-circle').style.display = 'none';
+                window.location.href = './checkpoint.html';
+            })
+            .catch(function(error) {
+                console.error("Error writing document: ", error);
+            });
+        } else {
+            console.log("No such document!");
+        }
+    }).catch(function(error) {
+        console.error("Error getting document:", error);
+    });
+}
+
 if(parseInt(sessionStorage.getItem('question-number')) == 6 && sessionStorage.getItem('checkpoint-5') == 'false'){
     window.location.href = './checkpoint.html';
 }
 
 if(parseInt(sessionStorage.getItem('question-number')) > 10 && sessionStorage.getItem('checkpoint-10') == 'false'){
-    window.location.href = './checkpoint.html';
+    finalDB();
 }
 
 if(parseInt(sessionStorage.getItem('question-number')) > 10 && sessionStorage.getItem('checkpoint-10') == 'true'){
@@ -44,71 +75,6 @@ if(parseInt(sessionStorage.getItem('question-number')) > 10 && sessionStorage.ge
 }
 
 var userId = sessionStorage.getItem('user-id');
-
-// function playAgainUpdateDB(){
-//     if (!userId) {
-//         console.error("User ID not found in sessionStorage");
-//         return;
-//     }
-//     document.getElementById('spinner-circle').style.display = 'block';
-//     var chosenCriterion = chosenIncorrectCriterion;
-//     var unpickedCriterion = criterionLeftToIdentify;
-//     var score = parseInt(currentScore);
-//     var timeTaken = document.getElementById('clock-mini').textContent;
-//     var livesRemaining = document.getElementById('wifi-sidebar-label').innerText.split(' ')[0];
-//     var hintedCriteriaList = hintedCriteria;
-//     var correctlyAnswered = true;
-//     if(document.getElementById('wifi-sidebar-label').innerText == "Game Over!"){
-//         correctlyAnswered = false;
-//     }
-    
-//     db.collection(collectionName).doc(userId).get().then(function(doc) {
-//         if (doc.exists) {
-//             var docData = doc.data();
-//             var updatedCriterion = docData.questionCriterion || [];
-//             var updatedUnpickedCriterion = docData.unpickedCriterion || [];
-//             var updatedScore = docData.score || [];
-//             var updatedTimeTaken = docData.timeTaken || [];
-//             var updatedLivesRemaining = docData.livesRemaining || [];
-//             var updatedhintedCriteriaList = docData.hintedCriteriaList || [];
-//             var updatedCorrectlyAnswered = docData.correctlyAnswered || [];
-
-//             updatedCriterion.push(JSON.stringify(chosenCriterion));
-//             updatedUnpickedCriterion.push(JSON.stringify(unpickedCriterion));
-//             score = score - sumArray(updatedScore);
-//             updatedScore.push(score);
-//             updatedTimeTaken.push(timeTaken);
-//             updatedLivesRemaining.push(livesRemaining);
-//             updatedhintedCriteriaList.push(JSON.stringify(hintedCriteriaList));
-//             updatedCorrectlyAnswered.push(correctlyAnswered);
-
-//             db.collection(collectionName).doc(userId).set({
-//                 questionCriterion: updatedCriterion,
-//                 unpickedCriterion: updatedUnpickedCriterion,
-//                 score: updatedScore,
-//                 timeTaken: updatedTimeTaken,
-//                 finalScore: currentScore,
-//                 totalTimeTaken: document.getElementById('clock').textContent,
-//                 livesRemaining: updatedLivesRemaining,
-//                 hintedCriteriaList: updatedhintedCriteriaList,
-//                 correctlyAnswered: updatedCorrectlyAnswered
-//             }, { merge: true })
-//             .then(function() {
-//                 console.log("Document successfully updated!");
-//                 document.getElementById('spinner-circle').style.display = 'none';
-//                 sessionStorage.setItem('score', currentScore);
-//                 window.location.href = './index.html';
-//             })
-//             .catch(function(error) {
-//                 console.error("Error writing document: ", error);
-//             });
-//         } else {
-//             console.log("No such document!");
-//         }
-//     }).catch(function(error) {
-//         console.error("Error getting document:", error);
-//     });
-// }
 
 var s = "";
 correctQuestions = JSON.parse(sessionStorage.getItem('correct-questions'));
