@@ -1,83 +1,138 @@
-if(sessionStorage.getItem("user-id") == null){
-    document.getElementById("login-open").click();
+if (sessionStorage.getItem("user-id") == null) {
+    window.location.href = cloudURL;
 }
 
-document.getElementById("login-info").addEventListener("submit", function(event) {
-    event.preventDefault();
-    document.getElementById('spinner-circle').style.display = 'block';
-    const name = document.getElementById("login-name").value;
-    const email = document.getElementById("login-email").value;
-    const field = document.getElementById("login-field").value;
-    const accessibilityKnowledge = document.getElementById("login-accessibilty-knowledge").value;
-    const area = document.getElementById("login-area").value;
+var gameID;
 
+async function createDocument() {
+    try {
+        const response = await fetch(cloudURL + '/createDocument', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ collectionName: collectionName })
+        });
+
+        const data = await response.json();
+        gameID = data.documentId;
+        console.log("New game document created with ID:", gameID);
+        return gameID;
+    } catch (error) {
+        console.error("Error creating document:", error);
+        return null;
+    }
+}
+
+async function initializeGame() {
+    if (!sessionStorage.getItem('game-id')) {
+        gameID = await createDocument();
+        if (gameID) {
+            sessionStorage.setItem('game-id', gameID);
+            addInitialData();
+        } else {
+            console.error('Failed to create game document.');
+        }
+    } else {
+        gameID = sessionStorage.getItem('game-id');
+    }
+}
+
+async function getPlayerData(docId) {
+    try {
+        const response = await fetch(cloudURL + `/getDocumentData?collectionName=player-data&id=${docId}`);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        if (data.length > 0) {
+            const username = data[0].name;
+            const email = data[0].email;
+            const previousGames = data[0].refuteGames || [];
+            sessionStorage.setItem('user-name', username);
+            sessionStorage.setItem('user-email', email);
+            sessionStorage.setItem('previous-games', JSON.stringify(previousGames));
+            initializeGame();
+        } else {
+            console.error("No data found for the given document ID");
+        }
+    } catch (error) {
+        console.error("Error fetching document data:", error);
+    }
+}
+
+async function addInitialData() {
     const now = new Date();
     const utcOffset = now.getTimezoneOffset() * 60000;
     const istOffset = 5.5 * 60 * 60 * 1000;
     const istTime = new Date(now.getTime() + utcOffset + istOffset);
 
-    var subfield='';
-    switch(document.getElementById("login-field").value){
-        case 'High School Student': subfield = document.getElementById('subfield-highschool').value; break;
-        case 'Undergraduate Student': subfield = document.getElementById('subfield-undergrad').value; break;
-        case 'Graduate Student': subfield = document.getElementById('subfield-grad').value; break;
-        case 'Working Professional': subfield = document.getElementById('subfield-worker').value; break;
-        case 'Other': subfield = document.getElementById('subfield-other').value; break;
-    }
-
-    var userId = db.collection(collectionName).doc().id;
-
-    firebase.auth().createUserWithEmailAndPassword(userId + "@123.com", userId)
-    .then(() => {
-        db.collection(collectionName).doc(userId).set({
-            name: name,
-            email: email,
-            field: field,
-            accessibilityKnowledge: accessibilityKnowledge,
-            area: area,
-            subfield: subfield,
-            timestamp: String(istTime)
-        })
-        .then(function() {
-            console.log("Document successfully written with ID: ", userId);
-            sessionStorage.setItem("user-id", userId);
-            sessionStorage.setItem("user-name", name);
-            sessionStorage.setItem("user-email", email);
-            document.getElementById('spinner-circle').style.display = 'none';
-            document.getElementById('First-Modal-Next').click();
-        })
-        .catch(function(error) {
-            console.error("Error writing document: ", error);
+    try {
+        const response = await fetch(cloudURL + `/addDocumentData?collectionName=${collectionName}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: gameID,
+                name: sessionStorage.getItem('user-name'),
+                timestamp: String(istTime)
+            })
         });
-    })
-    .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log("Error:", errorCode, errorMessage);
-    });
-});
 
-function accountOpen(){
-    document.getElementById('account-name').innerText = "Name: " + sessionStorage.getItem('user-name');
-    document.getElementById('account-email').innerText = "Email: " + sessionStorage.getItem('user-email');
-    document.getElementById('account-score').innerText = document.getElementById('score-text').innerText;
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("Data added successfully:", data);
+        addPlayerGameID();
+
+    } catch (error) {
+        console.error("Error adding data:", error);
+    }
 }
 
-document.getElementById('login-field').addEventListener('change', function() {
-    var selectedValue = '';
-    switch (this.value) {
-        case 'High School Student': selectedValue = 'subfield-highschool'; break;
-        case 'Undergraduate Student': selectedValue = 'subfield-undergrad'; break;
-        case 'Graduate Student': selectedValue = 'subfield-grad'; break;
-        case 'Working Professional': selectedValue = 'subfield-worker'; break;
-        case 'Other': selectedValue = 'subfield-other'; break;
-    };
-    var dropdowns = document.getElementById('sub-field-dropdowns').children;
-    
-    for (var i = 0; i < dropdowns.length; i++) {
-        dropdowns[i].style.display = 'none';    
-    }
+async function addPlayerGameID() {
+    let gameIDs = JSON.parse(sessionStorage.getItem('previous-games')) || [];
+    gameIDs.push(gameID);
 
-    document.getElementById(selectedValue).style.display = 'block';
-    document.getElementById(selectedValue + '-label').style.display = 'block';
-});
+    try {
+        const response = await fetch(cloudURL + `/addDocumentData?collectionName=player-data`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: sessionStorage.getItem('user-id'),
+                refuteGames: gameIDs
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("Data added successfully:", data);
+    } catch (error) {
+        console.error("Error adding data:", error);
+    }
+}
+
+if (!sessionStorage.getItem('user-name')) {
+    getPlayerData(sessionStorage.getItem('user-id'));
+}
+
+function accountOpen() {
+    const userName = sessionStorage.getItem('user-name');
+    if (userName) {
+        document.getElementById('account-name').innerText = "Name: " + sessionStorage.getItem('user-name');
+        document.getElementById('account-email').innerText = "Email: " + sessionStorage.getItem('user-email');
+        document.getElementById('account-score').innerText = document.getElementById('score-text').innerText;
+    } else {
+        console.error("User name not found in sessionStorage.");
+    }
+}

@@ -32,34 +32,44 @@ var hintedCriteria = [];
 var currentScore = parseInt(sessionStorage.getItem('score'));
 
 function finalDB(){
-    var userId = sessionStorage.getItem('user-id');
+    var gameID = sessionStorage.getItem('game-id');
 
-    if (!userId) {
-        console.error("User ID not found in sessionStorage");
+    if (!gameID) {
+        console.error("Game ID not found in sessionStorage");
         return;
     }
     document.getElementById('spinner-circle').style.display = 'block';
-    
-    db.collection(collectionName).doc(userId).get().then(function(doc) {
-        if (doc.exists) {
-            db.collection(collectionName).doc(userId).set({
+
+    async function finalGameData(gameID) {
+        try {
+            const data = {
+                id: gameID,
                 finalScore: currentScore,
                 totalTimeTaken: document.getElementById('clock').textContent
-            }, { merge: true })
-            .then(function() {
-                console.log("Document successfully updated!");
-                document.getElementById('spinner-circle').style.display = 'none';
-                window.location.href = './checkpoint.html';
-            })
-            .catch(function(error) {
-                console.error("Error writing document: ", error);
+            };
+    
+            const response = await fetch(`${cloudURL}/addDocumentData?collectionName=${collectionName}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
             });
-        } else {
-            console.log("No such document!");
+    
+            if (!response.ok) {
+                throw new Error('Failed to update document');
+            }
+    
+            const result = await response.json();
+            console.log("Document successfully updated!");
+            document.getElementById('spinner-circle').style.display = 'none';
+            window.location.href = './checkpoint.html';
+        } catch (error) {
+            console.error('Error updating document:', error);
         }
-    }).catch(function(error) {
-        console.error("Error getting document:", error);
-    });
+    }
+
+    finalGameData(sessionStorage.getItem('game-id'));
 }
 
 if(parseInt(sessionStorage.getItem('question-number')) == 6 && sessionStorage.getItem('checkpoint-5') == 'false'){
@@ -74,7 +84,7 @@ if(parseInt(sessionStorage.getItem('question-number')) > 10 && sessionStorage.ge
     window.location.href = './index.html';
 }
 
-var userId = sessionStorage.getItem('user-id');
+var gameID = sessionStorage.getItem('game-id');
 
 var s = "";
 correctQuestions = JSON.parse(sessionStorage.getItem('correct-questions'));

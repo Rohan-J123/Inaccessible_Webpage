@@ -48,10 +48,10 @@ function updateDB() {
     sessionStorage.setItem("criterion-given-till-now", JSON.stringify(criterionGivenTillNow));
 
     document.getElementById('spinner-circle').style.display = 'block';
-    var userId = sessionStorage.getItem('user-id');
+    var gameID = sessionStorage.getItem('game-id');
 
-    if (!userId) {
-        console.error("User ID not found in sessionStorage");
+    if (!gameID) {
+        console.error("Game ID not found in sessionStorage");
         return;
     }
 
@@ -65,51 +65,79 @@ function updateDB() {
     if(document.getElementById('wifi-sidebar-label').innerText == "Game Over!"){
         correctlyAnswered = false;
     }
+
+    async function updateGameData(gameID) {
+        try {
+            const response = await fetch(`${cloudURL}/getDocumentData?collectionName=${collectionName}&id=${gameID}`);
     
-    db.collection(collectionName).doc(userId).get().then(function(doc) {
-        if (doc.exists) {
-            var docData = doc.data();
-            var updatedCriterion = docData.questionCriterion || [];
-            var updatedUnpickedCriterion = docData.unpickedCriterion || [];
-            var updatedScore = docData.score || [];
-            var updatedTimeTaken = docData.timeTaken || [];
-            var updatedLivesRemaining = docData.livesRemaining || [];
-            var updatedhintedCriteriaList = docData.hintedCriteriaList || [];
-            var updatedCorrectlyAnswered = docData.correctlyAnswered || [];
+            if (!response.ok) {
+                throw new Error('Failed to fetch document data');
+            }
+    
+            const data = await response.json();
+    
+            if (data.length > 0) {
+                const docData = data[0];
+                var updatedCriterion = docData.questionCriterion || [];
+                var updatedUnpickedCriterion = docData.unpickedCriterion || [];
+                var updatedScore = docData.score || [];
+                var updatedTimeTaken = docData.timeTaken || [];
+                var updatedLivesRemaining = docData.livesRemaining || [];
+                var updatedhintedCriteriaList = docData.hintedCriteriaList || [];
+                var updatedCorrectlyAnswered = docData.correctlyAnswered || [];
 
-            updatedCriterion.push(JSON.stringify(chosenCriterion));
-            updatedUnpickedCriterion.push(JSON.stringify(unpickedCriterion));
-            score = score - sumArray(updatedScore);
-            updatedScore.push(score);
-            updatedTimeTaken.push(timeTaken);
-            updatedLivesRemaining.push(livesRemaining);
-            updatedhintedCriteriaList.push(JSON.stringify(hintedCriteriaList));
-            updatedCorrectlyAnswered.push(correctlyAnswered);
+                updatedCriterion.push(JSON.stringify(chosenCriterion));
+                updatedUnpickedCriterion.push(JSON.stringify(unpickedCriterion));
+                score = score - sumArray(updatedScore);
+                updatedScore.push(score);
+                updatedTimeTaken.push(timeTaken);
+                updatedLivesRemaining.push(livesRemaining);
+                updatedhintedCriteriaList.push(JSON.stringify(hintedCriteriaList));
+                updatedCorrectlyAnswered.push(correctlyAnswered);
 
-            db.collection(collectionName).doc(userId).set({
-                questionCriterion: updatedCriterion,
-                unpickedCriterion: updatedUnpickedCriterion,
-                score: updatedScore,
-                timeTaken: updatedTimeTaken,
-                livesRemaining: updatedLivesRemaining,
-                hintedCriteriaList: updatedhintedCriteriaList,
-                correctlyAnswered: updatedCorrectlyAnswered
-            }, { merge: true })
-            .then(function() {
-                console.log("Document successfully updated!");
-                document.getElementById('spinner-circle').style.display = 'none';
-                sessionStorage.setItem('score', currentScore);
-                location.reload();
-            })
-            .catch(function(error) {
-                console.error("Error writing document: ", error);
-            });
-        } else {
-            console.log("No such document!");
+                try {
+                    const data = {
+                        id: gameID,
+                        questionCriterion: updatedCriterion,
+                        unpickedCriterion: updatedUnpickedCriterion,
+                        score: updatedScore,
+                        timeTaken: updatedTimeTaken,
+                        livesRemaining: updatedLivesRemaining,
+                        hintedCriteriaList: updatedhintedCriteriaList,
+                        correctlyAnswered: updatedCorrectlyAnswered
+                    };
+            
+                    const response = await fetch(`${cloudURL}/addDocumentData?collectionName=${collectionName}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+            
+                    if (!response.ok) {
+                        throw new Error('Failed to update document');
+                    }
+            
+                    const result = await response.json();
+                    console.log("Document successfully updated!");
+                    document.getElementById('spinner-circle').style.display = 'none';
+                    sessionStorage.setItem('score', currentScore);
+                    location.reload();
+                } catch (error) {
+                    console.error('Error updating document:', error);
+                }
+
+            } else {
+                console.log('No document data found');
+            }
+    
+        } catch (error) {
+            console.error('Error fetching document data:', error);
         }
-    }).catch(function(error) {
-        console.error("Error getting document:", error);
-    });
+    }
+
+    updateGameData(sessionStorage.getItem('game-id'));
 }
 
 if(sessionStorage.getItem('start-dont-show') == 'true'){
